@@ -40,10 +40,12 @@ async function saveAnalysis(){if(!projectId)return createAndSave();let name=awai
 function getViewState(){return {colorBy:E('colorBy')?.value||'community',sizeBy:E('sizeBy')?.value||'corpus',minDisplayFreq:+E('displayFreq')?.value||0}}
 function setGraphLevel(v){graphLevel=v;activeCluster=null;redraw()}function drillCluster(g){graphLevel='documents';activeCluster=+g;let sel=E('graphLevel');if(sel)sel.value='documents';redraw()}function backClusters(){graphLevel='clusters';activeCluster=null;let sel=E('graphLevel');if(sel)sel.value='clusters';redraw()}function redraw(){if(!N)return;let v=E('viz');if(v){v.innerHTML='';draw()}}function resetFocus(){redraw()}function legend(items){let el=E('graphLegend');if(!el)return;el.innerHTML=items.map(x=>'<span><i class="swatch" style="background:'+x.color+'"></i>'+escapeHtml(x.label)+'</span>').join('')}
 function draw(){let e=E('viz'),w=e.clientWidth,h=620,S=d3.select(e).append('svg').attr('width','100%').attr('height',h).attr('viewBox',[0,0,w,h]),r=S.append('g');S.call(d3.zoom().scaleExtent([.35,5]).on('zoom',x=>r.attr('transform',x.transform)));let crumbs=E('graphCrumbs');if(graphLevel==='clusters'){crumbs.innerHTML='<b>Overview</b> · Click a cluster to explore its documents';drawClusters(r,w,h);return}crumbs.innerHTML='<button onclick="backClusters()">Overview</button> › '+(activeCluster!=null?'<b>'+escapeHtml(clusterName(activeCluster))+'</b>':'<b>All documents</b>');drawDocs(r,w,h)}
-function clusterRadius(d){return 20*Math.sqrt(d.count)}
 function drawClusters(r,w,h){
   let groups={};
   N.nodes.filter(n=>n.group!=null).forEach(n=>(groups[n.group]??=[]).push(n));
+  let largest=Math.max(1,...Object.values(groups).map(works=>works.length));
+  let scale=Math.min(20,Math.min(w,h)*.16/Math.sqrt(largest));
+  let clusterRadius=d=>scale*Math.sqrt(d.count);
   let byId=new Map(N.nodes.map(n=>[n.id,n])),agg=new Map();
   N.edges.forEach(edge=>{
     let source=typeof edge.source==='object'?edge.source:byId.get(edge.source);
@@ -62,14 +64,14 @@ function drawClusters(r,w,h){
   let maxLink=Math.max(1,...links.map(d=>d.count));
   let formatLink=d=>Number.isInteger(d.count)?d.count.toLocaleString():d.count.toFixed(1);
   let explanation=E('graphCrumbs');
-  explanation.innerHTML+=' · Circle area shows works. '+(links.length?'Line width shows cross-cluster '+relationship+' '+measure+'.':'No cross-cluster '+relationship+' in this network.');
+  explanation.innerHTML+=' · Circle area shows works. '+(links.length?'Line width shows cross-cluster '+(N.method==='direct_citation'?'citation':'relationship')+' '+measure+'.':'No cross-cluster '+relationship+' in this network.');
   let lines=r.append('g').attr('stroke','#587b99').attr('stroke-opacity',.75).selectAll('line').data(links).join('line').attr('stroke-width',d=>2.5+7.5*(Math.sqrt(d.count)-1)/(Math.sqrt(maxLink)-1||1));
   lines.append('title').text(d=>formatLink(d)+' cross-cluster '+relationship);
   let labels=r.append('g').selectAll('text').data(links).join('text').attr('text-anchor','middle').attr('dy','-.5em').attr('fill','#35536d').attr('font-size',11).attr('font-weight',700).attr('stroke','#fff').attr('stroke-width',3).attr('paint-order','stroke').text(formatLink);
   let circles=r.append('g').selectAll('g').data(nodes).join('g').style('cursor','pointer').on('click',(event,d)=>drillCluster(d.id));
   circles.append('circle').attr('r',clusterRadius).attr('fill',color).attr('fill-opacity',.82).attr('stroke','#fff').attr('stroke-width',3);
-  circles.append('text').attr('text-anchor','middle').attr('dy','-.15em').attr('fill','#fff').attr('font-size',12).attr('font-weight',800).text(d=>shortClusterName(clusterName(d.id),Math.max(4,Math.floor((clusterRadius(d)*2-16)/8))));
-  circles.append('text').attr('text-anchor','middle').attr('dy','1.25em').attr('fill','#fff').attr('font-size',11).text(d=>d.count+' works');
+  circles.append('text').attr('text-anchor','middle').attr('dy','-.15em').attr('fill','#fff').attr('font-size',d=>Math.min(12,Math.max(8,clusterRadius(d)*.5))).attr('font-weight',800).text(d=>shortClusterName(clusterName(d.id),Math.max(4,Math.floor((clusterRadius(d)*2-16)/8))));
+  circles.append('text').attr('text-anchor','middle').attr('dy','1.25em').attr('fill','#fff').attr('font-size',d=>Math.min(11,Math.max(8,clusterRadius(d)*.5))).text(d=>d.count+' works');
   circles.append('title').text(d=>clusterName(d.id)+' [C'+String(d.id+1).padStart(2,'0')+']\n'+d.count+' cited works\n'+d.weight+' '+occurrenceLabel()+'\nClick to drill down');
   let sim=d3.forceSimulation(nodes).force('link',d3.forceLink(links).id(d=>d.id).distance(170)).force('charge',d3.forceManyBody().strength(-650)).force('center',d3.forceCenter(w/2,h/2)).force('collide',d3.forceCollide(d=>clusterRadius(d)+8));
   sim.on('tick',()=>{
