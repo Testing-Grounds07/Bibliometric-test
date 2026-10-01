@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import './public/corpus-presets.js';
+const {evaluate,version}=globalThis.BiblioMapCorpus;
+const base={type:'article',language:'en',is_retracted:false,doi:null,abstract_inverted_index:null,referenced_works:['W1'],authorships:[{author:{id:'A1'},institutions:[]}],primary_location:{source:{type:'journal',is_core:true,listed_in:['cwts-core','doaj']}}};
+assert.equal(evaluate(base,'balanced').status,'included');
+assert.equal(evaluate(base,'conservative').status,'excluded');
+assert.deepEqual(evaluate(base,'conservative').reasons,['No linked affiliation']);
+assert.equal(evaluate(base,'inclusive').status,'included');
+assert.equal(evaluate(base,'balanced',true).status,'excluded');
+assert.equal(evaluate({...base,referenced_works:[]},'balanced').status,'excluded');
+assert.equal(evaluate({...base,referenced_works:[]},'inclusive').status,'included');
+assert.equal(evaluate({...base,primary_location:{source:{type:'journal',listed_in:[]}}},'balanced').status,'excluded');
+assert.equal(evaluate({...base,primary_location:{source:{type:'journal'}}},'balanced').status,'unknown');
+assert.equal(evaluate({...base,is_retracted:true},'inclusive').status,'excluded');
+assert.equal(evaluate({...base,type:'conference-paper',primary_location:{source:{type:'conference',is_core:false}}},'inclusive').status,'included');
+assert.equal(evaluate(base,'balanced').provenance.preset_version,version);
+console.log('Corpus preset fixtures passed');

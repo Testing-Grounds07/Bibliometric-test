@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node server.mjs",
-    "test": "node analysis-engine.test.mjs"
+    "test": "node analysis-engine.test.mjs && node corpus-presets.test.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "pg": "^8.16.3",
+    "@electric-sql/pglite": "^0.5.8",
     "ngraph.graph": "^20.1.2",
-    "ngraph.leiden": "^0.3.0"
+    "ngraph.leiden": "^0.3.0",
+    "pg": "^8.16.3"
   },
   "type": "module"
 }

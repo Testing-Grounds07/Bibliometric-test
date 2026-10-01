@@ -1,6 +1,12 @@
 import assert from 'assert';import {build,groupBroader} from './analysis-engine.mjs';
 const W=(id,refs)=>({id,referenced_works:refs});const c=[W('A',['R1','R2','R3']),W('B',['R1','R2']),W('C',['R2','R3']),W('D',['R3','R4'])];
 let n=build(c,{method:'co_citation',counting:'full',normalization:'raw',minNode:1,minRaw:1,restarts:1,seed:42,resolution:1});let e=Object.fromEntries(n.edges.map(x=>[[x.source,x.target].sort().join('|'),x.raw_weight]));assert.equal(e['R1|R2'],2);assert.equal(e['R1|R3'],1);assert.equal(e['R2|R3'],2);assert.equal(e['R3|R4'],1);assert.equal(e['R1|R4'],undefined);
+assert.equal(n.nodes.find(x=>x.id==='R1').total_link_strength,3);
+assert.equal(n.nodes.find(x=>x.id==='R2').total_link_strength,4);
+const merged=build([W('A',['R1','R1-variant','R2']),W('B',['R1-variant','R2'])],{method:'co_citation',normalization:'raw',minNode:1,minRaw:1,restarts:1,referenceAliases:{'R1-variant':'R1'}});
+assert.equal(merged.nodes.length,2,'a merged cited work must count once per citing work');
+assert.equal(merged.nodes.find(x=>x.id==='R1').occurrence,2);
+assert.equal(merged.edges[0].raw_weight,2);
 let a=build(c,{method:'co_citation',normalization:'association_strength',minNode:1,minRaw:1,restarts:1});let ae=Object.fromEntries(a.edges.map(x=>[[x.source,x.target].sort().join('|'),x.normalized_weight]));assert(Math.abs(ae['R1|R2']-2/6)<1e-10);assert(Math.abs(ae['R2|R3']-2/9)<1e-10);
 let b=build(c,{method:'bibliographic_coupling',normalization:'raw',minNode:1,minRaw:1,restarts:1});let be=Object.fromEntries(b.edges.map(x=>[[x.source,x.target].sort().join('|'),x.raw_weight]));assert.equal(be['A|B'],2);assert.equal(be['A|C'],2);assert.equal(be['A|D'],1);assert.equal(be['B|C'],1);assert.equal(be['B|D'],undefined);assert.equal(be['C|D'],1);
 const groups=[['X1','X2','X3'],['Y1','Y2','Y3']];
