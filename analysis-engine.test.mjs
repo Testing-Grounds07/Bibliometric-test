@@ -3,4 +3,16 @@ const W=(id,refs)=>({id,referenced_works:refs});const c=[W('A',['R1','R2','R3'])
 let n=build(c,{method:'co_citation',counting:'full',normalization:'raw',minNode:1,minRaw:1,restarts:1,seed:42,resolution:1});let e=Object.fromEntries(n.edges.map(x=>[[x.source,x.target].sort().join('|'),x.raw_weight]));assert.equal(e['R1|R2'],2);assert.equal(e['R1|R3'],1);assert.equal(e['R2|R3'],2);assert.equal(e['R3|R4'],1);assert.equal(e['R1|R4'],undefined);
 let a=build(c,{method:'co_citation',normalization:'association_strength',minNode:1,minRaw:1,restarts:1});let ae=Object.fromEntries(a.edges.map(x=>[[x.source,x.target].sort().join('|'),x.normalized_weight]));assert(Math.abs(ae['R1|R2']-2/6)<1e-10);assert(Math.abs(ae['R2|R3']-2/9)<1e-10);
 let b=build(c,{method:'bibliographic_coupling',normalization:'raw',minNode:1,minRaw:1,restarts:1});let be=Object.fromEntries(b.edges.map(x=>[[x.source,x.target].sort().join('|'),x.raw_weight]));assert.equal(be['A|B'],2);assert.equal(be['A|C'],2);assert.equal(be['A|D'],1);assert.equal(be['B|C'],1);assert.equal(be['B|D'],undefined);assert.equal(be['C|D'],1);
+const groups=[['X1','X2','X3'],['Y1','Y2','Y3']];
+const groupedCorpus=groups.flatMap((refs,g)=>Array.from({length:5},(_,i)=>W(`G${g}-${i}`,refs)));
+groupedCorpus.push(W('bridge',groups.flat()));
+groupedCorpus.push(W('isolated',['Z']));
+const groupedOptions={method:'co_citation',normalization:'association_strength',minNode:1,minRaw:1,restarts:3,seed:42,resolution:1};
+const grouped=build(groupedCorpus,groupedOptions);
+assert.equal(new Set(grouped.nodes.filter(n=>!n.isolated).map(n=>n.community)).size,2,'dense groups should not fragment into singleton communities');
+for(const refs of groups)assert.equal(new Set(grouped.nodes.filter(n=>refs.includes(n.id)).map(n=>n.community)).size,1);
+assert.notEqual(grouped.nodes.find(n=>n.id==='X1').community,grouped.nodes.find(n=>n.id==='Y1').community);
+assert.equal(grouped.nodes.find(n=>n.id==='Z').community,null);
+assert(groupedOptions._cluster_meta.weight_scale>0);
+assert.deepEqual(build(groupedCorpus,{...groupedOptions}).nodes.map(n=>n.community),grouped.nodes.map(n=>n.community));
 console.log('Gold-standard bibliometric fixtures passed');
