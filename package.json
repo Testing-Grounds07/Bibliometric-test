@@ -3,8 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
-    "test": "node analysis-engine.test.js"
+    "start": "node server.mjs",
+    "test": "node analysis-engine.test.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -13,5 +13,6 @@
     "pg": "^8.16.3",
     "ngraph.graph": "^20.1.2",
     "ngraph.leiden": "^0.3.0"
-  }
+  },
+  "type": "module"
 }
