@@ -1,4 +1,4 @@
-import assert from 'assert';import {build} from './analysis-engine.mjs';
+import assert from 'assert';import {build,groupBroader} from './analysis-engine.mjs';
 const W=(id,refs)=>({id,referenced_works:refs});const c=[W('A',['R1','R2','R3']),W('B',['R1','R2']),W('C',['R2','R3']),W('D',['R3','R4'])];
 let n=build(c,{method:'co_citation',counting:'full',normalization:'raw',minNode:1,minRaw:1,restarts:1,seed:42,resolution:1});let e=Object.fromEntries(n.edges.map(x=>[[x.source,x.target].sort().join('|'),x.raw_weight]));assert.equal(e['R1|R2'],2);assert.equal(e['R1|R3'],1);assert.equal(e['R2|R3'],2);assert.equal(e['R3|R4'],1);assert.equal(e['R1|R4'],undefined);
 let a=build(c,{method:'co_citation',normalization:'association_strength',minNode:1,minRaw:1,restarts:1});let ae=Object.fromEntries(a.edges.map(x=>[[x.source,x.target].sort().join('|'),x.normalized_weight]));assert(Math.abs(ae['R1|R2']-2/6)<1e-10);assert(Math.abs(ae['R2|R3']-2/9)<1e-10);
@@ -15,4 +15,11 @@ assert.notEqual(grouped.nodes.find(n=>n.id==='X1').community,grouped.nodes.find(
 assert.equal(grouped.nodes.find(n=>n.id==='Z').community,null);
 assert(groupedOptions._cluster_meta.weight_scale>0);
 assert.deepEqual(build(groupedCorpus,{...groupedOptions}).nodes.map(n=>n.community),grouped.nodes.map(n=>n.community));
+const broadNodes=[...Array.from({length:11},(_,i)=>({id:'A'+i,community:0})),...Array.from({length:11},(_,i)=>({id:'B'+i,community:1})),{id:'C',community:2}];
+const broad=groupBroader(broadNodes,[{source:'A0',target:'B0',raw_weight:4}]);
+assert.equal(broad.membership[0],broad.membership[1]);
+assert.notEqual(broad.membership[0],broad.membership[2]);
+assert.equal(broad.smallWorks,1);
+assert.equal(broad.smallUnlinked,true);
+assert.equal(broadNodes[0].community,0);
 console.log('Gold-standard bibliometric fixtures passed');

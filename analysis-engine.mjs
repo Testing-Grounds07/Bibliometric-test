@@ -13,4 +13,22 @@ function cluster(nodes,edges,opt){let connected=nodes.filter(n=>!n.isolated);if(
 // weight as the unit so gamma=1 remains meaningful for every normalization.
 let weightScale=edges.reduce((sum,e)=>sum+e.weight,0)/edges.length;if(!Number.isFinite(weightScale)||weightScale<=0)throw Error('Network has no positive relationship weights');edges.forEach(e=>g.addLink(e.source,e.target,{weight:e.weight/weightScale}));
 let restarts=Math.max(1,+opt.restarts||10),best=null;for(let i=0;i<restarts;i++){let r=detectClusters(g,{randomSeed:(+opt.seed||42)+i,quality:'cpm',resolution:+opt.resolution||0.02,linkWeight:l=>l.data?.weight||1});let q=r.quality();if(!best||q>best.q)best={r,q,seed:(+opt.seed||42)+i}}let cs=best.r.getCommunities(),membership={};cs.forEach((ids,c)=>ids.forEach(id=>membership[id]=c));nodes.forEach(n=>{n.community=n.isolated?null:membership[n.id]});let vals=[...new Set(Object.values(membership))].sort((a,b)=>a-b),rem=new Map(vals.map((v,i)=>[v,i]));nodes.forEach(n=>{if(n.community!=null)n.community=rem.get(n.community)});opt._cluster_meta={algorithm:'leiden',objective:'cpm',resolution:+opt.resolution||0.02,weight_scale:weightScale,seed:+opt.seed||42,restarts,selected_seed:best.seed,quality:best.q,communities:vals.length}}
-export {build};
+function groupBroader(nodes,edges){
+  const sizes=new Map(),byId=new Map(),between=new Map();
+  for(const node of nodes){byId.set(node.id,node);if(node.community!=null)sizes.set(node.community,(sizes.get(node.community)||0)+1)}
+  for(const edge of edges){const a=byId.get(edge.source)?.community,b=byId.get(edge.target)?.community;if(a==null||b==null||a===b)continue;add(between,pairKey(a,b),edge.raw_weight||1)}
+  if(!sizes.size)return {membership:{},groups:0,unlinkedGroup:null};
+  const graph=createGraph();for(const c of sizes.keys())graph.addNode(c);
+  for(const [key,weight] of between){const [a,b]=key.split('|').map(Number);graph.addLink(a,b,{weight})}
+  const result=detectClusters(graph,{randomSeed:42,quality:'modularity',resolution:1,linkWeight:l=>l.data?.weight||1});
+  const communities=[...result.getCommunities().values()].map(ids=>({ids,size:ids.reduce((sum,id)=>sum+(sizes.get(id)||0),0)}));
+  // The bucket is explicitly a collection of small unlinked groups, not a community.
+  const substantial=communities.filter(c=>c.size>=10).sort((a,b)=>b.size-a.size||Math.min(...a.ids)-Math.min(...b.ids));
+  const small=communities.filter(c=>c.size<10);
+  const membership={};substantial.forEach((c,i)=>c.ids.forEach(id=>membership[id]=i));
+  const unlinkedGroup=small.length?substantial.length:null;
+  for(const c of small)for(const id of c.ids)membership[id]=unlinkedGroup;
+  const smallUnlinked=[...between.keys()].every(key=>{const [a,b]=key.split('|').map(Number);return membership[a]===membership[b]||membership[a]!==unlinkedGroup&&membership[b]!==unlinkedGroup});
+  return {membership,groups:substantial.length+(small.length?1:0),unlinkedGroup,smallUnlinked,smallGroups:small.length,smallWorks:small.reduce((sum,c)=>sum+c.size,0),originalCommunities:sizes.size,method:'Leiden modularity on citation links between original communities'}
+}
+export {build,groupBroader};
