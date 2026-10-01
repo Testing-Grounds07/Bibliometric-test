@@ -69,7 +69,7 @@ function drawClusters(r,w,h){
   lines.append('title').text(d=>formatLink(d)+' cross-cluster '+relationship);
   let labels=r.append('g').selectAll('text').data(links).join('text').attr('text-anchor','middle').attr('dy','-.5em').attr('fill','#35536d').attr('font-size',11).attr('font-weight',700).attr('stroke','#fff').attr('stroke-width',3).attr('paint-order','stroke').text(formatLink);
   let circles=r.append('g').selectAll('g').data(nodes).join('g').style('cursor','pointer').on('click',(event,d)=>drillCluster(d.id));
-  circles.append('circle').attr('r',clusterRadius).attr('fill',color).attr('fill-opacity',.82).attr('stroke','#fff').attr('stroke-width',3);
+  circles.append('circle').attr('r',clusterRadius).attr('fill',color).attr('fill-opacity',1).attr('stroke','#fff').attr('stroke-width',3);
   circles.append('text').attr('text-anchor','middle').attr('dy','-.15em').attr('fill','#fff').attr('font-size',d=>Math.min(12,Math.max(8,clusterRadius(d)*.5))).attr('font-weight',800).text(d=>shortClusterName(clusterName(d.id),Math.max(4,Math.floor((clusterRadius(d)*2-16)/8))));
   circles.append('text').attr('text-anchor','middle').attr('dy','1.25em').attr('fill','#fff').attr('font-size',d=>Math.min(11,Math.max(8,clusterRadius(d)*.5))).text(d=>d.count+' works');
   circles.append('title').text(d=>clusterName(d.id)+' [C'+String(d.id+1).padStart(2,'0')+']\n'+d.count+' cited works\n'+d.weight+' '+occurrenceLabel()+'\nClick to drill down');
@@ -77,7 +77,7 @@ function drawClusters(r,w,h){
   sim.on('tick',()=>{
     nodes.forEach(d=>{let radius=clusterRadius(d)+8;d.x=Math.max(radius,Math.min(w-radius,d.x));d.y=Math.max(radius,Math.min(h-radius,d.y))});
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
-    labels.attr('x',d=>(d.source.x+d.target.x)/2).attr('y',d=>(d.source.y+d.target.y)/2);
+    labels.attr('transform',d=>{let dx=d.target.x-d.source.x,dy=d.target.y-d.source.y,length=Math.hypot(dx,dy)||1;let at=.5+(clusterRadius(d.source)-clusterRadius(d.target))/(2*length);return 'translate('+(d.source.x+at*dx)+','+(d.source.y+at*dy)+')'});
     circles.attr('transform',d=>'translate('+d.x+','+d.y+')');
   });
 }
