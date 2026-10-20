@@ -1,3 +1,9 @@
+# Keep executable module sources consistent for source-based checks on Windows.
+*.mjs text eol=lf
+
+# This generated baseline dataset has a recorded raw-byte checksum.
+public/conservative-atlas/data.js -text
+
 # Frozen research artifacts retain their exact recorded bytes on every platform.
 public/conservative-atlas/ai-research/** -text -whitespace
 *.pdf binary

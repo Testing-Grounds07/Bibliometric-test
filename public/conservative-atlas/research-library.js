@@ -1,15 +1,16 @@
 (() => {
  'use strict';
- if (!window.atlasWorkspaceShell || document.getElementById('aiStudiesLibrary')) return;
+ if (!window.atlasWorkspaceShell || window.ATLAS_PROJECT_REPORTS) return;
  const base = new URL('/conservative-atlas/', window.location.href);
  const manifestURL = new URL('ai-research/library.json', base);
  const node = (tag, text, className) => { const value = document.createElement(tag); if (text) value.textContent = text; if (className) value.className = className; return value; };
- const panel = window.atlasWorkspaceShell.addTool('ai-studies', 'AI studies');
- const library = node('div', '', 'ai-studies-library'); library.id = 'aiStudiesLibrary';
- const intro = node('p', 'Retained results from standalone AI-assisted research. Opening this library does not run a new analysis. Read each study’s scope and review limits before interpreting a map.');
- const status = node('p', 'Open AI studies to load the retained study library.', 'ai-studies-status'); status.setAttribute('role', 'status');
- const refresh = node('button', 'Refresh study library'); refresh.type = 'button';
- const cards = node('div', '', 'ai-studies-cards'); panel.append(library); library.append(intro, refresh, status, cards);
+ const library = node('div', '', 'ai-studies-library'); library.id = 'projectResearchReportContent';
+ const status = node('p', '', 'ai-studies-status'); status.setAttribute('role', 'status');
+ const refresh = node('button', 'Refresh reports'); refresh.type = 'button';
+ const cards = node('div', '', 'ai-studies-cards'); library.append(status, refresh, cards);
+ let selectedProject = null, generation = 0, cachedStudies = null;
+ function mount() { const host = document.getElementById('projectResearchReports'); if (host && library.parentElement !== host) host.append(library); return host; }
+ function clearProject() { generation++; selectedProject = null; cards.replaceChildren(); status.textContent = ''; refresh.disabled = false; const host = mount(); if (host) host.hidden = true; }
  const uuid = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
  const projectPath = new RegExp('^' + base.pathname + 'projects/' + uuid + '(?:/map|/maps/' + uuid + ')?/?$', 'i');
  function text(value, name, maximum = 12000) { if (typeof value !== 'string' || !value.trim() || value.length > maximum) throw Error('The study library has an invalid ' + name + '.'); return value; }
@@ -38,7 +39,7 @@
   return value.studies.map(study => {
    const id = text(study?.id, 'study ID', 200); if (seen.has(id)) throw Error('The retained study library contains duplicate study IDs.'); seen.add(id);
    const checked = {id, title: text(study.title, 'title', 500), summary: text(study.summary, 'summary'), scope: text(study.scope, 'study scope'), reports: checkedLinks(study.reports, 'report'), downloads: checkedLinks(study.downloads, 'download'), maps: checkedLinks(study.maps, 'map'), review: {status: text(study.review?.status, 'review status', 500), scope: text(study.review?.scope, 'review scope')}};
-   if (study.project_id != null) { if (typeof study.project_id !== 'string' || !new RegExp('^' + uuid + '$', 'i').test(study.project_id)) throw Error('A study has an invalid project identity.'); checked.project = linkURL('projects/' + study.project_id, 'map'); }
+   if (study.project_id != null) { if (typeof study.project_id !== 'string' || !new RegExp('^' + uuid + '$', 'i').test(study.project_id)) throw Error('A study has an invalid project identity.'); checked.project_id = study.project_id.toLowerCase(); checked.project = linkURL('projects/' + study.project_id, 'map'); for (const map of checked.maps) if (!new URL(map.url).pathname.toLowerCase().startsWith(base.pathname + 'projects/' + checked.project_id + '/')) throw Error('A retained map belongs to a different project.'); }
    return checked;
   });
  }
@@ -55,12 +56,9 @@
    const card = node('article', '', 'ai-study-card'); card.dataset.studyId = study.id;
    card.append(node('h3', study.title), node('p', study.summary), node('h4', 'Evidence and claim limits'), node('p', study.scope), node('h4', 'Review status'), node('p', study.review.status), node('p', study.review.scope));
    fileLinks(card, 'Reports', study.reports); fileLinks(card, 'Sources and review downloads', study.downloads);
-   if (study.project) card.append(link({label: 'Open study project', url: study.project}));
-   if (study.maps.length) { card.append(node('h4', 'Retained maps')); const list = node('ul'); for (const map of study.maps) { const row = node('li'); row.append(link(map), node('p', map.node_count.toLocaleString() + ' nodes · ' + map.edge_count.toLocaleString() + ' edges. ' + map.scope)); list.append(row); } card.append(list); }
-   else card.append(node('p', 'No network map is attached. The reports and source appraisal can be read without a graph.', 'ai-studies-source-only'));
+   if (!study.maps.length) card.append(node('p', 'No network map is attached. The reports and source appraisal can be read without a graph.', 'ai-studies-source-only'));
    cards.append(card);
   }
-  if (!studies.length) cards.append(node('p', 'No standalone studies have been published to this library yet.'));
  }
  async function readManifest(response) {
   if (!response.ok) throw Error('The retained study library could not be loaded (HTTP ' + response.status + ').');
@@ -71,15 +69,37 @@
   const raw = new Uint8Array(bytes); let offset = 0; for (const part of parts) {raw.set(part, offset); offset += part.byteLength;}
   return JSON.parse(new TextDecoder('utf-8', {fatal: true}).decode(raw));
  }
- let busy = false, loaded = false;
- async function load() {
-  if (busy) return; busy = true; refresh.disabled = true; status.textContent = 'Loading retained study reports…';
-  try { const response = await window.fetch(manifestURL.href, {method: 'GET', credentials: 'same-origin', cache: 'no-cache'}); const studies = checkedManifest(await readManifest(response)); render(studies); loaded = true; status.textContent = studies.length + ' retained studies. Review labels describe the recorded checks, not human expert approval.'; }
-  catch (error) {status.textContent = (loaded ? 'The previous library remains visible. ' : '') + (error instanceof SyntaxError ? 'The study library is not valid JSON. ' : error.message + ' ') + 'Use Refresh study library to retry, or ask the local operator to publish ai-research/library.json.';}
-  finally {busy = false; refresh.disabled = false;}
+ function show(studies) {
+  const relevant = studies.filter(study => study.project_id === selectedProject);
+  render(relevant); const host = mount(); if (host) host.hidden = !relevant.length;
+  status.textContent = relevant.length ? 'Retained reports for this project. Review labels describe recorded checks, not human expert approval.' : '';
  }
- refresh.addEventListener('click', load);
- document.getElementById('tool-ai-studies')?.addEventListener('click', () => {if (!loaded) load();});
+ async function load(force = false) {
+  const projectId = selectedProject, ticket = ++generation;
+  if (!projectId) return;
+  const host = mount(); if (!host) return;
+  if (!force && cachedStudies) { refresh.disabled = false; show(cachedStudies); return; }
+  host.hidden = false; refresh.disabled = true; status.textContent = 'Loading reports for this project…';
+  try {
+   const response = await window.fetch(manifestURL.href, {method: 'GET', credentials: 'same-origin', cache: 'no-cache'});
+   const studies = checkedManifest(await readManifest(response));
+   if (ticket !== generation || selectedProject !== projectId) return;
+   cachedStudies = studies; show(studies);
+  } catch (error) {
+   if (ticket !== generation || selectedProject !== projectId) return;
+   status.textContent = (error instanceof SyntaxError ? 'The report index is not valid JSON.' : error.message) + ' Use Refresh reports to retry, or ask the local operator to check this project’s report index.';
+  } finally { if (ticket === generation) refresh.disabled = false; }
+ }
+ function openProjectReports(projectId) {
+  clearProject();
+  if (typeof projectId !== 'string' || !new RegExp('^' + uuid + '$', 'i').test(projectId)) return;
+  selectedProject = projectId.toLowerCase(); return load();
+ }
+ refresh.addEventListener('click', () => load(true));
+ window.addEventListener?.('atlas:project-opening', clearProject);
+ window.addEventListener?.('atlas:project-opened', event => openProjectReports(event.detail?.projectId));
+ window.addEventListener?.('atlas:project-reports-ready', event => openProjectReports(event.detail?.projectId));
+ window.addEventListener?.('atlas:map-opened', event => { const id = event.detail?.projectId; if (id?.toLowerCase() !== selectedProject) return openProjectReports(id); });
 
  // A display adapter for exact standalone imports; never change their graph,
  // memberships, objective or settings to match the native application's CPM UI.
@@ -140,7 +160,7 @@
    if(Number.isSafeInteger(settings.seed))detail.push('seed '+settings.seed);
    if(Number.isSafeInteger(settings.iterations))detail.push(settings.iterations+' iterations');
    notice.replaceChildren(node('strong',importedLabel(graph)+(detail.length?' · '+detail.join(' · '):'')),node('p','Frozen standalone study result. No recomputation on open. Native rebuilding, CPM tuning, new optimizer checks and AI labeling are disabled for this imported view. Open an ordinary map to start a separate native analysis.'));
-   if(graph.importedStandalone.report_url)try{notice.append(link({label:'Read the retained study report and run settings',url:linkURL(graph.importedStandalone.report_url,'report')}));}catch{notice.append(node('p','Read the retained report through AI studies.'));}
+   if(graph.importedStandalone.report_url)try{notice.append(link({label:'Read the retained study report and run settings',url:linkURL(graph.importedStandalone.report_url,'report')}));}catch{notice.append(node('p','Read the retained report in this project’s Reports & supporting files section.'));}
    notice.hidden=false;
   }
   const score=document.getElementById('clusteringScore');
@@ -169,5 +189,7 @@
  window.addEventListener?.('atlas:map-opened',openedImported);window.addEventListener?.('atlas:project-opened',scheduleImported);
  if(typeof MutationObserver!=='undefined')new MutationObserver(scheduleImported).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['disabled']});
  syncImported();fitImportedOnce();
- window.ATLAS_AI_STUDIES = {refresh: load,refreshImportedView:syncImported};
+ window.ATLAS_PROJECT_REPORTS = {refresh: () => load(true),refreshImportedView:syncImported};
+ // Retain the programmatic compatibility alias; it creates no navigation tool.
+ window.ATLAS_AI_STUDIES = window.ATLAS_PROJECT_REPORTS;
 })();

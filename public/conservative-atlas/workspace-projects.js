@@ -62,6 +62,7 @@ const errorMessage = problem => window.ATLAS_EVIDENCE?.errorMessage?.(problem) |
  const cancel=button('Cancel search',async()=>{if(jobId)await api('/jobs/'+jobId+'/cancel','POST',{});});cancel.hidden=true;form.append(run,cancel);
  const searchHelp=element('details');searchHelp.append(element('summary','Search scope'),element('p','Searches OpenAlex titles, abstracts and indexed full text. Exact phrase adds quotation marks. Articles, reviews, book chapters and conference papers are retrieved. The selected metadata filter is applied when building a map. A capped download is a partial search result.'));form.append(searchHelp);
  const history=section('Search history'),savedMaps=section('Saved findings');
+ const researchReports=section('Reports & supporting files');researchReports.id='projectResearchReports';researchReports.hidden=true;
  const preview=section('Selected search'),previewInfo=element('p'),examples=element('details');examples.append(element('summary','Preview articles'));preview.append(previewInfo,examples);preview.hidden=true;
  const exportSources=button('Export retrieved sources',async()=>{
   if(window.BIBLIOMAP?.active)throw Error('Use the authenticated evidence export for this workspace. Legacy search export is unavailable here.');
@@ -91,7 +92,7 @@ const errorMessage = problem => window.ATLAS_EVIDENCE?.errorMessage?.(problem) |
 
  async function refreshProjects(selected=project?.id){const result=await api('/projects');projectSelect.replaceChildren(new Option('Choose a project…',''),...result.projects.map(item=>new Option(item.name,item.id)));projectSelect.value=selected||'';}
  async function openProject(id,resetNotes=true){
-  const ticket=++projectGeneration;save.disabled=true;run.disabled=true;notes.disabled=true;if(resetNotes)message('Opening project…');
+  const ticket=++projectGeneration;window.dispatchEvent(new CustomEvent('atlas:project-opening',{detail:{projectId:id}}));save.disabled=true;run.disabled=true;notes.disabled=true;if(resetNotes)message('Opening project…');
   let result;try{result=await api('/projects/'+id);}finally{if(ticket===projectGeneration){save.disabled=working;run.disabled=!!jobId;notes.disabled=false;}}
   if(ticket!==projectGeneration)return;
   if(project?.id!==id){selectedSearch=null;preview.hidden=true;copyDisplayed.checked=false;}project=result.project;projectSelect.value=id;projectName.value=project.name;if(resetNotes)notes.value=project.description||'';
@@ -103,7 +104,7 @@ const errorMessage = problem => window.ATLAS_EVIDENCE?.errorMessage?.(problem) |
   if(savedMaps.children.length===1)savedMaps.append(element('p','Save a map to record its settings and findings.'));
   updateProjectContext();
   if(resetNotes)message(mismatchedCanvas()?'Project selected. The canvas still shows the previous study; open a search map to replace it.':'Project and displayed study ready.');
-  if(resetNotes)window.dispatchEvent(new CustomEvent('atlas:project-opened',{detail:{projectId:id}}));
+  window.dispatchEvent(new CustomEvent(resetNotes?'atlas:project-opened':'atlas:project-reports-ready',{detail:{projectId:id}}));
   return result;
  }
  async function openSearch(id){
@@ -179,7 +180,7 @@ const errorMessage = problem => window.ATLAS_EVIDENCE?.errorMessage?.(problem) |
   updateProjectContext();message('Opened saved map and findings.'+(saved.snapshot.graph.deduplication?'':' Historical snapshot: rebuild from its search to apply title-and-author deduplication.'));window.dispatchEvent(new CustomEvent('atlas:map-opened',{detail:{projectId:project?.id,mapId:id}}));
  }
  function updateProjectContext(){const label=document.querySelector('.shell-project'),name=packet?packet.name:'Adaptive leadership',count=packet?packet.evidence.articles.length.toLocaleString():'2,855',mismatch=mismatchedCanvas();if(label){label.textContent='Canvas: '+name+' · '+count+' sources';label.title=mismatch?'Selected project/search has not replaced this displayed evidence. Open its map explicitly.':'Displayed study and evidence.';}canvasNotice.textContent='Displayed study: '+name+' · '+count+' sources.'+(mismatch?' The selected project/search has not replaced this map. Saving requires an explicit evidence-copy confirmation.':'');copyLabel.hidden=!mismatch;}
- projectSelect.onchange=()=>{if(projectSelect.value)openProject(projectSelect.value).catch(error=>message(errorMessage(error)));else{project=null;projectName.value='';notes.value='';history.replaceChildren(element('h3','Search history'));savedMaps.replaceChildren(element('h3','Saved findings'));updateProjectContext();}};
+ projectSelect.onchange=()=>{if(projectSelect.value)openProject(projectSelect.value).catch(error=>message(errorMessage(error)));else{projectGeneration++;save.disabled=working;run.disabled=!!jobId;notes.disabled=false;window.dispatchEvent(new CustomEvent('atlas:project-opening',{detail:{projectId:null}}));project=null;projectName.value='';notes.value='';history.replaceChildren(element('h3','Search history'));savedMaps.replaceChildren(element('h3','Saved findings'));updateProjectContext();}};
  form.onsubmit=async event=>{
   event.preventDefault();if(working||jobId)return;
   working=true;run.disabled=true;projectSelect.disabled=true;

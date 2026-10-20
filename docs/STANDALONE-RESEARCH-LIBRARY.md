@@ -1,6 +1,6 @@
 # Standalone research library
 
-The **AI studies** tool in `/conservative-atlas/` presents three retained studies:
+The **Projects** panel in `/conservative-atlas/` contains three retained studies as ordinary saved projects. Each corresponding project has its own **Reports & supporting files** section; there is no separate study-catalog navigation tool:
 
 - Adaptive leadership: academic themes, including the original bibliographic coupling map.
 - Adaptive leadership: network and text comparisons, including reference ablations and retained text-neighbor and seed comparisons.

@@ -9,47 +9,67 @@ const study=(extra={})=>({id:'study-one',title:'Study <script>never executable</
 const manifest=studies=>({schema_version:'bibliomap.standalone-library.v1',studies});
 class Element{
  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.listeners={};this.dataset={};this.attrs={};this.textContent='';}
- append(...values){this.children.push(...values);}
- replaceChildren(...values){this.children=values;}
+ append(...values){for(const value of values){if(value.parentElement){const i=value.parentElement.children.indexOf(value);if(i>=0)value.parentElement.children.splice(i,1);}value.parentElement=this;this.children.push(value);}}
+ replaceChildren(...values){for(const value of this.children)value.parentElement=null;this.children=[];this.append(...values);}
  setAttribute(name,value){this.attrs[name]=value;}
  addEventListener(name,callback){this.listeners[name]=callback;}
  set innerHTML(value){throw Error('HTML insertion is forbidden');}
 }
 const flatten=root=>[root,...root.children.flatMap(flatten)];
 function fixture(value){
- const panel=new Element('div'),toggle=new Element('button');toggle.id='tool-ai-studies';const calls=[];let response=value,fail=null;
- const document={createElement:tag=>new Element(tag),getElementById:id=>[toggle,...flatten(panel)].find(n=>n.id===id)||null};
- const window={location:{href:'http://127.0.0.1:8080/conservative-atlas/projects/'+project+'/maps/'+finding},atlasWorkspaceShell:{addTool:(id,label)=>{assert.equal(id,'ai-studies');assert.equal(label,'AI studies');return panel;}},fetch:async(url,options)=>{calls.push({url,options});if(fail)throw Error(fail);return new Response(typeof response==='string'?response:JSON.stringify(response),{status:200});}};
+ const panel=new Element('section');panel.id='projectResearchReports';panel.hidden=true;const calls=[],events={};let response=value,fail=null,next=null;
+ const document={createElement:tag=>new Element(tag),getElementById:id=>flatten(panel).find(n=>n.id===id)||null};
+ const window={location:{href:'http://127.0.0.1:8080/conservative-atlas/projects/'+project+'/maps/'+finding},atlasWorkspaceShell:{addTool:()=>{throw Error('No additional navigation tool is permitted');}},addEventListener:(name,fn)=>(events[name]||=[]).push(fn),requestAnimationFrame:fn=>fn(),fetch:async(url,options)=>{calls.push({url,options});if(next){const pending=next;next=null;return pending;}if(fail)throw Error(fail);return new Response(typeof response==='string'?response:JSON.stringify(response),{status:200});}};
  vm.runInNewContext(source,{window,document,URL,TextDecoder,Uint8Array});
- return{panel,toggle,calls,window,all:()=>flatten(panel),load:()=>window.ATLAS_AI_STUDIES.refresh(),set:value=>response=value,fail:value=>fail=value,status:()=>flatten(panel).find(n=>n.attrs.role==='status').textContent};
+ const emit=async(name,id)=>Promise.all((events[name]||[]).map(fn=>fn({detail:{projectId:id}})));
+ return{panel,calls,window,emit,open:id=>emit('atlas:project-opened',id),clear:()=>emit('atlas:project-opening',null),all:()=>flatten(panel),load:()=>window.ATLAS_PROJECT_REPORTS.refresh(),set:value=>response=value,fail:value=>fail=value,status:()=>flatten(panel).find(n=>n.attrs.role==='status')?.textContent||'',defer:()=>{let resolve,reject;next=new Promise((yes,no)=>{resolve=yes;reject=no;});return{resolve:value=>resolve(new Response(JSON.stringify(value),{status:200})),reject};}};
 }
-test('library is lazy, read-only, complete and safe for source-only plus actual map cards',async()=>{
- const f=fixture(manifest([study(),study({id:'with-map',title:'Actual retained map',maps:[{label:'Open retained map',url:'projects/'+project+'/maps/'+finding,node_count:951,edge_count:10891,scope:'Exact retained source-work cosine graph.'}]}),study({id:'third',project_id:null,title:'Source-only follow-up'})]));
- assert.equal(f.calls.length,0);await f.load();assert.equal(f.calls.length,1);assert.equal(f.calls[0].options.method,'GET');assert.equal(f.calls[0].url,'http://127.0.0.1:8080/conservative-atlas/ai-research/library.json');
- assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,3);assert.equal(f.all().filter(n=>n.className==='ai-studies-source-only').length,2);
- assert(f.all().some(n=>n.textContent==='Study <script>never executable</script>'));assert(f.all().some(n=>n.textContent.includes('951 nodes · 10,891 edges')));
- assert(f.all().some(n=>n.href==='http://127.0.0.1:8080/conservative-atlas/projects/'+project+'/maps/'+finding));
- assert(f.all().filter(n=>n.tagName==='A').every(n=>n.href.startsWith('http://127.0.0.1:8080/conservative-atlas/')));assert.match(f.status(),/3 retained studies/);
-});
-test('external, executable, traversal and wrong-kind links fail before any card renders',async()=>{
- for(const url of ['javascript:alert(1)','https://external.invalid/ai-research/report.html','//external.invalid/report','ai-research/../../workspace-api/projects','ai-research/%2e%2e/secret','ai-research/a%2fb','ai-research/a%252fb','ai-research\\escape','data:text/html,hello','http://user:password@127.0.0.1:8080/conservative-atlas/ai-research/report','projects/'+project]){
-  const f=fixture(manifest([study({reports:[{...file,url}]})]));await f.load();assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0,url);assert.match(f.status(),/retry|Refresh/);
- }
- const f=fixture(manifest([study({maps:[{label:'Not a project view',url:'ai-research/map.json',node_count:1,edge_count:0,scope:'Raw graph'}]})]));await f.load();assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);
-});
-test('manifest shape, exact file identity and truthful map counts are required',async()=>{
- for(const value of [manifest([study(),study()]),manifest([study({reports:[{label:'Missing checksum',url:file.url}]})]),manifest([study({maps:[{label:'Bad counts',url:'projects/'+project+'/map',node_count:-1,edge_count:0,scope:'No fabricated counts'}]})]),{schema_version:'unknown',studies:[]},manifest(Array(51).fill(study()))]){const f=fixture(value);await f.load();assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);assert.match(f.status(),/Refresh/);}
-});
-test('failure is visible and retryable, prior successful cards stay intact, manifest bytes are bounded',async()=>{
- const f=fixture(manifest([study()]));await f.load();f.fail('Static server unavailable');await f.load();assert.match(f.status(),/previous library remains visible/);assert.match(f.status(),/Static server unavailable/);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,1);assert.equal(f.all().find(n=>n.tagName==='BUTTON').disabled,false);
- f.fail(null);f.set('x'.repeat(262145));await f.load();assert.match(f.status(),/256 KiB/);f.set(manifest([]));await f.load();assert.match(f.status(),/0 retained studies/);assert(f.all().some(n=>n.textContent.includes('No standalone studies')));
-});
-test('main page loads the isolated library after the shared shell and uses responsive local styles',()=>{
- const html=readFileSync('public/conservative-atlas/index.html','utf8');assert(html.indexOf('workspace-shell.js')<html.indexOf('research-library.js'));assert.equal((html.match(/src="research-library\.js/g)||[]).length,1);assert(html.includes('research-library.css'));
- const css=readFileSync('public/conservative-atlas/research-library.css','utf8');assert(css.includes('overflow-wrap:anywhere'));assert(css.includes('@media(max-width:480px)'));
- assert(!source.includes('innerHTML'));assert(!source.includes('POST'));assert(!source.includes('computations'));assert(!source.includes('BIBLIOMAP.stage'));
+const other='bbbbbbbb-1234-1234-1234-123456789abc',ordinary='cccccccc-1234-1234-1234-123456789abc';
+
+test('saved project shows only its reports, sources and review without a navigation tab or duplicated maps',async()=>{
+ const value=manifest([study(),study({id:'with-map',project_id:other,title:'Another retained project',maps:[{label:'Open retained map',url:'projects/'+other+'/maps/'+finding,node_count:951,edge_count:10891,scope:'Exact retained graph.'}]})]);const before=JSON.stringify(value),f=fixture(value);
+ assert.equal(f.calls.length,0);await f.open(project);assert.equal(f.calls.length,1);assert.equal(f.calls[0].options.method,'GET');assert.equal(f.calls[0].url,'http://127.0.0.1:8080/conservative-atlas/ai-research/library.json');
+ assert.equal(f.panel.hidden,false);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,1);assert.equal(f.all().filter(n=>n.className==='ai-studies-source-only').length,1);assert(f.all().some(n=>n.textContent==='Study <script>never executable</script>'));assert(!f.all().some(n=>n.textContent==='Another retained project'));
+ assert(f.all().filter(n=>n.tagName==='A').every(n=>n.href.includes('/ai-research/')));assert.match(f.status(),/this project/);
+ await f.open(other);assert.equal(f.calls.length,1,'immutable validated index is reusable across project selection');assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,1);assert(f.all().some(n=>n.textContent==='Another retained project'));assert.equal(f.all().filter(n=>n.className==='ai-studies-source-only').length,0);assert(!f.all().some(n=>n.href?.includes('/maps/')));
+ await f.open(ordinary);assert.equal(f.panel.hidden,true);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);await f.clear();assert.equal(f.panel.hidden,true);assert.equal(JSON.stringify(value),before,'scientific manifest and settings are never modified');
 });
 
+test('project switch clears immediately and ignores stale success or failure, including deselection',async()=>{
+ for(const failure of[false,true]){const f=fixture(manifest([study({project_id:other,title:'Current project',id:'other'})]));const pending=f.defer(),old=f.open(project);await f.clear();assert.equal(f.panel.hidden,true);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);await f.open(other);failure?pending.reject(Error('STALE FAILURE')):pending.resolve(manifest([study()]));await old;assert.equal(f.panel.hidden,false);assert(f.all().some(n=>n.textContent==='Current project'));assert(!f.status().includes('STALE'));assert(!f.all().some(n=>n.textContent==='Study <script>never executable</script>'));assert.equal(f.all().find(n=>n.tagName==='BUTTON').disabled,false);}
+ const f=fixture(manifest([study()])),pending=f.defer(),old=f.open(project);await f.clear();pending.resolve(manifest([study()]));await old;assert.equal(f.panel.hidden,true);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);
+});
+
+test('unsafe or cross-project links fail before attachments render',async()=>{
+ for(const url of ['javascript:alert(1)','https://external.invalid/ai-research/report.html','//external.invalid/report','ai-research/../../workspace-api/projects','ai-research/%2e%2e/secret','ai-research/a%2fb','ai-research/a%252fb','ai-research\\escape','data:text/html,hello','http://user:password@127.0.0.1:8080/conservative-atlas/ai-research/report','projects/'+project]){
+  const f=fixture(manifest([study({reports:[{...file,url}]})]));await f.open(project);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0,url);assert.match(f.status(),/retry/);
+ }
+ for(const url of ['ai-research/map.json','projects/'+other+'/maps/'+finding]){const f=fixture(manifest([study({maps:[{label:'Wrong project view',url,node_count:1,edge_count:0,scope:'Raw graph'}]})]));await f.open(project);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);}
+});
+
+test('manifest shape, exact file identity and map counts are required',async()=>{
+ for(const value of [manifest([study(),study()]),manifest([study({reports:[{label:'Missing checksum',url:file.url}]})]),manifest([study({maps:[{label:'Bad counts',url:'projects/'+project+'/map',node_count:-1,edge_count:0,scope:'No fabricated counts'}]})]),{schema_version:'unknown',studies:[]},manifest(Array(51).fill(study()))]){const f=fixture(value);await f.open(project);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);assert.match(f.status(),/retry/);}
+});
+
+test('same-project failures are retryable and bounded; another project never retains previous cards',async()=>{
+ const f=fixture(manifest([study()]));await f.open(project);f.fail('Static server unavailable');await f.load();assert.match(f.status(),/Static server unavailable/);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,1);assert.equal(f.all().find(n=>n.tagName==='BUTTON').disabled,false);
+ await f.open(other);assert.equal(f.panel.hidden,true);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,0);f.fail(null);f.set('x'.repeat(262145));await f.load();assert.match(f.status(),/256 KiB/);f.set(manifest([study({project_id:other,id:'other'})]));await f.load();assert.equal(f.panel.hidden,false);assert.equal(f.all().filter(n=>n.tagName==='ARTICLE').length,1);
+});
+
+test('page keeps isolated report styles and a project mount, without a catalog navigation entry',()=>{
+ const html=readFileSync('public/conservative-atlas/index.html','utf8');assert(html.indexOf('workspace-shell.js')<html.indexOf('research-library.js'));assert.equal((html.match(/src="research-library\.js/g)||[]).length,1);assert(html.includes('research-library.css'));
+ const css=readFileSync('public/conservative-atlas/research-library.css','utf8');assert(css.includes('overflow-wrap:anywhere'));assert(css.includes('@media(max-width:480px)'));
+ assert(!source.includes('innerHTML'));assert(!source.includes('POST'));assert(!source.includes('addTool('));assert(!source.includes('BIBLIOMAP.stage'));
+ const projects=readFileSync('public/conservative-atlas/workspace-projects.js','utf8');assert(projects.includes("researchReports.id='projectResearchReports'"));assert(projects.indexOf("new CustomEvent('atlas:project-opening'")<projects.indexOf("let result;try{result=await api('/projects/'+id)"));assert(projects.includes("projectGeneration++;save.disabled=working"));
+});
+
+test('actual project deselection invalidates a pending project GET and restores editable controls',async()=>{
+ const projects=readFileSync('public/conservative-atlas/workspace-projects.js','utf8'),open=projects.slice(projects.indexOf(' async function openProject('),projects.indexOf(' async function openSearch(')),change=projects.match(/ projectSelect.onchange=.*?;\n/)[0];
+ let resolve;const pending=new Promise(yes=>resolve=yes),events=[];
+ const context={window:{dispatchEvent:event=>events.push(event)},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options.detail;}},projectGeneration:0,project:{id:other},working:false,jobId:null,save:{disabled:false},run:{disabled:false},notes:{disabled:false,value:'old'},projectName:{value:'old'},projectSelect:{value:project},history:new Element('section'),savedMaps:new Element('section'),element:tag=>new Element(tag),updateProjectContext(){},message(){},api:()=>pending,errorMessage:()=>''};
+ vm.runInNewContext(open+change,context);const opening=context.openProject(project);assert.equal(context.notes.disabled,true);assert.equal(events[0].type,'atlas:project-opening');context.projectSelect.value='';context.projectSelect.onchange();assert.equal(context.project,null);assert.equal(context.notes.disabled,false);assert.equal(context.save.disabled,false);assert.equal(context.run.disabled,false);
+ resolve({project:{id:project},searches:[],analyses:[]});await opening;assert.equal(context.project,null,'stale project cannot reopen after deselection');assert.equal(events.filter(event=>event.type==='atlas:project-opened').length,0);
+});
 
 test('standalone modularity imports keep their objective/memberships, guard native rebuilding and release ordinary controls',async()=>{
  const roots=[],events={},documentEvents={},calls={rebuild:0,drill:0,model:0,fetch:0,refresh:0,fit:0};
