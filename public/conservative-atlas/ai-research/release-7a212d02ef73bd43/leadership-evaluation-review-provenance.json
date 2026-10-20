@@ -1,0 +1,665 @@
+{
+  "study_id": "leadership-evaluation",
+  "report_sha256": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+  "reviewers": [
+    {
+      "role": "methods",
+      "original_source_artifact": ".runs/leadership-training-evaluation/methods-review/final-status-rebind.json",
+      "original_receipt_sha256": "c874ad213b11a6fe845d64edb97ff57bb3b94b964931e6d115d1c7cec17daad3",
+      "report_sha256": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+      "qualification": "Original scoped agent review accepted; final report status wording was rebound without new scientific evidence. Human expert assessment remains not_assessed.",
+      "public_receipt": {
+        "reviewer": "/root/training_methods_review; independent native Codex methods/source reviewer",
+        "attested_utc": "2026-10-20T13:56:32.466469+00:00",
+        "disposition": "administrative_status_only_rebind_accepted",
+        "scope": "Exact byte-level administrative review-status replacement and unchanged scientific-input binding only. No new scientific review or cryptographic human signature claimed.",
+        "scientific_disposition_inherited": "Candidate2 accepted_with_scope_limits; all original limitations and human_domain_expert:not_assessed retained.",
+        "prior_methods_review_sha256": "ca4effecc1e980b3d37819dceb0297c2d0398f11607a95f5453e7d7499bb8d6a",
+        "prior_candidate_freeze_sha256": "863b2b00c821683bc9657d1e0f969684855a9bcc1d61597b2e32a8107dbf5c9f",
+        "final_candidate_freeze_sha256": "7482638216c2401dd7e636322714706c8aaf77550aab92e53542447c4b87b675",
+        "revision_sha256": "4e9edc5577aeb965bc5c21a529aeaff877c4c397bb6c75722249dce85c77aaab",
+        "archived_reviewed_report_sha256": "7c7605a43a4843a20b7389fc9f8a2f737546172b478816e891c932d04b0993d2",
+        "final_report_sha256": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+        "protocol_v4_sha256": "91f3c815c0ab2c489eebd13f80b4a2091025076dca8d697ad5b7f249e020a3db",
+        "bound_artifacts": {
+          "evaluation-report.html": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+          "source-ledger.json": "ef17c4b6c16a073d0e01e276588242df1e8b006b35d23bf4b6d548c4a24be879",
+          "source-ledger.csv": "73c57e8d1f825dda24a0a6f6d3a71d6941b52ff1509345cc5e7b296706ba6c94",
+          "outcome-evidence.json": "1e9e7820abc64fc719f172f8937c6db42413291bccc3826520002abbc816def0",
+          "outcome-evidence.csv": "a060ba2d0651178c1e6fc7ca1e2bc14a1a727c419b46f030901882e111e21e44",
+          "evaluation-criteria.json": "cbb2ef6addc4e535d53528a7dcc94b5839e325a29af9e55f1824f99efa389a04",
+          "evaluation-criteria.csv": "f47b06bee3425571bc671088806124750be717c355396fd8258b8bd8b383ebee",
+          "discovery-disposition.csv": "c41779c17b9e0976dce17340e373a24f83fd94a1162e084ddcb3de035094758e",
+          "source-overlap.json": "a411aaef5881902e43284e8ef933043f513baf89446d2b6629c48598f9f2534c",
+          "corpus-accounting.json": "cdbdc25f4f1d8511cb172f84711dc3785e004dd24844a0725cbab2cac4b0cdbe",
+          "discovery-accounting.json": "ee8a20bcee592ae35789709e1e7db93061f9c6142be09be193aeda9e08cc3984",
+          "lead-normalization-decisions.json": "fd8a33897688b4e23f8dd4c632d0706cd1bcbe87e21c0afc87d4670b71f7a66e",
+          "extraction-schema.json": "10278f331ab9d6558a9cdf3ccb87651af823f0889b11bd9e9581b2239f882bf2",
+          "protocol-v1.json": "85358aa2ddd8e556672c2b57c0a6d51c7c6056304c4bf42beec510d6e785744b",
+          "protocol-v2.json": "e9e60e54a4afff5d7ef8fc0130a0b41c9bde21fc09d4308b895ad4688ce0a63f",
+          "protocol-v3.json": "6f8536af93e844b4a300bbe614edf33f9c46a59869ddaa3a548a988895765f58",
+          "protocol-v4.json": "91f3c815c0ab2c489eebd13f80b4a2091025076dca8d697ad5b7f249e020a3db",
+          "efficacy-specialist/sources-evidence.json": "92425d8c2d303a9b2a393a4b20f414e977af5db0af130814751c6b55301bc485",
+          "efficacy-specialist/outcome-specific-evidence.json": "0aa57445dabad34f821bbb89b602066a81d9e8af35fe11070e185006355c9a4d",
+          "efficacy-specialist/coverage-limitations.json": "2662691c09062af1fdd18de770a437a4ac50659b9edc8127ff364dd76e524b2d",
+          "efficacy-specialist/query-log.json": "84309b52679c47224214c37a58140112accebd3ad9fbb74b2d2b5df41b43dc8a",
+          "measurement-specialist/sources-ledger.json": "5f68c653a59554e15716b2b1326bf539aa25978ba9a7a6f37b0a54a0db10e55a",
+          "measurement-specialist/search-log.json": "95c7aeae5912ac822c65e411b706a7a7cbfa085f7393a2aa1f8e1ebf36125769",
+          "discovery/unique-records.json": "a570ef29a1e22689242d0b4b443da94990f9d93f3c66f0106171f0645e060ef3",
+          "discovery/query-receipts.json": "a9321e5371b7dc8ce8f0c44d1b234a14e6c00ed8d37b765de66a38d70a707816",
+          "consolidate.py": "627daeab8a1104ccc5e5c1a82f41acde7676a37da63aecc1511dc45bcb57cf42",
+          "build-report.py": "528caccdfc983fab4db8538522c75178312dbe99f419f46a747c21bc4dcaad31"
+        },
+        "bound_sources": {
+          "R1_umbrella2025": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "418d8a3d3a6c8cddf5c77badb5423c3b3a055b9480037dfb980151d916d1ff54"
+          },
+          "R2_frontline2018": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "d8e42ada04188da81f8acac5a332fd846612f593df1a79ebf06706efea7a2784"
+          },
+          "R3_Lyons2021": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "7bf9bb5833bb2e4143bea6d52e7dfd15c1e782f459b026d6f55fc481daa5feea"
+          },
+          "R4_Lacerenza2017": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "71fc6ea5604113b8fd22e26092fcc00d3f04c7d0bf3e3c3e8cbcdf07a1ad951d"
+          },
+          "P1_iLead2020": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "209c7ff7198c0d501222f39a65f9d24f44b116e25973ca40d1a25202db50518f"
+          },
+          "P2_nurse2024": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "1407c95735dbd0d69c3b2948d5b13712c59cf38e6cc95ea6a739defb0b073246"
+          },
+          "P4_IES2019": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "dd3577a2168ed580c2b9c30b1bad6cf4247b6c3cdfe2a8ca23019a39c0936878"
+          },
+          "P5_Kawakami2006": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "f1c3e1c9ae04c997c44ec0f926ea831539f7f39275414976944238e76c2f9292"
+          },
+          "M01": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "a3c8c18412e34c227ac69b392747f2b565f3664c29c123d47c4310c8517c258f"
+          },
+          "M02": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "6c7806a94876f52aed3d606c7e898ebb348523ce66178d8d58acf41edd28374d"
+          },
+          "M03": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "c61a4059b77ae99771dc6546f4b5af435273a4e6cc8a5f2750dc87e3d5d72f8b"
+          },
+          "M04": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "aa51b4473a1bd2e83f1cde25819aebe921350b74b1dd55ba737d822556f19b7d"
+          },
+          "M05": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "6bc30a0a9ef70967227113e2c26a6d73b495246726e38c526faf7b5546a0ee27"
+          },
+          "M06": {
+            "path": "[Local path retained in the original receipt]",
+            "sha256": "53bdd6180e5111f9c91c20245955c1b48706c9b035ab44f11874e7571979f9d0"
+          }
+        },
+        "checks": [
+          {
+            "check": "archived_exact_reviewed_report_hash",
+            "status": "passed"
+          },
+          {
+            "check": "exact_status_only_byte_replacement",
+            "occurrence_counts": [
+              1
+            ],
+            "status": "passed"
+          },
+          {
+            "check": "only_report_manifest_entry_changes",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "evaluation-report.html",
+            "expected": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+            "actual": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "source-ledger.json",
+            "expected": "ef17c4b6c16a073d0e01e276588242df1e8b006b35d23bf4b6d548c4a24be879",
+            "actual": "ef17c4b6c16a073d0e01e276588242df1e8b006b35d23bf4b6d548c4a24be879",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "source-ledger.csv",
+            "expected": "73c57e8d1f825dda24a0a6f6d3a71d6941b52ff1509345cc5e7b296706ba6c94",
+            "actual": "73c57e8d1f825dda24a0a6f6d3a71d6941b52ff1509345cc5e7b296706ba6c94",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "outcome-evidence.json",
+            "expected": "1e9e7820abc64fc719f172f8937c6db42413291bccc3826520002abbc816def0",
+            "actual": "1e9e7820abc64fc719f172f8937c6db42413291bccc3826520002abbc816def0",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "outcome-evidence.csv",
+            "expected": "a060ba2d0651178c1e6fc7ca1e2bc14a1a727c419b46f030901882e111e21e44",
+            "actual": "a060ba2d0651178c1e6fc7ca1e2bc14a1a727c419b46f030901882e111e21e44",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "evaluation-criteria.json",
+            "expected": "cbb2ef6addc4e535d53528a7dcc94b5839e325a29af9e55f1824f99efa389a04",
+            "actual": "cbb2ef6addc4e535d53528a7dcc94b5839e325a29af9e55f1824f99efa389a04",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "evaluation-criteria.csv",
+            "expected": "f47b06bee3425571bc671088806124750be717c355396fd8258b8bd8b383ebee",
+            "actual": "f47b06bee3425571bc671088806124750be717c355396fd8258b8bd8b383ebee",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "discovery-disposition.csv",
+            "expected": "c41779c17b9e0976dce17340e373a24f83fd94a1162e084ddcb3de035094758e",
+            "actual": "c41779c17b9e0976dce17340e373a24f83fd94a1162e084ddcb3de035094758e",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "source-overlap.json",
+            "expected": "a411aaef5881902e43284e8ef933043f513baf89446d2b6629c48598f9f2534c",
+            "actual": "a411aaef5881902e43284e8ef933043f513baf89446d2b6629c48598f9f2534c",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "corpus-accounting.json",
+            "expected": "cdbdc25f4f1d8511cb172f84711dc3785e004dd24844a0725cbab2cac4b0cdbe",
+            "actual": "cdbdc25f4f1d8511cb172f84711dc3785e004dd24844a0725cbab2cac4b0cdbe",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "discovery-accounting.json",
+            "expected": "ee8a20bcee592ae35789709e1e7db93061f9c6142be09be193aeda9e08cc3984",
+            "actual": "ee8a20bcee592ae35789709e1e7db93061f9c6142be09be193aeda9e08cc3984",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "lead-normalization-decisions.json",
+            "expected": "fd8a33897688b4e23f8dd4c632d0706cd1bcbe87e21c0afc87d4670b71f7a66e",
+            "actual": "fd8a33897688b4e23f8dd4c632d0706cd1bcbe87e21c0afc87d4670b71f7a66e",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "extraction-schema.json",
+            "expected": "10278f331ab9d6558a9cdf3ccb87651af823f0889b11bd9e9581b2239f882bf2",
+            "actual": "10278f331ab9d6558a9cdf3ccb87651af823f0889b11bd9e9581b2239f882bf2",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "protocol-v1.json",
+            "expected": "85358aa2ddd8e556672c2b57c0a6d51c7c6056304c4bf42beec510d6e785744b",
+            "actual": "85358aa2ddd8e556672c2b57c0a6d51c7c6056304c4bf42beec510d6e785744b",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "protocol-v2.json",
+            "expected": "e9e60e54a4afff5d7ef8fc0130a0b41c9bde21fc09d4308b895ad4688ce0a63f",
+            "actual": "e9e60e54a4afff5d7ef8fc0130a0b41c9bde21fc09d4308b895ad4688ce0a63f",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "protocol-v3.json",
+            "expected": "6f8536af93e844b4a300bbe614edf33f9c46a59869ddaa3a548a988895765f58",
+            "actual": "6f8536af93e844b4a300bbe614edf33f9c46a59869ddaa3a548a988895765f58",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "protocol-v4.json",
+            "expected": "91f3c815c0ab2c489eebd13f80b4a2091025076dca8d697ad5b7f249e020a3db",
+            "actual": "91f3c815c0ab2c489eebd13f80b4a2091025076dca8d697ad5b7f249e020a3db",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "efficacy-specialist/sources-evidence.json",
+            "expected": "92425d8c2d303a9b2a393a4b20f414e977af5db0af130814751c6b55301bc485",
+            "actual": "92425d8c2d303a9b2a393a4b20f414e977af5db0af130814751c6b55301bc485",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "efficacy-specialist/outcome-specific-evidence.json",
+            "expected": "0aa57445dabad34f821bbb89b602066a81d9e8af35fe11070e185006355c9a4d",
+            "actual": "0aa57445dabad34f821bbb89b602066a81d9e8af35fe11070e185006355c9a4d",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "efficacy-specialist/coverage-limitations.json",
+            "expected": "2662691c09062af1fdd18de770a437a4ac50659b9edc8127ff364dd76e524b2d",
+            "actual": "2662691c09062af1fdd18de770a437a4ac50659b9edc8127ff364dd76e524b2d",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "efficacy-specialist/query-log.json",
+            "expected": "84309b52679c47224214c37a58140112accebd3ad9fbb74b2d2b5df41b43dc8a",
+            "actual": "84309b52679c47224214c37a58140112accebd3ad9fbb74b2d2b5df41b43dc8a",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "measurement-specialist/sources-ledger.json",
+            "expected": "5f68c653a59554e15716b2b1326bf539aa25978ba9a7a6f37b0a54a0db10e55a",
+            "actual": "5f68c653a59554e15716b2b1326bf539aa25978ba9a7a6f37b0a54a0db10e55a",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "measurement-specialist/search-log.json",
+            "expected": "95c7aeae5912ac822c65e411b706a7a7cbfa085f7393a2aa1f8e1ebf36125769",
+            "actual": "95c7aeae5912ac822c65e411b706a7a7cbfa085f7393a2aa1f8e1ebf36125769",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "discovery/unique-records.json",
+            "expected": "a570ef29a1e22689242d0b4b443da94990f9d93f3c66f0106171f0645e060ef3",
+            "actual": "a570ef29a1e22689242d0b4b443da94990f9d93f3c66f0106171f0645e060ef3",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "discovery/query-receipts.json",
+            "expected": "a9321e5371b7dc8ce8f0c44d1b234a14e6c00ed8d37b765de66a38d70a707816",
+            "actual": "a9321e5371b7dc8ce8f0c44d1b234a14e6c00ed8d37b765de66a38d70a707816",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "consolidate.py",
+            "expected": "627daeab8a1104ccc5e5c1a82f41acde7676a37da63aecc1511dc45bcb57cf42",
+            "actual": "627daeab8a1104ccc5e5c1a82f41acde7676a37da63aecc1511dc45bcb57cf42",
+            "status": "passed"
+          },
+          {
+            "check": "final_artifact_hash",
+            "path": "build-report.py",
+            "expected": "528caccdfc983fab4db8538522c75178312dbe99f419f46a747c21bc4dcaad31",
+            "actual": "528caccdfc983fab4db8538522c75178312dbe99f419f46a747c21bc4dcaad31",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "R1_umbrella2025",
+            "expected": "418d8a3d3a6c8cddf5c77badb5423c3b3a055b9480037dfb980151d916d1ff54",
+            "actual": "418d8a3d3a6c8cddf5c77badb5423c3b3a055b9480037dfb980151d916d1ff54",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "R2_frontline2018",
+            "expected": "d8e42ada04188da81f8acac5a332fd846612f593df1a79ebf06706efea7a2784",
+            "actual": "d8e42ada04188da81f8acac5a332fd846612f593df1a79ebf06706efea7a2784",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "R3_Lyons2021",
+            "expected": "7bf9bb5833bb2e4143bea6d52e7dfd15c1e782f459b026d6f55fc481daa5feea",
+            "actual": "7bf9bb5833bb2e4143bea6d52e7dfd15c1e782f459b026d6f55fc481daa5feea",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "R4_Lacerenza2017",
+            "expected": "71fc6ea5604113b8fd22e26092fcc00d3f04c7d0bf3e3c3e8cbcdf07a1ad951d",
+            "actual": "71fc6ea5604113b8fd22e26092fcc00d3f04c7d0bf3e3c3e8cbcdf07a1ad951d",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "P1_iLead2020",
+            "expected": "209c7ff7198c0d501222f39a65f9d24f44b116e25973ca40d1a25202db50518f",
+            "actual": "209c7ff7198c0d501222f39a65f9d24f44b116e25973ca40d1a25202db50518f",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "P2_nurse2024",
+            "expected": "1407c95735dbd0d69c3b2948d5b13712c59cf38e6cc95ea6a739defb0b073246",
+            "actual": "1407c95735dbd0d69c3b2948d5b13712c59cf38e6cc95ea6a739defb0b073246",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "P4_IES2019",
+            "expected": "dd3577a2168ed580c2b9c30b1bad6cf4247b6c3cdfe2a8ca23019a39c0936878",
+            "actual": "dd3577a2168ed580c2b9c30b1bad6cf4247b6c3cdfe2a8ca23019a39c0936878",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "P5_Kawakami2006",
+            "expected": "f1c3e1c9ae04c997c44ec0f926ea831539f7f39275414976944238e76c2f9292",
+            "actual": "f1c3e1c9ae04c997c44ec0f926ea831539f7f39275414976944238e76c2f9292",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "M01",
+            "expected": "a3c8c18412e34c227ac69b392747f2b565f3664c29c123d47c4310c8517c258f",
+            "actual": "a3c8c18412e34c227ac69b392747f2b565f3664c29c123d47c4310c8517c258f",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "M02",
+            "expected": "6c7806a94876f52aed3d606c7e898ebb348523ce66178d8d58acf41edd28374d",
+            "actual": "6c7806a94876f52aed3d606c7e898ebb348523ce66178d8d58acf41edd28374d",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "M03",
+            "expected": "c61a4059b77ae99771dc6546f4b5af435273a4e6cc8a5f2750dc87e3d5d72f8b",
+            "actual": "c61a4059b77ae99771dc6546f4b5af435273a4e6cc8a5f2750dc87e3d5d72f8b",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "M04",
+            "expected": "aa51b4473a1bd2e83f1cde25819aebe921350b74b1dd55ba737d822556f19b7d",
+            "actual": "aa51b4473a1bd2e83f1cde25819aebe921350b74b1dd55ba737d822556f19b7d",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "M05",
+            "expected": "6bc30a0a9ef70967227113e2c26a6d73b495246726e38c526faf7b5546a0ee27",
+            "actual": "6bc30a0a9ef70967227113e2c26a6d73b495246726e38c526faf7b5546a0ee27",
+            "status": "passed"
+          },
+          {
+            "check": "final_source_hash",
+            "source_id": "M06",
+            "expected": "53bdd6180e5111f9c91c20245955c1b48706c9b035ab44f11874e7571979f9d0",
+            "actual": "53bdd6180e5111f9c91c20245955c1b48706c9b035ab44f11874e7571979f9d0",
+            "status": "passed"
+          },
+          {
+            "check": "prior_methods_receipt_unchanged",
+            "status": "passed"
+          }
+        ],
+        "summary": {
+          "checks": 45,
+          "passed": 45,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "role": "statistics",
+      "original_source_artifact": ".runs/leadership-training-evaluation/statistics-review/final-status-rebind.json",
+      "original_receipt_sha256": "29587f6a801ee83c20c511a713fe34da3e9b67d0067e4dcc780a18ee46b1cec0",
+      "report_sha256": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+      "qualification": "Original scoped agent review accepted; final report status wording was rebound without new scientific evidence. Human expert assessment remains not_assessed.",
+      "public_receipt": {
+        "executed_utc": "2026-10-20T13:56:31.255298+00:00",
+        "scope": "Administrative status-only rebind; prior scientific checks not rerun. No change to prior qualified scope or human-expert not_assessed status.",
+        "prior_review": "statistics-review/review-candidate-2.json",
+        "candidate2_freeze_sha256": "863b2b00c821683bc9657d1e0f969684855a9bcc1d61597b2e32a8107dbf5c9f",
+        "candidate3_freeze_sha256": "7482638216c2401dd7e636322714706c8aaf77550aab92e53542447c4b87b675",
+        "revision_sha256": "4e9edc5577aeb965bc5c21a529aeaff877c4c397bb6c75722249dce85c77aaab",
+        "old_report_sha256": "7c7605a43a4843a20b7389fc9f8a2f737546172b478816e891c932d04b0993d2",
+        "old_report_matches_reviewed_candidate2": true,
+        "final_report_sha256": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53",
+        "final_report_hash_matches": true,
+        "exact_replacement_occurrences": [
+          1
+        ],
+        "exact_byte_replacement_equals_final": true,
+        "other_scientific_files": [
+          {
+            "file": "build-report.py",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "consolidate.py",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "corpus-accounting.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "discovery-accounting.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "discovery-disposition.csv",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "discovery/query-receipts.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "discovery/unique-records.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "efficacy-specialist/coverage-limitations.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "efficacy-specialist/outcome-specific-evidence.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "efficacy-specialist/query-log.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "efficacy-specialist/sources-evidence.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "evaluation-criteria.csv",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "evaluation-criteria.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "extraction-schema.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "lead-normalization-decisions.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "measurement-specialist/search-log.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "measurement-specialist/sources-ledger.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "outcome-evidence.csv",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "outcome-evidence.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "protocol-v1.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "protocol-v2.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "protocol-v3.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "protocol-v4.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "source-ledger.csv",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "source-ledger.json",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "file": "source-overlap.json",
+            "same_binding": true,
+            "actual_matches": true
+          }
+        ],
+        "raw_sources": [
+          {
+            "source_id": "R1_umbrella2025",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "R2_frontline2018",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "R3_Lyons2021",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "R4_Lacerenza2017",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "P1_iLead2020",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "P2_nurse2024",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "P4_IES2019",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "P5_Kawakami2006",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "M01",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "M02",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "M03",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "M04",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "M05",
+            "same_binding": true,
+            "actual_matches": true
+          },
+          {
+            "source_id": "M06",
+            "same_binding": true,
+            "actual_matches": true
+          }
+        ],
+        "review_hash_checks": [
+          {
+            "file": "methods-review/methods-review.json",
+            "match": true
+          },
+          {
+            "file": "statistics-review/review-candidate-2.json",
+            "match": true
+          }
+        ],
+        "verdict": "accepted_status_only_rebind"
+      }
+    }
+  ]
+}

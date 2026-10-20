@@ -1,0 +1,286 @@
+{
+  "schema_version": "bibliomap.standalone-library.v1",
+  "studies": [
+    {
+      "id": "adaptive-themes",
+      "title": "Adaptive leadership: academic themes",
+      "summary": "The original 951-work snapshot study, its seven connected citation communities and provisional academic themes.",
+      "scope": "951 selected snapshot records;296 connected works and655 isolates. Academic theme labels are provisional interpretations, distinct from network communities.",
+      "project_id": "3588cbf3-b26f-a524-6952-4cb34688381c",
+      "reports": [
+        {
+          "label": "Read full research report",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-thematic-appraisal/thematic-report.html",
+          "sha256": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898"
+        }
+      ],
+      "downloads": [
+        {
+          "label": "work-theme-map.csv",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-thematic-appraisal/work-theme-map.csv",
+          "sha256": "f64c4dc3f34befdd3fec7f504026122b324a377b351d34a739ae7e5bcdf29533"
+        },
+        {
+          "label": "coverage-and-index-counts.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-thematic-appraisal/coverage-and-index-counts.json",
+          "sha256": "d87c6f3a7ffa148babc63072a79de03105bc53d36b2cbde6129b9bea80d63510"
+        },
+        {
+          "label": "sensitivity.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-thematic-appraisal/sensitivity.json",
+          "sha256": "56a7f422c03dae2d95dd6ca747ce8ea010294792bac3431229dac616e2aef3c0"
+        },
+        {
+          "label": "claims-and-source-links.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-thematic-appraisal/claims-and-source-links.json",
+          "sha256": "bee2bd2bfc69cc31aaf644dc2822c8b22d043001f77e5fcf9059a2aad4b558c8"
+        },
+        {
+          "label": "Download result bundle",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-themes-results.zip",
+          "sha256": "d8c9950487e084ebb7fa4a0fe138ebcb26208bcf7c73435d7cf1599fe9c98a65"
+        },
+        {
+          "label": "Review provenance and final report bindings",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-themes-review-provenance.json",
+          "sha256": "60dfd385afbdccd5dc15da109924830b00040620bf4b9752dd88d2625fd314f8"
+        }
+      ],
+      "maps": [
+        {
+          "label": "Original bibliographic coupling · seven connected communities",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/494c6eac-da1b-4baa-bfc7-c855d3f7a666",
+          "node_count": 951,
+          "edge_count": 10891,
+          "scope": "951 retained works;10891 edges;655 isolates. Original Leiden modularity, seed11."
+        }
+      ],
+      "review": {
+        "status": "Separate methods and statistical reviews accepted within their declared scope",
+        "scope": "Original final reports and reviewer status rebinds retained. Theme interpretation remains provisional; human expert assessment is not_assessed. Import is a format conversion, not new scientific execution."
+      }
+    },
+    {
+      "id": "adaptive-followups",
+      "title": "Adaptive leadership: network and text comparisons",
+      "summary": "Reference ablations, citation versus text similarity, exploratory coding, and retained parameter/seed comparisons.",
+      "scope": "951 original works;459 text-eligible works.461 documents were encoded, but only459 enter final text maps. Comparisons use their declared common-node sets.",
+      "project_id": "6c9d97cc-bcfb-a009-2270-6de1ead5ee05",
+      "reports": [
+        {
+          "label": "Read full research report",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-followups/followup-report.html",
+          "sha256": "4374f9aef81c2fb1b1ad1a067808fbbc5dcffd79a4fb77e76bce4b8050a25662"
+        }
+      ],
+      "downloads": [
+        {
+          "label": "work-level-followup-mapping.csv",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-followups/work-level-followup-mapping.csv",
+          "sha256": "0c84ce504d6d283d197699bcd5bf18f5842244297d4e2d1edc809123cdda87a7"
+        },
+        {
+          "label": "reference-ablations.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-followups/reference-ablations.json",
+          "sha256": "9294499946a2f8d0deb510d48246d0d3f0e0ca24930a96c78c090905a236f711"
+        },
+        {
+          "label": "text-map-results.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-followups/text-map-results.json",
+          "sha256": "227702dcde426db182856f42e291145a1c9e204d0fcc98b84c4c593a2a5035fb"
+        },
+        {
+          "label": "coded-theme-setting-matrix.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-followups/coded-theme-setting-matrix.json",
+          "sha256": "1f50a2dad5bcab91288ef6dde26b46f4140df90b03456a49747706fb123d138a"
+        },
+        {
+          "label": "text-eligibility-summary.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-leadership-followups/text-eligibility-summary.json",
+          "sha256": "5a0b78dbae7643227511cee0e7f3abc11a19e14da1ea78f05eb766910694fafd"
+        },
+        {
+          "label": "Download result bundle",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-followups-results.zip",
+          "sha256": "cd0369b1a9fe23f67d7528a0c6b75588954628b8ecdf2025dfec53b9038ecd42"
+        },
+        {
+          "label": "Review provenance and final report bindings",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-followups-review-provenance.json",
+          "sha256": "75f8ebda3ba47d45f1eb4e646d564294c45dc4942c5f835cb64f98efca2cbe07"
+        },
+        {
+          "label": "Public appraisal curation and original artifact identity",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/adaptive-followups-public-curation.json",
+          "sha256": "e1af329b45b50734cf55513baa882010d30feb7a71685acfa51b49eb80793660"
+        }
+      ],
+      "maps": [
+        {
+          "label": "Citation baseline",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/33b65cc4-00bf-4039-9ab8-4ecae6c05cca",
+          "node_count": 951,
+          "edge_count": 10891,
+          "scope": "951 retained works;10891 edges;655 isolates. Original Leiden modularity, seed11."
+        },
+        {
+          "label": "Reference ablation · W1597546876",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/6fb1a543-01e5-48c5-8bc5-5a4aa88bbb49",
+          "node_count": 951,
+          "edge_count": 7144,
+          "scope": "951 retained works;7144 edges;663 isolates. Original Leiden modularity, seed11."
+        },
+        {
+          "label": "Reference ablation · W4207026187",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/28350788-ecc8-47ce-b98b-c3621c27d8ec",
+          "node_count": 951,
+          "edge_count": 9148,
+          "scope": "951 retained works;9148 edges;658 isolates. Original Leiden modularity, seed11."
+        },
+        {
+          "label": "Reference ablation · W1597546876, W4207026187",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/839172db-c148-4612-9aea-419a616fb426",
+          "node_count": 951,
+          "edge_count": 5309,
+          "scope": "951 retained works;5309 edges;666 isolates. Original Leiden modularity, seed11."
+        },
+        {
+          "label": "Text similarity · k5 · seed11",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/a52208a9-e17c-4f3c-8414-f8d44c09624a",
+          "node_count": 459,
+          "edge_count": 1972,
+          "scope": "459 retained works;1972 edges;0 isolates. Original Leiden modularity, seed11."
+        },
+        {
+          "label": "Text similarity · k10 · seed11",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/35016416-f68b-4dde-99d1-57e415dc3461",
+          "node_count": 459,
+          "edge_count": 3875,
+          "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed11."
+        },
+        {
+          "label": "Text similarity · k10 · seed23",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/c228b5b2-0a00-45b7-80d1-63deac68cd44",
+          "node_count": 459,
+          "edge_count": 3875,
+          "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed23."
+        },
+        {
+          "label": "Text similarity · k10 · seed37",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/ee452b1b-ff52-4b0d-b07f-ed80742d26a9",
+          "node_count": 459,
+          "edge_count": 3875,
+          "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed37."
+        },
+        {
+          "label": "Text similarity · k10 · seed53",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/ecad291a-64df-427a-9e28-f40ddcd2ea66",
+          "node_count": 459,
+          "edge_count": 3875,
+          "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed53."
+        },
+        {
+          "label": "Text similarity · k10 · seed71",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/e9786fb0-4617-4128-bb6b-a778b222d027",
+          "node_count": 459,
+          "edge_count": 3875,
+          "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed71."
+        },
+        {
+          "label": "Text similarity · k15 · seed11",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/d9333b5f-713f-4129-8a6a-b598fddf9c78",
+          "node_count": 459,
+          "edge_count": 5765,
+          "scope": "459 retained works;5765 edges;0 isolates. Original Leiden modularity, seed11."
+        },
+        {
+          "label": "Citation network restricted to the459 text-eligible works",
+          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/2addbd14-1ae6-4585-aa47-60d405545e89",
+          "node_count": 459,
+          "edge_count": 5594,
+          "scope": "459 retained works;5594 edges;251 isolates. Original Leiden modularity, seed11."
+        }
+      ],
+      "review": {
+        "status": "Separate methods and statistical reviews accepted within their declared scope",
+        "scope": "Original final reports and reviewer status rebinds retained. Theme interpretation remains provisional; human expert assessment is not_assessed. Import is a format conversion, not new scientific execution. Public full-text appraisal omits acquired-paper quotations; original evidence hashes and line locators are retained."
+      }
+    },
+    {
+      "id": "leadership-evaluation",
+      "title": "Leadership training: how effectiveness is assessed",
+      "summary": "The broader evidence review of training outcomes, measurement criteria, raters, study designs and limits on causal claims.",
+      "scope": "Source-based research synthesis with its original discovery/accounting and outcome ledgers. No network was constructed for this study.",
+      "project_id": "819bac8e-3bb2-9654-a4ab-f74c4c7d5272",
+      "reports": [
+        {
+          "label": "Read full research report",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/evaluation-report.html",
+          "sha256": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53"
+        },
+        {
+          "label": "Download PDF report",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/evaluation-report.pdf",
+          "sha256": "592ddac1e410ad983e74b6db2af6ff8f117ec9951344a97fe1336358ce6b2dde"
+        }
+      ],
+      "downloads": [
+        {
+          "label": "source-ledger.csv",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/source-ledger.csv",
+          "sha256": "73c57e8d1f825dda24a0a6f6d3a71d6941b52ff1509345cc5e7b296706ba6c94"
+        },
+        {
+          "label": "source-ledger.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/source-ledger.json",
+          "sha256": "ef17c4b6c16a073d0e01e276588242df1e8b006b35d23bf4b6d548c4a24be879"
+        },
+        {
+          "label": "outcome-evidence.csv",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/outcome-evidence.csv",
+          "sha256": "a060ba2d0651178c1e6fc7ca1e2bc14a1a727c419b46f030901882e111e21e44"
+        },
+        {
+          "label": "outcome-evidence.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/outcome-evidence.json",
+          "sha256": "1e9e7820abc64fc719f172f8937c6db42413291bccc3826520002abbc816def0"
+        },
+        {
+          "label": "evaluation-criteria.csv",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/evaluation-criteria.csv",
+          "sha256": "f47b06bee3425571bc671088806124750be717c355396fd8258b8bd8b383ebee"
+        },
+        {
+          "label": "evaluation-criteria.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/evaluation-criteria.json",
+          "sha256": "cbb2ef6addc4e535d53528a7dcc94b5839e325a29af9e55f1824f99efa389a04"
+        },
+        {
+          "label": "corpus-accounting.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/corpus-accounting.json",
+          "sha256": "cdbdc25f4f1d8511cb172f84711dc3785e004dd24844a0725cbab2cac4b0cdbe"
+        },
+        {
+          "label": "discovery-accounting.json",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-training-evaluation/discovery-accounting.json",
+          "sha256": "ee8a20bcee592ae35789709e1e7db93061f9c6142be09be193aeda9e08cc3984"
+        },
+        {
+          "label": "Download result bundle",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-evaluation-results.zip",
+          "sha256": "218024ba5bb4f1b3e58f54f98c06a5183847d92433cea977dad01f73ffe978e7"
+        },
+        {
+          "label": "Review provenance and final report bindings",
+          "url": "/conservative-atlas/ai-research/release-7a212d02ef73bd43/leadership-evaluation-review-provenance.json",
+          "sha256": "7d2ca24e80ff063518e75398cec7eb2df34752fee8a307df96ca4ff2fe0e9d95"
+        }
+      ],
+      "maps": [],
+      "review": {
+        "status": "Separate methods and statistical reviews accepted within their declared scope",
+        "scope": "Original final reports and reviewer status rebinds retained. Theme interpretation remains provisional; human expert assessment is not_assessed. Import is a format conversion, not new scientific execution."
+      }
+    }
+  ]
+}

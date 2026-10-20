@@ -1,0 +1,59 @@
+{
+  "study_id": "adaptive-followups",
+  "report_sha256": "4374f9aef81c2fb1b1ad1a067808fbbc5dcffd79a4fb77e76bce4b8050a25662",
+  "reviewers": [
+    {
+      "role": "methods",
+      "original_source_artifact": ".runs/adaptive-leadership-followups/methods-review/methods-rebind-candidate-2.json",
+      "original_receipt_sha256": "c51729e6766c876c8e169c5b9ba3236e4358c0cd3926b51a44727c3860259f87",
+      "report_sha256": "4374f9aef81c2fb1b1ad1a067808fbbc5dcffd79a4fb77e76bce4b8050a25662",
+      "qualification": "Original scoped agent review accepted; final report status wording was rebound without new scientific evidence. Human expert assessment remains not_assessed.",
+      "public_receipt": {
+        "reviewer": "/root/followup_methods_reviewer",
+        "scope": "Administrative exact-byte status-sentence rebind only; no unchanged scientific appraisal repeated; other reviewer reasoning not read.",
+        "checks": {
+          "preserved_candidate1_matches_reviewed_hash": true,
+          "exact_substitution_occurs_once": true,
+          "exact_byte_transformation_only": true,
+          "new_report_hash_matches": true,
+          "same_candidate_file_universe": true,
+          "scientific_manifest_hashes_unchanged": true,
+          "all_candidate2_file_hashes_match": true,
+          "all_nested_numerical_hashes_still_match": true,
+          "review_disposition_hashes_match": true
+        },
+        "prior_methods_review_sha256": "f36cc1f5fbeaf90e2e2f942e13b81bcea60084fc4939243d763035a757c1134e",
+        "revision_receipt_sha256": "eaaec5be9bb878cede97de9d569e29483ee9d443e5a5e2397176b90559d5e5bd",
+        "candidate2_manifest_sha256": "79126ee95824b052a06b770b51481caa2dd77c90db31f8b6c6a26ea63d0eaf2b",
+        "final_report_sha256": "4374f9aef81c2fb1b1ad1a067808fbbc5dcffd79a4fb77e76bce4b8050a25662",
+        "disposition": "Candidate1 methods/source-appraisal disposition extends to the status-only final report; no unresolved material methods objections. Human expertise remains not_assessed."
+      }
+    },
+    {
+      "role": "statistics",
+      "original_source_artifact": ".runs/adaptive-leadership-followups/statistics-review/final-rebind-receipt.json",
+      "original_receipt_sha256": "3c798f015d5496c681d9d63c2afdbf0eb511df48ba683789e41db18f76fdd383",
+      "report_sha256": "4374f9aef81c2fb1b1ad1a067808fbbc5dcffd79a4fb77e76bce4b8050a25662",
+      "qualification": "Original scoped agent review accepted; final report status wording was rebound without new scientific evidence. Human expert assessment remains not_assessed.",
+      "public_receipt": {
+        "disposition": "pass_with_scope_limits",
+        "administrative_rebind": "exact one-sentence status replacement verified; scientific candidate artifacts unchanged",
+        "final_report_sha256": "4374f9aef81c2fb1b1ad1a067808fbbc5dcffd79a4fb77e76bce4b8050a25662",
+        "prior_report_sha256": "b2e1c100ced3ee0a846b989468462c26d5cdd41cde98c9e3aa1e689abb2c9a85",
+        "final_freeze_sha256": "79126ee95824b052a06b770b51481caa2dd77c90db31f8b6c6a26ea63d0eaf2b",
+        "status_revision_receipt_sha256": "eaaec5be9bb878cede97de9d569e29483ee9d443e5a5e2397176b90559d5e5bd",
+        "prior_disposition_sha256": "9986085585bbe91d4655199bca65b2b8d9df0690315755d204df92dcfe76b34c",
+        "rebind_script_sha256": "7efe83f9e773fd1305d82a7a79b1305034d7c13ae05c75f60316993091b728c8",
+        "numerical_checks_carried_forward": 87,
+        "material_objections": [],
+        "human_expert": "not_assessed",
+        "scope_limits": [
+          "Transformer forward pass was not independently rerun; exact model assets, all461token counts, retained459vectors and all downstream graph/partition quantities checked.",
+          "Coding excerpt integrity and reconciliation arithmetic checked; agent agreement is not semantic ground truth or human expert validation.",
+          "Stratified sample matrix is descriptive; no population prevalence or causal inference.",
+          "Fulltext evidence file hashes and line spans checked; substantive interpretation is separately reviewed by methods reviewer."
+        ]
+      }
+    }
+  ]
+}

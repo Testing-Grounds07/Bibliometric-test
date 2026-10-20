@@ -1,0 +1,55 @@
+{
+  "alternatives": "If coupling coverage or source coherence is inadequate, use source-grounded descriptive grouping without asserting network-supported corpus-wide themes. Literal-term evidence can support lexical interpretation but its nodes are phrases, not works. Provider topics can supply a separate descriptive comparison with classifier dependence disclosed. Local MiniLM is unavailable in the supplied method observation and is not required. Co-citation concerns cited works rather than the requested source-work grouping.",
+  "backend": "standalone",
+  "budget": {
+    "max_disk_mb": 95,
+    "max_files": 2,
+    "max_pairs": 5000000,
+    "max_rows": 1000,
+    "max_seconds": 600,
+    "memory_mb": 8192,
+    "threads": 4
+  },
+  "construct": "Provisional academic themes are source-supported similarities in research problems, concepts and application settings. Shared-reference communities are candidate intellectual groupings, not themes by definition. A community may contain multiple themes, and a theme may span communities.",
+  "design": "exploratory",
+  "exclusion_rules": "No selected work is excluded from the inventory for publication type, missing abstracts or empty reference metadata. Exclude gapped abstract reconstructions from textual evidence and disclose missing text. Nonresearch and unclear record types must be identified in interpretation; their presence alone cannot support an academic theme. Do not infer source content from metadata labels alone.",
+  "id": "adaptive-leadership-thematic-appraisal-003",
+  "inclusion_rules": "Include all 951 selected work IDs in the primary exploratory corpus without publication-type filtering. This explicitly broadens the former primary population to the search results themselves. Report articles separately from other publication types and preserve each work's observed type.",
+  "intended_claims": "Descriptive, provisional thematic groupings within these search results, with representative work IDs, source passages, boundaries, publication-type composition and explicit unassigned or insufficient-evidence cases. Shared references describe observed intellectual associations only.",
+  "observable_proxy": "Construct an undirected work-level bibliographic-coupling network using distinct observed reference IDs, full counting, cosine normalization, min_support=1, min_occurrence=1 and min_weight=0. Retain every selected work in coverage accounting. Distinguish works lacking usable reference evidence from observed-reference works without shared-reference edges. Inspect titles and usable reconstructed abstracts for representative, boundary and contrary evidence before assigning provisional labels.",
+  "planned_validation": [
+    "Verify corpus identity counts, reference-field states, publication-type composition and usable text coverage before interpretation.",
+    "Independently validate coupling projection and cosine weights against observed distinct reference incidences; check symmetry, nonnegative finite weights and absent self-links.",
+    "Inspect network coverage, connected components and isolates before deciding whether community analysis is informative.",
+    "If informative, use weighted pairwise Leiden modularity with seeds [11,23,47], iterations=10 and compute_metrics=false; treat communities as candidates rather than a predetermined taxonomy.",
+    "Compare coupling construction at cosine thresholds 0, 0.05 and 0.1, reporting coverage changes and assignment sensitivity; do not select a threshold merely because it yields appealing labels.",
+    "For each proposed theme inspect representative and boundary works plus contrary examples, citing exact work IDs and available source passages. Reject or split a label when evidence contradicts its proposed shared content.",
+    "Assess whether apparent groups reflect publication type, year or reference availability rather than shared substantive content. Seek an article-only sensitivity analysis through documented controls; if unavailable, disclose that limitation and withhold article-only robustness claims.",
+    "Use richer available text for interpretation while distinguishing abstract-supported from title-only judgments; do not force works without adequate evidence into themes.",
+    "Obtain fresh methods and statistical reviews of the exact frozen candidate and its executed evidence; expert approval remains not_assessed."
+  ],
+  "population": "The 951 works in frozen selection selection-44bd2fc2643149eb958400f4fec38c44, an operator-derived full-record extract of title-search results.",
+  "question": "How do the adaptive leadership search results group together into general academic themes?",
+  "review_level": "rigorous",
+  "schema_version": "bnr.study.v1",
+  "scope": "Describe this selected search-result corpus across its observed publication types. Preserve the distinction between the derived extract and the original snapshot; original-snapshot retrieval completeness is operator-reported, not independently established by the supplied corpus receipts.",
+  "stopping_rule": "Stop at resource caps or failed construction invariants. Withhold labels unsupported by source evidence, retain ambiguous and disconnected works explicitly, and report insufficient evidence rather than forcing an exhaustive partition. No substantive thematic conclusion is complete without two fresh independent clean reviews of its frozen candidate; human expert approval remains separate.",
+  "time_range": "All publication dates represented in the frozen selection; no temporal trend claims.",
+  "unsupported_claims": "No causality, comprehensive field coverage, definitive thematic taxonomy, scientific-quality ranking, complete entity resolution or expert approval. Missing or empty reference lists do not establish zero bibliographic links. Provider classifications are observed metadata, not independent ground truth.",
+  "prior_protocol_sha256": "c6db3bf15ed0a6820dca758451f8f88351090c44cdbebe2134d04955b95945e8",
+  "revision_reason": "Continue exhausted lead sessions with bounded source appraisal and separate direct Python sensitivity; retain original corpus and main graph. Broad themes may cross communities. Add transparent lexical navigation index, not validated classification.",
+  "execution_plan": {
+    "bounds": "951 works, existing 10891-edge graph; at most 20 Leiden fits and 40 full abstracts manually appraised; no acquisition",
+    "primary": "Existing seed11 partition; complete title lists of all 296 connected works; top-strength, high external-share and low-degree source abstracts; contrary evidence retained",
+    "sensitivity": "Five seeds 11,23,37,53,71 at thresholds 0,0.05,0.1; one article-only seed11 graph. Compare ARI on fixed baseline connected universe and overlap connected universe separately; independently recompute edge weights from raw reference sets.",
+    "text_index": "Title-only transparent multi-label rules across all951, after appraisal; counts are lexical-hit counts, not estimates of validated themes. Unmatched retained.",
+    "excluded": "No embedding execution, null-model inference, temporal inference or automatic classifier truth. Gapped abstracts excluded.",
+    "review": "Freeze exact candidate for separate methods and statistics review; human expert not_assessed."
+  },
+  "revision_notes": [
+    "Actual prior seeds were11,23,37,53,71, rather than planned11,23,47.",
+    "MiniLM available after correct asset-root configuration; not needed for this bounded continuation. Two failed headings attempts retained; no heading inference claims.",
+    "Original snapshot completeness and selection-verification artifacts supplied by root are separate from tiny derived corpus ingestion."
+  ],
+  "created_utc": "2026-10-20T03:23:01.735146+00:00"
+}

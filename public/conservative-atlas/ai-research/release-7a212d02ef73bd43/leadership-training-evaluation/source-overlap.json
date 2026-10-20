@@ -1,0 +1,24 @@
+{
+  "policy": "Do not sum review counts or count a review plus its included primary study as independent replication. DOI variants identify one source; source aliases preserved in specialist ledgers. No exhaustive primary-study overlap reconstruction.",
+  "confirmed_links": [
+    {
+      "source": "R1_umbrella2025",
+      "contains_or_cites_review": [
+        "R2_frontline2018",
+        "R3_Lyons2021"
+      ],
+      "basis": "Specialist checked bibliography"
+    },
+    {
+      "source": "R3_Lyons2021",
+      "builds_on": "Frich2015 review dataset",
+      "basis": "Source methods"
+    },
+    {
+      "source": "R4_Lacerenza2017",
+      "includes_primary": "P5_Kawakami2006",
+      "basis": "Starred included reference checked in PDF"
+    }
+  ],
+  "unresolved": "Other review-primary overlap and historical samples are not exhaustively crosswalked; no claim eight primary evaluations are independent of all review evidence."
+}

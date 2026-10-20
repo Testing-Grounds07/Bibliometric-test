@@ -1,0 +1,206 @@
+{
+  "metadata_query_families": 6,
+  "raw_metadata_hits": 120,
+  "unique_metadata_provider_ids": 119,
+  "targeted_web_queries_logged": 19,
+  "targeted_web_query_cap": 48,
+  "appraised_fulltext_sources": 14,
+  "source_candidates_including_access_limited": 17,
+  "outside_cap_latest_protocol": 12,
+  "source_crosswalk": [
+    {
+      "source_id": "R1_umbrella2025",
+      "doi": "10.1136/leader-2025-001269",
+      "title": "Leadership training in healthcare: a systematic umbrella review",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "umbrella_review"
+    },
+    {
+      "source_id": "R2_frontline2018",
+      "doi": "10.1186/s12913-018-3561-4",
+      "title": "Developing and evaluating clinical leadership interventions for frontline healthcare providers: a review of the literature",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "structured_systematic_quantitative_review"
+    },
+    {
+      "source_id": "R3_Lyons2021",
+      "doi": "10.1136/leader-2020-000360",
+      "title": "Evidence-based medical leadership development: a systematic review",
+      "metadata_matches": [
+        "https://openalex.org/W3104083160"
+      ],
+      "outside_metadata": false,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "systematic_review_meta_aggregation"
+    },
+    {
+      "source_id": "R4_Lacerenza2017",
+      "doi": "10.1037/apl0000241",
+      "title": "Leadership training design, delivery, and implementation: A meta-analysis",
+      "metadata_matches": [
+        "https://openalex.org/W2740968335"
+      ],
+      "outside_metadata": false,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "meta_analysis"
+    },
+    {
+      "source_id": "P1_iLead2020",
+      "doi": "10.1136/bmjopen-2019-033227",
+      "title": "Evaluation of iLead, a generic implementation leadership intervention: mixed-method preintervention–postintervention design",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "primary_evaluation"
+    },
+    {
+      "source_id": "P2_nurse2024",
+      "doi": "10.1136/bmjopen-2024-088386",
+      "title": "Online training to improve evidence-based leadership competencies among nurse leaders in China: a feasibility randomised controlled trial",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "primary_feasibility_RCT"
+    },
+    {
+      "source_id": "P4_IES2019",
+      "doi": null,
+      "title": "The Effects of a Principal Professional Development Program Focused on Instructional Leadership",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "authoritative_government_primary_evaluation"
+    },
+    {
+      "source_id": "P5_Kawakami2006",
+      "doi": "10.1539/joh.48.28",
+      "title": "Effects of Web-Based Supervisor Training on Job Stressors and Psychological Distress among Workers: A Workplace-Based Randomized Controlled Trial",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "fulltext_acquired_relevant_sections_read",
+      "source_role": "primary_cluster_RCT"
+    },
+    {
+      "source_id": "M01",
+      "doi": "10.1371/journal.pone.0286263",
+      "title": "Developing engaged and ‘teamful’ leaders: A randomized controlled trial of the 5R identity leadership program",
+      "metadata_matches": [
+        "https://openalex.org/W4378195367"
+      ],
+      "outside_metadata": false,
+      "source_status": "full_text_methods_results_discussion_read",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "M02",
+      "doi": "10.1186/1472-6920-9-72",
+      "title": "Combining a leadership course and multi-source feedback has no effect on leadership skills of leaders in postgraduate medical education. An intervention study with a control group",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "full_text_methods_results_discussion_read",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "M03",
+      "doi": "10.3390/ijerph18179137",
+      "title": "A Training Intervention through a 360° Multisource Feedback Model",
+      "metadata_matches": [
+        "https://openalex.org/W3198864950"
+      ],
+      "outside_metadata": false,
+      "source_status": "full_text_methods_results_discussion_read",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "M04",
+      "doi": "10.1097/ccm.0000000000004077",
+      "title": "Simulation-Based Team Leadership Training Improves Team Leadership During Actual Trauma Resuscitations: A Randomized Controlled Trial",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "full_text_methods_results_discussion_read",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "M05",
+      "doi": "10.1002/yd.20558",
+      "title": "Assessing and measuring leadership identity",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "full_text_main_article_read",
+      "source_role": "measurement_methodology_foundation"
+    },
+    {
+      "source_id": "M06",
+      "doi": null,
+      "title": "Measuring Leader Identity: Conceptualization and Validation of a Multi-Dimensional Measure",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "full_text_methods_results_discussion_read",
+      "source_role": "primary_measurement_foundation"
+    },
+    {
+      "source_id": "M07",
+      "doi": "10.1016/j.leaqua.2014.05.002",
+      "title": "Leadership as social identity management: Introducing the Identity Leadership Inventory (ILI) to assess and validate a four-dimensional model",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "Abstract/repository metadata only; three local acquisition attempts failed",
+      "source_role": "candidate_measurement_foundation_access_limited"
+    },
+    {
+      "source_id": "M08",
+      "doi": "10.1097/sih.0b013e31816fdd0a",
+      "title": "Validation of a tool to measure and promote clinical teamwork",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "Web PubMed abstract only; local page is challenge",
+      "source_role": "candidate_measurement_foundation_abstract_only"
+    },
+    {
+      "source_id": "P3_Dvir2002",
+      "doi": "10.2307/3069307",
+      "title": "Impact of Transformational Leadership on Follower Development and Performance: A Field Experiment",
+      "metadata_matches": [],
+      "outside_metadata": true,
+      "source_status": "abstract_only_landing_acquired_fulltext403",
+      "source_role": "access_limited_candidate"
+    }
+  ],
+  "scope": "Root exact identity/count audit. Metadata search is bounded relevance-ranked discovery, not a field census; no assertion all119 records received in-depth screening. DOI match exact after doi.org-prefix removal/case normalization; title exact-casefold fallback. No fuzzy entity merges.",
+  "access_limited_candidates": 3,
+  "outside_metadata_selected_access_limited_subset": 13,
+  "other_logged_measurement_candidates": [
+    "PMC9590387 (physician coaching and360)",
+    "PMC10359821 (public health simulation)",
+    "PMC8506892 (CaLI)",
+    "PMC13183455 (LEADS)",
+    "PMID27707148 (iLead; efficacy specialist owns)",
+    "PMID28498143 (Crucible)",
+    "10.1016/j.psychsport.2020.101762 (5RS introduction)",
+    "10.1016/j.jsams.2020.01.010 (5RS basketball experiment)",
+    "S1469029221000546 (5RS basketball wait-list RCT)",
+    "S1048984317300437 (Miscenko2017)",
+    "10.1177/15480518261442990 (developmental self-concept)",
+    "PMC12777403 (T4Us youth proof of concept; outside adult scope)",
+    "10.1002/jls.21905 (identity scoping review; not selected)"
+  ],
+  "other_logged_measurement_candidate_count": 13,
+  "total_web_result_set_completeness": "not_assessed: first measurement search result body was reconstructed rather than separately frozen; not all web search results have exhaustive candidate-level identity resolution.",
+  "outside_metadata_all_web_candidates_exact_total": null,
+  "outside_metadata_all_web_candidates_lower_bound": 13,
+  "outside_cap_excess_minimum": 1,
+  "deviation": "At least13 outside-metadata candidates exceeded the planned12-record cap;13 is the selected/accessed subset, not the full web-discovery total.13 additional unselected candidates are logged by measurement, with incomplete identity crosswalk and raw-return completeness. All retained attempts and logs preserved; no further expansion. This is a disclosed search-bound deviation, not a retrospectively increased planned cap.",
+  "input_sha256": {
+    "discovery/unique-records.json": "a570ef29a1e22689242d0b4b443da94990f9d93f3c66f0106171f0645e060ef3",
+    "discovery/query-receipts.json": "a9321e5371b7dc8ce8f0c44d1b234a14e6c00ed8d37b765de66a38d70a707816",
+    "efficacy-specialist/sources-evidence.json": "92425d8c2d303a9b2a393a4b20f414e977af5db0af130814751c6b55301bc485",
+    "measurement-specialist/sources-ledger.json": "5f68c653a59554e15716b2b1326bf539aa25978ba9a7a6f37b0a54a0db10e55a",
+    "efficacy-specialist/coverage-limitations.json": "2662691c09062af1fdd18de770a437a4ac50659b9edc8127ff364dd76e524b2d",
+    "efficacy-specialist/query-log.json": "84309b52679c47224214c37a58140112accebd3ad9fbb74b2d2b5df41b43dc8a",
+    "measurement-specialist/search-log.json": "95c7aeae5912ac822c65e411b706a7a7cbfa085f7393a2aa1f8e1ebf36125769"
+  }
+}

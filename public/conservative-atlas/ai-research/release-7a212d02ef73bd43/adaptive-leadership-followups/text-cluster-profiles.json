@@ -1,0 +1,135 @@
+[
+  {
+    "cluster": 0,
+    "count": 131,
+    "reference_isolates": 71,
+    "provisional_label": "General theory, complexity and leadership practice",
+    "interpretation": "A broad mixed group of conceptual integration, leadership behaviours, training and organizational applications. It is not one intellectual school.",
+    "contrary_or_boundary_evidence": "The two lowest-centroid records describe flocking and a 52-drone demonstration, including a supplementary-material record of the same work; they are not human organizational leadership studies. The group also contains sports and military work.",
+    "representative_ids": [
+      "W4386405892",
+      "W7153555841",
+      "W1597546876"
+    ],
+    "boundary_ids": [
+      "W3033075609",
+      "W6958004539"
+    ],
+    "appraisal_scope": "All title lists inspected; five complete available abstracts per cluster read: three nearest centroid and two lowest centroid. This is purposive profile appraisal, not validation of every member.",
+    "source_packet_sha256": "3fbc632a1529574c1137bfad385fa8c7857fd91892d773746c9c50e03fabba87"
+  },
+  {
+    "cluster": 1,
+    "count": 76,
+    "reference_isolates": 47,
+    "provisional_label": "School leadership, teacher development and educational equity",
+    "interpretation": "School-level leadership, teacher engagement, educational change and leader preparation dominate the title profile. The sampled abstracts span qualitative accounts and correlational surveys.",
+    "contrary_or_boundary_evidence": "Dual-language equity and a charter-school founder's autoethnography differ from central competency surveys. Higher-education/community learning titles also occur; school setting is not a shared causal theory.",
+    "representative_ids": [
+      "W4410707296",
+      "W7128260081",
+      "W7215505903"
+    ],
+    "boundary_ids": [
+      "W3088410226",
+      "W107464115"
+    ],
+    "appraisal_scope": "All title lists inspected; five complete available abstracts per cluster read: three nearest centroid and two lowest centroid. This is purposive profile appraisal, not validation of every member.",
+    "source_packet_sha256": "3fbc632a1529574c1137bfad385fa8c7857fd91892d773746c9c50e03fabba87"
+  },
+  {
+    "cluster": 2,
+    "count": 75,
+    "reference_isolates": 36,
+    "provisional_label": "Crisis response and resilience",
+    "interpretation": "Pandemic and other disruptions connect leadership, coordination, trust and resilience across sectors.",
+    "contrary_or_boundary_evidence": "A historical shipwreck survival account and a racial-equity essay are peripheral. COVID-19 vocabulary can join otherwise distinct settings and mechanisms.",
+    "representative_ids": [
+      "W7220335579",
+      "W4413473072",
+      "W3173040929"
+    ],
+    "boundary_ids": [
+      "W7203448894",
+      "W3108515835"
+    ],
+    "appraisal_scope": "All title lists inspected; five complete available abstracts per cluster read: three nearest centroid and two lowest centroid. This is purposive profile appraisal, not validation of every member.",
+    "source_packet_sha256": "3fbc632a1529574c1137bfad385fa8c7857fd91892d773746c9c50e03fabba87"
+  },
+  {
+    "cluster": 3,
+    "count": 54,
+    "reference_isolates": 36,
+    "provisional_label": "Organizational performance, engagement and public administration",
+    "interpretation": "Workplace performance, engagement and service-delivery questions recur across commercial and public organizations.",
+    "contrary_or_boundary_evidence": "Peruvian migration policy and ethical social-work advocacy sit at the edge. A long theory-book description is near the centroid; text proximity does not imply empirical quality.",
+    "representative_ids": [
+      "W3102325516",
+      "W6925215198",
+      "W4399871561"
+    ],
+    "boundary_ids": [
+      "W3087348464",
+      "W7201866489"
+    ],
+    "appraisal_scope": "All title lists inspected; five complete available abstracts per cluster read: three nearest centroid and two lowest centroid. This is purposive profile appraisal, not validation of every member.",
+    "source_packet_sha256": "3fbc632a1529574c1137bfad385fa8c7857fd91892d773746c9c50e03fabba87"
+  },
+  {
+    "cluster": 4,
+    "count": 43,
+    "reference_isolates": 25,
+    "provisional_label": "Digital transformation, innovation and enterprise adaptation",
+    "interpretation": "Digital change, AI, innovation and organizational adaptation recur in central sources and titles.",
+    "contrary_or_boundary_evidence": "Indigenous women's leadership and inclusive social entrepreneurship broaden the group beyond technology. These are distinct ethical/framework commitments, not interchangeable digital-leadership models.",
+    "representative_ids": [
+      "W4415115871",
+      "W4404303367",
+      "W7216650848"
+    ],
+    "boundary_ids": [
+      "W7215822495",
+      "W3215773750"
+    ],
+    "appraisal_scope": "All title lists inspected; five complete available abstracts per cluster read: three nearest centroid and two lowest centroid. This is purposive profile appraisal, not validation of every member.",
+    "source_packet_sha256": "3fbc632a1529574c1137bfad385fa8c7857fd91892d773746c9c50e03fabba87"
+  },
+  {
+    "cluster": 5,
+    "count": 42,
+    "reference_isolates": 11,
+    "provisional_label": "Clinical care, patient adaptation and health-professional learning",
+    "interpretation": "Clinical encounters, person-centred care, chronic illness and professional learning form a recognizable setting/mechanism intersection.",
+    "contrary_or_boundary_evidence": "ECHO facilitator learning and forensic nursing extend beyond patient coping. Reviews explicitly limit efficacy conclusions; this is not evidence that all included practices work.",
+    "representative_ids": [
+      "W4416599795",
+      "W3115426723",
+      "W2098575796"
+    ],
+    "boundary_ids": [
+      "W3202791826",
+      "W7213248757"
+    ],
+    "appraisal_scope": "All title lists inspected; five complete available abstracts per cluster read: three nearest centroid and two lowest centroid. This is purposive profile appraisal, not validation of every member.",
+    "source_packet_sha256": "3fbc632a1529574c1137bfad385fa8c7857fd91892d773746c9c50e03fabba87"
+  },
+  {
+    "cluster": 6,
+    "count": 38,
+    "reference_isolates": 25,
+    "provisional_label": "Higher education and institutional learning in digital change",
+    "interpretation": "Higher-education leadership, online learning, institutional change and educational digital readiness recur.",
+    "contrary_or_boundary_evidence": "School and Islamic-education records and public libraries cross the boundary. The AI-ready framework is conceptual; not a tested intervention.",
+    "representative_ids": [
+      "W4417478233",
+      "W2950468915",
+      "W4408031094"
+    ],
+    "boundary_ids": [
+      "W4412950939",
+      "W7115067632"
+    ],
+    "appraisal_scope": "All title lists inspected; five complete available abstracts per cluster read: three nearest centroid and two lowest centroid. This is purposive profile appraisal, not validation of every member.",
+    "source_packet_sha256": "3fbc632a1529574c1137bfad385fa8c7857fd91892d773746c9c50e03fabba87"
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "total": 951,
+  "reference_bearing": 325,
+  "connected": 296,
+  "types": {
+    "article": 638,
+    "book-chapter": 77,
+    "book": 15,
+    "peer-review": 7,
+    "libguides": 7,
+    "report": 4,
+    "dissertation": 56,
+    "dataset": 7,
+    "other": 21,
+    "conference-abstract": 22,
+    "preprint": 23,
+    "conference-paper": 43,
+    "book-review": 4,
+    "editorial": 2,
+    "erratum": 3,
+    "review": 10,
+    "reference-entry": 5,
+    "paratext": 1,
+    "supplementary-materials": 6
+  },
+  "abstract_status": {
+    "missing": 236,
+    "valid": 704,
+    "gapped": 11
+  },
+  "navigation_unmatched": 299,
+  "navigation_multilabel": 232,
+  "title_index_counts": {
+    "Education & academic institutions": {
+      "all_works": 213,
+      "articles": 165,
+      "valid_reconstructions": 174,
+      "reference_bearing": 72,
+      "connected": 62
+    },
+    "Health, care & clinical relationships": {
+      "all_works": 94,
+      "articles": 69,
+      "valid_reconstructions": 70,
+      "reference_bearing": 49,
+      "connected": 42
+    },
+    "Organizations, work & business change": {
+      "all_works": 318,
+      "articles": 241,
+      "valid_reconstructions": 256,
+      "reference_bearing": 106,
+      "connected": 100
+    },
+    "Public, community & environmental governance": {
+      "all_works": 132,
+      "articles": 94,
+      "valid_reconstructions": 93,
+      "reference_bearing": 49,
+      "connected": 45
+    },
+    "Concepts, frameworks & leadership development": {
+      "all_works": 165,
+      "articles": 121,
+      "valid_reconstructions": 124,
+      "reference_bearing": 68,
+      "connected": 62
+    }
+  },
+  "crosscut_counts": {
+    "Crisis & resilience": 160,
+    "Digital & technological change": 112,
+    "Equity, inclusion & participation": 62,
+    "Military & sport settings": 27
+  },
+  "appraised_records": 36,
+  "appraisal_status_counts": {
+    "title only; abstract unavailable or gapped": 6,
+    "available abstract read; provisional interpretation": 26,
+    "abstract rejected: title-abstract mismatch": 1,
+    "abstract read: false friend, not leadership evidence": 1,
+    "truncated source abstract/snippet read": 2
+  },
+  "manual_theme_support_counts": {
+    "Education & academic institutions": 12,
+    "Health, care & clinical relationships": 3,
+    "Organizations, work & business change": 8,
+    "Public, community & environmental governance": 4,
+    "Concepts, frameworks & leadership development": 3
+  },
+  "groups": [
+    {
+      "group": 0,
+      "size": 94,
+      "articles": 75,
+      "valid_reconstructions": 80,
+      "title_index_counts": {
+        "Education & academic institutions": 13,
+        "Health, care & clinical relationships": 9,
+        "Organizations, work & business change": 45,
+        "Public, community & environmental governance": 15,
+        "Concepts, frameworks & leadership development": 13
+      }
+    },
+    {
+      "group": 1,
+      "size": 75,
+      "articles": 52,
+      "valid_reconstructions": 56,
+      "title_index_counts": {
+        "Education & academic institutions": 26,
+        "Health, care & clinical relationships": 6,
+        "Organizations, work & business change": 22,
+        "Public, community & environmental governance": 11,
+        "Concepts, frameworks & leadership development": 12
+      }
+    },
+    {
+      "group": 2,
+      "size": 75,
+      "articles": 50,
+      "valid_reconstructions": 59,
+      "title_index_counts": {
+        "Education & academic institutions": 19,
+        "Health, care & clinical relationships": 8,
+        "Organizations, work & business change": 22,
+        "Public, community & environmental governance": 16,
+        "Concepts, frameworks & leadership development": 17
+      }
+    },
+    {
+      "group": 3,
+      "size": 27,
+      "articles": 25,
+      "valid_reconstructions": 24,
+      "title_index_counts": {
+        "Education & academic institutions": 2,
+        "Health, care & clinical relationships": 18,
+        "Organizations, work & business change": 4,
+        "Public, community & environmental governance": 1,
+        "Concepts, frameworks & leadership development": 10
+      }
+    },
+    {
+      "group": 4,
+      "size": 21,
+      "articles": 15,
+      "valid_reconstructions": 16,
+      "title_index_counts": {
+        "Education & academic institutions": 2,
+        "Health, care & clinical relationships": 1,
+        "Organizations, work & business change": 7,
+        "Public, community & environmental governance": 2,
+        "Concepts, frameworks & leadership development": 10
+      }
+    },
+    {
+      "group": 5,
+      "size": 2,
+      "articles": 0,
+      "valid_reconstructions": 2,
+      "title_index_counts": {
+        "Education & academic institutions": 0,
+        "Health, care & clinical relationships": 0,
+        "Organizations, work & business change": 0,
+        "Public, community & environmental governance": 0,
+        "Concepts, frameworks & leadership development": 0
+      }
+    },
+    {
+      "group": 6,
+      "size": 2,
+      "articles": 2,
+      "valid_reconstructions": 2,
+      "title_index_counts": {
+        "Education & academic institutions": 0,
+        "Health, care & clinical relationships": 0,
+        "Organizations, work & business change": 0,
+        "Public, community & environmental governance": 0,
+        "Concepts, frameworks & leadership development": 0
+      }
+    }
+  ]
+}

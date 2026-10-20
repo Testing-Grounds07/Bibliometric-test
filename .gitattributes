@@ -1,0 +1,11 @@
+# Frozen research artifacts retain their exact recorded bytes on every platform.
+public/conservative-atlas/ai-research/** -text -whitespace
+*.pdf binary
+*.zip binary
+
+# Keep upstream licenses and generated vendor comments verbatim.
+public/conservative-atlas/*LICENSE.txt -whitespace
+public/conservative-atlas/*-worker.js -whitespace
+public/conservative-atlas/hypergraph-3d.js -whitespace
+public/conservative-atlas/hypergraph-3d-test.js -whitespace
+public/conservative-atlas/hypergraph-lab.html -whitespace

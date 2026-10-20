@@ -1,0 +1,72 @@
+{
+  "study_id": "adaptive-themes",
+  "report_sha256": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898",
+  "reviewers": [
+    {
+      "role": "methods",
+      "original_source_artifact": ".runs/adaptive-leadership-methods-review/final-rebind.json",
+      "original_receipt_sha256": "d9d1ae0db9654b0fca34c1a90289d5d77dc2eeda4a219ad86da8d0e18d679201",
+      "report_sha256": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898",
+      "qualification": "Original scoped agent review accepted; final report status wording was rebound without new scientific evidence. Human expert assessment remains not_assessed.",
+      "public_receipt": {
+        "utc": "2026-10-20T03:30:52.987304+00:00",
+        "prior_report_sha256": "c3b96bfba08a34a741edc5d810ddb64282d2f06493d61b8d94150c025e992577",
+        "final_report_sha256": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898",
+        "final_report_matches_requested_hash": true,
+        "exactly_five_declared_substitutions_reproduce_final": true,
+        "substitution_occurrences": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "changed_previously_bound_files": [
+          ".runs\\adaptive-leadership-thematic-appraisal\\thematic-report.html",
+          ".runs\\adaptive-leadership-thematic-appraisal\\report.py"
+        ],
+        "unchanged_scientific_evidence": true,
+        "disposition": "Methods conclusion remains clean for bounded provisional interpretation. Provenance minor addressed. Review status describes methods conclusion accurately; statistics result is attributed to separate review and not independently reassessed here. Human expertise remains not_assessed.",
+        "final_bindings_sha256": {
+          ".runs\\adaptive-leadership-thematic-appraisal\\thematic-report.html": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898",
+          ".runs\\adaptive-leadership-thematic-appraisal\\work-theme-map.csv": "f64c4dc3f34befdd3fec7f504026122b324a377b351d34a739ae7e5bcdf29533",
+          ".runs\\adaptive-leadership-thematic-appraisal\\source-appraisal-evidence.json": "7c7f7403e90f52839b2d0ab4d7cf0899eb157cbe4c633aae990b02a20e9ec5a6",
+          ".runs\\adaptive-leadership-thematic-appraisal\\claims-and-source-links.json": "bee2bd2bfc69cc31aaf644dc2822c8b22d043001f77e5fcf9059a2aad4b558c8",
+          ".runs\\adaptive-leadership-thematic-appraisal\\index-rules.json": "6c228ec068c32d0f275d1a7b292412f69f7641494f6c0d1baa22adc7837601c4",
+          ".runs\\adaptive-leadership-thematic-appraisal\\coverage-and-index-counts.json": "d87c6f3a7ffa148babc63072a79de03105bc53d36b2cbde6129b9bea80d63510",
+          ".runs\\adaptive-leadership-thematic-appraisal\\protocol-revision.json": "db73eec743abb4d62470c2b7be01f848791123857ca97845f64a69483e237951",
+          ".runs\\adaptive-leadership-thematic-appraisal\\sensitivity.json": "56a7f422c03dae2d95dd6ca747ce8ea010294792bac3431229dac616e2aef3c0",
+          ".runs\\adaptive-leadership-thematic-appraisal\\work-evidence.json": "1355ba273c755f02f07f5c76e5b234d85c2ede0356c384637a83325558ec3fc0",
+          ".runs\\adaptive-leadership-thematic-appraisal\\report.py": "71cea7aa9b086c12d74afc8fb23e5c66882459f925bd10d62481e9ad0957dd54",
+          ".runs\\adaptive-leadership-thematic-appraisal\\index.py": "e72f9cd0739777030471496a0c9f20cb989f9e17630c8d6cb686b42293b5c5e2",
+          ".runs\\adaptive-leadership-thematic-appraisal\\sensitivity.py": "c5b347a52213ccb98977ada486284b5270f25c783dc8412c5995ae18228649db",
+          ".runs\\adaptive-leadership-thematic-appraisal\\prepare.py": "0863a5a2b201f85b9284a36a3a794fd5aa91aabc529edce98710e436c563dece",
+          ".runs\\adaptive-leadership-thematic-appraisal\\appraisal-packet.py": "bef3e35a4403f5dbce72885cec2fad5c41738698d66ae88606e0ff7e1df46e6f",
+          ".runs\\adaptive-leadership-thematic-appraisal\\appraised-ids.json": "f4922649fce3c88ae064bd1a2f72d9bda37aec7d277cc390d1667edb2f801179",
+          ".runs\\adaptive-leadership-research\\raw-records.json": "226bd4f718d873fd7282cddd96706e20b6808092b5839e64d4551d3aa2dc65ce"
+        }
+      }
+    },
+    {
+      "role": "statistics",
+      "original_source_artifact": ".runs/adaptive-leadership-statistics-review/final-rebind-receipt.json",
+      "original_receipt_sha256": "dbff75ee84c58bec56bc9117f39bd7a9eeb34e1b08f877ba033e02ee4822d61c",
+      "report_sha256": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898",
+      "qualification": "Original scoped agent review accepted; final report status wording was rebound without new scientific evidence. Human expert assessment remains not_assessed.",
+      "public_receipt": {
+        "status": "clean scoped review retained",
+        "old_report_sha256": "c3b96bfba08a34a741edc5d810ddb64282d2f06493d61b8d94150c025e992577",
+        "new_report_sha256": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898",
+        "revision_disposition_sha256": "944d0eec3d39dc272a2b990835cf476dba80a0cd61ca6e4840ac68946765f64a",
+        "executed_checks": [
+          "Exact replay of five declared substitutions equals revised report byte content after UTF-8 decoding",
+          "Prior report hash equals originally reviewed candidate",
+          "All six remaining candidate artifact hashes unchanged"
+        ],
+        "numerical_or_source_data_changes": false,
+        "recomputation": "not needed; prior executed checks remain applicable",
+        "human_expert_review": "not_assessed"
+      }
+    }
+  ]
+}

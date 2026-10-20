@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const context = {window: {}};
+vm.runInNewContext(fs.readFileSync('public/conservative-atlas/data.js', 'utf8'), context);
+const atlas = context.window.ATLAS_DATA;
+const works = JSON.parse(fs.readFileSync('.trials/adaptive-leadership-full/works.json', 'utf8'));
+const byId = new Map(works.map(work => [work.id, work]));
+const articles = Object.values(atlas.articles).map(article => {
+ const work = byId.get(article.id);
+ assert(work, 'Missing corpus source ' + article.id);
+ return {...article, references: [...new Set(work.referenced_works || [])].sort(), referenceMetadata: work.referenced_works?.length ? 'Available OpenAlex references; completeness unknown' : 'Insufficient reference metadata'};
+});
+const referenceLabels = {};
+for (const graph of Object.values(atlas.graphs)) for (const node of graph.nodes) referenceLabels[node.key] = node.label;
+const expanded = JSON.parse(fs.readFileSync('public/conservative-atlas/expanded-data.json', 'utf8'));
+for (const node of expanded.base.nodes) referenceLabels[node.key] = node.label;
+const output = {version: 1, sourceCorpusId: atlas.summary.corpus_id, createdAt: new Date().toISOString(), provenance: 'Existing conservative OpenAlex corpus; no additional retrieval. Distinct OpenAlex IDs are not merged. Missing titles retain IDs.', articles, referenceLabels};
+output.incidenceHash = createHash('sha256').update(JSON.stringify(articles.map(article => [article.id, article.references]))).digest('hex');
+fs.writeFileSync('public/conservative-atlas/source-evidence.json', JSON.stringify(output));
+console.log(JSON.stringify({articles: articles.length, references: new Set(articles.flatMap(article => article.references)).size, empty: articles.filter(article => !article.references.length).length, incidenceHash: output.incidenceHash}));

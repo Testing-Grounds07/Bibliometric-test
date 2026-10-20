@@ -1,0 +1,363 @@
+{
+  "independent_edge_check": {
+    "pairs_examined": 451725,
+    "expected_edges": 10891,
+    "errors": []
+  },
+  "versions": {
+    "igraph": "1.0.0",
+    "leidenalg": "0.12.0",
+    "pyarrow": "23.0.1"
+  },
+  "runs": [
+    {
+      "threshold": 0,
+      "seed": 11,
+      "edges": 10891,
+      "connected": 296,
+      "isolates": 655,
+      "nontrivial_sizes": [
+        94,
+        75,
+        75,
+        27,
+        21,
+        2,
+        2
+      ],
+      "modularity": 0.2746894053235352,
+      "ARI_baseline_296": 1.0,
+      "ARI_common_connected": 1.0
+    },
+    {
+      "threshold": 0,
+      "seed": 23,
+      "edges": 10891,
+      "connected": 296,
+      "isolates": 655,
+      "nontrivial_sizes": [
+        98,
+        77,
+        76,
+        26,
+        15,
+        2,
+        2
+      ],
+      "modularity": 0.2745389870803584,
+      "ARI_baseline_296": 0.9441934909429041,
+      "ARI_common_connected": 0.9441934909429041
+    },
+    {
+      "threshold": 0,
+      "seed": 37,
+      "edges": 10891,
+      "connected": 296,
+      "isolates": 655,
+      "nontrivial_sizes": [
+        94,
+        75,
+        75,
+        27,
+        21,
+        2,
+        2
+      ],
+      "modularity": 0.2746894053235352,
+      "ARI_baseline_296": 1.0,
+      "ARI_common_connected": 1.0
+    },
+    {
+      "threshold": 0,
+      "seed": 53,
+      "edges": 10891,
+      "connected": 296,
+      "isolates": 655,
+      "nontrivial_sizes": [
+        94,
+        75,
+        75,
+        27,
+        21,
+        2,
+        2
+      ],
+      "modularity": 0.2746894053235352,
+      "ARI_baseline_296": 1.0,
+      "ARI_common_connected": 1.0
+    },
+    {
+      "threshold": 0,
+      "seed": 71,
+      "edges": 10891,
+      "connected": 296,
+      "isolates": 655,
+      "nontrivial_sizes": [
+        94,
+        75,
+        75,
+        27,
+        21,
+        2,
+        2
+      ],
+      "modularity": 0.2746894053235352,
+      "ARI_baseline_296": 1.0,
+      "ARI_common_connected": 1.0
+    },
+    {
+      "threshold": 0.05,
+      "seed": 11,
+      "edges": 4849,
+      "connected": 274,
+      "isolates": 677,
+      "nontrivial_sizes": [
+        76,
+        72,
+        69,
+        32,
+        11,
+        6,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.3017469447760262,
+      "ARI_baseline_296": 0.663995039555116,
+      "ARI_common_connected": 0.7483715389513201
+    },
+    {
+      "threshold": 0.05,
+      "seed": 23,
+      "edges": 4849,
+      "connected": 274,
+      "isolates": 677,
+      "nontrivial_sizes": [
+        76,
+        74,
+        67,
+        32,
+        11,
+        6,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.3023273572365853,
+      "ARI_baseline_296": 0.64723756597205,
+      "ARI_common_connected": 0.7295770159695989
+    },
+    {
+      "threshold": 0.05,
+      "seed": 37,
+      "edges": 4849,
+      "connected": 274,
+      "isolates": 677,
+      "nontrivial_sizes": [
+        76,
+        74,
+        67,
+        32,
+        11,
+        6,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.3023273572365853,
+      "ARI_baseline_296": 0.64723756597205,
+      "ARI_common_connected": 0.7295770159695989
+    },
+    {
+      "threshold": 0.05,
+      "seed": 53,
+      "edges": 4849,
+      "connected": 274,
+      "isolates": 677,
+      "nontrivial_sizes": [
+        76,
+        72,
+        69,
+        32,
+        11,
+        6,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.3017469447760262,
+      "ARI_baseline_296": 0.663995039555116,
+      "ARI_common_connected": 0.7483715389513201
+    },
+    {
+      "threshold": 0.05,
+      "seed": 71,
+      "edges": 4849,
+      "connected": 274,
+      "isolates": 677,
+      "nontrivial_sizes": [
+        76,
+        72,
+        69,
+        32,
+        11,
+        6,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.3017469447760262,
+      "ARI_baseline_296": 0.663995039555116,
+      "ARI_common_connected": 0.7483715389513201
+    },
+    {
+      "threshold": 0.1,
+      "seed": 11,
+      "edges": 1739,
+      "connected": 222,
+      "isolates": 729,
+      "nontrivial_sizes": [
+        66,
+        60,
+        46,
+        21,
+        13,
+        5,
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.33309860028772514,
+      "ARI_baseline_296": 0.42664732912647085,
+      "ARI_common_connected": 0.640914596573886
+    },
+    {
+      "threshold": 0.1,
+      "seed": 23,
+      "edges": 1739,
+      "connected": 222,
+      "isolates": 729,
+      "nontrivial_sizes": [
+        66,
+        60,
+        46,
+        21,
+        13,
+        5,
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.33309860028772514,
+      "ARI_baseline_296": 0.42664732912647085,
+      "ARI_common_connected": 0.640914596573886
+    },
+    {
+      "threshold": 0.1,
+      "seed": 37,
+      "edges": 1739,
+      "connected": 222,
+      "isolates": 729,
+      "nontrivial_sizes": [
+        57,
+        47,
+        40,
+        36,
+        21,
+        12,
+        3,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.33109275538048066,
+      "ARI_baseline_296": 0.2941458292266204,
+      "ARI_common_connected": 0.4485232228729879
+    },
+    {
+      "threshold": 0.1,
+      "seed": 53,
+      "edges": 1739,
+      "connected": 222,
+      "isolates": 729,
+      "nontrivial_sizes": [
+        61,
+        50,
+        43,
+        23,
+        21,
+        8,
+        5,
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.32750314638298794,
+      "ARI_baseline_296": 0.39243310641187634,
+      "ARI_common_connected": 0.5991174877330616
+    },
+    {
+      "threshold": 0.1,
+      "seed": 71,
+      "edges": 1739,
+      "connected": 222,
+      "isolates": 729,
+      "nontrivial_sizes": [
+        57,
+        48,
+        41,
+        34,
+        21,
+        12,
+        3,
+        2,
+        2,
+        2
+      ],
+      "modularity": 0.33010388054750567,
+      "ARI_baseline_296": 0.2959166951615547,
+      "ARI_common_connected": 0.4510705495237601
+    }
+  ],
+  "seed_pairwise_ARI_on296": {
+    "min": 0.9441934909429041,
+    "max": 1.0,
+    "all": [
+      0.9441934909429041,
+      1.0,
+      1.0,
+      1.0,
+      0.9441934909429041,
+      0.9441934909429041,
+      0.9441934909429041,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "article_only": {
+    "nodes": 638,
+    "edges": 6061,
+    "connected": 217,
+    "baseline_connected_articles": 219,
+    "ARI_baseline_connected_articles": 0.7297260995948663,
+    "nontrivial_sizes": [
+      87,
+      54,
+      48,
+      26,
+      2
+    ]
+  }
+}

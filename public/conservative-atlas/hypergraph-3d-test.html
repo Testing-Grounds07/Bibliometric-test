@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>BiblioMap · Exploded 3D Lab</title>
+ <link rel="stylesheet" href="hypergraph-3d-test.css?v=1">
+</head>
+<body>
+ <header><div><span class="eyebrow">BiblioMap / Visualization Lab</span><h1>Every cluster. In depth.</h1></div><a href="index.html">Return to main map ↗</a></header>
+ <nav aria-label="3D experiment controls">
+  <label>Algorithm<select id="algorithm"><option value="leiden">Leiden · bipartite CPM</option><option value="infomap">Infomap · incidence flow</option></select></label>
+  <label>Focus cluster<select id="cluster"><option value="">All clusters</option></select></label>
+  <label>Layers per cluster<select id="layers"><option>1</option><option selected>3</option><option>5</option><option>8</option></select></label>
+  <label>Layer spacing<input id="spacing" type="range" min="20" max="100" value="52"></label>
+  <label>Track article<select id="article"><option value="">None</option></select></label>
+  <button id="explode" aria-pressed="true">Collapse all</button><button id="reset">Fit all</button><button id="cancel" disabled>Cancel analysis</button>
+ </nav>
+ <main><section class="stage" aria-label="All-clusters exploded 3D canvas"><div id="scene"></div><p id="status" role="status">Building whole-group incidence…</p><span class="gesture">Drag to orbit · wheel / pinch to zoom · right drag / two fingers to pan · click a node or plane</span></section><aside><span class="eyebrow">Selected evidence</span><h2 id="selectionTitle">A landscape of layers</h2><div id="selection"><p>Every linked cluster has its own exploded stack. Select a plane to inspect its complete combination.</p></div><details><summary>What am I seeing?</summary><p>This test uses the adaptive leadership study, reference scope ≥10, combined orders 2–10. Leiden or Infomap clusters the whole-group incidence network. It does not change your main map or saved projects.</p><p>Each floor shows the cluster's articles. Each raised plane shows one exact supported group, including outside-cluster members where applicable. Dotted guides repeat article identity, not citation links.</p><p>All clusters are included, but only the selected number of groups per cluster are displayed, prioritizing 3+ member combinations, then stronger support. Pairs fill remaining slots. Cross-cluster groups can repeat in each participating cluster's stack, always with their full membership. Repeated layers are the same evidence; do not add their support counts. Stacks with no groups still show their floor. Layout and height do not measure similarity or importance.</p></details><p class="footnote">Experimental view · structural groups, not validated themes.</p></aside></main>
+ <script src="data.js?v=dedup-1"></script><script src="settings-data.js?v=dedup-1"></script><script src="atlas-settings.js?v=overview-3"></script><script src="hypergraph-3d-test.js?v=3"></script>
+</body>
+</html>

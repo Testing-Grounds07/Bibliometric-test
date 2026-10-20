@@ -4,16 +4,26 @@
   "private": true,
   "scripts": {
     "start": "node server.mjs",
-    "test": "node analysis-engine.test.mjs && node corpus-presets.test.mjs"
+    "test": "node analysis-engine.test.mjs && node corpus-presets.test.mjs && node --test neo4j-store.test.mjs",
+    "test:neo4j": "node --test neo4j-store.integration.test.mjs",
+    "migrate:neo4j": "node scripts/migrate-neo4j.mjs",
+    "start:multiuser": "node --env-file=.env.local scripts/multiuser-server.mjs",
+    "test:multiuser": "node --test scripts/multiuser/*.test.mjs",
+    "admin:multiuser": "node --env-file=.env.local scripts/multiuser-admin.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.8",
+    "@mapequation/infomap": "2.15.1",
+    "ml-matrix": "6.15.0",
+    "neo4j-driver": "^6.2.0",
     "ngraph.graph": "^20.1.2",
     "ngraph.leiden": "^0.3.0",
-    "pg": "^8.16.3"
+    "openid-client": "6.8.8",
+    "pg": "^8.16.3",
+    "three": "0.186.1"
   },
   "type": "module"
 }

@@ -1,0 +1,38 @@
+{
+  "eligible": 459,
+  "all_inventory": 951,
+  "eligible_baseline_isolates": 251,
+  "eligible_baseline_connected": 208,
+  "manual_flagged": 48,
+  "manual_excluded": 18,
+  "total_chars": 724510,
+  "types": {
+    "article": 350,
+    "report": 4,
+    "dissertation": 34,
+    "book-chapter": 30,
+    "other": 6,
+    "conference-paper": 17,
+    "preprint": 5,
+    "review": 8,
+    "book": 5
+  },
+  "exclusion_reasons_overlap": {
+    "missing_abstract": 236,
+    "abstract_under40words": 284,
+    "manual_quality_exclusion": 18,
+    "provider_language_not_en": 195,
+    "abstract_trailing_ellipsis": 5,
+    "ancillary_publication_type": 64,
+    "gapped_abstract": 11,
+    "v2_actual_language_or_citation_boilerplate": 2,
+    "known_mismatch_or_falsefriend": 2
+  },
+  "screen_limit": "Automated language/length/ellipsis/lexical consistency flags plus fullavailable reading of48flagged records. Not exhaustive semantic validity or underlying abstract completeness.",
+  "v2_excluded": {
+    "W4399090440": "Korean abstract despite provider-en; independentcoderflag and lead verification",
+    "W7198182606": "Bibliographic citation boilerplate largely Ukrainian rather than English abstract"
+  },
+  "encoding_cache_documents": 461,
+  "map_documents": 459
+}

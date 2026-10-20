@@ -1,0 +1,90 @@
+{
+  "version": 4,
+  "created_utc": "2026-10-20T13:41:01.281312+00:00",
+  "question": "How is leadership development, training and education evaluated; what measured changes support claims that training works?",
+  "design": "Bounded critical evidence map, not a systematic census or pooled meta-analysis. Source-level comparative extraction is primary; no metadata network because shared references cannot answer training effectiveness or measurement validity.",
+  "population": "Adult leadership development/training/education across organizational, public service, education and healthcare contexts. Broader than adaptive leadership; retain adaptive-training examples as bridges rather than sampling frame.",
+  "construct": "Training effects on knowledge/skills, enacted leadership and consequential follower/team/organization outcomes; process/implementation and participant experience distinguished from effectiveness.",
+  "initial_sensitizing_axes": [
+    "reaction/acceptability",
+    "knowledge or skill learning",
+    "behaviour/transfer",
+    "follower/team/organizational outcomes",
+    "durability and unintended effects"
+  ],
+  "axes_status": "Starting extraction prompts, not a fixed hierarchy. Revise transparently where sources use identity, relational/shared leadership, development readiness or other constructs.",
+  "eligible": [
+    "Peer-reviewed systematic reviews/meta-analyses or critical methodology reviews of leadership development evaluation",
+    "Primary evaluations in journals or authoritative government research reports with explicit intervention, participants, measured outcomes and design, prioritizing comparisons and follow-up; government reports labelled separately, not represented as peer-reviewed articles.",
+    "Measurement/theory foundations directly explaining outcome constructs, validity or transfer"
+  ],
+  "exclude": [
+    "Leadership association studies without development/training unless explicitly used only as measurement foundation",
+    "Commercial testimonials and unsupported programme claims",
+    "Abstract-only sources from detailed full-text appraisal; retain in coverage ledger with status"
+  ],
+  "search_date": "2026-10-20",
+  "date_bounds": "No initial publication-year restriction; record retrieved years. English-readable sources for appraisal; language/OA availability limits explicit.",
+  "queries": [
+    "leadership training effectiveness meta analysis",
+    "leadership development evaluation systematic review outcomes transfer",
+    "leadership training randomized controlled trial follow up",
+    "leadership development longitudinal multisource feedback evaluation",
+    "leadership development measurement validity instruments evaluation",
+    "leadership training unintended effects null results evaluation"
+  ],
+  "search_channels": [
+    "Targeted OpenAlex/Crossref metadata discovery",
+    "PMC/PubMed publisher repositories and ERIC for primary bibliographic/full-text access",
+    "Backward/forward targeted lookup of sources named in selected reviews, with route recorded"
+  ],
+  "bounds": {
+    "metadata_hits_per_query": 20,
+    "total_raw_metadata_cap": 120,
+    "target_fulltexts": 24,
+    "core_reviews_target": 6,
+    "primary_evaluations_target": 10,
+    "measurement_foundations_target": 4,
+    "targeted_snowball_additions_max": 12,
+    "acquisition_attempts_per_source": 3,
+    "metadata_query_families": 6,
+    "additional_distinct_snowball_source_records_max": 12,
+    "identity_and_oa_lookup_queries_max": 48
+  },
+  "selection": "Log all retrieved records. Deduplicate exact DOI/provider IDs; mark candidate versions and overlapping study samples reversibly. Purposive maximum variation across designs, settings, outcome levels and positive/null findings; do not claim random selection or prevalence.",
+  "extraction": [
+    "Source identity, route, source role, fulltext status/hash and exact section/page/line support",
+    "Training content, theory, dosage/duration, participants/context, implementation/fidelity",
+    "Outcome construct, instrument/task name, items/scoring if available, evidence of validity/reliability and context applicability",
+    "Rater/source, assessment timing, baseline, comparator/randomization, clustering and attrition",
+    "Effect estimate/uncertainty if actually reported; adjusted versus raw; causal limitations and alternative explanations",
+    "Negative/null results, adverse effects, opportunity/cost outcomes if reported",
+    "For reviews: included sample/search dates, outcome taxonomy, heterogeneity/publication bias, overlap with other reviews/primary studies"
+  ],
+  "inference": "No universal training-success threshold. Separate satisfaction, self-efficacy, competence, observed behaviour and distal outcomes. Stronger designs improve causal attribution but measurement alignment and applicability remain necessary. No effect-size pooling planned.",
+  "roles": "Native Codex scientific lead synthesis; two separate research specialists efficacy/design and measurement/instruments; subsequent fresh independent methods and statistics/reproducibility reviewers on frozen candidate. Specialists are not reviewers. Human domain expert not_assessed; no controlled-MCP gate claim.",
+  "validation": [
+    "Verify exact excerpts/locations and hash identities",
+    "Audit source/primary-study overlap and review umbrella double counting",
+    "Check outcome/design claims against actual full texts and contrary findings",
+    "Independent arithmetic verification only where numerical claims are made; no invented missing estimates",
+    "Final methods and statistics scope-bound reviews with immutable candidate hashes"
+  ],
+  "stopping": "Finish when bounded evidence supports concrete measurement/design distinctions and practical examples across multiple contexts; if gaps persist state unavailable, do not substitute abstract as full text or expand to a full snapshot scan. Any material extension requires versioned rationale.",
+  "outputs": [
+    "Readable semantic HTML/PDF-ready evidence map",
+    "Source/search/acquisition and outcome/instrument CSV ledgers",
+    "Source-backed strong-versus-weak evidence comparison and practical evaluation criteria",
+    "Versioned protocol/evidence and review receipts"
+  ],
+  "supersedes_sha256": "6f8536af93e844b4a300bbe614edf33f9c46a59869ddaa3a548a988895765f58",
+  "revision_reason": "Clarify primary-evaluation eligibility before final selection: authoritative government research reports with explicit methods/results are eligible alongside journal primary evaluations. Earlier peer-reviewed restriction referred to reviews, but specialist interpreted it more broadly; this revision makes the IES primary-report inclusion transparent. Its null/adverse findings are retained without generalizing to all training.",
+  "search_accounting": "Root owns six metadata query families, max20 raw records per family (120 raw hits including duplicates). Specialist web refinements, source identity and OA location searches are separately logged, capped48 queries collectively; their retrieved new source records outside the120-hit metadata set count toward a maximum12 additional distinct source records. Fulltext acquisition max3 attempts per source. Specialists must report query counts to root; stop expansion if caps reached, retain unresolved access. Target up to24 fulltext sources total.",
+  "selection_priority_when_cap_reached": [
+    "Distinct outcomes and rater/timing combinations not yet represented",
+    "Primary comparative or longitudinal evaluations including null/negative outcomes",
+    "Nonhealthcare settings to counter accessible biomedical-source concentration",
+    "Measurement validity and identity/relational alternatives",
+    "Avoid duplicative reviews or repeated primary-study samples"
+  ]
+}

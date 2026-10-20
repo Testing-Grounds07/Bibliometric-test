@@ -1,0 +1,9 @@
+{
+  "schema_version": "bibliomap.public-appraisal-derivative.v1",
+  "artifact": "adaptive-leadership-followups/fulltext-comparison.json",
+  "source_artifact_sha256": "4afe91406dd307f1c08cd7397cc0339d205af964a00c02f9d46558ab16bf9476",
+  "change": "Public derivative: acquired-paper evidence text omitted. Appraisals, source-file hashes, read scopes and line locators retained. The original research artifact is unchanged and retained locally. This derivative is not byte-identical to the accepted original.",
+  "omitted_spans": 23,
+  "omitted_characters": 90094,
+  "scientific_claims_changed": false
+}

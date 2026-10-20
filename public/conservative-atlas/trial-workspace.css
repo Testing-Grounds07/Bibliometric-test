@@ -1,0 +1,29 @@
+.trial-workspace .shell-method,
+.trial-workspace .shell-scope,
+.trial-workspace .analysis-switches,
+.trial-workspace #networkSettingsHeading,
+.trial-workspace #workspace-coupling,
+.trial-workspace #metricExplanation { display: none !important; }
+.trial-workspace .trial-method { min-width: 180px; max-width: 280px; flex: 1 1 220px; }
+.trial-workspace .trial-method select { width: 100%; }
+.trial-workspace .trial-representation { min-width: 155px; max-width: 200px; flex: 0 1 185px; }
+.trial-workspace .trial-representation select { width: 100%; }
+.trial-status-chip { display: flex; align-items: center; gap: 12px; padding: 0 12px 6px; font-size: 12px; color: var(--muted, #666); }
+.trial-status-chip p { margin: 0; flex: 1; }
+.trial-return { white-space: nowrap; color: inherit; }
+.trial-controls { padding: 0 0 12px; }
+.trial-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.trial-fields label { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.trial-fields input, .trial-fields select { width: 100%; min-width: 0; }
+.trial-fields label:has(#trialSeed) { grid-column: 1 / -1; }
+.trial-controls p { font-size: 13px; line-height: 1.5; color: var(--muted, #666); }
+.trial-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.trial-controls details { margin-top: 12px; }
+.trial-controls pre { max-height: 260px; overflow: auto; white-space: pre-wrap; font-size: 11px; }
+.trial-controls details button { margin: 4px; }
+.trial-workspace [hidden] { display: none !important; }
+.trial-workspace:not(.trial-ready) #clusterOverview,
+.trial-workspace:not(.trial-ready) .network-stage,
+.trial-workspace:not(.trial-ready) .map-intro,
+.trial-workspace:not(.trial-ready) #mapCaption { visibility: hidden; }
+@media (max-width: 600px) { .trial-fields { grid-template-columns: minmax(0, 1fr); } .trial-method { max-width: none; } .trial-status-chip { align-items: flex-start; } }

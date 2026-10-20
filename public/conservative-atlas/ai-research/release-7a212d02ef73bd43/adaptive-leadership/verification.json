@@ -1,0 +1,61 @@
+{
+  "complete_available_scope": true,
+  "rows_equal_declared_snapshot_total": true,
+  "continuation_chain_verified": true,
+  "no_duplicate_physical_rows": true,
+  "matched_rows": 953,
+  "unique_work_ids": 953,
+  "duplicate_work_ids": {},
+  "substring_only_edge_cases": [
+    {
+      "file_id": "f-9df9bdebc544919742514a39",
+      "id": "https://openalex.org/W7221585741",
+      "index": 5,
+      "matched_title_field": "title",
+      "projection_sha256": "d0f22e1126077cb4de6ec49c945c3d1ff82cc10807ef27dab57c43606df1298a",
+      "publication_year": 2026,
+      "row_group": 6,
+      "row_index": 22090,
+      "title": "Emotional Intelligence and Neuroadaptive Leadership in Hospitality Management",
+      "type": "book-chapter"
+    },
+    {
+      "file_id": "f-ad146b3a5c5a47565b0bf088",
+      "id": "https://openalex.org/W7221705654",
+      "index": 2,
+      "matched_title_field": "title",
+      "projection_sha256": "f88a01be7ad59361b48919085cd8580a16e6f28df6dfa787af3e0703b33caa91",
+      "publication_year": 2026,
+      "row_group": 3,
+      "row_index": 26901,
+      "title": "Neuroadaptive Leadership and Fintech-Enabled Stress Analytics",
+      "type": "book-chapter"
+    }
+  ],
+  "publication_types": {
+    "article": 638,
+    "book-chapter": 79,
+    "book": 15,
+    "peer-review": 7,
+    "libguides": 7,
+    "report": 4,
+    "dissertation": 56,
+    "dataset": 7,
+    "other": 21,
+    "conference-abstract": 22,
+    "preprint": 23,
+    "conference-paper": 43,
+    "book-review": 4,
+    "editorial": 2,
+    "erratum": 3,
+    "review": 10,
+    "reference-entry": 5,
+    "paratext": 1,
+    "supplementary-materials": 6
+  },
+  "year_range": [
+    1989,
+    2026
+  ],
+  "matches_csv_sha256": "206749df8d441df757fa87e01b1853948176538db43924f7ca615a33c9936c15"
+}

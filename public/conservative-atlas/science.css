@@ -1,0 +1,18 @@
+.science-panel { margin-top: .75rem; border-top: 1px solid var(--border, #ddd); padding-top: .65rem; }
+.science-panel > summary { font-weight: 600; }
+.science-panel details { margin: .35rem 0; }
+.science-panel p { font-size: .84rem; line-height: 1.45; margin: .4rem 0; }
+.science-panel label { display: inline-flex; flex-direction: column; gap: .25rem; margin: .4rem .6rem .4rem 0; max-width: 100%; }
+.science-panel input, .science-panel select { min-height: 2.25rem; max-width: 100%; padding: .35rem .6rem; }
+.science-panel button { font-size: .82rem; padding: .45rem .65rem; min-height: 2.3rem; }
+.science-panel pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 20rem; overflow: auto; font-size: .74rem; }
+.science-panel .reliability-controls { gap: .35rem; flex-wrap: wrap; }
+.history-mode #autoSettingsStatus { display: none !important; }
+@media (max-width: 700px) { .science-panel label { display: flex; width: 100%; } }
+.semantic-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.semantic-controls label{display:grid;gap:5px;font-size:.85rem}.semantic-controls input,.semantic-controls select{max-width:100%;min-width:0}#semanticControls>label{display:flex;align-items:flex-start;gap:9px;margin:12px 0;font-size:.85rem}#semanticControls>label input{width:auto;flex:none;margin-top:4px}#semanticControls p{font-size:.85rem;line-height:1.5}.semantic-report{border-top:1px solid var(--line,#ddd);margin-top:12px;padding-top:8px}
+.semantic-canvas .analysis-switches,.semantic-canvas #autoCPMInfo,.semantic-canvas #metricExplanation,.semantic-canvas .community-controls,.semantic-canvas #analysisNote,.semantic-canvas #cpmRecommendation,.semantic-canvas #orderStructure,.semantic-canvas #projectNetworkControls,.semantic-canvas .shell-field-group[aria-labelledby="networkSettingsHeading"],.semantic-canvas [data-citation-only="true"]{display:none!important}
+.workspace-shell .workspace-tabs{box-sizing:border-box;min-width:0;max-width:100%;width:100%;overflow-x:auto;flex-wrap:nowrap;overscroll-behavior-x:contain}
+.workspace-shell .workspace-tabs button{flex:0 0 auto;white-space:nowrap}
+.publication-timeline{display:flex;align-items:center;gap:6px;overflow-x:auto;max-width:100%;padding:6px 12px;border-bottom:1px solid var(--line,#ddd);box-sizing:border-box}.publication-timeline[hidden]{display:none}.publication-timeline button{flex:none;min-height:36px;padding:5px 9px;font-size:12px}.publication-timeline button[aria-pressed="true"]{border-color:var(--ink);background:var(--soft)}
+#temporalControls p{font-size:.85rem;line-height:1.5}#temporalControls>label{display:flex;align-items:flex-start;gap:8px;margin:10px 0;font-size:.85rem}#temporalControls>label input{width:auto;flex:none}#temporalControls details{margin:8px 0}#temporalControls details p{overflow-wrap:anywhere}
+.temporal-canvas .analysis-switches,.temporal-canvas #autoCPMInfo,.temporal-canvas #metricExplanation,.temporal-canvas .community-controls,.temporal-canvas #cpmRecommendation,.temporal-canvas #projectNetworkControls,.temporal-canvas .shell-field-group[aria-labelledby="networkSettingsHeading"],.temporal-canvas [data-citation-only="true"]{display:none!important}

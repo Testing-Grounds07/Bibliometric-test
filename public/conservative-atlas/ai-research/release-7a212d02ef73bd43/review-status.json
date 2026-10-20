@@ -1,0 +1,18 @@
+{
+  "status": "Separate methods and statistical reviews accepted within their declared scope",
+  "scope": "Original final reports and reviewer status rebinds retained. Theme interpretation remains provisional; human expert assessment is not_assessed. Import is a format conversion, not new scientific execution.",
+  "reports": [
+    {
+      "study_id": "adaptive-themes",
+      "sha256": "c06041a36ddf0a5d9fa7cc5917c4d14af91a7016edeb4b62d039da6e8bb10898"
+    },
+    {
+      "study_id": "adaptive-followups",
+      "sha256": "4374f9aef81c2fb1b1ad1a067808fbbc5dcffd79a4fb77e76bce4b8050a25662"
+    },
+    {
+      "study_id": "leadership-evaluation",
+      "sha256": "fb2384e01d789fb863fb205950ef58a36236f1145c7738d83adee7df95ec0b53"
+    }
+  ]
+}

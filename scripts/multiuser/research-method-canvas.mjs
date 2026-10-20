@@ -1,0 +1,27 @@
+import {checkMethodResult} from './research-method-contracts.mjs';
+import {error} from './core.mjs';
+
+/** Display-only exact-ID overlay; original parent and all engine artifacts stay unchanged. */
+export function methodCanvasPacket(payload,parentPacket,{resultId,projectId,computedAt,analysisKey},view={}){
+ const {value,entries}=checkMethodResult(payload.exchange,payload.input_binding),settings=payload.input_binding.request.settings,packet=structuredClone(parentPacket),parent=packet.graph;
+ const run=view.run??0,layer=view.layer??0;if(!Number.isSafeInteger(run)||run<0||!Number.isSafeInteger(layer)||layer<0)throw error('Choose an existing exact requested run/slice.',422);
+ let membership=null,layerGraph=null,label='Derived '+settings.operation+' on the exact frozen parent; no new communities fitted';
+ if(['multiplex','temporal'].includes(settings.group)){
+  const selected=value.joint_fit?.runs?.[run];if(!selected)throw error('Requested exact joint run is absent.',404);
+  membership=settings.group==='temporal'?selected.slice_memberships?.[layer]:selected.membership;if(!membership)throw error('Requested exact slice membership is absent.',404);
+  const compute=payload.exchange.jobs.find(job=>job.stage==='diagnostics');
+  const raw=entries.get('jobs/'+compute.id+'/layer-'+(settings.group==='temporal'?layer:0)+'.json');if(!raw)throw error('Original displayed layer graph missing.',409);layerGraph=JSON.parse(raw);
+  if(layerGraph.spec.method==='bibliographic_coupling'&&layerGraph.spec.normalization!=='cosine')throw error('This network canvas supports cosine coupling; other exact layer weights remain in results/artifacts.',422);
+  label=settings.group==='temporal'?'Joint temporal CPM · slice '+layer+' · seed '+selected.seed+' · retrospective publication cohorts':'Joint citation/text CPM · seed '+selected.seed+' · membership overlaid on citation edges only';
+ }
+ const oldNodes=new Map(parent.nodes.map(node=>[node.id,node])),nodes=layerGraph?layerGraph.nodes.map((node,index)=>({...oldNodes.get(node.id),id:node.id,key:node.id,label:oldNodes.get(node.id)?.label||node.id,title:oldNodes.get(node.id)?.title||node.id,citations:node.denominator??oldNodes.get(node.id)?.citations??0,x:oldNodes.get(node.id)?.x??Math.cos(index*2.3999632297)*32*Math.sqrt(index+1),y:oldNodes.get(node.id)?.y??Math.sin(index*2.3999632297)*32*Math.sqrt(index+1)})):parent.nodes;
+ const links=layerGraph?layerGraph.edges.map(edge=>({source:edge.source,target:edge.target,strength:edge.weight,count:edge.raw_support??edge.support,references:layerGraph.spec.method==='bibliographic_coupling'?edge.evidence||[]:[],articles:layerGraph.spec.method==='co_citation'?edge.evidence||[]:[],engineEvidence:edge.evidence||[]})):parent.links;
+ const degrees=new Map(nodes.map(node=>[node.id,0])),strengths=new Map(nodes.map(node=>[node.id,0]));for(const edge of links){const source=typeof edge.source==='object'?edge.source.id:edge.source,target=typeof edge.target==='object'?edge.target.id:edge.target;degrees.set(source,degrees.get(source)+1);degrees.set(target,degrees.get(target)+1);strengths.set(source,strengths.get(source)+edge.strength);strengths.set(target,strengths.get(target)+edge.strength);}
+ const colors=membership?new Map([...new Set(Object.values(membership))].sort((a,b)=>String(a).localeCompare(String(b))).map((group,index)=>[group,index+1])):null;
+ for(const node of nodes){node.degree=degrees.get(node.id);node.strength=strengths.get(node.id);if(value.metrics?.[node.id])node.methodMetrics=value.metrics[node.id];if(membership){if(!Object.hasOwn(membership,node.id))throw error('Joint view would omit a graph node membership.',409);node.cluster=colors.get(membership[node.id]);node.engineCommunity=membership[node.id];}}
+ if(membership&&Object.keys(membership).length!==nodes.length)throw error('Joint membership/node universe differs from displayed layer.',409);
+ const coupling=layerGraph?layerGraph.spec.method==='bibliographic_coupling':parent.canvasKind==='coupling';
+ packet.graph={...parent,nodes,links,...(layerGraph?{method:coupling?'coupling':'cocitation',canvasKind:coupling?'coupling':undefined,normalization:layerGraph.spec.normalization,construction:{counting:layerGraph.spec.counting,normalization:layerGraph.spec.normalization},engineDefinition:layerGraph.spec}:{}),_projectId:projectId,_resultId:resultId,_analysisKey:analysisKey,_backend:'independent-bnr-methods',_attachments:[],methodDisplay:{run,layer},derivedMethod:{operation:settings.operation,parentResultId:payload.parentResultId,exactArchiveSha256:payload.exchange.exact_method_archive.sha256,display_scope:label,expert_review:'not_assessed'},clustering:membership?{algorithm:'leiden',objective:'joint_CPM',label,membershipDisplayRule:'Exact requested run/slice labels mapped to positive display colors only; no invented groups'}:parent.clustering,scopeLabel:label,stats:{...parent.stats,nodes:nodes.length,edges:links.length,isolated_nodes:nodes.filter(node=>node.degree===0).length,...(membership?{clusters:colors.size}:{})}};
+ packet.id=resultId;packet.projectId=projectId;packet.backend='independent-bnr-methods';packet.computedAt=computedAt;packet.operation='research-method';packet.methodResult={settings,summary:payload.exchange.summary,display:packet.graph.methodDisplay,assurance:'Executed derived graph methods; original source coverage and interpretation qualifications still apply'};packet.generation={maximumOrder:2,higherOrdersReady:false,themesReady:false};
+ return packet;
+}

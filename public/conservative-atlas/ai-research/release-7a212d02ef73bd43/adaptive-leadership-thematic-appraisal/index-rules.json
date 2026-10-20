@@ -1,0 +1,16 @@
+{
+  "title_rules": {
+    "Education & academic institutions": "\\b(school\\w*|educat\\w*|curricul\\w*|teacher\\w*|student\\w*|universit\\w*|academ\\w*|college\\w*|principals?|madrasah|pedagog\\w*|librar\\w*)\\b",
+    "Health, care & clinical relationships": "\\b(health\\w*|medicin\\w*|medical|clinical|care|caregivers?|nurs\\w*|patients?|hospitals?|HIV|illness|disease|therapy|chronic|physician\\w*|anaesthesia|palliative|infertility|malignancy|autism|ICU)\\b",
+    "Organizations, work & business change": "\\b(organi[sz]ation\\w*|business\\w*|compan\\w*|corporate|employees?|workplace\\w*|workforce|firms?|banks?|banking|insurance|SMEs?|MSMEs?|entrepreneur\\w*|manufactur\\w*|industr\\w*|management|managers?|teams?|performance|innovation\\w*|project\\w*|supply chain|logistics|tourism|hospitality)\\b",
+    "Public, community & environmental governance": "\\b(public|government\\w*|governance|polic\\w*|communit\\w*|civic|citizen\\w*|municipal\\w*|immigra\\w*|refugee\\w*|conservation|environmental|sustainability|sustainable|climate|species|water|nonprofit|non-profit|social justice|church\\w*|religio\\w*|theolog\\w*|missionar\\w*)\\b",
+    "Concepts, frameworks & leadership development": "\\b(theor\\w*|framework\\w*|conceptual\\w*|model\\w*|scale\\w*|psychometr\\w*|competenc\\w*|leadership development|leadership learning|leadership training|teaching adaptive leadership|developing adaptive leadership|measur\\w*|validat\\w*)\\b"
+  },
+  "crosscut_rules": {
+    "Crisis & resilience": "\\b(cris\\w*|pandemic|COVID\\w*|resilien\\w*|disaster\\w*|disrupt\\w*|uncertain\\w*|turbulen\\w*)\\b",
+    "Digital & technological change": "\\b(digital\\w*|technolog\\w*|artificial intelligence|AI|hybrid work|virtual|online|cyber\\w*)\\b",
+    "Equity, inclusion & participation": "\\b(equit\\w*|inclus\\w*|justice|anti-racist|rac\\w*|disabil\\w*|stakeholder\\w*|engagement|participat\\w*|empower\\w*)\\b",
+    "Military & sport settings": "\\b(military|army|navy|cadets?|NATO|sports?|athletes?|badminton|football|basketball|coaches|coaching)\\b"
+  },
+  "scope": "Case-insensitive regular expressions applied to titles only. Multi-label navigation flags, not validated classification; English lexical coverage is incomplete. No abstract used by this index. Exact pattern and matched strings retained."
+}

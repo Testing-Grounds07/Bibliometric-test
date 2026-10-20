@@ -2,6 +2,8 @@
 
 OpenAlex-powered bibliometric analysis prototype.
 
+The Conservative Atlas includes an **AI studies** library with the retained standalone research reports, downloads and imported network views. See the [standalone research library](docs/STANDALONE-RESEARCH-LIBRARY.md) for study scope, review limits and database deployment requirements.
+
 The guided search supports multiple work types and OpenAlex primary research
 fields. In corpus refinement, the text filter can target titles, abstracts,
 authors, sources, or topics. Bulk include and exclude actions preview every
@@ -59,6 +61,11 @@ display controls; the saved network itself remains unchanged.
 
 ## Run locally
 
+For graph database storage, see [Neo4j setup, graph model, and migration](NEO4J.md).
+Neo4j mode retains OpenAlex and all existing bibliometric methods while storing
+works, citations, and analysis-specific weighted networks as native graph data.
+The instructions below describe the original SQL storage mode.
+
 Requires Node.js 20 or later. Run `npm ci`, then `npm start`, and open
 `http://localhost:3000`. Local projects, searches, corpora, and analyses are
 saved in `.local-db/`. The app still queries OpenAlex for search results and
@@ -66,3 +73,13 @@ work metadata, so searches require an internet connection.
 
 For a hosted deployment, set `NODE_ENV=production` and provide `DATABASE_URL`
 for PostgreSQL. Local data is never used when `DATABASE_URL` is set.
+
+## Hypergraph clustering and 3D lab
+
+Hypergraph networks under Leiden and Infomap now preserve whole article groups in an incidence representation. Pairwise and higher-order scoring are unchanged. The optional bipartite Leiden service and separate all-clusters exploded WebGL experiment are documented in [scripts/HYPERGRAPH-WORKFLOW.md](scripts/HYPERGRAPH-WORKFLOW.md).
+
+## Citation history
+
+For invited users, project permissions, immutable evidence, reusable results and durable jobs, see [MULTIUSER.md](MULTIUSER.md). The secure entrypoint is `npm run start:multiuser`; the legacy server and existing tunnel are not automatically migrated or secured.
+
+The Citation history tab adds chronological direct citations, recursive citation cores, top-article ranking, cycle-safe transitive reduction, filtering and project snapshots. See [scripts/HISTORIOGRAPHY.md](scripts/HISTORIOGRAPHY.md) for implementation details. Existing co-citation and coupling defaults are unchanged.

@@ -1,0 +1,183 @@
+{
+  "denominator": 48,
+  "eligible": 40,
+  "interpretation": "Purposive stratified sample only. Overlapping categories and settings; cells count coded records, not independent studies or estimated prevalence. Title-only and two source-alignment quarantines excluded.",
+  "cells": [
+    {
+      "problem": "care, coping and shared decisions",
+      "setting": "health and care",
+      "n": 4,
+      "ids": [
+        "W2035385404",
+        "W2098834023",
+        "W2969900376",
+        "W4286490591"
+      ]
+    },
+    {
+      "problem": "change, crisis and organizational adaptation",
+      "setting": "business and cross-sector organizations",
+      "n": 5,
+      "ids": [
+        "W4411946747",
+        "W7163892190",
+        "W2581628223",
+        "W4415115871",
+        "W3216448742"
+      ]
+    },
+    {
+      "problem": "change, crisis and organizational adaptation",
+      "setting": "education",
+      "n": 1,
+      "ids": [
+        "W4409131769"
+      ]
+    },
+    {
+      "problem": "change, crisis and organizational adaptation",
+      "setting": "military",
+      "n": 2,
+      "ids": [
+        "W281104848",
+        "W4412049864"
+      ]
+    },
+    {
+      "problem": "change, crisis and organizational adaptation",
+      "setting": "public, community and environment",
+      "n": 4,
+      "ids": [
+        "W7159747642",
+        "W7124834133",
+        "W2091915351",
+        "W4401384920"
+      ]
+    },
+    {
+      "problem": "coordination, trust and performance",
+      "setting": "business and cross-sector organizations",
+      "n": 3,
+      "ids": [
+        "W4399090440",
+        "W7202151732",
+        "W2574250760"
+      ]
+    },
+    {
+      "problem": "coordination, trust and performance",
+      "setting": "education",
+      "n": 1,
+      "ids": [
+        "W4408116340"
+      ]
+    },
+    {
+      "problem": "coordination, trust and performance",
+      "setting": "health and care",
+      "n": 1,
+      "ids": [
+        "W7118079047"
+      ]
+    },
+    {
+      "problem": "coordination, trust and performance",
+      "setting": "military",
+      "n": 2,
+      "ids": [
+        "W38888952",
+        "W7168101330"
+      ]
+    },
+    {
+      "problem": "coordination, trust and performance",
+      "setting": "sport",
+      "n": 2,
+      "ids": [
+        "W4403692174",
+        "W4409871006"
+      ]
+    },
+    {
+      "problem": "equity, ethics and collective voice",
+      "setting": "business and cross-sector organizations",
+      "n": 1,
+      "ids": [
+        "W4407397668"
+      ]
+    },
+    {
+      "problem": "equity, ethics and collective voice",
+      "setting": "education",
+      "n": 4,
+      "ids": [
+        "W2345666390",
+        "W4399220576",
+        "W4412826538",
+        "W3088410226"
+      ]
+    },
+    {
+      "problem": "equity, ethics and collective voice",
+      "setting": "public, community and environment",
+      "n": 3,
+      "ids": [
+        "W7201866489",
+        "W2345666390",
+        "W4401384920"
+      ]
+    },
+    {
+      "problem": "learning and capacity",
+      "setting": "business and cross-sector organizations",
+      "n": 2,
+      "ids": [
+        "W1997600482",
+        "W2581628223"
+      ]
+    },
+    {
+      "problem": "learning and capacity",
+      "setting": "education",
+      "n": 3,
+      "ids": [
+        "W3104684386",
+        "W7215183696",
+        "W7213869759"
+      ]
+    },
+    {
+      "problem": "learning and capacity",
+      "setting": "health and care",
+      "n": 1,
+      "ids": [
+        "W2277811917"
+      ]
+    },
+    {
+      "problem": "learning and capacity",
+      "setting": "military",
+      "n": 2,
+      "ids": [
+        "W306408617",
+        "W7168101330"
+      ]
+    },
+    {
+      "problem": "learning and capacity",
+      "setting": "public, community and environment",
+      "n": 1,
+      "ids": [
+        "W2776086302"
+      ]
+    },
+    {
+      "problem": "measurement",
+      "setting": "education",
+      "n": 1,
+      "ids": [
+        "W6948813855"
+      ]
+    }
+  ]
+}

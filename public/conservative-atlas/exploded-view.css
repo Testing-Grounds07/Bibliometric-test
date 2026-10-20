@@ -1,0 +1,37 @@
+.exploded-dialog{width:min(1180px,96vw);max-width:none;height:min(850px,94dvh);max-height:94dvh;padding:20px;background:#0d202d;color:#e2f2ee;border:1px solid #3b5c69;overflow:auto}
+.exploded-dialog::backdrop{background:#06121bba;backdrop-filter:blur(3px)}
+#network{transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-origin:center}
+.exploded-open #network{transform:perspective(1100px) rotateX(45deg) scale(.85)}
+.exploded-dialog{animation:exploded-open .5s ease both}
+@keyframes exploded-open{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.exploded-dialog header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.exploded-dialog h2{font-size:25px;margin:0 0 6px}
+.exploded-dialog p{color:#b0c7cd;font-size:12px;line-height:1.5}
+.exploded-dialog button,.exploded-dialog select{background:#193846;color:#ddf1ec;border:1px solid #426472;border-radius:6px;padding:8px 12px;font-size:12px;cursor:pointer}
+.exploded-dialog button:hover{background:#28515a}
+.exploded-return{white-space:nowrap}
+.exploded-controls{display:flex;align-items:center;gap:12px;margin:16px 0;font-size:12px;flex-wrap:wrap}
+.exploded-controls label{display:flex;align-items:center;gap:8px}
+.exploded-controls select{width:auto}
+.exploded-body{display:grid;grid-template-columns:minmax(0,1fr) 310px;min-height:0;gap:20px}
+.exploded-stage{min-width:0;overflow:hidden;background:radial-gradient(ellipse at center,#153644,#0d202d 70%);border:1px solid #294451;border-radius:10px}
+.exploded-stage svg{width:100%;height:100%;min-height:400px;display:block;max-height:570px}
+.exploded-details{max-height:570px;overflow:auto;border-left:1px solid #294451;padding:10px 0 10px 16px;font-size:12px;line-height:1.6}
+.exploded-details h3{font-size:18px;margin:0 0 8px}
+.exploded-details ol{padding-left:20px}
+.exploded-details li{margin:10px 0}
+.exploded-details strong{color:#85e4cf}
+.exploded-details a{color:#85e4cf}
+.exploded-dialog .exploded-footer{font-size:11px;margin-top:14px}
+.exploded-layer{transform:translateY(var(--rise));animation:explode-rise .85s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--delay);opacity:.34;transition:opacity .2s;cursor:pointer}
+.exploded-layer.is-active,.exploded-layer:focus-visible{opacity:1}
+.exploded-layer:focus-visible{outline:2px solid #84e5d0}
+.exploded-plane{transform:matrix(1,0,.45,.65,100,405);animation:explode-tilt .7s ease both;transform-origin:0 0}
+.exploded-baseline{animation:explode-base .7s ease both}
+.exploded-dialog.is-closing .exploded-layer{animation:explode-collapse .35s ease both}
+@keyframes explode-rise{from{transform:translateY(0)}to{transform:translateY(var(--rise))}}
+@keyframes explode-tilt{from{transform:matrix(1,0,0,1,100,330)}to{transform:matrix(1,0,.45,.65,100,405)}}
+@keyframes explode-base{from{opacity:0;transform:translateY(-60px)}to{opacity:1;transform:translateY(0)}}
+@keyframes explode-collapse{from{transform:translateY(var(--rise));opacity:.7}to{transform:translateY(0);opacity:0}}
+@media(prefers-reduced-motion:reduce){.exploded-dialog,.exploded-layer,.exploded-plane,.exploded-baseline,#network{animation:none!important;transition:none}.exploded-open #network{transform:none}}
+@media(max-width:750px){.exploded-body{grid-template-columns:1fr}.exploded-details{max-height:320px;border-left:0;border-top:1px solid #294451}.exploded-stage svg{min-height:320px}.exploded-dialog header{flex-wrap:wrap}.exploded-controls{gap:7px}}

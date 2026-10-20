@@ -1,0 +1,92 @@
+{
+  "status": "Lead synthesis for final candidate review; not a validated universal checklist",
+  "purpose": "Practical questions, not a validated universal assessment instrument or a fixed causal hierarchy",
+  "criteria": [
+    {
+      "question": "Was the programme usable, relevant and feasible?",
+      "construct": "Participant experience and implementation",
+      "measure_examples": "Relevance/acceptability ratings, attendance, completion, task submission, burden, interviews",
+      "raters": "Participants and programme records",
+      "timing": "During delivery and at completion",
+      "can_establish": "How participants experienced delivery and whether the planned programme was delivered or completed",
+      "cannot_establish_alone": "Learning, changed behaviour, improved follower outcomes",
+      "source_ids": [
+        "P1_iLead2020",
+        "P2_nurse2024"
+      ]
+    },
+    {
+      "question": "What did participants learn or become able to do?",
+      "construct": "Knowledge, judgment and skills",
+      "measure_examples": "Knowledge tests, scored cases, observed simulations; keep confidence/self-rated knowledge separate",
+      "raters": "Tests or trained assessors, with participant self-reports identified as such",
+      "timing": "Before training, after training, and retention assessment where relevant",
+      "can_establish": "Change on the particular task or measure",
+      "cannot_establish_alone": "Transfer to an actual workplace or durable impact",
+      "source_ids": [
+        "R4_Lacerenza2017",
+        "P1_iLead2020"
+      ]
+    },
+    {
+      "question": "Did leadership behaviour change at work?",
+      "construct": "Transfer and enacted leadership",
+      "measure_examples": "Behaviourally specific employee/peer/supervisor ratings, structured observations, work samples or logs",
+      "raters": "People exposed to the behaviour and independent observers where feasible",
+      "timing": "A genuine pretraining baseline and follow-up after opportunities to apply the skills",
+      "can_establish": "Observed or perceived behaviour at stated times and contexts",
+      "cannot_establish_alone": "Training caused the change; a generic 360-degree rating is not automatically a validated or unbiased measure",
+      "source_ids": [
+        "P1_iLead2020",
+        "P4_IES2019",
+        "M04"
+      ]
+    },
+    {
+      "question": "Did followers or teams benefit?",
+      "construct": "Relationships, shared identity, team functioning and well-being",
+      "measure_examples": "Follower-reported support, team psychological safety, identification, coordination, stress or engagement",
+      "raters": "Team members where the claim concerns team experience; leader-only ratings remain leader perceptions",
+      "timing": "Baseline and repeated follow-up with stable or documented team membership",
+      "can_establish": "The measured experiences or functioning of the sampled followers/teams",
+      "cannot_establish_alone": "Objective performance, universal benefit or causation",
+      "source_ids": [
+        "P5_Kawakami2006",
+        "M01"
+      ]
+    },
+    {
+      "question": "Did the programme improve outcomes that matter in this setting?",
+      "construct": "Service, educational, organizational or clinical outcomes",
+      "measure_examples": "Student achievement, retention, service quality, errors, patient-care processes, costs",
+      "raters": "Administrative records, independent observation or explicitly identified subjective reports",
+      "timing": "Enough follow-up for the proposed mechanism, with relevant baseline or comparison data",
+      "can_establish": "Changes or differences in the particular outcome",
+      "cannot_establish_alone": "Attribution to training: objective data can still be confounded",
+      "source_ids": [
+        "P4_IES2019",
+        "R1_umbrella2025"
+      ]
+    },
+    {
+      "question": "Did change last, and were there costs or unintended consequences?",
+      "construct": "Retention, maintenance, burden and harms",
+      "measure_examples": "Repeated outcome measurements, staff turnover, workload, adverse experiences, implementation costs",
+      "raters": "Participants, followers and records, chosen for the specific consequence",
+      "timing": "Prespecified follow-up and ongoing adverse-event/burden collection",
+      "can_establish": "Durability and the observed tradeoffs within the follow-up window",
+      "cannot_establish_alone": "No harm when harms were not assessed, or return on investment without both costs and attributable benefits",
+      "source_ids": [
+        "P4_IES2019",
+        "P1_iLead2020",
+        "R1_umbrella2025"
+      ]
+    }
+  ],
+  "additional_construct_note": "Leader identity, motivation to lead, collective identity and relational leadership may be goals in their own right. Preserve the programme's theory and the instrument's meaning; stronger individual leader identity is not a universal criterion of success.",
+  "additional_construct_source_ids": [
+    "M05",
+    "M06",
+    "M01"
+  ]
+}

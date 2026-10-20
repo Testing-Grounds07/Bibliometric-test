@@ -1,0 +1,34 @@
+{
+  "metadata_queries": 6,
+  "raw_metadata_hits": 120,
+  "unique_provider_ids": 119,
+  "appraised_sources": 14,
+  "reviews": 4,
+  "primary_evaluations": 8,
+  "foundations": 2,
+  "access_limited_sources": [
+    "M07",
+    "M08",
+    "P3_Dvir2002"
+  ],
+  "outcome_rows": 23,
+  "outside_metadata_doi_match": [
+    "R1_umbrella2025",
+    "R2_frontline2018",
+    "P1_iLead2020",
+    "P2_nurse2024",
+    "P4_IES2019",
+    "P5_Kawakami2006",
+    "M02",
+    "M04",
+    "M05",
+    "M06",
+    "M07",
+    "M08",
+    "P3_Dvir2002"
+  ],
+  "outside_match_scope": "Conservative exact DOI comparison; no-DOI sources require root title/provider identity audit before final bound statement",
+  "selection": "Purposive bounded map; no population prevalence or complete screening claim",
+  "selected_accessed_source_candidates": 17,
+  "search_deviation": "Root discovery-accounting.json records19logged webqueries,17selected/accessed sources,13outside metadata among those17, plus13other logged unselected measurement candidates. Additional-source cap12 exceeded by at least1; total outside webcandidate count unknown. No further expansion."
+}

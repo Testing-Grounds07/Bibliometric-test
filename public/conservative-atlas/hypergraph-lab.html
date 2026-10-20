@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="/conservative-atlas/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafafa">
+  <title>BiblioMap · Hypergraph trials</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cluster-list.css?v=communities-1">
+  <link rel="stylesheet" href="exploded-view.css?v=1">
+  <link rel="stylesheet" href="evidence-explorer.css?v=method-auto-2">
+  <link rel="stylesheet" href="workspace-shell.css?v=refinement-3">
+  <link rel="stylesheet" href="research-library.css?v=standalone-results-1">
+  <link rel="stylesheet" href="science.css?v=collaboration-2">
+  <link rel="stylesheet" href="workspace-theme.css?v=validation-1"><link rel="stylesheet" href="historiography.css?v=1">
+<link rel="stylesheet" href="trial-workspace.css?v=canvas-3"></head>
+<body class="workspace-shell trial-workspace" data-workspace-state="loading">
+  <div id="workspaceStartup" class="workspace-startup" role="status" aria-live="polite">
+    <div class="workspace-startup-card">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><h1>BiblioMap</h1></div>
+      <p id="workspaceStartupMessage">Preparing your research map…</p>
+      <span class="workspace-startup-progress" aria-hidden="true"></span>
+      <button id="workspaceStartupRetry" type="button" hidden>Reload map</button>
+      <noscript>Enable JavaScript to open the interactive map.</noscript>
+    </div>
+  </div>
+  <script>window.ATLAS_TRIAL_WORKSPACE=true;</script><script src="workspace-startup.js?v=1"></script>
+  <a class="skip-link" href="#network">Skip to the network</a>
+  <header class="masthead">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><div><p class="eyebrow">A research landscape, connected</p><h1>BiblioMap</h1></div></div>
+    <div class="header-actions"><span class="pilot-badge"><span></span>Exploratory pilot</span><button id="helpButton" class="quiet-button" type="button" aria-haspopup="dialog">About this map <span aria-hidden="true">↗</span></button></div>
+  </header>
+  <nav class="method-bar" aria-label="Co-citation exploration"><strong>One co-citation network · all orders</strong><select id="analysisMethod" aria-label="Network analysis" hidden></select><a href="report.html" target="_blank" rel="noopener">Parameters & audit ↗</a><span>2,855 Conservative source articles</span></nav>
+  <main class="workspace">
+    <aside class="control-rail" aria-label="Network controls">
+      <div class="rail-heading"><p class="eyebrow">Explore the evidence</p><h2>Find a connection.</h2><p id="methodQuestion"></p></div>
+      <section class="control-section search-section" aria-labelledby="searchHeading">
+        <label id="searchHeading" for="query">Find a cited work</label>
+        <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="query" type="search" placeholder="Author, title, or year…" autocomplete="off" aria-controls="workList"></div>
+        <p id="resultCount" class="field-note" aria-live="polite">Loading cited works…</p>
+        <ul id="workList" class="work-list" aria-label="Matching cited works"></ul>
+      </section>
+      <section class="control-section" aria-labelledby="scopeHeading">
+        <h3 id="scopeHeading">Scope</h3>
+        <label for="threshold">Analysis scope</label><select id="threshold"></select><label for="edgeDisplay">Lines shown</label><select id="edgeDisplay"><option value="all">All eligible lines</option><option value="strongest">Strongest 3 per node (union)</option></select><p class="field-note">Display filters never change the calculated groups.</p>
+        <label id="groupLabel" for="cluster">Cluster</label><select id="cluster"><option value="all">All clusters</option></select>
+        <div class="range-label"><label id="edgeLabel" for="minEdge">Minimum co-citations</label><output id="edgeValue" for="minEdge">1</output></div><input id="minEdge" type="range" min="1" max="10" value="1" step="1"><p class="field-note"><span id="edgeHelp"></span></p>
+      </section>
+      <section class="control-section" aria-labelledby="displayHeading">
+        <h3 id="displayHeading">Display</h3>
+        <label for="canvasLabelMode">Canvas labels<select id="canvasLabelMode" aria-label="Canvas labels"><option value="articles">Articles / Authors</option><option value="keywords">Cluster Keywords</option><option value="ai">Qwen Cluster Headings</option></select></label>
+        <p class="field-note">Cluster modes show one label per group. Hover for its Qwen description; tap for details. Selected nodes keep article labels.</p>
+        <label id="couplingLabelControl" for="couplingLabelMode" hidden>Article label preference<select id="couplingLabelMode"><option value="foundations">Shared foundations (source labels on selection)</option><option value="sources">Source articles</option></select></label>
+        <label for="colorMode">Color nodes by</label><select id="colorMode"><option value="cluster">Provisional cluster</option><option value="year">Publication year</option></select>
+        <label for="labelSize">Label size <output id="labelSizeValue">12 px</output></label><input id="labelSize" type="range" min="10" max="24" value="12" step="1"><label for="nodeScale">Node size</label><input id="nodeScale" type="range" min="6" max="18" value="10" step="1">
+        <label class="checkbox-label" for="labels"><input id="labels" type="checkbox" checked>Show readable labels</label>
+        <label class="checkbox-label" for="clusterHover"><input id="clusterHover" type="checkbox">Also highlight cluster on hover</label>
+        <p id="interactionHint" class="field-note">Long-press a line to open its exploded combinations. Right-click or long-press a node or cluster button for Cluster actions. Drag with one finger to pan and pinch with two fingers to zoom. Tap a node or line for details. Unlinked works are not a cluster.</p>
+        <p id="labelHint" class="field-note">In multicluster views, labels prioritize the largest work in each cluster, then tied largest works. Size means citations within this corpus. Selection, hover, and search take priority; labels appear where they fit without overlap. Zoom to reveal more. Unlinked works are not a cluster.</p>
+      </section>
+      <button id="reset" class="reset-button" type="button">Reset exploration <span aria-hidden="true">↺</span></button>
+    </aside>
+    <section class="map-column" aria-label="Research map and evidence">
+      <div class="map-toolbar"><div class="view-switch" role="group" aria-label="Choose a view"><button id="viewNetwork" type="button" class="active" aria-pressed="true">Network</button><button id="viewTable" type="button" aria-pressed="false">Evidence list</button></div><div class="export-actions"><button id="themeToggle" type="button" aria-pressed="false">Night mode</button><button id="motionToggle" type="button" aria-pressed="true">Pause motion</button><button id="expandMap" type="button" aria-pressed="false">Expand map</button><button id="reliabilityButton" type="button">Roles &amp; reliability</button><button id="exportSvg" type="button" title="Download the network as SVG">Export SVG <span aria-hidden="true">↓</span></button><button id="exportData" type="button" title="Download network data">Export data <span aria-hidden="true">↓</span></button></div></div>
+      <div class="map-intro"><div><p class="eyebrow" id="methodEyebrow">Bibliometric analysis</p><h2 id="methodTitle">Co-citation</h2></div><p id="stats" aria-live="polite">Preparing the network…</p></div>
+      <p id="analysisNote" class="analysis-note"></p>
+      <section class="community-controls" aria-label="Shared clustering controls">
+          <p>Changing method reclusters the full analytical network, not just visible nodes. Hypergraph can take several minutes; switching tabs cancels unfinished coupling analysis. Canvas filters only change the display.</p>
+          <label for="clusteringMethod">Algorithm<select id="clusteringMethod"><option value="leiden">Leiden · CPM / Auto</option><option value="infomap">Infomap · flow communities</option><option value="sbm">Nested block model · hierarchy</option><optgroup label="Experimental objective"><option value="hypergraph">Direct hypergraph modularity</option></optgroup></select></label>
+          <label for="networkModel">Network model<select id="networkModel" aria-describedby="networkModelHelp"><option value="pairwise">Pairwise</option><option value="higher-order" selected>Higher-order</option><option value="hypergraph">Hypergraph</option></select></label>
+          <p id="networkModelHelp">Network model defines the evidence representation. Score judges a grouping; Search explores candidate groupings. New hypergraph CPM and map-equation paths use weighted article–group incidence, not clique projection. Direct hypergraph modularity scores whole combinations. Historical unversioned maps retain their legacy projection interpretation.</p>
+          <details id="communityReport" hidden><summary>Community method & comparison with Leiden</summary><div id="communityAudit" aria-live="polite"></div><p><a href="community-methods.html" target="_blank" rel="noopener">Method details, source & licenses ↗</a></p></details>
+      </section>
+      <section class="analysis-switches" aria-label="Co-citation analysis settings">
+        <fieldset id="drillScopeControls" hidden><legend>Subcluster reference neighborhood</legend><label for="drillMode">Mode<select id="drillMode"><option value="strict">Strict · original members only</option><option value="expanded">Expanded · add lower-cited neighbors</option></select></label><label for="drillReferenceMinimum">Added-reference minimum citations <output id="drillReferenceValue">5</output><input id="drillReferenceMinimum" type="range" min="5" max="9" step="1" value="5"></label><label for="drillSupport">Analysis joint support<select id="drillSupport"><option value="5">5 articles · conservative</option><option value="3">3 articles · exploratory</option></select></label><p id="drillScopeStatus" aria-live="polite"></p></fieldset>
+        <div><label for="cpmSlider">Leiden CPM resolution <output id="cpmValue" for="cpmSlider"></output></label><input id="cpmSlider" type="range" min="0" max="6" step="1" value="0" aria-describedby="cpmHint"><button id="cpmAuto" type="button" aria-pressed="true">Auto CPM</button><small id="cpmHint">Density-adaptive tested settings · move to override Auto.</small><select id="modelResolution" hidden aria-hidden="true"><option value="auto" selected>Auto</option><option value="0.005">0.005</option><option value="0.01">0.01</option><option value="0.02">0.02</option><option value="0.04">0.04</option><option value="0.07">0.07</option><option value="0.1">0.1</option><option value="0.16">0.16</option></select></div>
+        <label for="orderMode">Order scope<select id="orderMode"><option value="combined">Combined orders</option><option value="single">Single order</option></select></label>
+        <label id="orderControl" for="orderSlider">Selected order <output id="orderSliderValue">2 · pairwise</output><input id="orderSlider" type="range" min="2" max="10" value="2" step="1"></label>
+        <label for="maximumOrder">Maximum combined order <output id="maximumOrderValue">10</output><input id="maximumOrder" type="range" min="2" max="10" value="10" step="1"></label>
+        <select id="coCitationOrder" hidden aria-hidden="true" tabindex="-1"></select>
+        <p id="orderStructure" aria-live="polite"></p>
+        <details id="autoCPMInfo"><summary>How Auto CPM was selected</summary><div id="autoCPMReport"></div></details>
+      </section>
+      <details id="metricExplanation" class="metric-explanation"><summary>How the combined score works</summary><p>Every co-citing article contributes one point, plus a diminishing bonus for the largest repeatedly co-cited bundle it supports for this pair. A pair-only article contributes 1; a triple contributes 2; a ten-reference bundle contributes about 4.17. Overlapping bundles do not multiply an article’s contribution. This is an experimental score, not a significance test. Click a line for its score, original article count, and support at each order. Larger bundles are not automatically more topically specific.</p></details>
+      <section id="canvasFilters" class="canvas-filters" aria-label="Cluster filters and canvas display"><div id="canvasClusterSelect"></div><div id="canvasVisibility"></div><details><summary>Canvas display settings · node size, labels &amp; lines</summary><div id="canvasDisplay"></div></details><p class="field-note">Display only: choose a cluster above, or expand Show / hide clusters to select any combination. Memberships do not change.</p></section>
+      <div id="profilesView" hidden></div><div class="network-stage">
+        <svg id="network" tabindex="0" role="img" aria-label="Interactive co-citation network. Select a work to inspect its evidence."><g id="viewport"></g></svg>
+        <div id="tableView" class="table-view" hidden><table><caption class="sr-only">Cited works in the current network</caption><thead><tr><th id="nodeColumn" scope="col">Node</th><th id="sizeColumn" scope="col">Size</th><th id="groupColumn" scope="col">Group</th></tr></thead><tbody id="tableBody"></tbody></table></div>
+        <div class="map-hint"><span aria-hidden="true">↔</span> Drag to pan · Zoom to reveal labels</div>
+        <div class="zoom-controls" role="group" aria-label="Map zoom"><button id="zoomIn" type="button" aria-label="Zoom in">+</button><button id="zoomOut" type="button" aria-label="Zoom out">−</button><span></span><button id="fit" type="button" aria-label="Fit network to view" title="Fit network to view">Fit</button></div>
+      </div>
+      <div class="map-caption" id="mapCaption"></div>
+    </section>
+    <aside id="details" class="details-panel" aria-label="Selected work details" aria-live="polite"><div class="details-empty"><p class="eyebrow">Behind each connection</p><div class="empty-symbol" aria-hidden="true">◎</div><h2>Follow a work.</h2><p>Select a node or a search result to inspect its citations, connections, and source evidence.</p><div class="reading-note"><h3>Reading the map</h3><p>Nearby works share citation patterns. A connection means at least one source article cites both works.</p><p>These are computational groupings, awaiting substantive interpretation.</p></div></div></aside>
+  </main>
+  <footer class="status-bar"><span id="status" role="status">Loading the exploratory corpus…</span><span>2,855 Conservative source articles <span aria-hidden="true">·</span> Human validation pending</span></footer>
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <dialog id="help" aria-labelledby="helpTitle">
+    <div class="dialog-header"><p class="eyebrow">Method & interpretation</p><button id="closeHelp" type="button" aria-label="Close method help">×</button></div>
+    <h2 id="helpTitle">One co-citation network, multiple orders</h2>
+    <p>Choose combined orders, pairwise, or a higher-order bundle size. Every pair or bundle requires five distinct supporting articles. Reference scopes retain works cited at least 10, 20, or 30 times; the largest available order depends on scope.</p>
+    <p>The combined score sums 1 + log₂(K − 1) across distinct co-citing articles, where K is the largest qualifying bundle containing the pair. Each article contributes once: a pair-only article contributes 1; a triple contributes 2. Overlapping bundles do not multiply an article’s contribution. This experimental score is not a significance measure or a validated bibliometric standard.</p>
+    <p>Choose the network model separately from the algorithm. Pairwise and higher-order retain the existing citation scores. In Hypergraph mode, whole groups become article–group incidence networks. Leiden uses bipartite CPM (cross-class gamma; no within-class penalty). Infomap models weighted flow through both articles and groups, encoding both types of visit. This preserves group membership but is memoryless, not a multilayer memory model or direct hypergraph modularity. The separate experimental direct modularity optimizer remains available. Pair-line intensity still shows citation evidence; envelopes show whole groups. Hypergraph incidence has its own CPM scale and settings/reliability checks; the ordinary Auto CPM audit is not reused. Display filters do not recalculate communities; distances are not measured similarities.</p>
+    <p>High-confidence duplicate works are combined before analysis using DOI or conservative title-and-author matching. Combined records show all recorded years and retain original IDs and DOIs. Unresolved IDs remain separate. Each source counts once, even when its reference list contains multiple versions. Similar titles alone are insufficient to merge different works.</p>
+    <p>Closed bundles represent supported subsets within the selected reference universe. Source topical relevance still requires researcher review. Previously saved findings retain their historical analysis; rebuild from the search to apply the current cleanup.</p>
+    <a href="report.html">Parameters and audit</a>
+  </dialog>
+  <script src="network-appearance.js?v=1"></script>
+  <script src="data.js?v=dedup-1"></script><script src="settings-data.js?v=dedup-1"></script><script src="atlas-settings.js?v=overview-3"></script><script src="cluster-themes.js?v=3"></script><script src="touch-controls.js?v=1"></script><script src="exploded-view.js?v=layer-filter-1"></script><script src="trial-evidence-explorer.js?v=study-evidence-2"></script><script src="trial-app.js?v=study-evidence-2"></script>
+  <script src="network-keyboard.js?v=integration-1"></script>
+  <script src="trial-workspace-shell.js?v=coupling-errors-3"></script>
+  <script src="research-library.js?v=standalone-import-final-2"></script>
+  
+  <script src="research-workspace.js?v=integration-local-1"></script>
+  <script src="research-methods.js?v=integration-local-1"></script>
+  <script src="research-versions.js?v=integration-local-1"></script>
+  <script src="research-snapshots.js?v=integration-local-1"></script>
+  
+<script src="hypergraph-lab.js?v=coupling-errors-2"></script></body>
+</html>

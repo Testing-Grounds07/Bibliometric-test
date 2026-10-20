@@ -1,0 +1,101 @@
+{
+  "version": "v2_459_text_eligible_461_actual_encoding",
+  "files": [
+    {
+      "path": "protocol-v2.json",
+      "sha256": "7d3b561a659fe8ae5298a1b1350dece8724d0e97e94058248ad70ed47586c383"
+    },
+    {
+      "path": "text-quality-screen.json",
+      "sha256": "5e1e2e717efe04f34934ec098f6cf4378a63858abea2003bc76f940526066c90"
+    },
+    {
+      "path": "text-eligibility-summary.json",
+      "sha256": "5a0b78dbae7643227511cee0e7f3abc11a19e14da1ea78f05eb766910694fafd"
+    },
+    {
+      "path": "model-input.json",
+      "sha256": "1bf8a0e4e661b296ac3b5fdd1f9b10da7dedfa03d676328b5fb18dc5d4ea487a"
+    },
+    {
+      "path": "model-output.json",
+      "sha256": "99d4a75d6da64821fc363fafd46a9542160b8982c16de1d3423b5d5c78b4f85f"
+    },
+    {
+      "path": "encoding-receipt.json",
+      "sha256": "ec57724f0265af581c1dc4b76f5345e969c00b9f6b29004bd258bf099e8bae28"
+    },
+    {
+      "path": "model-assets.json",
+      "sha256": "e4f90aeb9e482bd4be4025d8e314ca4fb95c6634da335084936f6ced31c0332b"
+    },
+    {
+      "path": "embedding-vectors-and-cosines.npz",
+      "sha256": "769fb8aba04e0b0ea458a191af287dbb2e2cb354906ba2ff1e0415862a371e68"
+    },
+    {
+      "path": "text-map-results.json",
+      "sha256": "227702dcde426db182856f42e291145a1c9e204d0fcc98b84c4c593a2a5035fb"
+    },
+    {
+      "path": "text-memberships.json",
+      "sha256": "082ddad452d8a1e750d9849b87e77e74681b5ffcd30df7d3d6e6724f68039529"
+    },
+    {
+      "path": "text-map.py",
+      "sha256": "60b678be40c2741a46c0ed2f4cc0582ae500fb1dfe76ee2d82f78b85b0b1d76c"
+    },
+    {
+      "path": "reference-ablations.json",
+      "sha256": "9294499946a2f8d0deb510d48246d0d3f0e0ca24930a96c78c090905a236f711"
+    },
+    {
+      "path": "reference-ablation-memberships.json",
+      "sha256": "724279cf0dafcaf70cda733f3214a998ab6a8dbcff38bc0fe834a4cfb18ca2db"
+    },
+    {
+      "path": "reference-ablation.py",
+      "sha256": "d8ec8bbe51e82694d233038e6b0aacdbd6bce2ce2111ddbbf013bd07a3927c63"
+    },
+    {
+      "path": "text-map-v1\\embedding-vectors-and-cosines.npz",
+      "sha256": "c032a9dd9c6b6a3d1a7d63c5e83a1b2461bbad5e412ffcd3d4d229f8c0541780"
+    },
+    {
+      "path": "text-map-v1\\text-cluster-appraisal-packet.json",
+      "sha256": "64976b5d109b89dc285312dc85f2d050d78eb02087d67a93999d9897f2603ac1"
+    },
+    {
+      "path": "text-map-v1\\text-eligibility-summary.json",
+      "sha256": "0950570154a5e5bca040db296bdf26833e0d4254e74b5ab0c8b897f1d00e7c0a"
+    },
+    {
+      "path": "text-map-v1\\text-k10-edges.parquet",
+      "sha256": "dc8c237c8f3b34b1e6beacf82f3f8533cccf0ea86d00e174b34d8c9ccfb4e397"
+    },
+    {
+      "path": "text-map-v1\\text-k15-edges.parquet",
+      "sha256": "50d811751e5cd4dd46a264b030908e47ad992946b6ea40ed97425b1bdb0aebd8"
+    },
+    {
+      "path": "text-map-v1\\text-k5-edges.parquet",
+      "sha256": "9955507bc18dcec70281fb375046edb8ce1842d3d1e1692d5eb2cfe63b089578"
+    },
+    {
+      "path": "text-map-v1\\text-map-results.json",
+      "sha256": "2a2a3d9beb01db73312200ca5366abbb2dcf91d92a8328370e5fb5cc4b632766"
+    },
+    {
+      "path": "text-map-v1\\text-map.py",
+      "sha256": "47a800ada0a446685ba7183840c3788e3971fa1b7ccb2f5c76bc997e293ab95f"
+    },
+    {
+      "path": "text-map-v1\\text-memberships.json",
+      "sha256": "68a7d5310538f32beb29a55a989d8432cd4032a54365c476a60c87780d42d6f8"
+    },
+    {
+      "path": "text-map-v1\\text-quality-screen.json",
+      "sha256": "453cc8b9a6746355812004757e7d6741f708866ea5f95c3db3b03b3476558638"
+    }
+  ]
+}

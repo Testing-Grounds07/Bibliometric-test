@@ -1,0 +1,142 @@
+[
+  {
+    "id": "education",
+    "claim": "Education and institutional learning",
+    "interpretation": "How schools, universities and educators change curricula, support teachers and students, and respond to disruption. The substantive theme is collective learning and changing established practice; education is the application setting.",
+    "support": [
+      {
+        "id": "W3102101017",
+        "reason": "School adaptation during the pandemic, rather than generic leader traits.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W4362674094",
+        "reason": "Adaptive versus technical challenges in educator preparation; connects institutional change with leadership practice.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W3176404557",
+        "reason": "Connects adaptive leadership and social justice, while explicitly questioning compatibility between effectiveness and justice.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      }
+    ],
+    "boundary": "School and university sources appear in all five larger reference communities. W841283696 belongs to the clinically concentrated group but studies a school district and special education: a clear warning against equating community membership with subject.",
+    "status": "provisional, source-appraised examples; not exhaustive classification",
+    "falsifying_or_refining_check": "Independent substantive coding of additional member and nonmember full texts could split, merge or reject this broad grouping."
+  },
+  {
+    "id": "organizations",
+    "claim": "Organizational change, work and resilience",
+    "interpretation": "How organizations and teams respond to changing demands: employee behaviour, knowledge sharing, leadership capability, hybrid work and organizational resilience.",
+    "support": [
+      {
+        "id": "W4391134061",
+        "reason": "Interviews with 20 bank executives/managers distinguish technical transition to hybrid work from its harder social demands.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W4309602768",
+        "reason": "A survey of Egyptian academics connects adaptive leadership, change management and resilience; this is simultaneously an education and organizational-change example.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W2914253791",
+        "reason": "Uses complexity and chaos concepts to interpret construction-company change; shows a different intellectual vocabulary from the Heifetz practice framework.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      }
+    ],
+    "boundary": "This is a broad problem family, not evidence that every record using organizational terminology studies the same mechanism. The appraisal does not independently verify the causal or effectiveness claims made by individual abstracts.",
+    "status": "provisional, source-appraised examples; not exhaustive classification",
+    "falsifying_or_refining_check": "Independent substantive coding of additional member and nonmember full texts could split, merge or reject this broad grouping."
+  },
+  {
+    "id": "health",
+    "claim": "Health care, patient adaptation and clinical relationships",
+    "interpretation": "How patients, families and clinicians handle difficult adaptive work: communication, trust, self-management, chronic illness and decisions under uncertainty. Health-service management is an overlapping organizational application.",
+    "support": [
+      {
+        "id": "W1514053184",
+        "reason": "A single-case secondary analysis of 23 interviews examines mismatches between provider communication and a parent\u2019s needs during life-threatening illness.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W4281634825",
+        "reason": "Interviews with 22 women living with HIV focus on patient-provider communication, trust and self-advocacy.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W3192456489",
+        "reason": "Distinguishes technical work of providers from patients\u2019 adaptive work and leadership behaviours.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      }
+    ],
+    "boundary": "Community 3 is the clearest clinical concentration: 27 works, of which 18 have health/care title-rule hits. It is not a pure 27-paper theme. It includes education and organization sources, and its strongest member has a demonstrably mismatched abstract. The two HIV abstracts may concern overlapping participants; no independence of their empirical findings is assumed.",
+    "status": "provisional, source-appraised examples; not exhaustive classification",
+    "falsifying_or_refining_check": "Independent substantive coding of additional member and nonmember full texts could split, merge or reject this broad grouping."
+  },
+  {
+    "id": "public",
+    "claim": "Public, community and environmental problem solving",
+    "interpretation": "How multiple stakeholders respond to complex social or environmental problems: collaborative governance, participation, public service and social justice. Environmental sustainability is a supported subtheme within this broad setting.",
+    "support": [
+      {
+        "id": "W2091915351",
+        "reason": "Florida imperiled-species management reframes a controversial issue through stakeholder participation and collaborative governance.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W2477684615",
+        "reason": "Connects climate-policy implementation with shared responsibility between state governments and citizens.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W3176404557",
+        "reason": "Provides an overlap with education through equity and social justice.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      }
+    ],
+    "boundary": "This grouping is intentionally broad. Religious/community leadership is visible in titles but not deeply appraised here; it should not be treated as proven equivalent to environmental governance. The Florida abstract explicitly says more time is needed to assess the outcome.",
+    "status": "provisional, source-appraised examples; not exhaustive classification",
+    "falsifying_or_refining_check": "Independent substantive coding of additional member and nonmember full texts could split, merge or reject this broad grouping."
+  },
+  {
+    "id": "foundations",
+    "claim": "Leadership theory, development and measurement",
+    "interpretation": "What adaptive leadership means, how it relates to other theories, how people learn it, and how it can be measured. This is a conceptual strand that cuts across the applied settings above.",
+    "support": [
+      {
+        "id": "W4366984926",
+        "reason": "A conceptual paper connects adaption-innovation theory to the holding environment and explicitly notes limited empirical support for adaptive leadership\u2019s tools.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W4387138506",
+        "reason": "Develops an Adaptive Leadership Behavior Scale using several studies and leader-follower data.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      },
+      {
+        "id": "W2268801480",
+        "reason": "Examines whether adaptive leadership is a distinct theory or a derivative of other leadership traditions.",
+        "evidence_field": "abstract",
+        "abstract_status": "valid"
+      }
+    ],
+    "boundary": "The corpus uses more than one meaning of \u201cadaptive leadership\u201d: Heifetz-style adaptive work, complexity-based leadership and flexible adjustment of leader behaviour. Shared wording does not establish one unified theory. Community 4 is mixed, with theory/development examples alongside emergency teams, public engagement and a shipwreck account.",
+    "status": "provisional, source-appraised examples; not exhaustive classification",
+    "falsifying_or_refining_check": "Independent substantive coding of additional member and nonmember full texts could split, merge or reject this broad grouping."
+  }
+]

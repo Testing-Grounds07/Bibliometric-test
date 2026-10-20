@@ -1,0 +1,271 @@
+{
+  "cases": [
+    {
+      "id": "W1514053184",
+      "title": "Communication about life-sustaining therapy: insights from the Adaptive Leadership Framework",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4193540/",
+      "design": "Selected longitudinal clinical case; one mother/infant case from a larger 23-case study, with 23 mother/provider interviews over four phases.",
+      "mechanism": "Distinguishes technical treatment work from adaptive changes in expectations and relationships; provider expertise can displace family agency and avoid difficult conversations.",
+      "limitations": "Work avoidance is contrary evidence: describing adaptive qualities did not ensure that the social worker exercised them. A selected case cannot estimate treatment effects.",
+      "source_file": "W1514053184-fulltext-0.txt",
+      "source_sha256": "a11c4c599f811ab7be70bd29d7b7ea0ec4134a0523f555f5ccc8e439dee0b416",
+      "read_scope": "Targeted full-text methods, relevant results and limitations sections; not exhaustive line-by-line appraisal of every reference/table.",
+      "evidence_locations": [
+        {
+          "start_line": 164,
+          "end_line": 169,
+          "text_omitted": true,
+          "omitted_text_sha256": "5be5ab85f2ffdb66445be5fda436335f58ac20984c39eb3ef23067449e56b95b",
+          "omitted_text_characters": 1891
+        },
+        {
+          "start_line": 204,
+          "end_line": 211,
+          "text_omitted": true,
+          "omitted_text_sha256": "fdac3af6b7aa907ef881b5a539ea294c552ca0ab3dff567b79b9ba747471095d",
+          "omitted_text_characters": 1159
+        },
+        {
+          "start_line": 308,
+          "end_line": 326,
+          "text_omitted": true,
+          "omitted_text_sha256": "5f3939f051ff89117adfa84aca064b8f92bf6dc9e9665eb3140bbfdd263ebb20",
+          "omitted_text_characters": 3778
+        }
+      ]
+    },
+    {
+      "id": "W4281634825",
+      "title": "Adaptive leadership in clinical encounters with women living with HIV",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9185975/",
+      "design": "Descriptive qualitative cross-sectional interviews with 22 women in North Carolina WIHS, July–October 2016.",
+      "mechanism": "Reciprocal care, communication, trust and patient self-advocacy connect provider support with patients' adaptive work.",
+      "limitations": "Participant accounts do not establish causal efficacy. No participant feedback/member checking; geographically bounded sample.",
+      "source_file": "W4281634825-fulltext-0.txt",
+      "source_sha256": "a7cbee81fb850ce500bdeece7b9cee4efc4d84b2d3e093ee60c8479a636ef537",
+      "read_scope": "Targeted full-text methods, relevant results and limitations sections; not exhaustive line-by-line appraisal of every reference/table.",
+      "evidence_locations": [
+        {
+          "start_line": 204,
+          "end_line": 225,
+          "text_omitted": true,
+          "omitted_text_sha256": "2d67188f0a1c44562a7e123e8025162a7811cc1ea0123ffdf8a8449955af5c82",
+          "omitted_text_characters": 6287
+        },
+        {
+          "start_line": 289,
+          "end_line": 302,
+          "text_omitted": true,
+          "omitted_text_sha256": "93eb5f654ccd4be39f8b1e203d8e200bf526812ab72087ca5723411e4aea5b4f",
+          "omitted_text_characters": 3178
+        }
+      ]
+    },
+    {
+      "id": "W3192456489",
+      "title": "Adaptive Challenges, Adaptive Work, and Adaptive Leadership Among Women Living With HIV in the Southern United States: Findings From a Qualitative Study",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9244859/",
+      "design": "Directed qualitative analysis of 22 interviews with women in North Carolina WIHS, July–October 2016.",
+      "mechanism": "Adaptive challenges require changes in values, attitudes, skills and behaviour alongside technical clinical care; patient-provider co-creation is emphasized.",
+      "limitations": "Same interview-study family as the companion HIV article is strongly supported. Do not count it as an independent replication.",
+      "source_file": "W3192456489-fulltext-0.txt",
+      "source_sha256": "0362b03686cb2da163f9866d17a0e649ab9a7fb31928e139bc1a819dee835278",
+      "read_scope": "Targeted full-text methods, relevant results and limitations sections; not exhaustive line-by-line appraisal of every reference/table.",
+      "evidence_locations": [
+        {
+          "start_line": 365,
+          "end_line": 403,
+          "text_omitted": true,
+          "omitted_text_sha256": "375f3b6b312704d1c420d8893cd14159b93506dff6c9927ee6afc1c5b0c894b7",
+          "omitted_text_characters": 7773
+        },
+        {
+          "start_line": 422,
+          "end_line": 450,
+          "text_omitted": true,
+          "omitted_text_sha256": "d0a6878b469defd71cce1cb333b9265d96bd577e54103f3c40f0a27be6c9160c",
+          "omitted_text_characters": 8035
+        },
+        {
+          "start_line": 478,
+          "end_line": 481,
+          "text_omitted": true,
+          "omitted_text_sha256": "1f24712678893eeebc1349f694b1bac1dd6e12efb6b03eae5cbbc101cc8cd74e",
+          "omitted_text_characters": 1693
+        }
+      ]
+    },
+    {
+      "id": "W4391134061",
+      "title": "Adaptive leadership Competencies for hybrid work teams in the South African banking sector",
+      "url": "https://doi.org/10.4102/sajbm.v55i1.4060",
+      "design": "Qualitative purposive interviews with 20 managers across five South African banks; 80% top management.",
+      "mechanism": "Hybrid-work adaptation joins listening, feedback, trust and delegation with organizational support, ICT and performance-management changes.",
+      "limitations": "Managers' perceptions are not representative workforce estimates or a causal intervention evaluation.",
+      "source_file": "W4391134061-fulltext-0.txt",
+      "source_sha256": "707dcd7ad4cb379272ea3230589d854877d6d22f270e15eaca66441c62e88b0d",
+      "read_scope": "Targeted full-text methods, relevant results and limitations sections; not exhaustive line-by-line appraisal of every reference/table.",
+      "evidence_locations": [
+        {
+          "start_line": 318,
+          "end_line": 333,
+          "text_omitted": true,
+          "omitted_text_sha256": "a4064428b1be033ef0c85a8ca0b2ba70e8b02c7846e115a65c162b4304687c7d",
+          "omitted_text_characters": 1729
+        },
+        {
+          "start_line": 486,
+          "end_line": 510,
+          "text_omitted": true,
+          "omitted_text_sha256": "6f97584a975935b531a9eb1acdeed6abc4596e5aaf4641c8b31e3d0e262ef562",
+          "omitted_text_characters": 2899
+        },
+        {
+          "start_line": 919,
+          "end_line": 938,
+          "text_omitted": true,
+          "omitted_text_sha256": "d1291454ba244717f7a5366123822a81b519dbd2f35a5aad27814f9d383e5447",
+          "omitted_text_characters": 5100
+        },
+        {
+          "start_line": 1050,
+          "end_line": 1061,
+          "text_omitted": true,
+          "omitted_text_sha256": "d0e21fb7e31626054acec9f4ef9e1647dac916f1cefa653a6a2f942bcca1d59b",
+          "omitted_text_characters": 1733
+        },
+        {
+          "start_line": 1165,
+          "end_line": 1189,
+          "text_omitted": true,
+          "omitted_text_sha256": "8c545e454b5235e33148cec9b2e53a7e5491536271875f505411b408edc0f89f",
+          "omitted_text_characters": 3429
+        }
+      ]
+    },
+    {
+      "id": "W4366984926",
+      "title": "Advancing Adaptive Leadership Through Adaption‐Innovation Theory: Enhancements to The Holding Environment",
+      "url": "https://doi.org/10.1002/jls.21841",
+      "design": "Conceptual integration of Adaption–Innovation theory with adaptive leadership.",
+      "mechanism": "Proposes that cognitive-style diversity shapes the holding environment and productive disequilibrium needed for social learning.",
+      "limitations": "Individual problem-solving style and group leadership process are different constructs. The proposed integration explicitly needs empirical exploration.",
+      "source_file": "W4366984926-fulltext-0.txt",
+      "source_sha256": "b47dc68a8b7f7235de8d3a495fefd15ff7a2e35c482fbf35b0b320540f2ca340",
+      "read_scope": "Targeted full-text methods, relevant results and limitations sections; not exhaustive line-by-line appraisal of every reference/table.",
+      "evidence_locations": [
+        {
+          "start_line": 21,
+          "end_line": 50,
+          "text_omitted": true,
+          "omitted_text_sha256": "7e450fb574fd0defa0ae35e04e82368c3410e8332d63b5a229aec5ae98dcf80a",
+          "omitted_text_characters": 1890
+        },
+        {
+          "start_line": 95,
+          "end_line": 140,
+          "text_omitted": true,
+          "omitted_text_sha256": "b887f06e395704700737ae7706457c1d994df2288e992840bd373bef4c8110d8",
+          "omitted_text_characters": 2593
+        },
+        {
+          "start_line": 237,
+          "end_line": 307,
+          "text_omitted": true,
+          "omitted_text_sha256": "4df1810b86bfcf44b330e963dddab0f5b921448cebe30bf84d69b94f32833c87",
+          "omitted_text_characters": 3932
+        },
+        {
+          "start_line": 311,
+          "end_line": 357,
+          "text_omitted": true,
+          "omitted_text_sha256": "391d98a833cc9f87e0ebc319f0df93557ec9e3b468a5f6dd38c7d95f7bf65ccc",
+          "omitted_text_characters": 2500
+        },
+        {
+          "start_line": 384,
+          "end_line": 437,
+          "text_omitted": true,
+          "omitted_text_sha256": "02fdc03c97196be0a937e32525bb902ece4b987133efdb77ba1d1c3e5dc2b89a",
+          "omitted_text_characters": 2756
+        }
+      ]
+    },
+    {
+      "id": "W4387138506",
+      "title": "Development and validation of the adaptive leadership behavior scale (ALBS)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10565815/",
+      "design": "Three cross-sectional scale-validation studies: 201 followers, 311 followers and 155 leader-follower dyads.",
+      "mechanism": "Operationalizes leader flexibility through situational perception, behavioural repertoire, balancing demands and appropriate application. Four facets support a one-factor scale in these samples.",
+      "limitations": "Psychometric and correlational evidence is not causal validation of adaptive leadership. Overall perceived employee-effectiveness association was not significant; the time-together analysis was supplementary. Subjective ratings and culture/context limits remain.",
+      "source_file": "W4387138506-fulltext-0.txt",
+      "source_sha256": "ee931d102dda8773e1dd15e4cab1bb37ed16e55f12cdbc6c369a303410ba8b71",
+      "read_scope": "Targeted full-text methods, relevant results and limitations sections; not exhaustive line-by-line appraisal of every reference/table.",
+      "evidence_locations": [
+        {
+          "start_line": 197,
+          "end_line": 246,
+          "text_omitted": true,
+          "omitted_text_sha256": "aa2a532a6970f362a1c4c6b71f0be8c82b8ac7be469474aa7b562b598d430052",
+          "omitted_text_characters": 7592
+        },
+        {
+          "start_line": 309,
+          "end_line": 332,
+          "text_omitted": true,
+          "omitted_text_sha256": "16a31fcdad0b297978a4eb4f663cfc0fd5ae1eaeac96bd0d581753deeb2f53a9",
+          "omitted_text_characters": 2693
+        },
+        {
+          "start_line": 523,
+          "end_line": 539,
+          "text_omitted": true,
+          "omitted_text_sha256": "1af7e02fa580ebcefc68bed942253292e4ff6fd90b7777fd056b2a1290533971",
+          "omitted_text_characters": 2975
+        },
+        {
+          "start_line": 655,
+          "end_line": 704,
+          "text_omitted": true,
+          "omitted_text_sha256": "b20cb9d6164a9e9b7dc82bfd4b258d33e8d3edc52ee14ace4788c84c0597954e",
+          "omitted_text_characters": 3370
+        },
+        {
+          "start_line": 881,
+          "end_line": 936,
+          "text_omitted": true,
+          "omitted_text_sha256": "4e35340b74339cbc2130bd0c9b2ff6cf2c24bdafdbb15d3a512c2915d81df52b",
+          "omitted_text_characters": 11109
+        }
+      ]
+    }
+  ],
+  "sample_overlap": {
+    "ids": [
+      "W4281634825",
+      "W3192456489"
+    ],
+    "classification": "Strongly supported common interview-study family; not participant-level linkage verification",
+    "evidence": [
+      "Same NC WIHS recruitment and n=22",
+      "Same July–October 2016 interview dates and interviewer",
+      "Same mean age 52.2 and range 38–62",
+      "Same IRB Pro00067256"
+    ],
+    "interpretation": "Two articles with distinct analyses, not two independent samples. Do not pool as replications."
+  },
+  "unavailable": [
+    "W2091915351",
+    "W3176404557"
+  ],
+  "scope": "Six targeted OA full texts out of eight requested. Not a systematic effectiveness review; no abstract substituted for inaccessible full text.",
+  "public_derivative": {
+    "schema_version": "bibliomap.public-appraisal-derivative.v1",
+    "artifact": "adaptive-leadership-followups/fulltext-comparison.json",
+    "source_artifact_sha256": "4afe91406dd307f1c08cd7397cc0339d205af964a00c02f9d46558ab16bf9476",
+    "change": "Public derivative: acquired-paper evidence text omitted. Appraisals, source-file hashes, read scopes and line locators retained. The original research artifact is unchanged and retained locally. This derivative is not byte-identical to the accepted original.",
+    "omitted_spans": 23,
+    "omitted_characters": 90094,
+    "scientific_claims_changed": false
+  }
+}
