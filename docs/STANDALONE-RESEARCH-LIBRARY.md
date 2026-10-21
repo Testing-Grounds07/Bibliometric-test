@@ -1,6 +1,6 @@
 # Standalone research library
 
-The **Projects** panel in `/conservative-atlas/` keeps all four retained studies in one saved project, **AI project · Leadership research**. Its **Saved findings** section contains all 13 maps; **Reports & supporting files** contains the four studies’ reports, downloads and review limits. There is no separate study-catalog navigation tool:
+The **Projects** panel in `/conservative-atlas/` keeps all four retained studies in one saved project, **AI project · Leadership research**. Its **Saved maps** section contains all 13 maps, each with an explicit **Open map** button and separate **Notes** disclosure; **Reports & supporting files** contains the four studies’ reports, downloads and review limits. There is no separate study-catalog navigation tool:
 
 - Adaptive leadership: academic themes, including the original bibliographic coupling map.
 - Adaptive leadership: network and text comparisons, including reference ablations and retained text-neighbor and seed comparisons.

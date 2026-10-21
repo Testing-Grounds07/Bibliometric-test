@@ -25,8 +25,15 @@
 .workspace-shell .project-tools .project-record>button{min-height:44px;width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--raised);font-size:12px;line-height:1.4;text-align:left;white-space:normal;overflow-wrap:anywhere}
 .project-tools .project-record>small{padding:0 3px;font-size:10px}
 .project-tools .project-record>p{padding:0 3px;margin:2px 0;font-size:11px;color:var(--muted)}
-.project-tools .project-record:has(.project-finding-notes)>button{padding-right:65px}
-.project-tools .project-finding-notes>summary{position:absolute;right:3px;top:4px;display:flex;align-items:center;justify-content:center;width:56px;min-height:44px;padding:4px;font-size:10px;color:var(--muted)}
+.project-tools .project-saved-map{padding:10px;border:1px solid var(--line);border-radius:9px;gap:6px}
+.project-tools .project-map-title{font-size:12px;font-weight:600;line-height:1.5;overflow-wrap:anywhere}
+.project-tools .project-map-actions{display:flex;flex-wrap:wrap;align-items:start;gap:6px}
+.workspace-shell .project-tools .project-map-actions>button{width:auto;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--raised);font-size:12px;line-height:1.4}
+.project-tools .project-finding-notes>summary{position:static;display:flex;align-items:center;min-height:44px;padding:8px 12px;font-size:12px;color:var(--muted);list-style:none}
+.project-tools .project-finding-notes>summary::-webkit-details-marker{display:none}
+.project-tools .project-finding-notes>summary:before{content:'›';margin-right:6px}
+.project-tools .project-finding-notes[open]>summary:before{content:'⌄'}
+.project-tools .project-finding-notes[open]{flex-basis:100%;min-width:0}
 .project-tools .project-finding-notes>p{padding:0 3px;color:var(--muted);white-space:pre-wrap}
 .project-tools .project-section-body>p:first-child{margin-top:0}
 .project-tools #projectResearchReportContent{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:8px;padding-bottom:12px}

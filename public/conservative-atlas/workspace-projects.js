@@ -91,7 +91,7 @@ const errorMessage = problem => window.ATLAS_EVIDENCE?.errorMessage?.(problem) |
  const run=element('button','Search & save','secondary');run.type='submit';
  const cancel=button('Cancel search',async()=>{if(jobId)await api('/jobs/'+jobId+'/cancel','POST',{});});cancel.hidden=true;form.append(run,cancel);
  const searchHelp=element('details');searchHelp.append(element('summary','Search scope'),element('p','Searches OpenAlex titles, abstracts and indexed full text. Exact phrase adds quotation marks. Articles, reviews, book chapters and conference papers are retrieved. The selected metadata filter is applied when building a map. A capped download is a partial search result.'));form.append(searchHelp);
- const historyDisclosure=disclosure('Search history','projectSearchHistory'),history=historyDisclosure.body,historyCount=historyDisclosure.count,savedDisclosure=disclosure('Saved findings','projectSavedFindings',true),savedMaps=savedDisclosure.body,savedCount=savedDisclosure.count;
+ const historyDisclosure=disclosure('Search history','projectSearchHistory'),history=historyDisclosure.body,historyCount=historyDisclosure.count,savedDisclosure=disclosure('Saved maps','projectSavedFindings',true),savedMaps=savedDisclosure.body,savedCount=savedDisclosure.count;
  const reportsDisclosure=disclosure('Reports & supporting files','projectResearchReports'),researchReports=reportsDisclosure.root;reportsDisclosure.count.id='projectReportCount';researchReports.hidden=true;
  const preview=section('Selected search'),previewInfo=element('p'),examples=element('details');examples.append(element('summary','Preview articles'));preview.append(previewInfo,examples);preview.hidden=true;historyDisclosure.root.append(preview);
  const exportSources=button('Export retrieved sources',async()=>{
@@ -130,8 +130,15 @@ const errorMessage = problem => window.ATLAS_EVIDENCE?.errorMessage?.(problem) |
   localStorage.setItem('bibliomap.project',id);historyCount.textContent=String(result.searches.length);savedCount.textContent=String(result.analyses.filter(item=>item.parameters.workspaceVersion===1).length);history.replaceChildren(element('h3','Search history'));
   for(const search of result.searches){const row=element('div','','project-record');row.append(button(search.name,async()=>openSearch(search.id)),element('small',((search.query.retrieved??search.query.limit)||search.result_count).toLocaleString()+' retrieved'+(search.query.cleanup?' · '+search.query.cleanup.cleanedSources.toLocaleString()+' after cleanup':'')+' · '+new Date(search.query.searchedAt||search.created_at).toLocaleDateString()));history.append(row);}
   if(!result.searches.length)history.append(element('p','No saved searches yet.'));
-  savedMaps.replaceChildren(element('h3','Saved findings'));
-  for(const saved of result.analyses.filter(item=>item.parameters.workspaceVersion===1)){const row=element('div','','project-record');row.append(button(saved.name,async()=>openSnapshot(saved.id)),element('small',new Date(saved.created_at).toLocaleString()+(saved.stats?' · '+saved.stats.clusters+' clusters':'')));if(saved.findings){const detail=element('details','','project-finding-notes');detail.append(element('summary','Notes'),element('p',saved.findings));row.append(detail);}savedMaps.append(row);}
+  savedMaps.replaceChildren(element('h3','Saved maps'));
+  for(const saved of result.analyses.filter(item=>item.parameters.workspaceVersion===1)){
+   const row=element('div','','project-record project-saved-map'),actions=element('div','','project-map-actions'),open=button('Open map',async()=>openSnapshot(saved.id));
+   open.setAttribute('aria-label','Open map: '+saved.name);
+   row.append(element('strong',saved.name,'project-map-title'),element('small',new Date(saved.created_at).toLocaleString()+(saved.stats?' · '+saved.stats.clusters+' clusters':'')));
+   actions.append(open);
+   if(saved.findings){const detail=element('details','','project-finding-notes');detail.append(element('summary','Notes'),element('p',saved.findings));actions.append(detail);}
+   row.append(actions);savedMaps.append(row);
+  }
   if(savedMaps.children.length===1)savedMaps.append(element('p','Save a map to record its settings and findings.'));
   updateProjectContext();
   if(resetNotes)message(mismatchedCanvas()?'Project selected. The canvas still shows the previous study; open a search map to replace it.':'Project and displayed study ready.');
@@ -211,7 +218,7 @@ const errorMessage = problem => window.ATLAS_EVIDENCE?.errorMessage?.(problem) |
   updateProjectContext();message('Opened saved map and findings.'+(saved.snapshot.graph.deduplication?'':' Historical snapshot: rebuild from its search to apply title-and-author deduplication.'));window.dispatchEvent(new CustomEvent('atlas:map-opened',{detail:{projectId:project?.id,mapId:id}}));
  }
  function updateProjectContext(){const label=document.querySelector('.shell-project'),name=packet?packet.name:'Adaptive leadership',count=packet?packet.evidence.articles.length.toLocaleString():'2,855',mismatch=mismatchedCanvas();if(label){label.textContent='Canvas: '+name+' · '+count+' sources';label.title=mismatch?'Selected project/search has not replaced this displayed evidence. Open its map explicitly.':'Displayed study and evidence.';}canvasNotice.textContent='Displayed study: '+name+' · '+count+' sources.'+(mismatch?' The selected project/search has not replaced this map. Saving requires an explicit evidence-copy confirmation.':'');copyLabel.hidden=!mismatch;}
- projectSelect.onchange=()=>{closeNameEditor();if(projectSelect.value)openProject(projectSelect.value).catch(error=>message(errorMessage(error)));else{projectGeneration++;save.disabled=working;run.disabled=!!jobId;notes.disabled=false;window.dispatchEvent(new CustomEvent('atlas:project-opening',{detail:{projectId:null}}));project=null;projectName.value='';notes.value='';preview.hidden=true;historyCount.textContent=savedCount.textContent='0';history.replaceChildren(element('h3','Search history'));savedMaps.replaceChildren(element('h3','Saved findings'));updateProjectContext();}};
+ projectSelect.onchange=()=>{closeNameEditor();if(projectSelect.value)openProject(projectSelect.value).catch(error=>message(errorMessage(error)));else{projectGeneration++;save.disabled=working;run.disabled=!!jobId;notes.disabled=false;window.dispatchEvent(new CustomEvent('atlas:project-opening',{detail:{projectId:null}}));project=null;projectName.value='';notes.value='';preview.hidden=true;historyCount.textContent=savedCount.textContent='0';history.replaceChildren(element('h3','Search history'));savedMaps.replaceChildren(element('h3','Saved maps'));updateProjectContext();}};
  form.onsubmit=async event=>{
   event.preventDefault();if(nameBusy||working||jobId)return;
   working=true;run.disabled=true;projectSelect.disabled=true;

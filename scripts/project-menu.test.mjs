@@ -39,6 +39,8 @@ test('compact Projects keeps the selector first, maps open, counted disclosures 
  const f=await fixture(),before=JSON.stringify(f.findings);await f.window.ATLAS_PROJECTS.openProject(f.project.id);
  const details=f.panel.children.filter(n=>n.tagName==='DETAILS');assert.deepEqual(details.map(n=>n.id),['projectSavedFindings','projectResearchReports','projectSearchHistory','projectSaveFinding','projectNewSearch','projectOriginalStudy']);assert.equal(details[0].open,true);assert(details.slice(1).every(n=>!n.open));assert.equal(f.byId('projectNameEditor').hidden,true);
  assert.equal(f.byId('projectSavedFindings').children[0].children[1].textContent,'13');assert.equal(f.byId('projectSearchHistory').children[0].children[1].textContent,'1');assert.equal(all(details[0]).filter(n=>n.tagName==='BUTTON').length,13);
+ assert.equal(details[0].children[0].children[0].textContent,'Saved maps');
+ const mapButtons=all(details[0]).filter(n=>n.tagName==='BUTTON');assert(mapButtons.every((n,i)=>n.textContent==='Open map'&&n.attrs['aria-label']==='Open map: Map '+i));assert.equal(all(details[0]).filter(n=>n.className==='project-map-title').length,13);
  const notes=all(details[0]).filter(n=>n.className==='project-finding-notes');assert.equal(notes.length,13);assert(notes.every(n=>!n.open&&n.children[1].textContent.endsWith('End of notes')));assert.equal(JSON.stringify(f.findings),before);
  assert(f.requests.every(r=>r.method==='GET'));for(const detail of details)assert(!all(detail.children[0]).some(n=>n.tagName==='BUTTON'));
 });
