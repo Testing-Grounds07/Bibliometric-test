@@ -1,5 +1,5 @@
 import {standaloneImport} from './imported-theme-evidence.mjs';
-import {descriptionRequest} from './cluster-description-core.mjs';
+import {descriptionRequest,descriptionResultMatches} from './cluster-description-core.mjs';
 import {createDescriptionQueue} from './description-queue.mjs';
 import {titleCase} from './label-case.mjs';
 import {descriptionsAllowed,automaticDescriptionsAllowed} from './description-policy.mjs';
@@ -13,7 +13,7 @@ const queue = createDescriptionQueue(async (request, regenerate, signal) => {
  if (window.BIBLIOMAP?.active) {
   const job = window.BIBLIOMAP.stage(currentGraph, 'description', {cluster: request.cluster}, () => {}, regenerate);
   const abort = () => job.cancel(); signal.addEventListener('abort', abort, {once:true});
-  try { return await job.promise; } finally { signal.removeEventListener('abort', abort); }
+  try { const result=await job.promise;if(!descriptionResultMatches(request,result))throw Error('Naming service contract differs. Activate the matching service; old names were not reused.');return result; } finally { signal.removeEventListener('abort', abort); }
  }
  const timeout = AbortSignal.timeout(190000), combined = AbortSignal.any([signal, timeout]);
  for (let attempt = 0; attempt < 4; attempt++) {
@@ -22,6 +22,7 @@ const queue = createDescriptionQueue(async (request, regenerate, signal) => {
   const result = await response.json();
   if (response.status === 429 && attempt < 3) { await new Promise(resolve => setTimeout(resolve, 3000)); combined.throwIfAborted(); continue; }
   if (!response.ok) throw new Error(result.error === 'fetch failed' ? 'The local language model is unavailable. Existing names remain available; retry shortly.' : result.error || 'Description unavailable.');
+  if(!descriptionResultMatches(request,result))throw Error('The local naming service uses an older contract. Ask the operator to activate the matching naming service; old names were not reused.');
   return result;
  }
 }, entries => {
@@ -45,7 +46,7 @@ function prepare(graph, update) {
  if(!canRun(graph)){
   sync(graph);updateNames=update;if(graph.collaboration||graph.temporalSelection||graph.semantic&&graph.entityKind!=='source')return;
   if(standaloneImport(graph)&&!descriptionsAllowed(graph,window.BIBLIOMAP))return;
-  for(const [cluster,saved]of Object.entries(graph.generatedDescriptions||{})){const request=descriptionRequest(graph,cluster,window.ATLAS_DATA.summary.corpus_id);if(saved.result&&saved.requestKey===JSON.stringify(request)){queue.seed(request,saved.result);const description=graph.themeDescriptions?.[cluster];if(description){description.generated=saved.result;if(['shared-theme','mixed-themes'].includes(saved.result.status)){description.keywordHeading||=description.heading;description.heading=saved.result.heading;}}}}
+  for(const [cluster,saved]of Object.entries(graph.generatedDescriptions||{})){const request=descriptionRequest(graph,cluster,window.ATLAS_DATA.summary.corpus_id);if(descriptionResultMatches(request,saved.result)&&saved.requestKey===JSON.stringify(request)){queue.seed(request,saved.result);const description=graph.themeDescriptions?.[cluster];if(description){description.generated=saved.result;if(['shared-theme','mixed-themes'].includes(saved.result.status)){description.keywordHeading||=description.heading;description.heading=saved.result.heading;}}}}
   return;
  }
  sync(graph); updateNames = update;
@@ -58,7 +59,7 @@ function prepare(graph, update) {
  scopes.set(graph, {key, requests, themes: graph.themeDescriptions});
  }
  const {key, requests} = scopes.get(graph);
- for (const request of requests) { const saved = graph.generatedDescriptions?.[request.cluster]; if (saved?.result && saved.requestKey === JSON.stringify(request)) queue.seed(request, saved.result); }
+ for (const request of requests) { const saved = graph.generatedDescriptions?.[request.cluster]; if (descriptionResultMatches(request,saved?.result) && saved.requestKey === JSON.stringify(request)) queue.seed(request, saved.result); }
  const entries = queue.activate(key, requests);
  for (const record of entries) if (record.result) {
   graph.generatedDescriptions = {...graph.generatedDescriptions, [record.request.cluster]: {requestKey: record.key, result: record.result}};
@@ -89,7 +90,7 @@ function mount(parent, graph, cluster, inspect) {
  sync(graph);if(standaloneImport(graph)&&!descriptionsAllowed(graph,window.BIBLIOMAP)){parent.append(node('p','Load matching pinned-source keywords before requesting names. No network recomputation is needed.'));return;}if(graph.collaboration||graph.temporalSelection||graph.semantic&&graph.entityKind!=='source'){parent.append(node('p',graph.collaboration?'Actor identities are not article IDs. AI actor descriptions are not implemented.':'Completed windows use cached keywords; no AI description job is started. Return to the full pinned map to name clusters.'));return;}
  const request = descriptionRequest(graph, cluster, window.ATLAS_DATA.summary.corpus_id), key = JSON.stringify(request);
  const saved=graph.generatedDescriptions?.[cluster];
- const record = queue.entries().find(record => record.key === key)||queue.lookup(request)||saved?.result&&saved.requestKey===key&&{key,request,result:saved.result,status:'done'};
+ const record = queue.entries().find(record => record.key === key)||queue.lookup(request)||descriptionResultMatches(request,saved?.result)&&saved.requestKey===key&&{key,request,result:saved.result,status:'done'};
  if (!record) return;
  const section = node('section', ''); section.className = 'cluster-ai-description';
  parent.append(section);
@@ -98,7 +99,7 @@ function mount(parent, graph, cluster, inspect) {
   if (record.result) {
    const result = record.result;
    if (titleCase(graph.themeDescriptions?.[cluster]?.heading) !== titleCase(result.heading)) section.append(node('strong', titleCase(result.heading)));
-   if (result.status !== 'shared-theme') section.append(node('p', result.status === 'mixed-themes' ? 'Mixed themes — one label may not represent every member.' : result.status === 'limited-evidence' ? 'Partial description — broader commonality could not be verified; showing one supported concept.' : 'Insufficient evidence for a shared theme.'));
+   if (result.status !== 'shared-theme') section.append(node('p', result.status === 'mixed-themes' ? 'Mixed themes — one label may not represent every member.' : result.status === 'limited-evidence' ? 'Provisional description: cited text does not establish every heading detail as shared.' : 'Insufficient evidence for a shared theme.'));
    if (result.summary) section.append(node('p', result.summary.text));
    const coverage = result.packet.coverage;
    const sampledAbstracts = coverage.sampledAbstracts ?? result.packet.documents.filter(document => document.role === 'member' && document.abstract).length;

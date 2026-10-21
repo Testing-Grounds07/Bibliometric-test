@@ -21,7 +21,7 @@ import {prepareReliability} from '../network-reliability.mjs';
 import {runSettingsSearch, evidenceSensitivity} from '../method-settings.mjs';
 import {buildHistoriography} from '../historiography.mjs';
 import {validateConnections, disparityBackbone, temporalNetwork} from '../network-extensions.mjs';
-import {DESCRIPTION_VERSION, MODEL_ID, prepareDescription, descriptionMessages, descriptionRepairMessage, groundedSchema, verifiedDescription, resolveExcerpts} from '../cluster-description-core.mjs';
+import {DESCRIPTION_VERSION, KEYWORD_VERSION, MODEL_ID, prepareDescription, descriptionMessages, descriptionRepairMessage, groundedSchema, verifiedDescription, resolveExcerpts} from '../cluster-description-core.mjs';
 import {canonical, digest, unique, error} from './core.mjs';
 import {createScientificManifest, methodSupport} from '../scientific-manifest.mjs';
 import {analyzeRoles} from '../network-roles.mjs';
@@ -48,7 +48,7 @@ export async function implementationVersion(stage){
  if(['analysis','semantic-network','semantic-sensitivity','semantic-comparison'].includes(stage))contents.push(...await Promise.all(['semantic-network.mjs','auto-cpm.mjs','hypergraph-network.mjs','scientific-manifest.mjs'].map(file=>readFile(new URL('../'+file,import.meta.url),'utf8'))));
  if(['analysis','scientific-manifest','scientific-roles','incidence-null','construction-comparison','role-sensitivity','optimization-variability'].includes(stage))contents.push(...await Promise.all(['scientific-manifest.mjs','network-roles.mjs','construction-audit.mjs','network-extensions.mjs','role-sensitivity.mjs','optimization-variability.mjs'].map(file=>readFile(new URL('../'+file,import.meta.url),'utf8'))));
  if(stage==='analysis')contents.push(await readFile(new URL('./computations.mjs',import.meta.url),'utf8'),await readFile(new URL('./core.mjs',import.meta.url),'utf8'));
- return digest([stage,AUTO_CPM_VERSION,DESCRIPTION_VERSION,MODEL_ID,HYPERGRAPH_MODEL_VERSION,...contents,await readFile(new URL('../../package-lock.json',import.meta.url),'utf8'),await readFile(new URL('./stages.mjs',import.meta.url),'utf8')]);
+ return digest([stage,AUTO_CPM_VERSION,DESCRIPTION_VERSION,KEYWORD_VERSION,MODEL_ID,HYPERGRAPH_MODEL_VERSION,...contents,await readFile(new URL('../../package-lock.json',import.meta.url),'utf8'),await readFile(new URL('./stages.mjs',import.meta.url),'utf8')]);
 }
 async function engine(port,route,payload,context){
  const secret=process.env.BIBLIOMAP_SERVICE_TOKEN;if(!secret)throw error('Internal computation authentication is not configured.',503);
@@ -198,14 +198,14 @@ export async function executeStage(stage,input,settings,context){
   const probe=await fetch('http://127.0.0.1:8092/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}',signal:AbortSignal.any([context.signal,AbortSignal.timeout(5000)])});if(probe.status!==401)throw error('Restart the local language model with its API key enabled.',503);
   const sandbox={window:{},atob};vm.runInNewContext(await readFile(path.join(root,'public/conservative-atlas/cluster-themes.js'),'utf8'),sandbox);
   const themes=sandbox.window.ATLAS_THEMES.describe(input.graph.nodes,input.themes),request={kind:input.graph.method==='coupling'||input.graph.semantic&&input.graph.entityKind==='source'?'coupling':'cocitation',cluster:String(settings.cluster),nodes:input.graph.nodes.map(node=>({id:node.id,cluster:String(node.cluster)}))},references=Object.fromEntries(input.works.map(work=>[work.id,work.referenced_works||[]])),packet=prepareDescription(request,input.themes,themes,references);
-  const base={model:MODEL_ID,version:DESCRIPTION_VERSION,createdAt:new Date().toISOString(),packet,verification:'Literal evidence verified; thematic accuracy requires researcher review.'};
+  const base={model:MODEL_ID,version:DESCRIPTION_VERSION,keywordVersion:KEYWORD_VERSION,createdAt:new Date().toISOString(),packet,verification:'Literal evidence verified; thematic accuracy requires researcher review.'};
   if(packet.coverage.distinctTitles<2)return {...base,heading:'Insufficient text evidence',status:'insufficient-evidence',summary:null,concepts:[],exceptions:[],contrast:null};
   const messages=descriptionMessages(packet);
   for(let attempt=0;attempt<2;attempt++){
    const response=await fetch('http://127.0.0.1:8092/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+process.env.BIBLIOMAP_SERVICE_TOKEN},body:JSON.stringify({model:'bibliomap-cluster-slm',messages,temperature:0,seed:42,max_tokens:2000,response_format:{type:'json_schema',json_schema:{name:'cluster_description',strict:true,schema:groundedSchema(packet)}}}),signal:AbortSignal.any([context.signal,AbortSignal.timeout(190000)])});
    if(!response.ok)throw error('The local language model is unavailable.',503);
    const output=(await response.json()).choices[0].message.content;
-   try{return {...base,...verifiedDescription(resolveExcerpts(JSON.parse(output),packet),packet),attempts:attempt+1};}
+   try{const modelProposal=JSON.parse(output);return {...base,...verifiedDescription(resolveExcerpts(modelProposal,packet),packet),modelProposal,attempts:attempt+1};}
    catch(problem){if(attempt)throw error('Generated evidence could not be verified. Keywords remain available.',422);messages.push({role:'assistant',content:output},{role:'user',content:descriptionRepairMessage(output,packet,problem)});}
   }
  }

@@ -56,7 +56,7 @@
   button.onclick = () => { const target = byId(id); if (!target || target.disabled) return; validation.open = false; show('analysis'); const section = target.closest('details'); if (section) section.open = true; target.click(); entries.get('analysis').panel.querySelector('.shell-panel-heading button:last-child').focus({preventScroll:true}); };
   validationMenu.append(button); validationActions.push({id, button});
  }
- const validationDetails = create('button', 'Results & details'); validationDetails.type = 'button'; validationDetails.onclick = () => { validation.open = false; show('analysis', true); for (const id of ['canvasSettings','canvasReliability']) { const section = byId(id); if (section) section.open = true; } }; validationMenu.append(validationDetails);
+ const validationDetails = create('button', 'Results & details'); validationDetails.id='validationResultsDetails'; validationDetails.type = 'button'; validationDetails.onclick = () => { validation.open = false; show('analysis', true); for (const id of ['researchChecks','canvasSettings','canvasReliability']) { const section = byId(id); if (section) section.open = true; } }; validationMenu.append(validationDetails);
  validationMenu.append(create('p', 'Stability is not proof of a correct theme.'));
  buttons.append(validation);
  validation.addEventListener('keydown', event => { if (event.key === 'Escape') { validation.open = false; validationToggle.focus(); } });
@@ -64,7 +64,8 @@
  function refreshValidation() {
   const reliability = byId('canvasReliability'), settings = byId('canvasSettings');
   const waiting = reliability?.dataset.validationState === 'pending';
-  const status = concepts.validationSummary(reliability?.dataset, settings?.dataset), text = status.label;
+  const nativeStatus = concepts.validationSummary(reliability?.dataset, settings?.dataset), retainedStatus=window.ATLAS_RESEARCH_CHECKS?.summary(window.atlasSharedCanvas?.graph());
+  const status = retainedStatus && ['Not checked','Text sensitivity not checked','Text check unavailable'].includes(nativeStatus.label) ? retainedStatus : nativeStatus, text = status.label;
   if (validationStatus.textContent !== text) validationStatus.textContent = text;
   validationStatus.title = status.detail;
   for (const {id, button} of validationActions) { const target = byId(id); button.disabled = !target || target.disabled || waiting; }
@@ -187,6 +188,7 @@
  document.body.classList.add('workspace-shell');
  let scheduled = false;
  function refresh() {
+  window.ATLAS_RESEARCH_CHECKS?.sync();
   refreshValidation();
   scheduled = false;
   refreshConcepts();

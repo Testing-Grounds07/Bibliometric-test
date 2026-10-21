@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {strictSourceText,importedTextInput,bindImportedThemes,validateImportedCache,importedThemeBinding} from './imported-theme-evidence.mjs';
 import {descriptionsAllowed,automaticDescriptionsAllowed} from './description-policy.mjs';
-import {descriptionRequest} from './cluster-description-core.mjs';
+import {descriptionRequest,DESCRIPTION_VERSION,KEYWORD_VERSION} from './cluster-description-core.mjs';
 import {createStartupNavigation} from './startup-navigation.mjs';
 const corpusId='12345678-1234-1234-1234-123456789abc';
 async function fixture(){
@@ -29,8 +29,8 @@ test('wrong corpus, text, model, foreign IDs, unsupported representations and fo
 });
 
 test('model service verifies cache/text bindings, and source-cache or complete positive membership changes invalidate browser keys',async()=>{
- const f=await fixture();await bindImportedThemes(f.graph,f.data,f.packet);const first=descriptionRequest(f.graph,'1',corpusId),service=readFileSync('scripts/cluster-description-service.mjs','utf8'),canonical=service.slice(service.indexOf('async function canonicalRequest('),service.indexOf('\nasync function generate(')),context={validateImportedCache};vm.runInNewContext(canonical,context);const dataset={data:f.data,registry:f.input,ids:new Set(f.input.sourceIds)};
- const accepted=await context.canonicalRequest(first,dataset);assert.equal(accepted.importedTextBinding.cacheProjectionSha256,first.importedTextBinding.cacheProjectionSha256);await assert.rejects(context.canonicalRequest({...first,importedTextBinding:{...first.importedTextBinding,textSha256:'b'.repeat(64)}},dataset));const absent={...first};delete absent.importedTextBinding;await assert.rejects(context.canonicalRequest(absent,dataset));
+ const f=await fixture();await bindImportedThemes(f.graph,f.data,f.packet);const first=descriptionRequest(f.graph,'1',corpusId),service=readFileSync('scripts/cluster-description-service.mjs','utf8'),canonical=service.slice(service.indexOf('async function canonicalRequest('),service.indexOf('\nasync function generate(')),context={validateImportedCache,DESCRIPTION_VERSION,KEYWORD_VERSION};vm.runInNewContext(canonical,context);const dataset={data:f.data,registry:f.input,ids:new Set(f.input.sourceIds)};
+ await assert.rejects(context.canonicalRequest({...first,version:'grounded-clusters-9'},dataset),/Naming contract changed/);await assert.rejects(context.canonicalRequest({...first,keywordVersion:'old'},dataset),/Naming contract changed/);const accepted=await context.canonicalRequest(first,dataset);assert.equal(accepted.importedTextBinding.cacheProjectionSha256,first.importedTextBinding.cacheProjectionSha256);await assert.rejects(context.canonicalRequest({...first,importedTextBinding:{...first.importedTextBinding,textSha256:'b'.repeat(64)}},dataset));const absent={...first};delete absent.importedTextBinding;await assert.rejects(context.canonicalRequest(absent,dataset));
  f.data.revision='b'.repeat(40);await assert.rejects(context.canonicalRequest(first,dataset));await bindImportedThemes(f.graph,f.data,f.packet);const next=descriptionRequest(f.graph,'1',corpusId);assert.notEqual(JSON.stringify(first),JSON.stringify(next));f.graph.nodes[1].cluster=2;assert.notEqual(JSON.stringify(next),JSON.stringify(descriptionRequest(f.graph,'1',corpusId)));
 });
 

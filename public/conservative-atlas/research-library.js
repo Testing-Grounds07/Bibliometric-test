@@ -114,7 +114,7 @@
  const currentImported = () => {const graph = window.atlasSharedCanvas?.graph?.(); return imported(graph) ? graph : null;};
  const importedLabel = graph => graph.clustering?.objective === 'modularity' ? 'Imported Leiden modularity' : 'Imported objective: ' + (graph.clustering?.objective || graph.importedStandalone.objective || 'not recorded');
  function announceFrozen() { if (notice) {notice.hidden = false; notice.setAttribute('role','status');} }
- function blockedControl(control) { if(control?.id==='canvasLabelMode')return false;return !!control && (blockedIds.has(control.id) || !!control.closest?.('#projectReferenceControls,#canvasSettings,#canvasReliability,#autoCPMInfo,#validationMenu') || blockedLabels.test(control.textContent?.trim() || '')); }
+ function blockedControl(control) { if(['canvasLabelMode','validationResultsDetails'].includes(control?.id))return false;return !!control && (blockedIds.has(control.id) || !!control.closest?.('#projectReferenceControls,#canvasSettings,#canvasReliability,#autoCPMInfo,#validationMenu') || blockedLabels.test(control.textContent?.trim() || '')); }
  function setDisplayText(id, value) {const target = document.getElementById(id); if (!target) return; if (!savedTexts.has(target)) savedTexts.set(target,{original:target.textContent,last:value}); savedTexts.get(target).last=value; if (target.textContent !== value) target.textContent=value;}
  function protectControls() {
   for (const control of document.querySelectorAll?.('input,select,button') || []) {
@@ -162,7 +162,7 @@
    const settings=graph.clustering||{}, detail=[];
    if(Number.isSafeInteger(settings.seed))detail.push('seed '+settings.seed);
    if(Number.isSafeInteger(settings.iterations))detail.push(settings.iterations+' iterations');
-   notice.replaceChildren(node('strong',importedLabel(graph)+(detail.length?' · '+detail.join(' · '):'')),node('p','Frozen standalone study result. No recomputation on open. Native rebuilding, CPM tuning and new optimizer checks are disabled. Keywords and Qwen names load automatically as a current interpretation overlay once the exact saved source text and map are ready; they do not alter this network or extend the retained study’s review approval.'));
+   notice.replaceChildren(node('strong',importedLabel(graph)+(detail.length?' · '+detail.join(' · '):'')),node('p','Frozen standalone study result. No recomputation on open. Native rebuilding and CPM tuning are disabled. Optional research checks run separately without replacing this map. Keywords and Qwen names load automatically as a current interpretation overlay once the exact saved source text and map are ready; they do not alter this network or extend the retained study’s review approval.'));
    const reload=node('button','Reload keywords','secondary');reload.type='button';reload.onclick=async()=>{reload.disabled=true;try{await window.atlasSharedCanvas?.reloadThemes?.();if(currentImported()!==graph)return;if(!window.ATLAS_EVIDENCE?.importedThemeBinding?.(graph)){const status=node('p',graph.themeError||'Matching pinned-source text is unavailable. No public/default corpus was substituted.');status.setAttribute('role','status');notice.append(status);}}finally{reload.disabled=false;}};notice.append(reload);
    if(graph.importedStandalone.report_url)try{notice.append(link({label:'Read the retained study report and run settings',url:linkURL(graph.importedStandalone.report_url,'report')}));}catch{notice.append(node('p','Read the retained report in this project’s Reports & supporting files section.'));}
    notice.hidden=false;

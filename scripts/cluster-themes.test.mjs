@@ -58,3 +58,12 @@ test('phrases supported by several members outrank single-document fragments',()
  const result=describe([{id:'a',cluster:1},{id:'b',cluster:1},{id:'c',cluster:1}],data)[1];
  assert.equal(result.keywords[0].text,'shared leadership');
 });
+
+
+test('sibling source-rate contrast favors supported settings and counts each source once',()=>{
+ const data={dimensions:2,documents:{a:document('field systems harbor pumps',['field systems','harbor pumps','harbor pumps']),b:document('field systems harbor pumps',['field systems','harbor pumps']),c:document('field systems forest sensors',['field systems','forest sensors']),d:document('field systems forest sensors',['field systems','forest sensors'])}};
+ const nodes=[{id:'a',cluster:1},{id:'b',cluster:1},{id:'c',cluster:2},{id:'d',cluster:2}],before=JSON.stringify(nodes),themes=describe(nodes,data),term=themes[1].keywords[0];
+ assert.equal(term.text,'harbor pumps');assert.equal(term.supportingMembers,2);assert.equal(term.clusterWithText,2);assert.equal(term.outsideSupport,0);assert.equal(term.outsideWithText,2);assert.equal(term.sources.length,2);
+ assert.equal(themes[1].sharedVocabulary[0].text,'field systems');assert.equal(themes[1].sharedVocabulary[0].outsideSupport,2);assert.match(themes[1].supportScope,/absence.*not absence/);assert.match(themes[1].supportScope,/not significance/);assert.equal(JSON.stringify(nodes),before);
+ const one=describe(nodes.filter(n=>n.cluster===1),data)[1];assert.equal(one.comparisonClusters,1);assert.equal(one.keywords[0].score,one.keywords[0].baseScore);assert.equal(one.sharedVocabulary.length,0);
+});

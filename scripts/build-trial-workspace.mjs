@@ -7,9 +7,9 @@ html = html.replace('<title>BiblioMap · Adaptive Leadership</title>', '<title>B
 html = html.replace('</head>', '<link rel="stylesheet" href="trial-workspace.css?v=canvas-3"></head>');
 html = html.replace('<body class="workspace-shell"', '<body class="workspace-shell trial-workspace"');
 html = html.replace('<script src="workspace-startup.js', '<script>window.ATLAS_TRIAL_WORKSPACE=true;</script><script src="workspace-startup.js');
-html = html.replace(/evidence-explorer\.js\?v=[^"<]+/, 'trial-evidence-explorer.js?v=study-evidence-2');
+html = html.replace(/evidence-explorer\.js\?v=[^"<]+/, 'trial-evidence-explorer.js?v=grounded-clusters-14');
 html = html.replace(/app\.js\?v=[^"<]+/, 'trial-app.js?v=study-evidence-2');
-html = html.replace(/workspace-shell\.js\?v=[^"<]+/, 'trial-workspace-shell.js?v=coupling-errors-3');
+html = html.replace(/workspace-shell\.js\?v=[^"<]+/, 'trial-workspace-shell.js?v=research-checks-1');
 html = html.replace(/<script src="(?:workspace-projects|historiography-browser|workspace-routing)\.js[^<]+<\/script>/g, '');
 html = html.replace('</body>', '<script src="hypergraph-lab.js?v=coupling-errors-2"></script></body>');
 fs.writeFileSync(path.join(directory, 'hypergraph-lab.html'), html);

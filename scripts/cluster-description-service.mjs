@@ -6,7 +6,7 @@ import {equalSecret} from './multiuser/core.mjs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import vm from 'node:vm';
-import {DESCRIPTION_VERSION, MODEL_ID, prepareDescription, descriptionMessages, descriptionRepairMessage, groundedSchema, resolveExcerpts, verifiedDescription} from './cluster-description-core.mjs';
+import {DESCRIPTION_VERSION,KEYWORD_VERSION, MODEL_ID, prepareDescription, descriptionMessages, descriptionRepairMessage, groundedSchema, resolveExcerpts, verifiedDescription} from './cluster-description-core.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const publicRoot = path.join(root, 'public/conservative-atlas');
@@ -15,6 +15,7 @@ const hash = value => createHash('sha256').update(value).digest('hex');
 const datasets = {};
 const context = {window: {}, atob};
 vm.runInNewContext(await readFile(path.join(publicRoot, 'cluster-themes.js'), 'utf8'), context);
+if(context.window.ATLAS_THEMES.version!==KEYWORD_VERSION)throw Error('Keyword/naming contract versions differ.');
 const sourceEvidence = JSON.parse(await readFile(path.join(publicRoot, 'source-evidence.json'), 'utf8'));
 const expanded = JSON.parse(await readFile(path.join(publicRoot, 'expanded-data.json'), 'utf8'));
 for (const kind of ['cocitation', 'coupling']) {
@@ -39,6 +40,7 @@ await mkdir(cacheRoot, {recursive: true});
 let busy = false;
 
 async function canonicalRequest(input, dataset) {
+ if(input.version!==DESCRIPTION_VERSION||input.keywordVersion!==KEYWORD_VERSION)throw Error('Naming contract changed. Reload the current app and activate the matching local naming service.');
  if (!dataset || input.corpusId !== dataset.data.sourceCorpusId || typeof input.cluster !== 'string' || !Array.isArray(input.nodes) || !input.nodes.length || input.nodes.length > 20000) throw new Error('Invalid cluster scope or corpus');
  const seen = new Set();
  const nodes = input.nodes.map(node => {
@@ -49,13 +51,13 @@ async function canonicalRequest(input, dataset) {
  if(dataset.data.importedSourceText&&!input.importedTextBinding)throw Error('Imported source-text cache requires its exact binding.');
  let importedTextBinding;
  if(input.importedTextBinding){importedTextBinding=await validateImportedCache(dataset.data,dataset.registry);if(JSON.stringify(input.importedTextBinding)!==JSON.stringify(importedTextBinding))throw Error('Imported text-cache binding changed. Reload keywords before naming.');}
- return {...(importedTextBinding?{importedTextBinding}:{}),kind: input.kind, corpusId: input.corpusId, cluster: input.cluster, nodes};
+ return {version:DESCRIPTION_VERSION,keywordVersion:KEYWORD_VERSION,...(importedTextBinding?{importedTextBinding}:{}),kind: input.kind, corpusId: input.corpusId, cluster: input.cluster, nodes};
 }
 
 async function generate(request, signal, dataset) {
  const themes = context.window.ATLAS_THEMES.describe(request.nodes, dataset.data);
  const packet = prepareDescription(request, dataset.data, themes, dataset.references);
- const base = {model: MODEL_ID, version: DESCRIPTION_VERSION, createdAt: new Date().toISOString(), packet, verification: 'Cited IDs and literal excerpts verified; semantic support still requires researcher review. Not a reliability score.'};
+ const base = {model: MODEL_ID, version: DESCRIPTION_VERSION,keywordVersion:KEYWORD_VERSION, createdAt: new Date().toISOString(), packet, verification: 'Cited IDs and literal excerpts verified; semantic support still requires researcher review. Not a reliability score.'};
  if (packet.coverage.distinctTitles < 2) return {...base, heading: 'Insufficient text evidence', status: 'insufficient-evidence', summary: null, concepts: [], exceptions: [], contrast: null};
  const messages = descriptionMessages(packet);
  for (let attempt = 0; attempt < 2; attempt++) {
@@ -63,8 +65,8 @@ async function generate(request, signal, dataset) {
   if (!response.ok) throw new Error('Local language model is unavailable or busy');
   const completion = await response.json();
   try {
-   const result = verifiedDescription(resolveExcerpts(JSON.parse(completion.choices[0].message.content), packet), packet);
-   return {...base, ...result, attempts: attempt + 1};
+   const modelProposal=JSON.parse(completion.choices[0].message.content),result=verifiedDescription(resolveExcerpts(modelProposal,packet),packet);
+   return {...base,...result,modelProposal,attempts: attempt + 1};
   } catch (error) {
    await writeFile(path.join(cacheRoot, 'rejected-' + hash(JSON.stringify(request)) + '.json'), JSON.stringify({error: error.message, output: completion.choices[0].message.content, packet}, null, 2));
    if (attempt) throw new Error('Generated evidence could not be verified. Keywords remain available.');
@@ -75,14 +77,14 @@ async function generate(request, signal, dataset) {
 
 http.createServer(async (request, response) => {
  const send = (status, data) => { if (!response.destroyed) { response.writeHead(status, {'Content-Type': 'application/json', 'Cache-Control': 'no-store'}); response.end(JSON.stringify(data)); } };
- if (request.method === 'GET' && request.url === '/health') return send(200, {ready: true, model: MODEL_ID, busy, coverage: Object.fromEntries(Object.entries(datasets).map(([kind, dataset]) => [kind, dataset.data.coverage]))});
+ if (request.method === 'GET' && request.url === '/health') return send(200, {ready: true,descriptionVersion:DESCRIPTION_VERSION,keywordVersion:KEYWORD_VERSION, model: MODEL_ID, busy, coverage: Object.fromEntries(Object.entries(datasets).map(([kind, dataset]) => [kind, dataset.data.coverage]))});
  if (request.method !== 'POST' || request.url !== '/describe') return send(404, {error: 'Not found'});
  if (process.env.BIBLIOMAP_SERVICE_TOKEN && !equalSecret(request.headers.authorization, 'Bearer ' + process.env.BIBLIOMAP_SERVICE_TOKEN)) return send(401, {error: 'Service authentication required'});
  const chunks = []; let size = 0;
  try {
   for await (const chunk of request) { size += chunk.length; if (size > 3000000) return send(413, {error: 'Cluster scope is too large'}); chunks.push(chunk); }
   const input = JSON.parse(Buffer.concat(chunks)), dataset = await datasetFor(input), canonical = await canonicalRequest(input, dataset);
-  const key = hash(JSON.stringify([DESCRIPTION_VERSION, MODEL_ID, dataset.revision, canonical]));
+  const key = hash(JSON.stringify([DESCRIPTION_VERSION,KEYWORD_VERSION, MODEL_ID, dataset.revision, canonical]));
   const file = path.join(cacheRoot, key + '.json');
   if (!input.regenerate) {
    try { return send(200, {...JSON.parse(await readFile(file, 'utf8')), cached: true}); } catch (error) { if (error.code !== 'ENOENT') throw error; }

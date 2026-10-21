@@ -649,12 +649,18 @@
   } };
 
   // scripts/cluster-description-core.mjs
+  var DESCRIPTION_VERSION = "grounded-clusters-14";
+  var KEYWORD_VERSION = "sibling-source-contrast-1";
   function descriptionRequest(graph3, cluster, corpusId) {
     if (graph3.temporalSelection) throw Error("Completed temporal windows are read-only; no article-description request is created.");
     if (graph3.collaboration || graph3.semantic && graph3.entityKind !== "source") throw new Error("Feature nodes cannot be submitted as article-description evidence.");
     const binding = standaloneImport(graph3) ? importedThemeBinding(graph3) : null;
     if (standaloneImport(graph3) && !binding) throw Error("Load and verify this imported map\u2019s pinned source keywords before naming.");
-    return { ...binding ? { importedTextBinding: binding } : {}, kind: graph3.canvasKind === "coupling" || graph3.semantic && graph3.entityKind === "source" ? "coupling" : "cocitation", corpusId, cluster: String(cluster), nodes: graph3.nodes.filter((node2) => node2.cluster > 0).map((node2) => ({ id: node2.id, cluster: String(node2.cluster) })).sort((left, right) => left.id.localeCompare(right.id)) };
+    return { version: DESCRIPTION_VERSION, keywordVersion: KEYWORD_VERSION, ...binding ? { importedTextBinding: binding } : {}, kind: graph3.canvasKind === "coupling" || graph3.semantic && graph3.entityKind === "source" ? "coupling" : "cocitation", corpusId, cluster: String(cluster), nodes: graph3.nodes.filter((node2) => node2.cluster > 0).map((node2) => ({ id: node2.id, cluster: String(node2.cluster) })).sort((left, right) => left.id.localeCompare(right.id)) };
+  }
+  var connectiveWords = new Set("a an the and or in on at to of for with by from as is are be across among during under about context contexts".split(" "));
+  function descriptionResultMatches(request, result) {
+    return request?.version === DESCRIPTION_VERSION && request.keywordVersion === KEYWORD_VERSION && result?.version === DESCRIPTION_VERSION && result.keywordVersion === KEYWORD_VERSION;
   }
 
   // scripts/description-queue.mjs
@@ -884,7 +890,9 @@
       const abort = () => job4.cancel();
       signal.addEventListener("abort", abort, { once: true });
       try {
-        return await job4.promise;
+        const result = await job4.promise;
+        if (!descriptionResultMatches(request, result)) throw Error("Naming service contract differs. Activate the matching service; old names were not reused.");
+        return result;
       } finally {
         signal.removeEventListener("abort", abort);
       }
@@ -900,6 +908,7 @@
         continue;
       }
       if (!response.ok) throw new Error(result.error === "fetch failed" ? "The local language model is unavailable. Existing names remain available; retry shortly." : result.error || "Description unavailable.");
+      if (!descriptionResultMatches(request, result)) throw Error("The local naming service uses an older contract. Ask the operator to activate the matching naming service; old names were not reused.");
       return result;
     }
   }, (entries) => {
@@ -936,7 +945,7 @@
       if (standaloneImport(graph3) && !descriptionsAllowed(graph3, window.BIBLIOMAP)) return;
       for (const [cluster, saved] of Object.entries(graph3.generatedDescriptions || {})) {
         const request = descriptionRequest(graph3, cluster, window.ATLAS_DATA.summary.corpus_id);
-        if (saved.result && saved.requestKey === JSON.stringify(request)) {
+        if (descriptionResultMatches(request, saved.result) && saved.requestKey === JSON.stringify(request)) {
           queue.seed(request, saved.result);
           const description2 = graph3.themeDescriptions?.[cluster];
           if (description2) {
@@ -963,7 +972,7 @@
     const { key, requests } = scopes.get(graph3);
     for (const request of requests) {
       const saved = graph3.generatedDescriptions?.[request.cluster];
-      if (saved?.result && saved.requestKey === JSON.stringify(request)) queue.seed(request, saved.result);
+      if (descriptionResultMatches(request, saved?.result) && saved.requestKey === JSON.stringify(request)) queue.seed(request, saved.result);
     }
     const entries = queue.activate(key, requests);
     for (const record3 of entries) if (record3.result) {
@@ -1048,7 +1057,7 @@
     }
     const request = descriptionRequest(graph3, cluster, window.ATLAS_DATA.summary.corpus_id), key = JSON.stringify(request);
     const saved = graph3.generatedDescriptions?.[cluster];
-    const record3 = queue.entries().find((record4) => record4.key === key) || queue.lookup(request) || saved?.result && saved.requestKey === key && { key, request, result: saved.result, status: "done" };
+    const record3 = queue.entries().find((record4) => record4.key === key) || queue.lookup(request) || descriptionResultMatches(request, saved?.result) && saved.requestKey === key && { key, request, result: saved.result, status: "done" };
     if (!record3) return;
     const section = node("section", "");
     section.className = "cluster-ai-description";
@@ -1058,7 +1067,7 @@
       if (record3.result) {
         const result = record3.result;
         if (titleCase(graph3.themeDescriptions?.[cluster]?.heading) !== titleCase(result.heading)) section.append(node("strong", titleCase(result.heading)));
-        if (result.status !== "shared-theme") section.append(node("p", result.status === "mixed-themes" ? "Mixed themes \u2014 one label may not represent every member." : result.status === "limited-evidence" ? "Partial description \u2014 broader commonality could not be verified; showing one supported concept." : "Insufficient evidence for a shared theme."));
+        if (result.status !== "shared-theme") section.append(node("p", result.status === "mixed-themes" ? "Mixed themes \u2014 one label may not represent every member." : result.status === "limited-evidence" ? "Provisional description: cited text does not establish every heading detail as shared." : "Insufficient evidence for a shared theme."));
         if (result.summary) section.append(node("p", result.summary.text));
         const coverage = result.packet.coverage;
         const sampledAbstracts = coverage.sampledAbstracts ?? result.packet.documents.filter((document2) => document2.role === "member" && document2.abstract).length;

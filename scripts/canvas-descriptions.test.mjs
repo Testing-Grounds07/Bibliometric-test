@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {descriptionsAllowed} from './description-policy.mjs';
-import {descriptionRequest} from './cluster-description-core.mjs';
+import {descriptionRequest,DESCRIPTION_VERSION,KEYWORD_VERSION} from './cluster-description-core.mjs';
 
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 const graph=()=>({nodes:[{id:'a',cluster:1},{id:'b',cluster:1}],links:[],themeDescriptions:{1:{heading:'Cached heading'}},clustering:{algorithm:'leiden'},order:2});
@@ -23,7 +23,7 @@ test('description policy fails closed for protected viewers and feature-node map
 test('protected viewer reads seeded matching saved AI evidence without jobs, never under a temporal cluster ID',async()=>{
  const previous={window:globalThis.window,document:globalThis.document,fetch:globalThis.fetch};let calls=0;
  try{globalThis.window={BIBLIOMAP:{active:true,canCompute:false,stage(){calls++;throw Error('No jobs permitted');}},ATLAS_DATA:{summary:{corpus_id:'fixture'}}};globalThis.document={getElementById:()=>null,createElement:()=>domNode()};globalThis.fetch=()=>{calls++;throw Error('No model fetch permitted');};await import('./canvas-descriptions.mjs?test=viewer');
-  const saved=graph(),request=descriptionRequest(saved,'1','fixture');saved.generatedDescriptions={1:{requestKey:JSON.stringify(request),result:{heading:'Saved cached theme',status:'shared-theme',summary:{text:'Authorized saved explanation',evidence:[]},concepts:[],exceptions:[],packet:{coverage:{sampled:2,members:2,withAbstract:0},documents:[]},createdAt:'2026-10-18T00:00:00Z',model:'Pinned model',verification:'Grounded cached claims'}}};
+  const saved=graph(),request=descriptionRequest(saved,'1','fixture');saved.generatedDescriptions={1:{requestKey:JSON.stringify(request),result:{version:DESCRIPTION_VERSION,keywordVersion:KEYWORD_VERSION,heading:'Saved cached theme',status:'shared-theme',summary:{text:'Authorized saved explanation',evidence:[]},concepts:[],exceptions:[],packet:{coverage:{sampled:2,members:2,withAbstract:0},documents:[]},createdAt:'2026-10-18T00:00:00Z',model:'Pinned model',verification:'Grounded cached claims'}}};
   const api=window.ATLAS_DESCRIPTIONS,host=domNode(),text=node=>[node.textContent||'',...(node.children||[]).map(text)].join(' ');api.prepare(saved,()=>{});api.mount(host,saved,'1',()=>{});api.rerunAll();await tick();assert.match(text(host),/Authorized saved explanation/);assert.equal(saved.themeDescriptions[1].heading,'Saved cached theme');assert.equal(calls,0);
   const period={...saved,temporalSelection:{index:0}},periodHost=domNode();api.prepare(period,()=>{});api.mount(periodHost,period,'1',()=>{});api.rerunAll();await tick();assert.doesNotMatch(text(periodHost),/Authorized saved explanation/);assert.match(text(periodHost),/no AI description job/);assert.equal(calls,0);
  }finally{globalThis.window=previous.window;globalThis.document=previous.document;globalThis.fetch=previous.fetch;}
@@ -39,4 +39,13 @@ test('unbound standalone imports refuse naming and abort prior work rather than 
   assert.equal(descriptionsAllowed(imported,session),false);for(let i=0;i<3;i++){api.sync(imported);api.prepare(imported,()=>{});api.mount(domNode(),imported,'1',()=>{});api.rerunAll();api.resumeNaming();}await tick();assert.equal(calls,0);assert.equal(JSON.stringify(imported),before);
   api.prepare(graph(),()=>{});assert.equal(calls,1,'ordinary full native map still starts its naming request');api.sync(imported);await tick();assert.equal(cancelled,1,'entering frozen import aborts prior naming');api.prepare(imported,()=>{});api.rerunAll();api.resumeNaming();await tick();assert.equal(calls,1);
  }}finally{globalThis.window=previous.window;globalThis.document=previous.document;globalThis.fetch=previous.fetch;}
+});
+
+
+test('old saved names and old service responses cannot masquerade as the new naming contract',async()=>{
+ const previous={window:globalThis.window,document:globalThis.document,fetch:globalThis.fetch};let calls=0;
+ try{globalThis.window={ATLAS_DATA:{summary:{corpus_id:'fixture'}}};globalThis.document={getElementById:()=>null,createElement:()=>domNode()};globalThis.fetch=async()=>{calls++;return Response.json({version:'grounded-clusters-9',heading:'Old generic heading',status:'shared-theme'});};
+ await import('./canvas-descriptions.mjs?old-contract');const saved=graph(),request=descriptionRequest(saved,'1','fixture');saved.generatedDescriptions={1:{requestKey:JSON.stringify(request),result:{version:'grounded-clusters-9',heading:'Old generic heading',status:'shared-theme'}}};const before=JSON.stringify(saved.nodes),host=domNode(),text=node=>[node.textContent||'',...(node.children||[]).map(text)].join(' '),api=window.ATLAS_DESCRIPTIONS;api.prepare(saved,()=>{});api.mount(host,saved,'1',()=>{});await tick();await tick();
+ assert.equal(calls,1);assert.match(text(host),/activate the matching naming service/);assert.doesNotMatch(text(host),/Old generic heading/);assert.equal(saved.themeDescriptions[1].heading,'Cached heading');assert.equal(JSON.stringify(saved.nodes),before);api.sync({...graph(),temporalSelection:{index:0}});
+ }finally{globalThis.window=previous.window;globalThis.document=previous.document;globalThis.fetch=previous.fetch;}
 });
