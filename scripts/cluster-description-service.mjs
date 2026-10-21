@@ -1,3 +1,4 @@
+import {validateImportedCache} from './imported-theme-evidence.mjs';
 import http from 'node:http';
 import {readFile, writeFile, mkdir, rename, stat} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -26,18 +27,18 @@ async function datasetFor(input) {
  const baseline = datasets[input.kind];
  if (baseline?.data.sourceCorpusId === input.corpusId) return {...baseline, references};
  if (!['cocitation', 'coupling'].includes(input.kind) || !/^[0-9a-f-]{36}$/.test(input.corpusId || '')) throw new Error('Invalid corpus');
- const folder = path.join(root, '.trials/workspace-corpora', input.corpusId), file = path.join(folder, 'themes.json'), revision = (await stat(file)).mtimeMs;
+ const folder = path.join(root, '.trials/workspace-corpora', input.corpusId), file = path.join(folder, 'themes.json'), revision = (await stat(file)).mtimeMs,registryRevision=(await stat(path.join(folder,'text-input.json'))).mtimeMs;
  const key = input.corpusId + ':' + input.kind, previous = dynamicDatasets.get(key);
- if (previous?.mtime === revision) return previous;
+ if (previous?.mtime === revision&&previous.registryMtime===registryRevision) return previous;
  const raw = await readFile(file, 'utf8'), data = JSON.parse(raw), registry = JSON.parse(await readFile(path.join(folder, 'text-input.json'), 'utf8'));
  if (data.sourceCorpusId !== input.corpusId || registry.sourceCorpusId !== input.corpusId) throw new Error('Corpus evidence mismatch');
- const dataset = {data, revision: hash(raw), mtime: revision, ids: new Set(input.kind === 'coupling' ? registry.sourceIds : registry.referenceIds), references: registry.references};
+ const dataset = {data, revision: hash(raw), mtime: revision,registryMtime:registryRevision, registry, ids: new Set(input.kind === 'coupling' ? registry.sourceIds : registry.referenceIds), references: registry.references};
  dynamicDatasets.set(key, dataset); return dataset;
 }
 await mkdir(cacheRoot, {recursive: true});
 let busy = false;
 
-function canonicalRequest(input, dataset) {
+async function canonicalRequest(input, dataset) {
  if (!dataset || input.corpusId !== dataset.data.sourceCorpusId || typeof input.cluster !== 'string' || !Array.isArray(input.nodes) || !input.nodes.length || input.nodes.length > 20000) throw new Error('Invalid cluster scope or corpus');
  const seen = new Set();
  const nodes = input.nodes.map(node => {
@@ -45,7 +46,10 @@ function canonicalRequest(input, dataset) {
   seen.add(node.id); return {id: node.id, cluster: node.cluster};
  }).sort((left, right) => left.id.localeCompare(right.id));
  if (!nodes.some(node => node.cluster === input.cluster)) throw new Error('Selected cluster is empty');
- return {kind: input.kind, corpusId: input.corpusId, cluster: input.cluster, nodes};
+ if(dataset.data.importedSourceText&&!input.importedTextBinding)throw Error('Imported source-text cache requires its exact binding.');
+ let importedTextBinding;
+ if(input.importedTextBinding){importedTextBinding=await validateImportedCache(dataset.data,dataset.registry);if(JSON.stringify(input.importedTextBinding)!==JSON.stringify(importedTextBinding))throw Error('Imported text-cache binding changed. Reload keywords before naming.');}
+ return {...(importedTextBinding?{importedTextBinding}:{}),kind: input.kind, corpusId: input.corpusId, cluster: input.cluster, nodes};
 }
 
 async function generate(request, signal, dataset) {
@@ -77,7 +81,7 @@ http.createServer(async (request, response) => {
  const chunks = []; let size = 0;
  try {
   for await (const chunk of request) { size += chunk.length; if (size > 3000000) return send(413, {error: 'Cluster scope is too large'}); chunks.push(chunk); }
-  const input = JSON.parse(Buffer.concat(chunks)), dataset = await datasetFor(input), canonical = canonicalRequest(input, dataset);
+  const input = JSON.parse(Buffer.concat(chunks)), dataset = await datasetFor(input), canonical = await canonicalRequest(input, dataset);
   const key = hash(JSON.stringify([DESCRIPTION_VERSION, MODEL_ID, dataset.revision, canonical]));
   const file = path.join(cacheRoot, key + '.json');
   if (!input.regenerate) {

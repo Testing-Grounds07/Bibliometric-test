@@ -1,4 +1,83 @@
 (() => {
+  // scripts/imported-theme-evidence.mjs
+  var approved = /* @__PURE__ */ new WeakMap();
+  var standaloneImport = (graph3) => !!graph3?.importedStandalone && graph3._backend === "independent-bnr-standalone";
+  async function textDigest(value) {
+    return [...new Uint8Array(await globalThis.crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)))].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  }
+  function strictSourceText(record3) {
+    const title = typeof (record3.display_name ?? record3.title) === "string" ? record3.display_name ?? record3.title : "";
+    let index = record3.abstract_inverted_index;
+    if (typeof index === "string") {
+      try {
+        index = JSON.parse(index);
+      } catch {
+        return { title: title === record3.id ? "" : title, abstract: "", abstractStatus: "invalid_json_abstract_omitted" };
+      }
+    }
+    const result = { title: title === record3.id ? "" : title, abstract: "", abstractStatus: "missing_abstract" };
+    if (index == null) return result;
+    if (typeof index !== "object" || Array.isArray(index)) return { ...result, abstractStatus: "invalid_abstract_omitted" };
+    const words2 = /* @__PURE__ */ new Map();
+    for (const [word, positions] of Object.entries(index)) {
+      if (!word || !Array.isArray(positions) || !positions.length) return { ...result, abstractStatus: "invalid_abstract_omitted" };
+      for (const position of positions) {
+        if (!Number.isSafeInteger(position) || position < 0 || position > 2e5 || words2.has(position)) return { ...result, abstractStatus: "invalid_abstract_omitted" };
+        words2.set(position, word);
+      }
+    }
+    if (!words2.size) return result;
+    for (let position = 0; position < words2.size; position++) if (!words2.has(position)) return { ...result, abstractStatus: "gapped_abstract_omitted" };
+    return { ...result, abstract: [...words2].sort((a, b) => a[0] - b[0]).map(([, word]) => word).join(" "), abstractStatus: "retained_contiguous_abstract" };
+  }
+  async function importedTextInput(corpusId, articles) {
+    if (typeof corpusId !== "string" || !Array.isArray(articles) || !articles.length || articles.length > 2e4) throw Error("Pinned source-text input is unavailable.");
+    const seen = /* @__PURE__ */ new Set(), references = {};
+    const documents = articles.map((record3) => {
+      if (typeof record3?.id !== "string" || seen.has(record3.id)) throw Error("Pinned source IDs are missing or duplicated.");
+      seen.add(record3.id);
+      references[record3.id] = Array.isArray(record3.references) ? record3.references : Array.isArray(record3.referenced_works) ? record3.referenced_works : [];
+      return { id: record3.id, ...strictSourceText(record3) };
+    }).sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+    const sourceIds = documents.map((document2) => document2.id), textCoverage = { sources: documents.length, withTitle: documents.filter((d) => d.title).length, withAbstract: documents.filter((d) => d.abstract).length, omittedInvalidAbstracts: documents.filter((d) => d.abstractStatus.includes("omitted")).length, withoutText: documents.filter((d) => !d.title && !d.abstract).length };
+    return { sourceCorpusId: corpusId, sourceIds, referenceIds: [], references, documents, importedSourceText: { schema_version: "bibliomap.imported-source-text.v1", sourceIds, textSha256: await textDigest(JSON.stringify(documents)), coverage: textCoverage, scope: "Exact retained source titles and contiguous available abstracts. Invalid or gapped abstracts omitted explicitly; no previous/reference-cache filling, no new retrieval. Current interpretative overlay; not approval by the retained study reviewers." } };
+  }
+  async function bindImportedThemes(graph3, data, packet) {
+    approved.delete(graph3);
+    if (!standaloneImport(graph3) || graph3.collaboration || graph3.temporalSelection || graph3.semantic && graph3.entityKind !== "source" || !packet || packet.corpusId !== graph3.sourceCorpusId || packet.evidence?.sourceCorpusId !== packet.corpusId || data?.sourceCorpusId !== packet.corpusId) throw Error("Keyword evidence does not match this saved source corpus.");
+    const input = await importedTextInput(packet.corpusId, packet.evidence.articles), sourceIds = new Set(input.sourceIds);
+    if (!Array.isArray(graph3.nodes) || graph3.nodes.some((node2) => !sourceIds.has(node2.id))) throw Error("Displayed nodes are not all members of the pinned source corpus.");
+    const value = await validateImportedCache(data, input);
+    approved.set(graph3, value);
+    return value;
+  }
+  async function validateImportedCache(data, input) {
+    const binding = data?.importedSourceText;
+    if (!binding || data.sourceCorpusId !== input.sourceCorpusId || JSON.stringify(binding) !== JSON.stringify(input.importedSourceText) || binding.textSha256 !== await textDigest(JSON.stringify(input.documents))) throw Error("Keyword cache lacks the exact pinned source-text binding.");
+    const expected = input.documents.filter((document2) => document2.title || document2.abstract), cached = data.documents;
+    if (!cached || typeof cached !== "object" || Array.isArray(cached) || Object.keys(cached).length !== expected.length || !expected.length) throw Error("Keyword cache has missing, foreign or unavailable source text.");
+    if (data.dimensions !== 384 || typeof data.model !== "string" || !/^[a-f0-9]{40,64}$/i.test(data.revision || "")) throw Error("Keyword model identity or dimensions are not pinned.");
+    for (const document2 of expected) {
+      const actual = cached[document2.id];
+      if (!actual || actual.id !== document2.id || actual.title !== document2.title || actual.abstract !== document2.abstract || typeof actual.embedding !== "string" || atob(actual.embedding).length !== data.dimensions || !Array.isArray(actual.phrases)) throw Error("Keyword cache text or embeddings do not match the pinned sources.");
+      for (const phrase of actual.phrases) {
+        if (typeof phrase.text !== "string" || !phrase.text.trim() || phrase.text.length > 500 || !Number.isFinite(phrase.semantic) || !Number.isInteger(phrase.count) || phrase.count < 1 || !Array.isArray(phrase.evidence) || !phrase.evidence.length || phrase.evidence.length > 3) throw Error("Invalid keyword evidence.");
+        for (const span of phrase.evidence) {
+          const text = document2[span.field];
+          if (!["title", "abstract"].includes(span.field) || !Number.isInteger(span.start) || !Number.isInteger(span.end) || span.start < 0 || span.end <= span.start || span.end > Array.from(text).length) throw Error("Keyword evidence has invalid source offsets.");
+          if (Array.from(text).slice(span.start, span.end).join("").toLowerCase().replace(/\s+/g, " ") !== phrase.text.toLowerCase()) throw Error("Keyword phrase does not match its literal source span.");
+        }
+      }
+    }
+    return { schema_version: "bibliomap.imported-theme-binding.v1", corpusId: input.sourceCorpusId, textSha256: binding.textSha256, cacheProjectionSha256: await textDigest(JSON.stringify(data)) };
+  }
+  function importedThemeBinding(graph3) {
+    return approved.get(graph3) || null;
+  }
+  function clearImportedThemes(graph3) {
+    approved.delete(graph3);
+  }
+
   // scripts/clustering-concepts.mjs
   var CLUSTERING_SCORES = [
     { value: "cpm", label: "CPM", algorithm: "leiden" },
@@ -573,7 +652,9 @@
   function descriptionRequest(graph3, cluster, corpusId) {
     if (graph3.temporalSelection) throw Error("Completed temporal windows are read-only; no article-description request is created.");
     if (graph3.collaboration || graph3.semantic && graph3.entityKind !== "source") throw new Error("Feature nodes cannot be submitted as article-description evidence.");
-    return { kind: graph3.canvasKind === "coupling" || graph3.semantic && graph3.entityKind === "source" ? "coupling" : "cocitation", corpusId, cluster: String(cluster), nodes: graph3.nodes.filter((node2) => node2.cluster > 0).map((node2) => ({ id: node2.id, cluster: String(node2.cluster) })).sort((left, right) => left.id.localeCompare(right.id)) };
+    const binding = standaloneImport(graph3) ? importedThemeBinding(graph3) : null;
+    if (standaloneImport(graph3) && !binding) throw Error("Load and verify this imported map\u2019s pinned source keywords before naming.");
+    return { ...binding ? { importedTextBinding: binding } : {}, kind: graph3.canvasKind === "coupling" || graph3.semantic && graph3.entityKind === "source" ? "coupling" : "cocitation", corpusId, cluster: String(cluster), nodes: graph3.nodes.filter((node2) => node2.cluster > 0).map((node2) => ({ id: node2.id, cluster: String(node2.cluster) })).sort((left, right) => left.id.localeCompare(right.id)) };
   }
 
   // scripts/description-queue.mjs
@@ -776,7 +857,8 @@
 
   // scripts/description-policy.mjs
   function descriptionsAllowed(graph3, session = {}) {
-    return !!graph3 && !(graph3._backend === "independent-bnr-standalone" && graph3.importedStandalone) && navigationReady(graph3) && !graph3.linkedBrowse && !graph3.collaboration && !graph3.temporalSelection && !(graph3.semantic && graph3.entityKind !== "source") && (!session.active || session.canCompute === true);
+    const imported = standaloneImport(graph3);
+    return !!graph3 && (!imported || !session.active && !!importedThemeBinding(graph3)) && navigationReady(graph3) && (!graph3.linkedBrowse || imported) && !graph3.collaboration && !graph3.temporalSelection && !(graph3.semantic && graph3.entityKind !== "source") && (!session.active || session.canCompute === true);
   }
 
   // scripts/canvas-descriptions.mjs
@@ -790,7 +872,7 @@
     return element6;
   };
   var queue = createDescriptionQueue(async (request, regenerate, signal) => {
-    if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP) || (currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) throw Error("AI naming is unavailable or paused in this analysis context.");
+    if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP) || (standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) throw Error("AI naming is unavailable or paused in this analysis context.");
     if (window.BIBLIOMAP?.active) {
       const job4 = window.BIBLIOMAP.stage(currentGraph, "description", { cluster: request.cluster }, () => {
       }, regenerate);
@@ -804,7 +886,7 @@
     }
     const timeout = AbortSignal.timeout(19e4), combined = AbortSignal.any([signal, timeout]);
     for (let attempt = 0; attempt < 4; attempt++) {
-      if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP) || (currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) throw Error("The naming context changed.");
+      if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP) || (standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) throw Error("The naming context changed.");
       const response = await fetch("analysis-api/describe", { method: "POST", signal: combined, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...request, regenerate }) });
       const result = await response.json();
       if (response.status === 429 && attempt < 3) {
@@ -836,16 +918,17 @@
       updateNames = null;
       manualGraph = null;
     }
-    if (!descriptionsAllowed(graph3, window.BIBLIOMAP) || (graph3.temporalSeries || !automaticNavigationAllowed(graph3)) && manualGraph !== graph3) {
+    if (!descriptionsAllowed(graph3, window.BIBLIOMAP) || (standaloneImport(graph3) || graph3.temporalSeries || !automaticNavigationAllowed(graph3)) && manualGraph !== graph3) {
       queue.stop();
       drawProgress();
     }
   }
   function prepare(graph3, update) {
-    if (!descriptionsAllowed(graph3, window.BIBLIOMAP) || (graph3.temporalSeries || !automaticNavigationAllowed(graph3)) && manualGraph !== graph3) {
+    if (!descriptionsAllowed(graph3, window.BIBLIOMAP) || (standaloneImport(graph3) || graph3.temporalSeries || !automaticNavigationAllowed(graph3)) && manualGraph !== graph3) {
       sync2(graph3);
       updateNames = update;
       if (graph3.collaboration || graph3.temporalSelection || graph3.semantic && graph3.entityKind !== "source") return;
+      if (standaloneImport(graph3) && !descriptionsAllowed(graph3, window.BIBLIOMAP)) return;
       for (const [cluster, saved] of Object.entries(graph3.generatedDescriptions || {})) {
         const request = descriptionRequest(graph3, cluster, window.ATLAS_DATA.summary.corpus_id);
         if (saved.result && saved.requestKey === JSON.stringify(request)) {
@@ -894,11 +977,11 @@
     const host = document.getElementById("clusterNameProgress");
     if (!host) return;
     if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP)) {
-      host.replaceChildren(node("span", "Cached keywords only \xB7 AI naming is not run for completed windows or read-only contexts."));
+      host.replaceChildren(node("span", standaloneImport(currentGraph) ? "Load matching pinned-source keywords before naming. Private imported contexts are unsupported." : "Cached keywords only \xB7 AI naming is not run for completed windows or read-only contexts."));
       return;
     }
-    if ((currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) {
-      host.replaceChildren(node("span", "Completed-view browsing \xB7 automatic naming paused; matching cached descriptions remain readable."));
+    if ((standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) {
+      host.replaceChildren(node("span", standaloneImport(currentGraph) ? "Current keyword overlay \xB7 Qwen naming starts only when requested; retained network and study reviews are unchanged." : "Completed-view browsing \xB7 automatic naming paused; matching cached descriptions remain readable."));
       const resume = node("button", "Resume naming \xB7 full map");
       resume.type = "button";
       resume.className = "secondary";
@@ -945,11 +1028,15 @@
   }
   function rerunAll() {
     if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP)) return;
-    if ((currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) resumeNaming();
+    if ((standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) resumeNaming();
     for (const record3 of queue.entries()) queue.retry(record3, true);
   }
   function mount(parent, graph3, cluster, inspect) {
     sync2(graph3);
+    if (standaloneImport(graph3) && !descriptionsAllowed(graph3, window.BIBLIOMAP)) {
+      parent.append(node("p", "Load matching pinned-source keywords before requesting names. No network recomputation is needed."));
+      return;
+    }
     if (graph3.collaboration || graph3.temporalSelection || graph3.semantic && graph3.entityKind !== "source") {
       parent.append(node("p", graph3.collaboration ? "Actor identities are not article IDs. AI actor descriptions are not implemented." : "Completed windows use cached keywords; no AI description job is started. Return to the full pinned map to name clusters."));
       return;
@@ -1035,7 +1122,7 @@
       if (section.isConnected) draw5();
     };
     draw5();
-    if (descriptionsAllowed(graph3, window.BIBLIOMAP) && (!graph3.temporalSeries && automaticNavigationAllowed(graph3) || manualGraph === graph3)) queue.prioritize(record3);
+    if (descriptionsAllowed(graph3, window.BIBLIOMAP) && (!standaloneImport(graph3) && !graph3.temporalSeries && automaticNavigationAllowed(graph3) || manualGraph === graph3)) queue.prioritize(record3);
   }
   window.ATLAS_DESCRIPTIONS = { mount, sync: sync2, prepare, drawProgress, rerunAll, resumeNaming };
   window.addEventListener?.("atlas:navigation-state", () => {
@@ -4741,6 +4828,9 @@
     setTimeout(() => URL.revokeObjectURL(url), 1e3);
   }
   window.ATLAS_EVIDENCE = {
+    bindImportedThemes,
+    importedThemeBinding,
+    clearImportedThemes,
     compactSnapshotTransport,
     currentStudySummary,
     currentStudyMethod,
@@ -4897,3 +4987,4 @@
   mountTemporalBrowser();
   mountCollaborationBrowser();
 })();
+//# sourceMappingURL=evidence-explorer.js.map

@@ -30,7 +30,7 @@ test('protected viewer reads seeded matching saved AI evidence without jobs, nev
 });
 
 
-test('frozen standalone imports never dispatch descriptions, even explicit retries, and abort prior naming',async()=>{
+test('unbound standalone imports refuse naming and abort prior work rather than borrowing native text',async()=>{
  const previous={window:globalThis.window,document:globalThis.document,fetch:globalThis.fetch};
  try{for(const active of [false,true]){let calls=0,cancelled=0;
   const session={active,canCompute:true,stage(){calls++;let reject;const promise=new Promise((resolve,no)=>reject=no);return {promise,cancel(){cancelled++;reject(Error('cancelled'));}};}};

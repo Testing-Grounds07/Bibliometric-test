@@ -1,10 +1,12 @@
+import {standaloneImport,importedThemeBinding} from './imported-theme-evidence.mjs';
 export const DESCRIPTION_VERSION = 'grounded-clusters-9';
 export const MODEL_ID = 'Qwen3-4B-Instruct-2507-Q4_K_M@4edb920b6f14e3b9284d4502a6485103d72cde05';
 
 export function descriptionRequest(graph, cluster, corpusId) {
  if(graph.temporalSelection)throw Error('Completed temporal windows are read-only; no article-description request is created.');
  if (graph.collaboration || graph.semantic && graph.entityKind !== 'source') throw new Error('Feature nodes cannot be submitted as article-description evidence.');
- return {kind: graph.canvasKind === 'coupling' || graph.semantic && graph.entityKind === 'source' ? 'coupling' : 'cocitation', corpusId, cluster: String(cluster), nodes: graph.nodes.filter(node => node.cluster > 0).map(node => ({id: node.id, cluster: String(node.cluster)})).sort((left, right) => left.id.localeCompare(right.id))};
+ const binding=standaloneImport(graph)?importedThemeBinding(graph):null;if(standaloneImport(graph)&&!binding)throw Error('Load and verify this imported map’s pinned source keywords before naming.');
+ return {...(binding?{importedTextBinding:binding}:{}),kind: graph.canvasKind === 'coupling' || graph.semantic && graph.entityKind === 'source' ? 'coupling' : 'cocitation', corpusId, cluster: String(cluster), nodes: graph.nodes.filter(node => node.cluster > 0).map(node => ({id: node.id, cluster: String(node.cluster)})).sort((left, right) => left.id.localeCompare(right.id))};
 }
 
 const vector = document => {

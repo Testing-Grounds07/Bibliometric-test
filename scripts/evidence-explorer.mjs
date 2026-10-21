@@ -1,3 +1,4 @@
+import {bindImportedThemes,importedThemeBinding,clearImportedThemes} from './imported-theme-evidence.mjs';
 import './clustering-concepts.mjs';
 import './canvas-extensions.mjs';
 import './canvas-descriptions.mjs';
@@ -416,6 +417,7 @@ async function exportEvidence() {
 }
 
 window.ATLAS_EVIDENCE = {
+ bindImportedThemes,importedThemeBinding,clearImportedThemes,
  compactSnapshotTransport,
  currentStudySummary,currentStudyMethod,
  prepareCanvasSnapshot,validateCanvasPacket,

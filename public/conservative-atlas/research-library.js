@@ -106,7 +106,7 @@
 
  // A display adapter for exact standalone imports; never change their graph,
  // memberships, objective or settings to match the native application's CPM UI.
- const blockedIds = new Set(['clusteringMethod','clusteringScore','clusteringSearch','networkModel','modelResolution','threshold','coCitationOrder','orderMode','orderSlider','maximumOrder','cpmSlider','cpmAuto','reset','drillMode','drillReferenceMinimum','drillSupport','validationQuick','validationFull','validationSettings','reliabilityButton','canvasLabelMode']);
+ const blockedIds = new Set(['clusteringMethod','clusteringScore','clusteringSearch','networkModel','modelResolution','threshold','coCitationOrder','orderMode','orderSlider','maximumOrder','cpmSlider','cpmAuto','reset','drillMode','drillReferenceMinimum','drillSupport','validationQuick','validationFull','validationSettings','reliabilityButton']);
  const blockedLabels = /^(?:Rebuild network|Recompute analysis|Return to full search network|Generate full analysis|Rerun generation|Generate keywords & labels|Quick check(?: ·.*)?|Full check(?: ·.*)?|Find stable settings|Find settings|Use Auto CPM|Reset analysis & view)$/;
  const savedControls = new Map(), savedTexts = new Map(), wrappedProjects = new WeakSet(), fittedImports = new WeakSet();
  let notice = null, guardedGraph = null, refreshQueued = false, patchedContext = null;
@@ -114,7 +114,7 @@
  const currentImported = () => {const graph = window.atlasSharedCanvas?.graph?.(); return imported(graph) ? graph : null;};
  const importedLabel = graph => graph.clustering?.objective === 'modularity' ? 'Imported Leiden modularity' : 'Imported objective: ' + (graph.clustering?.objective || graph.importedStandalone.objective || 'not recorded');
  function announceFrozen() { if (notice) {notice.hidden = false; notice.setAttribute('role','status');} }
- function blockedControl(control) { return !!control && (blockedIds.has(control.id) || !!control.closest?.('#projectReferenceControls,#canvasSettings,#canvasReliability,#autoCPMInfo,#validationMenu') || blockedLabels.test(control.textContent?.trim() || '')); }
+ function blockedControl(control) { if(control?.id==='canvasLabelMode')return false;return !!control && (blockedIds.has(control.id) || !!control.closest?.('#projectReferenceControls,#canvasSettings,#canvasReliability,#autoCPMInfo,#validationMenu') || blockedLabels.test(control.textContent?.trim() || '')); }
  function setDisplayText(id, value) {const target = document.getElementById(id); if (!target) return; if (!savedTexts.has(target)) savedTexts.set(target,{original:target.textContent,last:value}); savedTexts.get(target).last=value; if (target.textContent !== value) target.textContent=value;}
  function protectControls() {
   for (const control of document.querySelectorAll?.('input,select,button') || []) {
@@ -162,7 +162,9 @@
    const settings=graph.clustering||{}, detail=[];
    if(Number.isSafeInteger(settings.seed))detail.push('seed '+settings.seed);
    if(Number.isSafeInteger(settings.iterations))detail.push(settings.iterations+' iterations');
-   notice.replaceChildren(node('strong',importedLabel(graph)+(detail.length?' · '+detail.join(' · '):'')),node('p','Frozen standalone study result. No recomputation on open. Native rebuilding, CPM tuning, new optimizer checks and AI labeling are disabled for this imported view. Open an ordinary map to start a separate native analysis.'));
+   notice.replaceChildren(node('strong',importedLabel(graph)+(detail.length?' · '+detail.join(' · '):'')),node('p','Frozen standalone study result. No recomputation on open. Native rebuilding, CPM tuning and new optimizer checks are disabled. Keywords and Qwen names can be added as a current interpretation overlay from the exact saved source text; they do not alter this network or extend the retained study’s review approval.'));
+   const namingActions=node('div','','description-actions');
+   for(const [label,name]of[['Load keywords',false],['Name clusters',true]]){const action=node('button',label,'secondary');action.type='button';action.onclick=async()=>{action.disabled=true;try{await window.atlasSharedCanvas?.reloadThemes?.();if(currentImported()!==graph)return;if(window.ATLAS_EVIDENCE?.importedThemeBinding?.(graph)){if(name)window.ATLAS_DESCRIPTIONS?.resumeNaming?.();}else{const status=node('p',graph.themeError||'Matching pinned-source text is unavailable. No public/default corpus was substituted.');status.setAttribute('role','status');notice.append(status);}}finally{action.disabled=false;}};namingActions.append(action);}notice.append(namingActions);
    if(graph.importedStandalone.report_url)try{notice.append(link({label:'Read the retained study report and run settings',url:linkURL(graph.importedStandalone.report_url,'report')}));}catch{notice.append(node('p','Read the retained report in this project’s Reports & supporting files section.'));}
    notice.hidden=false;
   }

@@ -113,11 +113,11 @@ test('standalone modularity imports keep their objective/memberships, guard nati
 });
 
 
-test('actual native theme readers skip unavailable enrichment for frozen imports without mapping cached themes',async()=>{
+test('unbound imported panels stay empty and theme readers use only the explicit imported evidence route',async()=>{
  const app=readFileSync('public/conservative-atlas/app.js','utf8');
- const panelBody=app.match(/function themePanel\(parent,cluster\)\{[\s\S]*?\n\}/)[0];vm.runInNewContext(panelBody+';themePanel();',{graph:{_backend:'independent-bnr-standalone',importedStandalone:{objective:'modularity'}}});
+ const panelBody=app.match(/function themePanel\(parent,cluster\)\{[\s\S]*?\n\}/)[0];vm.runInNewContext(panelBody+';themePanel();',{graph:{_backend:'independent-bnr-standalone',importedStandalone:{objective:'modularity'}},window:{ATLAS_EVIDENCE:{importedThemeBinding:()=>null}}});
  for(const name of ['requestThemes','requestCouplingThemes']){
   const body=app.match(new RegExp('function '+name+'\\(\\)\\{[\\s\\S]*?\\n\\}'))[0];let fetched=0,rendered=0;const imported={_backend:'independent-bnr-standalone',importedStandalone:{objective:'modularity'},nodes:[],links:[]},original=JSON.stringify(imported);
-  const context={graph:imported,themeError:'',clusterListGraph:{},renderClusterList:()=>rendered++,fetch:()=>{fetched++;throw Error('No fetch permitted');},window:{},Promise};vm.runInNewContext(body+';this.read='+name+';',context);await context.read();assert.equal(fetched,0);assert.equal(rendered,1);assert.match(context.themeError,/Frozen standalone result/);assert.equal(JSON.stringify(imported),original);
+  const context={graph:imported,requestImportedThemes:()=>{rendered++;return Promise.resolve();},themeError:'',clusterListGraph:{},renderClusterList:()=>rendered++,fetch:()=>{fetched++;throw Error('No fetch permitted');},window:{},Promise};vm.runInNewContext(body+';this.read='+name+';',context);await context.read();assert.equal(fetched,0);assert.equal(rendered,1);assert.equal(context.themeError,'');assert.equal(JSON.stringify(imported),original);
  }
 });
