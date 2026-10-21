@@ -860,19 +860,24 @@
     const imported = standaloneImport(graph3);
     return !!graph3 && (!imported || !session.active && !!importedThemeBinding(graph3)) && navigationReady(graph3) && (!graph3.linkedBrowse || imported) && !graph3.collaboration && !graph3.temporalSelection && !(graph3.semantic && graph3.entityKind !== "source") && (!session.active || session.canCompute === true);
   }
+  function automaticDescriptionsAllowed(graph3, session = {}) {
+    return descriptionsAllowed(graph3, session) && !graph3.temporalSeries && (standaloneImport(graph3) || automaticNavigationAllowed(graph3));
+  }
 
   // scripts/canvas-descriptions.mjs
   var currentGraph;
   var updateNames;
   var manualGraph;
+  var navigationVersion = 0;
   var scopes = /* @__PURE__ */ new WeakMap();
+  var canRun = (graph3) => descriptionsAllowed(graph3, window.BIBLIOMAP) && (automaticDescriptionsAllowed(graph3, window.BIBLIOMAP) || manualGraph === graph3);
   var node = (tag, text) => {
     const element6 = document.createElement(tag);
     element6.textContent = text;
     return element6;
   };
   var queue = createDescriptionQueue(async (request, regenerate, signal) => {
-    if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP) || (standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) throw Error("AI naming is unavailable or paused in this analysis context.");
+    if (!canRun(currentGraph)) throw Error("AI naming is unavailable or paused in this analysis context.");
     if (window.BIBLIOMAP?.active) {
       const job4 = window.BIBLIOMAP.stage(currentGraph, "description", { cluster: request.cluster }, () => {
       }, regenerate);
@@ -886,7 +891,7 @@
     }
     const timeout = AbortSignal.timeout(19e4), combined = AbortSignal.any([signal, timeout]);
     for (let attempt = 0; attempt < 4; attempt++) {
-      if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP) || (standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) throw Error("The naming context changed.");
+      if (!canRun(currentGraph)) throw Error("The naming context changed.");
       const response = await fetch("analysis-api/describe", { method: "POST", signal: combined, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...request, regenerate }) });
       const result = await response.json();
       if (response.status === 429 && attempt < 3) {
@@ -918,13 +923,13 @@
       updateNames = null;
       manualGraph = null;
     }
-    if (!descriptionsAllowed(graph3, window.BIBLIOMAP) || (standaloneImport(graph3) || graph3.temporalSeries || !automaticNavigationAllowed(graph3)) && manualGraph !== graph3) {
+    if (!canRun(graph3)) {
       queue.stop();
       drawProgress();
     }
   }
   function prepare(graph3, update) {
-    if (!descriptionsAllowed(graph3, window.BIBLIOMAP) || (standaloneImport(graph3) || graph3.temporalSeries || !automaticNavigationAllowed(graph3)) && manualGraph !== graph3) {
+    if (!canRun(graph3)) {
       sync2(graph3);
       updateNames = update;
       if (graph3.collaboration || graph3.temporalSelection || graph3.semantic && graph3.entityKind !== "source") return;
@@ -980,8 +985,8 @@
       host.replaceChildren(node("span", standaloneImport(currentGraph) ? "Load matching pinned-source keywords before naming. Private imported contexts are unsupported." : "Cached keywords only \xB7 AI naming is not run for completed windows or read-only contexts."));
       return;
     }
-    if ((standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) {
-      host.replaceChildren(node("span", standaloneImport(currentGraph) ? "Current keyword overlay \xB7 Qwen naming starts only when requested; retained network and study reviews are unchanged." : "Completed-view browsing \xB7 automatic naming paused; matching cached descriptions remain readable."));
+    if (!canRun(currentGraph)) {
+      host.replaceChildren(node("span", "Completed-view browsing \xB7 automatic naming paused; matching cached descriptions remain readable."));
       const resume = node("button", "Resume naming \xB7 full map");
       resume.type = "button";
       resume.className = "secondary";
@@ -1028,7 +1033,7 @@
   }
   function rerunAll() {
     if (!descriptionsAllowed(currentGraph, window.BIBLIOMAP)) return;
-    if ((standaloneImport(currentGraph) || currentGraph.temporalSeries || !automaticNavigationAllowed(currentGraph)) && manualGraph !== currentGraph) resumeNaming();
+    if (!canRun(currentGraph)) resumeNaming();
     for (const record3 of queue.entries()) queue.retry(record3, true);
   }
   function mount(parent, graph3, cluster, inspect) {
@@ -1122,13 +1127,17 @@
       if (section.isConnected) draw5();
     };
     draw5();
-    if (descriptionsAllowed(graph3, window.BIBLIOMAP) && (!standaloneImport(graph3) && !graph3.temporalSeries && automaticNavigationAllowed(graph3) || manualGraph === graph3)) queue.prioritize(record3);
+    if (canRun(graph3)) queue.prioritize(record3);
   }
   window.ATLAS_DESCRIPTIONS = { mount, sync: sync2, prepare, drawProgress, rerunAll, resumeNaming };
   window.addEventListener?.("atlas:navigation-state", () => {
     manualGraph = null;
-    queue.stop();
+    const graph3 = currentGraph, update = updateNames, version = ++navigationVersion;
+    if (!automaticDescriptionsAllowed(graph3, window.BIBLIOMAP)) queue.stop();
     drawProgress();
+    queueMicrotask(() => {
+      if (version === navigationVersion && graph3 === currentGraph && graph3?.themeDescriptions && automaticDescriptionsAllowed(graph3, window.BIBLIOMAP)) prepare(graph3, update);
+    });
   });
 
   // scripts/evidence-guidance.mjs

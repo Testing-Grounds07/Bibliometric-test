@@ -2,14 +2,14 @@ import {standaloneImport} from './imported-theme-evidence.mjs';
 import {descriptionRequest} from './cluster-description-core.mjs';
 import {createDescriptionQueue} from './description-queue.mjs';
 import {titleCase} from './label-case.mjs';
-import {descriptionsAllowed} from './description-policy.mjs';
-import {automaticNavigationAllowed} from './startup-navigation.mjs';
+import {descriptionsAllowed,automaticDescriptionsAllowed} from './description-policy.mjs';
 
-let currentGraph, updateNames, manualGraph;
+let currentGraph, updateNames, manualGraph, navigationVersion=0;
 const scopes = new WeakMap();
+const canRun=graph=>descriptionsAllowed(graph,window.BIBLIOMAP)&&(automaticDescriptionsAllowed(graph,window.BIBLIOMAP)||manualGraph===graph);
 const node = (tag, text) => { const element = document.createElement(tag); element.textContent = text; return element; };
 const queue = createDescriptionQueue(async (request, regenerate, signal) => {
- if(!descriptionsAllowed(currentGraph,window.BIBLIOMAP)||(standaloneImport(currentGraph)||currentGraph.temporalSeries||!automaticNavigationAllowed(currentGraph))&&manualGraph!==currentGraph)throw Error('AI naming is unavailable or paused in this analysis context.');
+ if(!canRun(currentGraph))throw Error('AI naming is unavailable or paused in this analysis context.');
  if (window.BIBLIOMAP?.active) {
   const job = window.BIBLIOMAP.stage(currentGraph, 'description', {cluster: request.cluster}, () => {}, regenerate);
   const abort = () => job.cancel(); signal.addEventListener('abort', abort, {once:true});
@@ -17,7 +17,7 @@ const queue = createDescriptionQueue(async (request, regenerate, signal) => {
  }
  const timeout = AbortSignal.timeout(190000), combined = AbortSignal.any([signal, timeout]);
  for (let attempt = 0; attempt < 4; attempt++) {
-  if(!descriptionsAllowed(currentGraph,window.BIBLIOMAP)||(standaloneImport(currentGraph)||currentGraph.temporalSeries||!automaticNavigationAllowed(currentGraph))&&manualGraph!==currentGraph)throw Error('The naming context changed.');
+  if(!canRun(currentGraph))throw Error('The naming context changed.');
   const response = await fetch('analysis-api/describe', {method: 'POST', signal: combined, headers: {'Content-Type': 'application/json'}, body: JSON.stringify({...request, regenerate})});
   const result = await response.json();
   if (response.status === 429 && attempt < 3) { await new Promise(resolve => setTimeout(resolve, 3000)); combined.throwIfAborted(); continue; }
@@ -38,11 +38,11 @@ const queue = createDescriptionQueue(async (request, regenerate, signal) => {
 
 function sync(graph) {
  if (currentGraph !== graph) { queue.stop(); currentGraph = graph; updateNames = null; manualGraph=null; }
- if(!descriptionsAllowed(graph,window.BIBLIOMAP)||(standaloneImport(graph)||graph.temporalSeries||!automaticNavigationAllowed(graph))&&manualGraph!==graph){queue.stop();drawProgress();}
+ if(!canRun(graph)){queue.stop();drawProgress();}
 }
 
 function prepare(graph, update) {
- if(!descriptionsAllowed(graph,window.BIBLIOMAP)||(standaloneImport(graph)||graph.temporalSeries||!automaticNavigationAllowed(graph))&&manualGraph!==graph){
+ if(!canRun(graph)){
   sync(graph);updateNames=update;if(graph.collaboration||graph.temporalSelection||graph.semantic&&graph.entityKind!=='source')return;
   if(standaloneImport(graph)&&!descriptionsAllowed(graph,window.BIBLIOMAP))return;
   for(const [cluster,saved]of Object.entries(graph.generatedDescriptions||{})){const request=descriptionRequest(graph,cluster,window.ATLAS_DATA.summary.corpus_id);if(saved.result&&saved.requestKey===JSON.stringify(request)){queue.seed(request,saved.result);const description=graph.themeDescriptions?.[cluster];if(description){description.generated=saved.result;if(['shared-theme','mixed-themes'].includes(saved.result.status)){description.keywordHeading||=description.heading;description.heading=saved.result.heading;}}}}
@@ -74,7 +74,7 @@ function drawProgress() {
  const host = document.getElementById('clusterNameProgress');
  if (!host) return;
  if(!descriptionsAllowed(currentGraph,window.BIBLIOMAP)){host.replaceChildren(node('span',standaloneImport(currentGraph)?'Load matching pinned-source keywords before naming. Private imported contexts are unsupported.':'Cached keywords only · AI naming is not run for completed windows or read-only contexts.'));return;}
- if((standaloneImport(currentGraph)||currentGraph.temporalSeries||!automaticNavigationAllowed(currentGraph))&&manualGraph!==currentGraph){host.replaceChildren(node('span',standaloneImport(currentGraph)?'Current keyword overlay · Qwen naming starts only when requested; retained network and study reviews are unchanged.':'Completed-view browsing · automatic naming paused; matching cached descriptions remain readable.'));const resume=node('button','Resume naming · full map');resume.type='button';resume.className='secondary';resume.onclick=resumeNaming;host.append(resume);return;}
+ if(!canRun(currentGraph)){host.replaceChildren(node('span','Completed-view browsing · automatic naming paused; matching cached descriptions remain readable.'));const resume=node('button','Resume naming · full map');resume.type='button';resume.className='secondary';resume.onclick=resumeNaming;host.append(resume);return;}
  const entries = queue.entries(), done = entries.filter(record => record.status === 'done').length;
  const failed = entries.filter(record => ['error', 'cancelled'].includes(record.status));
  host.replaceChildren(node('span', `AI descriptions ${done}/${entries.length}${entries.some(record => ['running', 'idle'].includes(record.status)) ? ' · naming clusters' : failed.length ? ' · finished' : ' · complete'}${failed.length ? ` · ${failed.length} need retry` : ''}. Suggested themes, not validated.`));
@@ -83,7 +83,7 @@ function drawProgress() {
  if (entries.some(record => ['running', 'idle'].includes(record.status))) { const cancel = node('button', 'Pause naming'); cancel.type = 'button'; cancel.className = 'secondary'; cancel.onclick = () => { for (const record of queue.entries()) if (['running', 'idle'].includes(record.status)) queue.cancel(record); }; host.append(cancel); }
 }
 function resumeNaming(){if(!descriptionsAllowed(currentGraph,window.BIBLIOMAP))return;manualGraph=currentGraph;prepare(currentGraph,updateNames);drawProgress();}
-function rerunAll() { if(!descriptionsAllowed(currentGraph,window.BIBLIOMAP))return;if((standaloneImport(currentGraph)||currentGraph.temporalSeries||!automaticNavigationAllowed(currentGraph))&&manualGraph!==currentGraph)resumeNaming();for (const record of queue.entries()) queue.retry(record, true); }
+function rerunAll() { if(!descriptionsAllowed(currentGraph,window.BIBLIOMAP))return;if(!canRun(currentGraph))resumeNaming();for (const record of queue.entries()) queue.retry(record, true); }
 
 function mount(parent, graph, cluster, inspect) {
  sync(graph);if(standaloneImport(graph)&&!descriptionsAllowed(graph,window.BIBLIOMAP)){parent.append(node('p','Load matching pinned-source keywords before requesting names. No network recomputation is needed.'));return;}if(graph.collaboration||graph.temporalSelection||graph.semantic&&graph.entityKind!=='source'){parent.append(node('p',graph.collaboration?'Actor identities are not article IDs. AI actor descriptions are not implemented.':'Completed windows use cached keywords; no AI description job is started. Return to the full pinned map to name clusters.'));return;}
@@ -129,8 +129,14 @@ function mount(parent, graph, cluster, inspect) {
  };
  record.draw = () => { if (section.isConnected) draw(); };
  draw();
- if(descriptionsAllowed(graph,window.BIBLIOMAP)&&(!standaloneImport(graph)&&!graph.temporalSeries&&automaticNavigationAllowed(graph)||manualGraph===graph))queue.prioritize(record);
+ if(canRun(graph))queue.prioritize(record);
 }
 
 window.ATLAS_DESCRIPTIONS = {mount, sync, prepare, drawProgress, rerunAll,resumeNaming};
-window.addEventListener?.('atlas:navigation-state',()=>{manualGraph=null;queue.stop();drawProgress();});
+window.addEventListener?.('atlas:navigation-state',()=>{
+ manualGraph=null;const graph=currentGraph,update=updateNames,version=++navigationVersion;
+ if(!automaticDescriptionsAllowed(graph,window.BIBLIOMAP))queue.stop();drawProgress();
+ // Direct saved-map installation emits ready before replacing the old graph.
+ // Retry after that stack, and only for the exact still-current bound map.
+ queueMicrotask(()=>{if(version===navigationVersion&&graph===currentGraph&&graph?.themeDescriptions&&automaticDescriptionsAllowed(graph,window.BIBLIOMAP))prepare(graph,update);});
+});
