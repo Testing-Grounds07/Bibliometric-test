@@ -1,0 +1,24 @@
+[
+  {
+    "id": "flocking-primary",
+    "work_id": "W3033075609",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7328404/",
+    "access_date": "2026-10-20",
+    "scope": "abstract and article text searchpreview",
+    "source_type": "primary article repository",
+    "claim": "Adaptive leadership here is timevarying interagent leadership hierarchy in flocking/drone model, a different operationalconstruct.",
+    "exact_quote": "demonstrated by our swarm of 52 drones",
+    "copyright": "Short excerpt; report paraphrase only."
+  },
+  {
+    "id": "obolensky-publisher",
+    "work_id": "W636787330",
+    "url": "https://www.routledge.com/Complex-Adaptive-Leadership-Embracing-Paradox-and-Uncertainty-2nd-Edition/Obolensky/p/book/9781472447913",
+    "access_date": "2026-10-20",
+    "scope": "publisher bookdescription and secondedition catalog/preview metadata; exact originaledition identity notexhaustive",
+    "source_type": "primary publisher",
+    "claim": "NickObolensky title is book; secondedition2014preview says revision oforiginal2010. Do not merge2010book and2011review.",
+    "exact_quote": "Preview Book",
+    "copyright": "No fulltext redistribution."
+  }
+]

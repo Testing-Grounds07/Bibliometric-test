@@ -1,0 +1,34 @@
+{
+  "role": "statistics/reproducibility reviewer administrative status-only rebind",
+  "status": "accepted_scoped_exploratory_status_only_rebind",
+  "finished_utc": "2026-10-21T03:20:11.423271+00:00",
+  "original_review_path": "statistics-review/review.json",
+  "original_review_sha256": "bd97fab6b101498dde9804aebbeb848472629fe9019bd5af3510d0fa00c0a230",
+  "reviewed_scientific_candidate4_manifest_sha256": "e3343a38c7711bc19a2adeb0dbd7951371111de16da320245170fac2febed1be",
+  "accepted_candidate_source": "reviewer-owned preserved accepted manifest and isolated candidate4 replay files; no other reviewer response read",
+  "final_candidate_manifest_sha256": "db52839453368a5d90eb4d6f00d1f75237c84c44d597bee47cb8206b92851823",
+  "final_report_html_sha256": "51d6bdbb5ae155053c6f87ea516ff1af2a7319ec0d9cfbe9f6fc04b06ecbfd7d",
+  "status_only_revision_receipt_sha256": "21fb74e94d427a1b146a90007f60ed6b739ce34c953fd96cd4376ed29a49dce0",
+  "public_output_manifest_sha256": "723d26901eb64cd258b38595a58effae4f4ab4966f73097d99cfe5216d05418c",
+  "executed_delta_checks": {
+    "scientific_and_source_files_unchanged": 53,
+    "html": "Exactly two pending→accepted_scoped_exploratory badge replacements; every other byte unchanged.",
+    "technical_json": "Only review_status subtree changed; all other parsed content equal.",
+    "human_expert_interpretation": "not_assessed unchanged",
+    "original_statistics_review": "hash unchanged",
+    "freeze_script": "Only generic manifest review_status metadata string changed.",
+    "delivery_checks_changed_keys": [
+      "checked_utc",
+      "htmlbytes"
+    ],
+    "public_allowlist_files_verified": 22,
+    "public_allowlist_path_set": "unchanged",
+    "final_manifest_files_verified": 62,
+    "input_manifest": "unchanged from candidate4",
+    "new_numerical_or_semantic_review": "not performed or required; scientific/source content unchanged"
+  },
+  "scope_limit": "Administrative rebind extends the original scoped statistics/reproducibility acceptance to this exact final report. It adds no human-expert assessment,historical-seminality certification,or new substantive claim.",
+  "unresolved_status_delta_objections": [],
+  "checker_path": "statistics-review/final_status_rebind.py",
+  "checker_sha256": "da42a78d51774e748f0accf505421a865a6fadca0202cdc6f59c04d50b7e942e"
+}

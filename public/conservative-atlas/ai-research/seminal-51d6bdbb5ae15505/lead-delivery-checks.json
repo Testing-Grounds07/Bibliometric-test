@@ -1,0 +1,12 @@
+{
+  "check_type": "lead_delivery_invariants_not_independentreview",
+  "checked_utc": "2026-10-21T03:18:21.823340+00:00",
+  "htmlbytes": 22681,
+  "local_link_count": 12,
+  "missinglocalfiles": [],
+  "csv951uniquemetadataonly": "passed",
+  "shortlist10": "passed",
+  "basic_accessibility_markup": "passed; no renderedvisualQAclaimed",
+  "public_source_text": "No fullabstracts/fulltextPDFs; publicappraisals omitquotedexcerpt; leadprimarymemo exactquotes areveryshortmetadata/claimlocators.",
+  "browser_visual_QA": "not_assessed"
+}

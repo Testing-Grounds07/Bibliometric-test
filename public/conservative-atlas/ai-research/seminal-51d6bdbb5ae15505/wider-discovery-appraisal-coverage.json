@@ -1,0 +1,126 @@
+{
+  "top20_union_n": 51,
+  "overlap_with45_appraisals": 32,
+  "unappraised_sensitivity_candidates": [
+    {
+      "id": "W2051331797",
+      "title": "Adaptive leadership in school boards in Australia: an emergent model",
+      "appraised": false
+    },
+    {
+      "id": "W2075769189",
+      "title": "Agility in Adversity: Integrating Mindfulness and Principles of Adaptive Leadership in the Administration of a Community Mental Health Center",
+      "appraised": false
+    },
+    {
+      "id": "W2183458837",
+      "title": "APPLYING ADAPTIVE LEADERSHIP TO THE SUPPLY CHAIN",
+      "appraised": false
+    },
+    {
+      "id": "W2290774513",
+      "title": "Adaptive Leadership and Person-Centered Care",
+      "appraised": false
+    },
+    {
+      "id": "W3101841464",
+      "title": "Italian mayors and the management of COVID-19: adaptive leadership for organizing local governance",
+      "appraised": false
+    },
+    {
+      "id": "W3115426723",
+      "title": "Applying the principles of adaptive leadership to person‐centred care for people with complex care needs: Considerations for care providers, patients, caregivers and organizations",
+      "appraised": false
+    },
+    {
+      "id": "W3116271247",
+      "title": "Building Health Services in a Rapidly Changing Landscape: Lessons in Adaptive Leadership and Pivots in a COVID-19 Remote Monitoring Program",
+      "appraised": false
+    },
+    {
+      "id": "W3198420226",
+      "title": "The Effects of Adaptive Leadership on Organizational Effectiveness at Public Higher Education Institutions of Ethiopia",
+      "appraised": false
+    },
+    {
+      "id": "W4308896297",
+      "title": "An Adaptive Leadership Approach: The Impact of Reasoning and Emotional Intelligence (EI) Abilities on Leader Adaptability",
+      "appraised": false
+    },
+    {
+      "id": "W4319594467",
+      "title": "Professional Development of Civil Servants: Trends and Perspectives Based on Adaptive Leadership",
+      "appraised": false
+    },
+    {
+      "id": "W4362674094",
+      "title": "Adaptive Leadership in Educator Preparation: A Statewide Case Study",
+      "appraised": false
+    },
+    {
+      "id": "W4382343015",
+      "title": "ADAPTIVE LEADERSHIP OF SCHOOL HEADS AND THE SCHOOL PERFORMANCE ON THE SCHOOL-BASED MANAGEMENT",
+      "appraised": false
+    },
+    {
+      "id": "W4386737830",
+      "title": "Do high-performance work practices promote an individual's readiness and commitment to change? The moderating role of adaptive leadership",
+      "appraised": false
+    },
+    {
+      "id": "W4391261190",
+      "title": "Adaptive leadership and safety citizenship behaviors in Pakistan: the roles of readiness to change, psychosocial safety climate, and proactive personality",
+      "appraised": false
+    },
+    {
+      "id": "W4391392954",
+      "title": "Switching gears: How teams co-construct adaptive leadership style transitions in dynamic contexts",
+      "appraised": false
+    },
+    {
+      "id": "W4401498231",
+      "title": "Adaptive leadership of the Indonesian government in handling the COVID-19 Pandemic",
+      "appraised": false
+    },
+    {
+      "id": "W4402116446",
+      "title": "Adaptive Leadership as Leadership Strategy on Curriculum Change: a Case Study in XYZ School",
+      "appraised": false
+    },
+    {
+      "id": "W4412950939",
+      "title": "REFORMS IN PUBLIC SECTOR LIBRARIES IN LAHORE THROUGH ADAPTIVE LEADERSHIP AND KOTTER’S CHANGE MODEL: LESSONS FROM GOVERNMENT INITIATIVES",
+      "appraised": false
+    },
+    {
+      "id": "W7211869833",
+      "title": "Islamic Educational Leadership in the Era of Digital Transformation: Developing Adaptive Leadership Competencies for School Principals",
+      "appraised": false
+    }
+  ],
+  "interpretation": "Unappraised is not a negativecontentdecision; widercutoff sensitivity not completeappraisal.",
+  "full_top20_plus_earliest_cohort_union_n": 64,
+  "full_discovery_union_appraised": 45,
+  "full_discovery_unappraised_ids": [
+    "W2051331797",
+    "W2075769189",
+    "W2183458837",
+    "W2290774513",
+    "W3101841464",
+    "W3115426723",
+    "W3116271247",
+    "W3198420226",
+    "W4308896297",
+    "W4319594467",
+    "W4362674094",
+    "W4382343015",
+    "W4386737830",
+    "W4391261190",
+    "W4391392954",
+    "W4401498231",
+    "W4402116446",
+    "W4412950939",
+    "W7211869833"
+  ],
+  "definition": "51=top20fourmetricsonly;64=thatunionplusunchangedearliest15/cohorttop3. Both use648 providerarticle/review labels."
+}

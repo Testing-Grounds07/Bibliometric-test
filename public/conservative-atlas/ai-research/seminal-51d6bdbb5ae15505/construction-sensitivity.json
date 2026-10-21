@@ -1,0 +1,37 @@
+[
+  {
+    "name": "baseline",
+    "deleted_reference_ids": [],
+    "edges": 10891,
+    "connected": 296,
+    "removed_incidence": 0
+  },
+  {
+    "name": "remove_W1597546876",
+    "deleted_reference_ids": [
+      "W1597546876"
+    ],
+    "edges": 7144,
+    "connected": 288,
+    "removed_incidence": 99
+  },
+  {
+    "name": "remove_W4207026187",
+    "deleted_reference_ids": [
+      "W4207026187"
+    ],
+    "edges": 9148,
+    "connected": 293,
+    "removed_incidence": 68
+  },
+  {
+    "name": "remove_W1597546876_W4207026187",
+    "deleted_reference_ids": [
+      "W1597546876",
+      "W4207026187"
+    ],
+    "edges": 5309,
+    "connected": 285,
+    "removed_incidence": 167
+  }
+]

@@ -1,0 +1,214 @@
+{
+  "study_id": "adaptive-leadership-seminal-001",
+  "protocol_version": 3,
+  "design": "exploratory; no inference tests or universal seminal classifier",
+  "question": "Which articles within the existing 951-record adaptive leadership title corpus merit priority as provisional seminal candidates, and what contextual foundations lie outside it?",
+  "population": "All951 frozen selected records from literal case-insensitive adaptive leadership title search with two neuroadaptive exclusions. Not field census. ExactIDs; preserve all951 incl isolates and missing refs.",
+  "audit": {
+    "n": 951,
+    "primary_type_n": 648,
+    "types": {
+      "article": 638,
+      "book-chapter": 77,
+      "book": 15,
+      "peer-review": 7,
+      "libguides": 7,
+      "report": 4,
+      "dissertation": 56,
+      "dataset": 7,
+      "other": 21,
+      "conference-abstract": 22,
+      "preprint": 23,
+      "conference-paper": 43,
+      "book-review": 4,
+      "editorial": 2,
+      "erratum": 3,
+      "review": 10,
+      "reference-entry": 5,
+      "paratext": 1,
+      "supplementary-materials": 6
+    },
+    "reference_nonempty": 325,
+    "global_count_missing": 0,
+    "coupling_connected": 296,
+    "direct_incoming_positive_targets": 168,
+    "direct_in_corpus_incidence": 720,
+    "discovery_union_n": 44,
+    "eras": {
+      "2010-2019": 126,
+      "2000-2009": 21,
+      "2020+": 494,
+      "unknown": 5,
+      "pre2000": 2
+    },
+    "record_updated_date_range": [
+      "2025-10-10T17:16:08.811792+00:00",
+      "2026-10-14T16:39:01.820549+00:00"
+    ],
+    "record_updated_year_counts": {
+      "2025": 68,
+      "2026": 883
+    },
+    "references_field_present": 951,
+    "reference_empty_or_unavailable": 626,
+    "global_count_zero": 621,
+    "abstract_status": {
+      "missing": 236,
+      "valid": 704,
+      "gapped": 11
+    }
+  },
+  "construction": {
+    "local_incoming": "distinct exact source→target;source!=target, counted once/source. Authorshipselfcitations not removed. Unknown outgoingbibliography remainsunknown.",
+    "coupling": "For all951 exactIDs: cosineweight=sharedobservedreferences/sqrt(observedrefs_source*observedrefs_target); unchanged original min_support1 noadditionalcutoff. Deterministic rankbyweightedsum.",
+    "candidate_screen": "648 provider article/review labels, known mislabeledbooks/reviewsscreened in appraisal not silently rewritten. Metric ranks retain648denominator to remain reproducible.",
+    "ranks": "Competitionrank1+number strictlygreater; strength tolerance1e-12 in ablationranks. Topcutoffs sort descendingmetric then exactID, so cutoff ties are arbitrary.",
+    "reference_age_heuristic": "snapshotcounts / max(1,2026-publicationyear+1). Not exposureannualrate; frozenupdateddatesheterogeneous; nofieldnormalization.",
+    "cohorts": "pre2000:2,2000-2009:21,2010-2019:126,2020+:494,unknown:5 within providerlabels. Cohortcounts/ranks not quality."
+  },
+  "candidate_discovery": {
+    "metric_earliest_cohort_union": 44,
+    "appraisal_with_flocking_check": 45,
+    "wider_top20_union": 51,
+    "wider_union_appraised": 32,
+    "full_top20_plus_earliest_cohort_union": 64,
+    "full_discovery_union_appraised": 45,
+    "unappraised_wider_candidates": 19
+  },
+  "sensitivity": [
+    {
+      "name": "baseline",
+      "deleted_reference_ids": [],
+      "edges": 10891,
+      "connected": 296,
+      "removed_incidence": 0
+    },
+    {
+      "name": "remove_W1597546876",
+      "deleted_reference_ids": [
+        "W1597546876"
+      ],
+      "edges": 7144,
+      "connected": 288,
+      "removed_incidence": 99
+    },
+    {
+      "name": "remove_W4207026187",
+      "deleted_reference_ids": [
+        "W4207026187"
+      ],
+      "edges": 9148,
+      "connected": 293,
+      "removed_incidence": 68
+    },
+    {
+      "name": "remove_W1597546876_W4207026187",
+      "deleted_reference_ids": [
+        "W1597546876",
+        "W4207026187"
+      ],
+      "edges": 5309,
+      "connected": 285,
+      "removed_incidence": 167
+    }
+  ],
+  "critical_invariants": {
+    "unique951IDs": "passed by retained derivationassertion",
+    "exactbaseline_strength_reconstruction": "maxabsoluteerror<1e-10 asserted",
+    "referenceincidences": 10373,
+    "raw_withincorpus_exactincidence_includingselfloops": 725,
+    "selfloops": 5,
+    "valid_withincorpus_otherwork_incidence": 720,
+    "positive_incoming_target_n": 168,
+    "chronologyflags": 1,
+    "Corazzini_screened_sensitivity": "8→7; only observed2012→2014link excluded for this diagnostic, originalretained"
+  },
+  "not_applicable": {
+    "nullmodel_significance": "descriptive candidate discovery, no inferential estimand",
+    "optimizer_seed_stability": "no optimization rerun; deterministic ranks; old communities used context only",
+    "newgraph_clustering": "not required for historical/content question; no newcluster claims"
+  },
+  "not_assessed": [
+    "historicallycompletefield",
+    "contentappraisalall951",
+    "fieldnormalizedcitations",
+    "formalqualityorcausaleffect",
+    "completepublicationtype/editionaudit",
+    "humanexpertinterpretation",
+    "completecentralacquisitionrequestcounter"
+  ],
+  "resource_deviation": "Original max_external_primary_pages25 was a target, not an enforced shared counter. Root targeted9 exact-ID metadata requests plus primarycontent/methodpages and lead type/falsefriendchecks. Final exactcombinedrequestcount not_assessed; acquisition stopped after memo delivery. No snapshotrescan/modelinference or corpus expansion.",
+  "review_status": {
+    "methods_agent_review": "accepted_scoped_exploratory",
+    "statistics_reproducibility_agent_review": "accepted_scoped_exploratory",
+    "human_expert_interpretation": "not_assessed",
+    "scope": "Fresh reviews must bind frozen candidate and exact inputs; lead checks are not independentreview.",
+    "review_bindings": [
+      {
+        "role": "methods",
+        "path": "methods-review/methods-review.json",
+        "sha256": "7200874f3c8b1f7e2ba574eaae78f2511f509f0960dba99473705906d871df17"
+      },
+      {
+        "role": "statistics_reproducibility",
+        "path": "statistics-review/review.json",
+        "sha256": "bd97fab6b101498dde9804aebbeb848472629fe9019bd5af3510d0fa00c0a230"
+      }
+    ],
+    "reviewed_scientific_candidate_manifest_sha256": "e3343a38c7711bc19a2adeb0dbd7951371111de16da320245170fac2febed1be",
+    "reviewed_scientific_candidate_html_sha256": "bb4197bb12cf613ecf7a5dfff0bc5cd565668f8fd4f6fb13573f525f274bfcc0",
+    "final_report_status_only_rebind": "see separately retained final rebind receipts; required before publication"
+  },
+  "reproduce": {
+    "working_directory": "C:/Users/Austin/Documents/Codex/bibliometric-network-researcher",
+    "interpreter": ".venv/Scripts/python.exe",
+    "required_python_flags": [
+      "-X",
+      "utf8"
+    ],
+    "powershell_command_template": "& ./.venv/Scripts/python.exe -X utf8 .runs/adaptive-leadership-seminal/SCRIPT.py",
+    "alternative_environment": "PYTHONIOENCODING=utf-8 before interpreter invocation; documented -X utf8 preferred for Windows cp1252 console.",
+    "tested_interpreter_absolute": "C:/Users/Austin/Documents/Codex/bibliometric-network-researcher/.venv/Scripts/python.exe",
+    "order": [
+      "derive.py",
+      "sensitivity.py",
+      "coverage.py",
+      "appraise.py",
+      "assemble.py",
+      "clarify-sensitivity.py",
+      "build-report.py",
+      "freeze.py"
+    ],
+    "scripts_directory": ".runs/adaptive-leadership-seminal",
+    "important": "Do not rerun init.py (capturesnewdiscoverytimes) or runtime.py(inputmanifestappend); originalprotocols retained. appraise.py establishes sourceonlydecisions; assemble.py integrates frozenrootprimarymemo and explicitcandidateorder. No externalfetch needed to recompute numericalresults. Allsourcefiles bound inputmanifest."
+  },
+  "claims": [
+    {
+      "claim": "Yukl/Mahsud and DeRue are the strongest broad starting candidates here, with distinct conceptual routes.",
+      "evidence": [
+        "provisional-shortlist.json items1-2",
+        "primary-source-appraisal-root.json articleentries",
+        "all951-metrics.csv"
+      ],
+      "limit": "Uptake and substantive contribution do not prove firsthistoricalpriority."
+    },
+    {
+      "claim": "Heifetz contextual roots need separate book/outsidecorpus registers.",
+      "evidence": [
+        "contextual-reference-register.json",
+        "prior identityaudit linked inputmanifest",
+        "primary-source-appraisal-root.json contextualentries"
+      ],
+      "limit": "ExactIDs/editions notpooled; unresolvedW6680009562."
+    },
+    {
+      "claim": "Couplingrank alone gives misleading historicalcandidatepriority.",
+      "evidence": [
+        "construction-sensitivity.json",
+        "provisional-shortlist.json strengthranks",
+        "appraisal-decisions.json typetraps"
+      ],
+      "limit": "No assertion coupling is useless for similaritymapping."
+    }
+  ]
+}

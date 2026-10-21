@@ -1,0 +1,110 @@
+{
+  "schema": "scoped-independent-methods-review-v1",
+  "reviewer_role": "fresh independent methods reviewer",
+  "review_date_utc": "2026-10-21",
+  "decision": "accepted_scoped_exploratory",
+  "decision_scope": "The frozen candidate is acceptable as an exploratory, evidence-linked reading route and provisional seminal-candidate discovery study within the declared 951-record selection. This does not accept definitive seminalness, historical priority, a complete literature census, source completeness, or human scholarly consensus.",
+  "frozen_bindings": {
+    "candidate_manifest": "frozen-candidate-manifest.json",
+    "candidate_manifest_sha256": "e3343a38c7711bc19a2adeb0dbd7951371111de16da320245170fac2febed1be",
+    "candidate_report": "seminal-report.html",
+    "candidate_report_sha256": "bb4197bb12cf613ecf7a5dfff0bc5cd565668f8fd4f6fb13573f525f274bfcc0",
+    "protocol": "protocol-v3.json",
+    "protocol_sha256": "000d6b44e6f28bb7af51e0529abca57a6d46d5d08512cee01c0dd6ddcd06a9a8",
+    "exact_per_file_inputs_and_results": "methods-review/independent-checks.json"
+  },
+  "independence": {
+    "fresh_reviewer_context": true,
+    "other_reviewer_outputs_read": false,
+    "lead_private_reasoning_read": false,
+    "allowed_evidence": "Exact public scientific files supplied by coordinator and listed in the frozen manifest; original scientific inputs listed by input-manifest.json; installed scientific contracts; own independent checks.",
+    "source_artifacts_modified": false,
+    "checks_code": "methods-review/independent-checks.py"
+  },
+  "executed_checks": [
+    {
+      "id": "M-C01",
+      "claim_scope": "Identity and scope of reviewed candidate",
+      "method": "Independent SHA256 and byte-size recomputation for all 59 final candidate-4 scientific packet files and all eight original inputs; separately hash manifest/report. Prior candidate-1 and candidate-3 review/check results retained separately.",
+      "status": "passed",
+      "evidence": "methods-review/independent-checks.json",
+      "limit": "Hash integrity does not verify source truth or scientific interpretation. No production database write or project publication was reviewed."
+    },
+    {
+      "id": "M-C02",
+      "claim_scope": "Population, citation proxy and coverage denominators",
+      "method": "Read raw records independently; canonical exact-ID set construction; distinct valid references per source; exclude exact source-target selflinks; recompute all incoming counts and coverage strata.",
+      "status": "passed",
+      "result": "951 distinct records; 325 nonempty observed reference lists; 10373 distinct source-reference incidences; 725 within-selection incidences including five selflinks; 720 other-work incidences; 168 positive incoming targets; zero disagreements with work-metrics local_incoming. Provider article/review universe is 648, of which 243 have observed references. Era counts in candidate are correctly labeled for this 648 universe.",
+      "limit": "No evidence that the 626 empty observed lists are complete bibliographies. Incoming values are observed lower-bound counts under exact identities, not complete influence measures. Author self-citations are retained."
+    },
+    {
+      "id": "M-C03",
+      "claim_scope": "Fit between seminal-candidate question and selected methods",
+      "method": "Compare protocol v3, report and technical specification with installed workflow/R7/R1 contracts and method-source brief.",
+      "status": "passed_for_scoped_exploration",
+      "result": "Complementary citation uptake, content and historical evidence support candidate discovery. Coupling is explicitly limited to shared-bibliography discovery/context; no PageRank-only or coupling-only seminalness rule is used. Cited-reference frequency is a separate contextual register and is not called a co-citation map. Deterministic ranks require no optimizer-seed test; absence of inferential claims makes significance/null testing not applicable to this design.",
+      "limit": "This is a judgment of design fit, not an independently validated seminal-paper classifier. No historic priority or corpus robustness result is established."
+    },
+    {
+      "id": "M-C04",
+      "claim_scope": "Article shortlist eligibility, construct distinctions and bounded appraisal",
+      "method": "Inspect ten shortlisted IDs and 45 public scientific appraisal decisions; compare with frozen abstract evidence and coordinator's primary-source appraisal memo; inspect explicit contrary/insufficient examples and wider-discovery coverage.",
+      "status": "passed_for_provisional_reading_priorities",
+      "result": "All ten priorities are within the original selection. Yukl/Mahsud and DeRue are presented as broad starting points, with distinct concepts. Glover Part One and team/clinical/academic/collaborative branches are bounded and not treated as independent universal origins. The misclassified Practice book and suspected reviews are excluded from the article priorities and preserved contextually. Missing abstracts, content-date anomaly W7104025521 and the flocking false friend are not used as historical support. The 19 unappraised wider candidates remain unassessed rather than rejected.",
+      "limit": "Independent reviewer read frozen abstracts where present and scope-limited appraisals. The primary-source memo is evidence of coordinator-reported retrieval, not fresh independent full-text verification. No semantic completeness claim for all 951 articles or all 64 wider discovery candidates."
+    },
+    {
+      "id": "M-C05",
+      "claim_scope": "Citation, age, edition and missingness interpretation",
+      "method": "Inspect report, protocol, contextual register, metadata receipts, sensitivity artifacts and exact-ID rules.",
+      "status": "passed",
+      "result": "Global frozen provider citations, observed local incoming citations, coupling neighbors/strength and reference occurrence counts are separated. Heterogeneous update dates and coarse-cohort denominators are explicit. Citations divided by a 2026 age denominator are not called exposure-adjusted rates or field normalization. Heifetz title/edition records are not merged or citation-pooled. Zero observed incoming is not absence of influence. Reference ablations are reported as construction dependence, not significance or validation of a superior map.",
+      "limit": "I did not independently rerun weighted coupling reconstruction; that numerical claim needs the distinct statistics/reproducibility review. Complete publication-type/edition audit remains unassessed."
+    },
+    {
+      "id": "M-C06",
+      "claim_scope": "Access scope and scientific assurance wording",
+      "method": "Inspect report and primary-source memo; attempt independent retrieval of DeRue publisher page and APA issue page.",
+      "status": "scope_wording_accepted_independent_fetch_unavailable",
+      "result": "Report distinguishes abstracts/previews/excerpts and failed primary retrievals, avoids clinical causal-effect claims, and leaves human expert interpretation not_assessed. Independent publisher-page attempts returned 403 and timeout; no content claim is accepted as newly verified through those failed requests.",
+      "attempted_urls": ["https://www.sciencedirect.com/science/article/pii/S0191308511000086", "https://www.apa.org/pubs/journals/special/5516206"]
+    }
+  ],
+  "objections": [
+    {
+      "id": "M-01",
+      "priority": "minor",
+      "location": "technical-report.json reproduce.order",
+      "objection": "The reproduction order omits clarify-sensitivity.py, although the frozen report relies on its clarification of the four-metric top20 union versus the full discovery union.",
+      "required_resolution": "Include clarify-sensitivity.py after assemble.py and before build-report.py in the technical reproduction order. Preserve the reviewed frozen candidate and issue a linked corrected delivery version; confirm the change does not alter numerical/scientific claims.",
+      "status": "resolved_in_candidate_3",
+      "resolution_checked": "Inspected current technical-report.json and pure-data clarify-sensitivity.py. Reproduction order now includes clarify-sensitivity.py immediately after assemble.py. The pure-data script no longer writes Python source. Hash comparison with the prior reviewed candidate confirms HTML and all original numerical/scientific appraisal artifacts unchanged. Full recipe replay is assigned to the separate statistics/reproducibility reviewer and is not claimed as my execution.",
+      "resolution_evidence": {"technical_report_sha256": "3d0f883e1eac7c673626eec18bd2744f3da437711144ac2e2f2a84f4308134f3", "clarify_script_sha256": "7e868d9aa2c1cf8617c0211cd820e35a995ddc54b008ef60d186d2e672e98002", "revision_receipt": "candidate-3-revision.json"},
+      "blocks_scoped_exploratory_acceptance": false
+    }
+  ],
+  "material_limit_dispositions": [
+    {"issue": "Original external-primary-page budget was not centrally enforced", "priority": "governance_limit", "status": "explicitly_disclosed_in_protocol_v3_and_report", "disposition": "No retrospective claim of budget compliance accepted. Does not invalidate retained descriptive findings, but is a process deviation."},
+    {"issue": "19 wider candidates not substantively appraised", "priority": "coverage_limit", "status": "correctly_disclosed", "disposition": "Accept reading route only; no assertion of exhaustive historical candidate coverage or shortlist stability across all wider candidates."},
+    {"issue": "Insufficient evidence for definitive seminal status", "priority": "claim_limit", "status": "correctly_narrowed", "disposition": "Report consistently describes provisional candidates and branch reading priorities; no definitive historical ranking accepted."}
+  ],
+  "proposed_not_executed": [
+    "Human specialist appraisal of historical formative influence and competing omitted traditions.",
+    "Full-text/edition/publication-type verification for all candidate and contextual identities.",
+    "Expanded construct-sensitive acquisition beyond the literal title boundary and appraisal of the 19 wider unassessed candidates, if a later study claims broader coverage."
+  ],
+  "unresolved_major_objections": [],
+  "unresolved_minor_objections": [],
+  "candidate_4_administrative_delta_review": {
+    "status": "accepted_no_new_methods_objection",
+    "executed": "Recomputed all frozen hashes and raw citation/coverage checks; independently compared candidate-3 and candidate-4 file hashes, technical-report objects and archived build-report.py source diff.",
+    "result": "HTML, numerical outputs, appraisals, protocols and source scientific inputs unchanged. Technical-report content outside reproduce is identical. Builder diff adds only explicit UTF8 Python flags, command template, environment alternative and tested interpreter path. Runtime metadata records the same environment requirement; associated manifest/receipt/revision updates are administrative.",
+    "recipe_requirement": "Use the tested interpreter with -X utf8; PYTHONIOENCODING=utf-8 is documented as an output-encoding alternative.",
+    "evidence": "methods-review/candidate-4-delta-checks.json",
+    "independent_full_recipe_replay_performed_by_this_reviewer": false,
+    "scope": "The separate numerical/reproducibility reviewer owns full-recipe replay. This methods update accepts the inspected environment documentation delta and does not claim that replay as my execution."
+  },
+  "human_expert_interpretation": "not_assessed",
+  "acceptance_must_not_be_relabelled": "Not a human expert review, comprehensive literature review, full-text validation, field-wide seminal canon, or confirmation of BiblioMap publication."
+}

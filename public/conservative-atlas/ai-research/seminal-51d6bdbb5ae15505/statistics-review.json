@@ -1,0 +1,206 @@
+{
+  "role": "fresh statistics and reproducibility reviewer",
+  "reviewer_context": "independent /root/seminal_statistics agent; no other reviewer outputs or lead-private deliberation read; public frozen candidate, public protocols, raw inputs, retained generated scripts and source-evidence artifacts scoped to numerical review",
+  "finished_utc": "2026-10-21T03:15:31.295031+00:00",
+  "candidate_manifest_sha256": "e3343a38c7711bc19a2adeb0dbd7951371111de16da320245170fac2febed1be",
+  "candidate_report_sha256": "bb4197bb12cf613ecf7a5dfff0bc5cd565668f8fd4f6fb13573f525f274bfcc0",
+  "original_input_manifest_sha256": "4497977d714c4f813ea5fcb0b484a6c0ffc55cbc0c1ec165168dd98e9e0cfac4",
+  "protocol_version": 3,
+  "verdict": "clear_for_qualified_exploratory_reporting_within_statistics_reproducibility_scope",
+  "unresolved_major_objections": [],
+  "executed_checks": [
+    {
+      "id": "STAT-C01",
+      "check": "Exact candidate and original inputs",
+      "result": "59 candidate packet files and all 8 original input-manifest files match recorded hashes and byte sizes; raw 951 rows have 951 distinct valid exact IDs."
+    },
+    {
+      "id": "STAT-C02",
+      "check": "Raw numerical audit and all work metrics",
+      "result": "Independent standard-library source-wise sets and target-wise membership sums reproduce 648 provider article/review labels (638 articles,10 reviews),325 present-nonempty and626 present-empty reference lists,0 absent/null/malformed lists,0 invalid/duplicate reference entries,8362 distinct reference IDs and10373 source-reference incidences. All951 compared core metric rows match."
+    },
+    {
+      "id": "STAT-C03",
+      "check": "Directed uptake and chronology",
+      "result": "725 raw within-corpus source-target incidences include5 exact work-self loops. Exclusion gives720 other-work incidences and168 positive-incoming targets. One2012→2014 year-order anomaly matches; screening it changes W2098834023 incoming8→7. Author self-citation removal was not performed or claimed."
+    },
+    {
+      "id": "STAT-C04",
+      "check": "Every baseline graph pair, weight and evidence ID",
+      "result": "451725 independently expressed unordered source-pair intersections checked; exactly10891 edges. Every raw support, supporting reference-ID set, and cosine weight matches frozen edges.parquet (1e-12 tolerance), with no missing,extra or duplicate pair.296 connected/655 isolates retained. PyArrow23.0.1 only decodes parquet."
+    },
+    {
+      "id": "STAT-C05",
+      "check": "Construction ablations and ranks",
+      "result": "Independent raw-set reconstruction reproduces removal cases edges7144/9148/5309 and connected288/293/285 for first,second,both dominant reference IDs. All951 candidate baseline/ablation strengths, competition ranks,cohort counts/ranks and chronology-screened incoming fields checked with no discrepancy. No production helper imports in independent computations."
+    },
+    {
+      "id": "STAT-C06",
+      "check": "Discovery and bounded appraisal accounting",
+      "result": "All8 ordered metric top10/top20 lists match. Main metric/earliest/cohort union44, appraised45 including W3033075609 boundary check. Metric-only top20 union51 has32 appraised and19 unappraised; retaining earliest/cohort additions produces64 with45 appraised. Unappraised exact IDs match; no negative content inference is licensed."
+    },
+    {
+      "id": "STAT-C07",
+      "check": "Reference register and final shortlist",
+      "result": "All8362 reference frequencies and exact supporting-source sets/membership flags checked independently;20 contextual rows and all10 shortlist numeric fields/ranks match. External cited references are distinct from article shortlist membership."
+    },
+    {
+      "id": "STAT-C08",
+      "check": "Frozen citation observations and cohorts",
+      "result": "Raw updated dates span2025-10-10 to2026-10-14; cohort sizes2/21/126/494/5unknown among648 provider labels match.8 publication years unknown overall,5 among648. Coarse cohorts and a2026-reference-year quotient are described as discovery heuristics, not field normalization, synchronized current counts, or exposure rates."
+    },
+    {
+      "id": "STAT-C09",
+      "check": "Full isolated documented reproduction",
+      "result": "Candidate4 all8 documented steps executed in an isolated reviewer-owned copy using tested Python3.12.14 and exact documented -X utf8 flags, with no PYTHONIOENCODING override. All steps exit0;7 compared scientific JSON outputs exactly equal candidate,HTML byte-identical,all source-script hashes unchanged. No external acquisition was required."
+    }
+  ],
+  "objections_and_dispositions": [
+    {
+      "id": "STAT-001",
+      "severity_when_found": "material numerical policy defect",
+      "issue": "Five work-self loops inflated local incoming counts in preliminary candidate725/172.",
+      "disposition": "resolved before formal freeze: explicit exclusion policy now720/168; failing original reviewer results retained independently."
+    },
+    {
+      "id": "STAT-002",
+      "severity_when_found": "major reproducibility blocker",
+      "issue": "Frozen candidate1 documented assemble→build-report recipe omitted clarify-sensitivity.py; isolated execution raised KeyError full_top20_plus_earliest_cohort_union_n.",
+      "disposition": "resolved in candidate3/4: clarify step included as pure data operation; full candidate4 isolated replay succeeds and source hashes remain unchanged."
+    },
+    {
+      "id": "STAT-003",
+      "severity_when_found": "reproducibility environment omission",
+      "issue": "Candidate3 recipe failed in Windows cp1252 when derive.py printed Unicode U+2010.",
+      "disposition": "resolved in candidate4: -X utf8 explicitly documented; exact flags independently executed successfully. Original failed replay retained."
+    },
+    {
+      "id": "STAT-004",
+      "severity_when_found": "reviewer definition clarification",
+      "issue": "Reviewer64 and lead51 wider discovery counts initially used different combinations of discovery routes.",
+      "disposition": "resolved by explicit denominator/route definitions; both use648 provider labels.51metric-only;64adds earliest/cohort routes. Report states both accurately."
+    }
+  ],
+  "statistical_scope_assessment": {
+    "exploratory_design": "appropriate to descriptive evidence-linked reading priorities; no confirmatory estimand,p-values,composite seminalness score or causal/quality inference asserted",
+    "null_models_and_optimizer_seed_tests": "not applicable to the newly reported deterministic counts/ranks; no new clustering or partition validation claimed",
+    "coverage": "325/951 observed bibliographies support lower-bound uptake;626 empty observed lists represent unknown actual bibliography. Isolate/zero incoming does not imply no influence. Provider type errors are flagged rather than silently merged.",
+    "rank_sensitivity": "Overall strength rank correlation can mask top-cutoff instability: independent eligible648 first-dominant removal top10 overlap3 and top20 overlap6, despite descriptive Spearman0.944877. The report claims construction dependence rather than stable historical priorities.",
+    "acquisition_budget": "Original25-page acquisition counter was not centrally enforced; exact combined requests remain not_assessed. Protocol/report disclose the governance deviation rather than implying compliance."
+  },
+  "not_assessed": [
+    "human expert method selection or historical interpretation",
+    "semantic truth/entailment of source appraisals",
+    "historical firstness,article quality,causal influence or complete canon",
+    "complete field/corpus coverage",
+    "complete publication-type and edition identity correctness",
+    "field-normalized citation impact or true exposure-adjusted rates",
+    "full content review of all951 or all wider candidates",
+    "full bibliographic completeness",
+    "exact combined external-request count",
+    "browser visual QA and downstream project saving"
+  ],
+  "assurance_limit": "Clean statistics/reproducibility review is specific to the listed executed checks and frozen candidate4. It is not human scholarly consensus, general scientific certification, or independent endorsement of every substantive appraisal.",
+  "evidence_artifacts": [
+    {
+      "path": "independent_check.py",
+      "sha256": "6d737f94d6f04bc94d836b6fd3a35fe24496c02bcd61dd392eec2eebafed7a44",
+      "bytes": 13028
+    },
+    {
+      "path": "execution-receipt.json",
+      "sha256": "30ee2b73f79df7590af11b01d550e24bbc669dc62c31a2c9d4b71bd7d288fad6",
+      "bytes": 939
+    },
+    {
+      "path": "independent-results.json",
+      "sha256": "5aa160e167d1def0211aff8f57bf7d80717da036d5ab6d0baadb674bfec6c67b",
+      "bytes": 60662
+    },
+    {
+      "path": "independent-work-values.json",
+      "sha256": "e04e6457ec7863c6cf422e727438f53a35f68933d7786cbd9ddeccf716740fac",
+      "bytes": 168170
+    },
+    {
+      "path": "graph_check.py",
+      "sha256": "0aadd43ddea766b83e63573bc79c38740d8b3d13dbceb96ca2786a9f502aaaa8",
+      "bytes": 2685
+    },
+    {
+      "path": "graph-check-result.json",
+      "sha256": "1ebbfec758f6c62cb0229527e4ba6677bd750432ce0456d6dee189e39291865a",
+      "bytes": 991
+    },
+    {
+      "path": "discovery_check.py",
+      "sha256": "987a37e8927e3c30a49b1ea4beafdee3712a827e2f40c4dcf6fe9567b1a9366e",
+      "bytes": 2481
+    },
+    {
+      "path": "discovery-check-result.json",
+      "sha256": "cc0d600b2e73dbf06fbaf41e867bd9b811091c681dab2a8edeacf9ed5fde3360",
+      "bytes": 1005
+    },
+    {
+      "path": "packet_numeric_check.py",
+      "sha256": "6282aacd9071d5cace97f79fe8443c8c771dd62ff08fe8dfa81d0278b91bebf1",
+      "bytes": 3319
+    },
+    {
+      "path": "packet-numeric-check-result.json",
+      "sha256": "cce2d36543bb7a8d6101f019a73bd57a7f0e31147167da3230d0b3f0acbf012f",
+      "bytes": 523
+    },
+    {
+      "path": "replay_full.py",
+      "sha256": "b49e2c1e570646856e7315061892cefd6831814fdb0b5b71b8769fadd816d3b1",
+      "bytes": 3561
+    },
+    {
+      "path": "replay-frozen-v4-result.json",
+      "sha256": "9b0eac8bfe52f8365832e773d53f01105c8a4b93c8971effa27ed91b67b0ff54",
+      "bytes": 2978
+    },
+    {
+      "path": "candidate-binding-check-v4.json",
+      "sha256": "427b3f34f12c615d3545b9c40b759761c1a2ffdca50d6474305dfb7e72e04cb4",
+      "bytes": 413
+    },
+    {
+      "path": "independent_check-v1.py",
+      "sha256": "7425cba745c2d5e46f3172079c726c5c376af55418c04bbccbfd79513885d8a9",
+      "bytes": 9250
+    },
+    {
+      "path": "execution-receipt-v1.json",
+      "sha256": "db276d0a079b3ca4c0af3b14cc4a7d39f127dceaf93a9962f8419957e02dc2a7",
+      "bytes": 939
+    },
+    {
+      "path": "independent-results-v1.json",
+      "sha256": "347925ebc2d2f671fad9979b8bb4a33fdf0391de25b24eb819b1548260ef6221",
+      "bytes": 37221
+    },
+    {
+      "path": "replay_tail.py",
+      "sha256": "c9a25cdefe2515cd3fcbb8979ee961d59ee9ea7259fc2bcb51e67c43c7e8a121",
+      "bytes": 1935
+    },
+    {
+      "path": "replay-tail-failure-result.json",
+      "sha256": "e4292a03c84dbc7a2c9cdb1b3655db9f90e50aa05826b00317f574e2f19ede9e",
+      "bytes": 7049
+    },
+    {
+      "path": "replay-frozen-v3-result.json",
+      "sha256": "febefcc0f161c9b29e9ee7094dfc7eb153bf784b4b69f1f1e5a68cbe1a6c6877",
+      "bytes": 2015
+    },
+    {
+      "path": "replay-frozen-v3-utf8-result.json",
+      "sha256": "5f02b8708b45395b35f4c0a36bcb0737efb6f331dc81ef108bea0bb2ff4d599b",
+      "bytes": 2915
+    }
+  ]
+}

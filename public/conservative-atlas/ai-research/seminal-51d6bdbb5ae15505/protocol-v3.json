@@ -1,0 +1,42 @@
+{
+  "id": "adaptive-leadership-seminal-001",
+  "version": 3,
+  "created_utc": "2026-10-21T02:59:05.090966+00:00",
+  "question": "Which articles within the existing 951-record adaptive leadership title corpus merit priority as provisional seminal candidates, and what contextual foundations lie outside it?",
+  "construct": "Seminal means historically/conceptually formative scholarship with evidence of uptake; no single bibliometric score identifies it.",
+  "population": "All951 frozen selected records from literal case-insensitive adaptive leadership title search with two neuroadaptive exclusions. Not field census. ExactIDs; preserve all951 incl isolates and missing refs.",
+  "primary_eligibility": "Provider type article/review, membership in original951; review distinguished. Books/chapters and outside951 citedworks separate contextual register. No silent expansion or ID merges.",
+  "signals": [
+    "Observed local incoming direct citation count: distinct source IDs referencing each exact targetID; lowerbound from325 observed nonempty lists.",
+    "Frozen global cited_by_count, unknown separate from0; overall and coarse publication-cohort descriptive ranks, no field normalization.",
+    "Existing cosine coupling degree/strength/community as discovery and reading context; not historical influence measure.",
+    "Historical/conceptual content appraisal and primary publisher/publication evidence; abstracts/previews bounded, fulltext only where accessible.",
+    "Search earliest relevant records and content-bearing isolates, plus top-ranked counterexamples."
+  ],
+  "candidate_discovery": "Union of top15 eligible by local incoming, top15 global citations, top10 citations-per-year heuristic, top10 couplingstrength, top3per coarse era (pre2000,2000-2009,2010-2019,2020+), earliest15, and targeted formative title/author checks. Ties exactID. Appraise bounded<=45 union finalists then select provisional 5-10 reading priorities without composite universal rank.",
+  "age_policy": "Frozen counts have heterogeneous updated_dates. 2026-referenceyear quotient and broadpublicationcohort ranks are descriptive discovery checks, not citation exposure rates, fieldnormalization or synchronized2026citationcounts.",
+  "sensitivity": "Compare candidate discovery top10/top20 metric cuts and remove each/both dominant cited referenceIDs from same951 coupling; exact direct local counts remain unchanged. Record rank movements without p-values. No seed/null test for deterministic ranks; no new clustering.",
+  "coverage": "Empty observed lists do not mean no bibliography. Localincoming zero means no observed exactID incoming, not no influence. Outgoing missingness differs from incomingcount. Flag type/year/reference/abstract/globalcitation unknown and chronology anomalies.",
+  "resources": {
+    "max_records": 951,
+    "max_direct_incidence": 100000,
+    "max_pair_checks": 451725,
+    "max_appraisal_records": 45,
+    "max_external_primary_pages": 25,
+    "max_fulltexts": 8,
+    "max_seconds_per_script": 180,
+    "memory_mb": 2048,
+    "threads": 1,
+    "no_embeddings_or_reclustering": true,
+    "no_snapshot_rescan": true
+  },
+  "alternative_rejected": "Coupling/PageRank-only seminal ranking conflates shared bibliographies with influence and excludes655isolates. Co-citation could map citedfoundations but changes nodes; use reference-frequency contextual register rather than pretend in-corpusarticle ranking.",
+  "inference": "Exploratory evidence-linked readinglist and provisional candidates, no significance/causal/quality/completehistory claims.",
+  "validation": "Independent fresh methods and numerical/reproduction reviews on frozen candidate; lead invariants separately. Human expert not_assessed.",
+  "publication": "Root saves reviewed accessibleHTML and retainedresults to existing BiblioMap project; no direct database/app changes by lead.",
+  "revision_utc": "2026-10-21T03:05:35.913984+00:00",
+  "revision_reason": "Primary evidence inspection supports Glover2002PartOne as10th branchreading; companionPartTwo remains separate. No changed population or composite score. Acquisition coordination revealed original25pagebudget was not centrally enforced across root/lead; record this resource-governance deviation rather than pretend the later ceiling was preregistered.",
+  "local_citation_policy": "distinctsourceID to targetID, excludes exactsource==target; authorselfcitations notidentified/removed. chronologyflags screenedsensitivityonly.",
+  "resource_deviation": "Original max_external_primary_pages25 was a target, not an enforced shared counter. Root targeted9 exact-ID metadata requests plus primarycontent/methodpages and lead type/falsefriendchecks. Final exactcombinedrequestcount not_assessed; acquisition stopped after memo delivery. No snapshotrescan/modelinference or corpus expansion.",
+  "candidate_discovery_review": "44metric/earliest/cohortunion members plus explicitflockingfalsefriend45appraisals. Wider top20metricunion retained as sensitivity candidates; unappraised records not rejected or labeled unimportant."
+}

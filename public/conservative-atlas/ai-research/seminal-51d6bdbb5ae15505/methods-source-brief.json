@@ -1,0 +1,36 @@
+{
+  "status": "targeted_method_background_not_systematic_review",
+  "accessed_utc_date": "2026-10-21",
+  "coordinator": "root",
+  "sources": [
+    {
+      "id": "Kessler1963",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/asi.5090140103",
+      "doi": "10.1002/asi.5090140103",
+      "inspected_scope": "publisher metadata and abstract",
+      "supports": "Bibliographic coupling is a document relationship/grouping technique; its groups are not themselves an assessment of historical seminalness.",
+      "does_not_establish": "A validated seminal-paper classifier or substantive adaptive-leadership appraisal"
+    },
+    {
+      "id": "Waltman2016",
+      "url": "https://arxiv.org/abs/1507.02099v3",
+      "doi": "10.1016/j.joi.2016.02.007",
+      "inspected_scope": "author-deposited review abstract and version metadata",
+      "supports": "Citation indicators require explicit publication/citation inclusion and normalization decisions, including field differences.",
+      "does_not_establish": "That dividing citations by age is valid field normalization"
+    },
+    {
+      "id": "IoannidisBoyackWouters2016",
+      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002542",
+      "doi": "10.1371/journal.pbio.1002542",
+      "inspected_scope": "publisher full HTML, abstract and discussion through document-type normalization",
+      "supports": "Citation opportunity varies by field, publication age, document type and database coverage; counts can reflect several kinds of attention. Fine-grained normalization and recent cohorts can be noisy.",
+      "does_not_establish": "Citations as article quality, causal effect, conceptual novelty or universal historical influence"
+    }
+  ],
+  "design_implication": "Use complementary descriptive signals and content appraisal. Keep global snapshot counts distinct from observed within-corpus incoming citations, coupling similarity and cited-reference frequency. Keep unknown coverage visible, inspect age and type, and avoid a single invented seminalness score.",
+  "not_acquired": [
+    {"url":"https://asistdl.onlinelibrary.wiley.com/doi/10.1002/asi.4630240406","status":"publisher fetch timeout; no full text read claim"}
+  ],
+  "expert_approval": "not_assessed"
+}

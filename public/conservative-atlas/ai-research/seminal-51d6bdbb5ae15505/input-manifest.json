@@ -1,0 +1,42 @@
+[
+  {
+    "path": ".runs/adaptive-leadership-research/raw-records.json",
+    "bytes": 13876910,
+    "sha256": "226bd4f718d873fd7282cddd96706e20b6808092b5839e64d4551d3aa2dc65ce"
+  },
+  {
+    "path": ".runs/adaptive-leadership-thematic-appraisal/work-evidence.json",
+    "bytes": 1344543,
+    "sha256": "1355ba273c755f02f07f5c76e5b234d85c2ede0356c384637a83325558ec3fc0"
+  },
+  {
+    "path": ".runs/adaptive-leadership-followups/reference-ablations.json",
+    "bytes": 7234,
+    "sha256": "9294499946a2f8d0deb510d48246d0d3f0e0ca24930a96c78c090905a236f711"
+  },
+  {
+    "path": ".runs/adaptive-leadership-followups/fulltext-comparison.json",
+    "bytes": 100846,
+    "sha256": "4afe91406dd307f1c08cd7397cc0339d205af964a00c02f9d46558ab16bf9476"
+  },
+  {
+    "path": ".runs/adaptive-leadership-followups/acquired/reference-identity-sources.json",
+    "bytes": 2075,
+    "sha256": "15fd30ad62d07c111d6f9068120cb19c936c16df6b0249096a808f04ca281d5d"
+  },
+  {
+    "path": ".runs/connector/workspace/studies/adaptive-leadership-themes-002/jobs/20261020T031333733671-c538fdea/edges.parquet",
+    "bytes": 81844,
+    "sha256": "6a7cd0bc39fb15e639ffc65eb3f2cdab462f510e7812e05c7666258d515af822"
+  },
+  {
+    "path": ".runs/connector/workspace/studies/adaptive-leadership-themes-002/jobs/20261020T031658164325-f93d8044/communities.parquet",
+    "bytes": 14487,
+    "sha256": "f0792bf4fc278a1eab690771154a1ef97b012b00eba5c5818f57940f1c93b870"
+  },
+  {
+    "path": ".runs/adaptive-leadership-research/extraction-provenance.json",
+    "bytes": 885160,
+    "sha256": "767f47e3c1601c7db3999c6133fed1b5da6bc13c11710be728c08a4941d57189"
+  }
+]

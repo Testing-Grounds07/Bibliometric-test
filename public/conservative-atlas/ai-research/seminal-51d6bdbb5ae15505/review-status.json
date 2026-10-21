@@ -1,0 +1,21 @@
+{
+  "methods_agent_review": "accepted_scoped_exploratory",
+  "statistics_reproducibility_agent_review": "accepted_scoped_exploratory",
+  "human_expert_interpretation": "not_assessed",
+  "scope": "Fresh reviews must bind frozen candidate and exact inputs; lead checks are not independentreview.",
+  "review_bindings": [
+    {
+      "role": "methods",
+      "path": "methods-review/methods-review.json",
+      "sha256": "7200874f3c8b1f7e2ba574eaae78f2511f509f0960dba99473705906d871df17"
+    },
+    {
+      "role": "statistics_reproducibility",
+      "path": "statistics-review/review.json",
+      "sha256": "bd97fab6b101498dde9804aebbeb848472629fe9019bd5af3510d0fa00c0a230"
+    }
+  ],
+  "reviewed_scientific_candidate_manifest_sha256": "e3343a38c7711bc19a2adeb0dbd7951371111de16da320245170fac2febed1be",
+  "reviewed_scientific_candidate_html_sha256": "bb4197bb12cf613ecf7a5dfff0bc5cd565668f8fd4f6fb13573f525f274bfcc0",
+  "final_report_status_only_rebind": "see separately retained final rebind receipts; required before publication"
+}

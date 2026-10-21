@@ -1,0 +1,18 @@
+{
+  "flags": [
+    {
+      "source": "W2092313262",
+      "source_year": 2012,
+      "target": "W2098834023",
+      "target_year": 2014
+    }
+  ],
+  "self_referencing_ids": [
+    "W4285095876",
+    "W4361273521",
+    "W4410701885",
+    "W3124809333",
+    "W7212851984"
+  ],
+  "policy": "Earlier publicationYEAR flags possiblemetadata/version issues; no claim fabricatedcitations. Exclude flagged links only sensitivity; preserve originals."
+}

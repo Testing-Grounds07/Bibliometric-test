@@ -1,0 +1,809 @@
+[
+  {
+    "id": "W2991936063",
+    "title": "The Adaptive Leadership Maturity Model",
+    "publication_year": 2008,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Frozen abstract missing; title/year/citation/coupling alone insufficient to establish conceptual or historical priority."
+  },
+  {
+    "id": "W2993995164",
+    "title": "Adaptive Leadership (Part Two): Four Principles for Being Adaptive",
+    "publication_year": 2002,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "historical_companion",
+    "role": "historical check",
+    "rationale": "CompanionPartTwo in primary2002packet; firstarticleabstract/cover only inspected, no claim of completePartTwo reading. Keep exactarticle and citationcounts separate.",
+    "primary_evidence_url": "https://www.indigenouspsych.org/Interest%20Group/Glover/2002AdaptiveLeaderODJ.pdf",
+    "primary_evidence_scope": "Primary journal article copy hosted by an author interest group; cover and first-article abstract inspected, not the complete40-page packet",
+    "primary_locator": "PDFp1 cover award/abstracts; PDFp2 first article abstract; printedp15",
+    "primary_contribution_appraisal": "Glover and colleagues'2002 pair develops adaptive leadership through Piaget's assimilation/accommodation and four capacities spanning cultural competence, knowledge, diversity and vision.",
+    "primary_limit": "An early distinct formulation in this selection; not proof it originated the whole field. The cover's journal award is a separate editorial recognition, not bibliometric or human review of our shortlist. Do not redistribute the PDF."
+  },
+  {
+    "id": "W2889828257",
+    "title": "Adaptive Leadership: When Change Is Not Enough (Part One)",
+    "publication_year": 2002,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "early distinct formulation",
+    "rationale": "Primary firstarticleabstract confirms a2002conceptual formulation using Piaget assimilation/accommodation. Earlier than most shortlistedworks, but not proof of universalfounding. Distinct from the Heifetz and DeRue formulations.",
+    "primary_evidence_url": "https://www.indigenouspsych.org/Interest%20Group/Glover/2002AdaptiveLeaderODJ.pdf",
+    "primary_evidence_scope": "Primary journal article copy hosted by an author interest group; cover and first-article abstract inspected, not the complete40-page packet",
+    "primary_locator": "PDFp1 cover award/abstracts; PDFp2 first article abstract; printedp15",
+    "primary_contribution_appraisal": "Glover and colleagues'2002 pair develops adaptive leadership through Piaget's assimilation/accommodation and four capacities spanning cultural competence, knowledge, diversity and vision.",
+    "primary_limit": "An early distinct formulation in this selection; not proof it originated the whole field. The cover's journal award is a separate editorial recognition, not bibliometric or human review of our shortlist. Do not redistribute the PDF."
+  },
+  {
+    "id": "W2272940812",
+    "title": "Navigating Complexity Adaptive Leadership and Public Participation",
+    "publication_year": 2008,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W276056248",
+    "title": "Adaptive leadership and non-rational organizational choice in school reform: An ethnographic study",
+    "publication_year": 2008,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Frozen abstract missing; title/year/citation/coupling alone insufficient to establish conceptual or historical priority."
+  },
+  {
+    "id": "W348871302",
+    "title": "The Authorizer and Charter School Closures: Exercising Adaptive Leadership to Protect the Public Interest. Authorizer Issue Brief. Number 8.",
+    "publication_year": 2005,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "counterexample_or_insufficient",
+    "role": "contrary evidence",
+    "rationale": "Title explicitly says authorizerissuebrief; providerarticle label doesnot certify researcharticle. Metadata-only insufficientseminality."
+  },
+  {
+    "id": "W2339404826",
+    "title": "Heifetz, R. A., Linsky, M., & Grashow, A. (2009). The practice of adaptive leadership: Tools and tactics for changing your organization and the world. Cambridge, MA: Harvard Business Press.",
+    "publication_year": 2009,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "contextual_type_trap",
+    "role": "suspected book review",
+    "rationale": "Citation-style title and reviewerRobynBaylor; topcoupling doesnot establish formative originalarticle. Metadata/title scope supports suspectedreview, primaryverification incomplete."
+  },
+  {
+    "id": "W2903519863",
+    "title": "Organizational Culture in Health Care and Adaptive Leadership",
+    "publication_year": 2008,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Frozen abstract missing; title/year/citation/coupling alone insufficient to establish conceptual or historical priority."
+  },
+  {
+    "id": "W2028482859",
+    "title": "The challenge of adaptive leadership",
+    "publication_year": 2005,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Frozen abstract missing; title/year/citation/coupling alone insufficient to establish conceptual or historical priority."
+  },
+  {
+    "id": "W2204258309",
+    "title": "Curriculum Reform as Adaptive Leadership Challenge",
+    "publication_year": 2015,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W2620015283",
+    "title": "Adjusting Your Sails to Survive the Storm: Adaptive Leadership for Stage Managers",
+    "publication_year": 2017,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W3112904728",
+    "title": "Adaptive Leadership: Leading Through Complexity",
+    "publication_year": 2020,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W4366984926",
+    "title": "Advancing Adaptive Leadership Through Adaption‐Innovation Theory: Enhancements to The Holding Environment",
+    "publication_year": 2023,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W3210946845",
+    "title": "Peran Adaptive Leadership Presiden Indonesia Dalam Penanganan Covid-19 Rawan Korupsi",
+    "publication_year": 2021,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W2416861171",
+    "title": "Adaptive leadership style spells success.",
+    "publication_year": 1989,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "historical_lead_not_established",
+    "role": "historical check",
+    "rationale": "Early date merits follow-up, but date/title and uptake alone do not establish conceptual priority; frozen abstract missing or limited. Primary verification required."
+  },
+  {
+    "id": "W2477684615",
+    "title": "Adaptive Leadership as a Facilitator of Public Engagement on Environmental Sustainability Issues",
+    "publication_year": 2007,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W3118957945",
+    "title": "Addressing Complex Issues and Crises in Higher Education With an Adaptive Leadership Framework",
+    "publication_year": 2020,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W2004401690",
+    "title": "Applying adaptive leadership to successful change initiatives in academia",
+    "publication_year": 2007,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15",
+      "year top15",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "early Heifetz application",
+    "rationale": "Two academic change cases apply Heifetz and propose a stakeholder process; early application with visible local uptake. Cases do not establish causal effectiveness.",
+    "primary_evidence_url": "https://doi.org/10.1108/01437730710752201",
+    "primary_evidence_scope": "Publisher DOI retrieval failed. Frozen corpus abstract remains the available substantive source; external third-party summaries were not accepted as primary evidence.",
+    "primary_locator": "No newly acquired primary publisher text",
+    "primary_contribution_appraisal": "Primary-page verification remains unavailable in this pass; any inclusion must explicitly rely on the frozen abstract and retain its two-case, higher-education scope.",
+    "primary_limit": "Do not describe a successful publisher/fulltext appraisal or causal proof."
+  },
+  {
+    "id": "W2996586347",
+    "title": "Adaptive Leadership: Tips From the Business World",
+    "publication_year": 2019,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Frozen abstract missing; title/year/citation/coupling alone insufficient to establish conceptual or historical priority."
+  },
+  {
+    "id": "W2037577816",
+    "title": "Adaptive leadership in trauma resuscitation teams: a grounded theory approach to video analysis",
+    "publication_year": 2004,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "global_citations top15",
+      "year top15",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "early adjacent team branch",
+    "rationale": "Early empirical teambranch: groundedtheory analysis of152video segments from18trauma cases, confirmed primarypublisherabstract. Zero observedlocalincoming doesnot mean noinfluence or Heifetz equivalence.",
+    "primary_evidence_url": "https://link.springer.com/article/10.1007/s10111-004-0157-z",
+    "primary_evidence_scope": "Primary publisher abstract and citation metadata",
+    "primary_locator": "Abstract; Original Article publication20April2004",
+    "primary_contribution_appraisal": "Xiao and colleagues study leadership functions in real trauma resuscitations using grounded-theory analysis of152 video segments from18 cases.",
+    "primary_limit": "A distinct empirical team-leadership strand. It is not automatically the Heifetz conceptual framework; local citation zero is an observed-boundary finding, not evidence of no influence."
+  },
+  {
+    "id": "W2035385404",
+    "title": "Adaptive Leadership: A Novel Approach for Family Decision Making",
+    "publication_year": 2012,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W3025399894",
+    "title": "Thoughts on Adaptive Leadership in a Challenging Time",
+    "publication_year": 2020,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "strength top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W2092313262",
+    "title": "Studying the clinical encounter with the Adaptive Leadership framework",
+    "publication_year": 2012,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "clinical research bridge",
+    "rationale": "Shows how to operationalize technical/adaptive distinctions at point of care through five nursing research exemplars. Overlaps the clinical line rather than independent origin.",
+    "primary_evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3883363/",
+    "primary_evidence_scope": "PMC retrieved abstract, background and conceptual/research-exemplar excerpts",
+    "primary_locator": "Abstract; Overview and background; conceptual measurement discussion",
+    "primary_contribution_appraisal": "Bailey and colleagues develop the point-of-care research use of adaptive leadership, illustrating five nursing research problems and emphasizing the need to define and measure the concepts.",
+    "primary_limit": "Conceptual/research-agenda contribution, not five completed intervention-effectiveness trials."
+  },
+  {
+    "id": "W3102101017",
+    "title": "Leading Through a Pandemic: Adaptive Leadership and Purposeful Action",
+    "publication_year": 2020,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "global_citations top15",
+      "citations_per_year_heuristic top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W2581628223",
+    "title": "The Use of Adaptive Leadership and Adaptive Learning Strategies in Organizations Facing Market Extinction",
+    "publication_year": 1999,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "historical_lead_not_established",
+    "role": "historical check",
+    "rationale": "Early date merits follow-up, but date/title and uptake alone do not establish conceptual priority; frozen abstract missing or limited. Primary verification required."
+  },
+  {
+    "id": "W7104025521",
+    "title": "Ethical Accountability and Stakeholder Engagement in Higher Education Teaching and Learning: Applying Adaptive Leadership Theory at Columbia University",
+    "publication_year": 2005,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "counterexample_or_insufficient",
+    "role": "contrary evidence",
+    "rationale": "Year2005 conflicts with an abstract about Columbia generativeAI policy. Flag probable date/content inconsistency; cannot establish earlyhistoricalpriority."
+  },
+  {
+    "id": "W4406700501",
+    "title": "The Role of Adaptive Leadership in Times of Crisis: A Systematic Review and Conceptual Framework",
+    "publication_year": 2025,
+    "provider_type": "review",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15",
+      "citations_per_year_heuristic top10",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "recent_companion",
+    "role": "recent synthesis",
+    "rationale": "Recent review of33studies and proposed framework; useful entry point but short history prevents a historical-seminality conclusion."
+  },
+  {
+    "id": "W2098834023",
+    "title": "Implementing Culture Change in Nursing Homes: An Adaptive Leadership Framework",
+    "publication_year": 2014,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "empirical application",
+    "rationale": "Qualitative observational study: seven focus groups in three nursing homes. Distinguishes challenges and facilitative behaviors; no causal intervention estimate.",
+    "primary_evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4542586/",
+    "primary_evidence_scope": "PMC abstract, background, implications and limitations excerpts",
+    "primary_locator": "Abstract Design and Methods; discussion limitations",
+    "primary_contribution_appraisal": "Corazzini and colleagues examine adaptive challenges during person-directed nursing-home culture change using seven focus groups across three nursing homes.",
+    "primary_limit": "Qualitative observation; progress was not benchmarked and a for-profit chain home was absent. No causal effectiveness claim or broad representativeness."
+  },
+  {
+    "id": "W4280540221",
+    "title": "Adaptive leadership during challenging times: Effective strategies for health professions educators: AMEE Guide No. 148",
+    "publication_year": 2022,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "citations_per_year_heuristic top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W2326270656",
+    "title": "Adaptive Leadership Processes in Anesthesia Teams.",
+    "publication_year": 2007,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "year top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "counterexample_or_insufficient",
+    "role": "contrary evidence",
+    "rationale": "Abstract describes simulated15anesthesia teams and preliminaryresults; potential earlyteamboundary evidence but publicationtype/status notverified. Not equal to establishedarticle."
+  },
+  {
+    "id": "W2108574054",
+    "title": "Why flexible and adaptive leadership is essential.",
+    "publication_year": 2010,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15",
+      "citations_per_year_heuristic top10",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "orientation",
+    "rationale": "Broad synthesis differentiates adaptive/flexible leadership conceptions, research streams and limitations. Strongest observed article uptake after excluding the misclassified Practice book.",
+    "primary_evidence_url": "https://doi.org/10.1037/a0019835",
+    "primary_evidence_scope": "APA publisher search-index abstract and official issue contents; direct DOI fetch robots-denied",
+    "primary_locator": "Abstract and June2010 special-issue contents pp81–93",
+    "primary_contribution_appraisal": "Yukl and Mahsud distinguish flexible/adaptive leadership conceptions, synthesize relevant research streams and discuss practical guidance and research limitations.",
+    "primary_limit": "A synthesis; the abstract explicitly does not claim a comprehensive review of every stream. This does not establish founding priority, effects of a training program or equivalence with Heifetz's framework."
+  },
+  {
+    "id": "W3159848025",
+    "title": "Malaysia School Leadership Crisis Covid-19: Conventional To Adaptive Leadership",
+    "publication_year": 2020,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "strength top10"
+    ],
+    "frozen_abstract_status": "gapped",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "counterexample_or_insufficient",
+    "role": "contrary evidence",
+    "rationale": "Gappedabstract; strongcoupling fromlimitedreferences cannotrepair content insufficiency."
+  },
+  {
+    "id": "W2792268312",
+    "title": "Addressing Complex Challenges through Adaptive Leadership: A Promising Approach to Collaborative Problem Solving",
+    "publication_year": 2017,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "conceptual synthesis",
+    "rationale": "Explains collaborative problem solving with multiple stakeholders. A later conceptual bridge, not evidence that the authors originated the whole tradition.",
+    "primary_evidence_url": "https://eric.ed.gov/?id=EJ1158401",
+    "primary_evidence_scope": "Author-provided abstract in ERIC search-index record; journal page inaccessible and direct ERIC page timed out",
+    "primary_locator": "ERIC EJ1158401 abstract and2017 citation",
+    "primary_contribution_appraisal": "Nelson and Squires present a conceptual discussion of adaptive leadership for collaborative problem solving with multiple stakeholders.",
+    "primary_limit": "Conceptual synthesis/application, not original founding of the theory or an effectiveness trial."
+  },
+  {
+    "id": "W636787330",
+    "title": "Complex Adaptive Leadership: Embracing Paradox and Uncertainty",
+    "publication_year": 2010,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "global_citations top15"
+    ],
+    "frozen_abstract_status": "gapped",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "contextual_type_trap",
+    "role": "book",
+    "rationale": "Obolensky book, not an article; separate contextual line. Publisher secondedition preview establishes original2010book; exact editions notmerged."
+  },
+  {
+    "id": "W1579834162",
+    "title": "Complex Adaptive Leadership: Embracing Paradox and Uncertainty",
+    "publication_year": 2011,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "global_citations top15",
+      "strength top10"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "contextual_type_trap",
+    "role": "suspected book review",
+    "rationale": "Same booktitle,2011EmeraldDOI/pages and empty authors; likely reviewrecord. Keep separate from Obolensky book and do not transfer its68citations to book."
+  },
+  {
+    "id": "W1597546876",
+    "title": "The Practice of Adaptive Leadership: Tools and Tactics for Changing Your Organization and the World",
+    "publication_year": 2009,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15",
+      "citations_per_year_heuristic top10",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "contextual_type_trap",
+    "role": "book",
+    "rationale": "Publisher evidence in prior identityaudit establishes a book despite provider articlelabel; contextual Heifetz foundation, not primary article candidate."
+  },
+  {
+    "id": "W4367185104",
+    "title": "Role of adaptive leadership in learning organizations to boost organizational innovations with change self-efficacy",
+    "publication_year": 2023,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15",
+      "citations_per_year_heuristic top10",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "recent_companion",
+    "role": "recent empirical application",
+    "rationale": "High frozen count and ageheuristic; frozen abstract missing. Primarysource needed, historical status remains provisional."
+  },
+  {
+    "id": "W2094802850",
+    "title": "Adaptive Leadership Framework for Chronic Illness",
+    "publication_year": 2015,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "clinical framework extension",
+    "rationale": "Proposes a named chronic illness framework and shifts attention to patient/family challenges and coproduction.",
+    "primary_evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4417005/",
+    "primary_evidence_scope": "PMC retrieved framework and discussion excerpts",
+    "primary_locator": "The Adaptive Leadership Framework for Chronic Illness; collaborative-care model discussion",
+    "primary_contribution_appraisal": "Anderson and colleagues adapt the framework to ongoing chronic illness, emphasizing patient/family-provider relationships, changing challenges and shared care work over time.",
+    "primary_limit": "Framework/research agenda; a proposed mechanism or model does not establish its clinical effects."
+  },
+  {
+    "id": "W4387138506",
+    "title": "Development and validation of the adaptive leadership behavior scale (ALBS)",
+    "publication_year": 2023,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "citations_per_year_heuristic top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "recent_companion",
+    "role": "measurement frontier",
+    "rationale": "Useful measurement companion: authors report scale development, two employee studies and leader-follower dyads. Recent and not yet historically established."
+  },
+  {
+    "id": "W2027854349",
+    "title": "Adaptive leadership theory: Leading and following as a complex adaptive process",
+    "publication_year": 2011,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15",
+      "citations_per_year_heuristic top10",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "theory",
+    "rationale": "Develops an interactional account of recurring leader/follower exchanges, identities and structures; distinct theoretical route and substantial observed uptake. Publisher abstract/previews establish conceptual content, not firsthistoricalpriority.",
+    "primary_evidence_url": "https://www.sciencedirect.com/science/article/pii/S0191308511000086",
+    "primary_evidence_scope": "Publisher abstract and section previews",
+    "primary_locator": "Abstract; Leading and following as a complex adaptive process; Theoretical implications",
+    "primary_contribution_appraisal": "DeRue develops an interactional account in which recurring leader/follower exchanges generate identities, relationships and structures; this challenges fixed, hierarchical leader/follower categories.",
+    "primary_limit": "Theoretical development, not an experimental demonstration of effectiveness or proof this is the first adaptive leadership formulation."
+  },
+  {
+    "id": "W2182784059",
+    "title": "Data-driven and adaptive leadership contributing to sustainability: global agri-food supply chains connected with emerging markets",
+    "publication_year": 2015,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "global_citations top15"
+    ],
+    "frozen_abstract_status": "missing",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "counterexample_or_insufficient",
+    "role": "contrary evidence",
+    "rationale": "Supplychain sustainability title andglobalcitations; missing frozenabstract prevents conceptual/historical appraisal here."
+  },
+  {
+    "id": "W3009462005",
+    "title": "Empirical analysis of shared leadership promotion and team creativity: An adaptive leadership perspective",
+    "publication_year": 2020,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "global_citations top15",
+      "citations_per_year_heuristic top10",
+      "global_citations top3"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "counterexample_or_insufficient",
+    "role": "contrary evidence",
+    "rationale": "Study of participative/sharedleadership and teamcreativity using73teams. Highglobalcount not evidence it originated adaptiveleadership as awhole."
+  },
+  {
+    "id": "W4376149104",
+    "title": "The Effects of Transformational and Adaptive Leadership on Dynamic Capabilities: Digital Transformation Projects",
+    "publication_year": 2023,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "citations_per_year_heuristic top10"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "not_prioritized",
+    "role": "application/limited evidence",
+    "rationale": "Available abstract describes an application or later exposition, without enough evidence of historical conceptual priority to displace corecandidates."
+  },
+  {
+    "id": "W2118672332",
+    "title": "Adaptive leadership and the practice of medicine: a complexity‐based approach to reframing the doctor–patient relationship",
+    "publication_year": 2010,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "local_incoming top15",
+      "global_citations top15"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "reading_priority",
+    "role": "clinical translation",
+    "rationale": "Explicitly translates Heifetz into clinical technical/adaptive challenges and patient adaptive work; literature review and theory development.",
+    "primary_evidence_url": "https://pubmed.ncbi.nlm.nih.gov/20846289/",
+    "primary_evidence_scope": "Author abstract from PubMed search-index record; direct page renderer returned only a notice",
+    "primary_locator": "Methods, Results, Conclusions in abstract",
+    "primary_contribution_appraisal": "Thygeson, Morrissey and Ulstad apply Heifetz's technical/adaptive distinction to clinical encounters and patients' own work of adapting.",
+    "primary_limit": "Literature review and theory development; claimed promise for outcomes does not itself demonstrate clinical effectiveness."
+  },
+  {
+    "id": "W3033075609",
+    "title": "Adaptive leadership overcomes persistence–responsivity trade-off in flocking",
+    "publication_year": 2020,
+    "provider_type": "article",
+    "discovery_reasons": [
+      "explicit falsefriend check"
+    ],
+    "frozen_abstract_status": "valid",
+    "evidence_scope": "frozen title/metadata/availableabstract; primary publication supplement only where separately registered",
+    "historical_claim_status": "provisional",
+    "expert_assessment": "not_assessed",
+    "disposition": "counterexample_or_insufficient",
+    "role": "contrary evidence",
+    "rationale": "Collective motion model and drone swarm article. Legitimate adjacent use of adaptiveleadership, outside this shortlist construct of human/organizational leadership; retained in original951."
+  }
+]

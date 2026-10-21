@@ -1,0 +1,54 @@
+{
+  "n": 951,
+  "primary_type_n": 648,
+  "types": {
+    "article": 638,
+    "book-chapter": 77,
+    "book": 15,
+    "peer-review": 7,
+    "libguides": 7,
+    "report": 4,
+    "dissertation": 56,
+    "dataset": 7,
+    "other": 21,
+    "conference-abstract": 22,
+    "preprint": 23,
+    "conference-paper": 43,
+    "book-review": 4,
+    "editorial": 2,
+    "erratum": 3,
+    "review": 10,
+    "reference-entry": 5,
+    "paratext": 1,
+    "supplementary-materials": 6
+  },
+  "reference_nonempty": 325,
+  "global_count_missing": 0,
+  "coupling_connected": 296,
+  "direct_incoming_positive_targets": 168,
+  "direct_in_corpus_incidence": 720,
+  "discovery_union_n": 44,
+  "eras": {
+    "2010-2019": 126,
+    "2000-2009": 21,
+    "2020+": 494,
+    "unknown": 5,
+    "pre2000": 2
+  },
+  "record_updated_date_range": [
+    "2025-10-10T17:16:08.811792+00:00",
+    "2026-10-14T16:39:01.820549+00:00"
+  ],
+  "record_updated_year_counts": {
+    "2025": 68,
+    "2026": 883
+  },
+  "references_field_present": 951,
+  "reference_empty_or_unavailable": 626,
+  "global_count_zero": 621,
+  "abstract_status": {
+    "missing": 236,
+    "valid": 704,
+    "gapped": 11
+  }
+}

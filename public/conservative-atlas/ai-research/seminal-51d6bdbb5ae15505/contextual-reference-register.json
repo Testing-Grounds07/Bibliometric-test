@@ -1,0 +1,222 @@
+[
+  {
+    "id": "W1597546876",
+    "observed_citing_sources": 99,
+    "in_original951": true,
+    "title": "The Practice of Adaptive Leadership: Tools and Tactics for Changing Your Organization and the World",
+    "bibliographic_year": 2009,
+    "type_observed": "unknown",
+    "identity_status": "prior_primary_identity_audit",
+    "doi": null,
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W4207026187",
+    "observed_citing_sources": 68,
+    "in_original951": false,
+    "title": "Leadership Without Easy Answers",
+    "bibliographic_year": 1994,
+    "type_observed": "unknown",
+    "identity_status": "prior_primary_identity_audit",
+    "doi": "10.4159/9780674038479",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2108574054",
+    "observed_citing_sources": 44,
+    "in_original951": true,
+    "title": "Why flexible and adaptive leadership is essential.",
+    "bibliographic_year": 2010,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.1037/a0019835",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2130070994",
+    "observed_citing_sources": 34,
+    "in_original951": false,
+    "title": "Complexity Leadership Theory: Shifting leadership from the industrial age to the knowledge era",
+    "bibliographic_year": 2007,
+    "type_observed": "article",
+    "identity_status": "acquired",
+    "doi": "https://doi.org/10.1016/j.leaqua.2007.04.002",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W1496461393",
+    "observed_citing_sources": 33,
+    "in_original951": false,
+    "title": "Leadership Without Easy Answers",
+    "bibliographic_year": 2009,
+    "type_observed": "book",
+    "identity_status": "acquired",
+    "doi": "https://doi.org/10.2307/j.ctv1pncrt0",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W6680009562",
+    "observed_citing_sources": 26,
+    "in_original951": false,
+    "title": "unresolved in this pass",
+    "bibliographic_year": null,
+    "type_observed": "unknown",
+    "identity_status": "failed",
+    "doi": null,
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2027854349",
+    "observed_citing_sources": 26,
+    "in_original951": true,
+    "title": "Adaptive leadership theory: Leading and following as a complex adaptive process",
+    "bibliographic_year": 2011,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.1016/j.riob.2011.09.007",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2784205288",
+    "observed_citing_sources": 23,
+    "in_original951": false,
+    "title": "Leadership for organizational adaptability: A theoretical synthesis and integrative framework",
+    "bibliographic_year": 2018,
+    "type_observed": "article",
+    "identity_status": "acquired",
+    "doi": "https://doi.org/10.1016/j.leaqua.2017.12.009",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2118672332",
+    "observed_citing_sources": 21,
+    "in_original951": true,
+    "title": "Adaptive leadership and the practice of medicine: a complexity‐based approach to reframing the doctor–patient relationship",
+    "bibliographic_year": 2010,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.1111/j.1365-2753.2010.01533.x",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2004401690",
+    "observed_citing_sources": 19,
+    "in_original951": true,
+    "title": "Applying adaptive leadership to successful change initiatives in academia",
+    "bibliographic_year": 2007,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.1108/01437730710752201",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2133668563",
+    "observed_citing_sources": 17,
+    "in_original951": false,
+    "title": "The work of leadership",
+    "bibliographic_year": 2009,
+    "type_observed": "article",
+    "identity_status": "acquired",
+    "doi": "https://doi.org/10.1109/emr.2009.5235495",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W1979290264",
+    "observed_citing_sources": 17,
+    "in_original951": false,
+    "title": "Using thematic analysis in psychology",
+    "bibliographic_year": 2006,
+    "type_observed": "article",
+    "identity_status": "acquired",
+    "doi": "https://doi.org/10.1191/1478088706qp063oa",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W4406700501",
+    "observed_citing_sources": 17,
+    "in_original951": true,
+    "title": "The Role of Adaptive Leadership in Times of Crisis: A Systematic Review and Conceptual Framework",
+    "bibliographic_year": 2025,
+    "type_observed": "review",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.3390/merits5010002",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2983216637",
+    "observed_citing_sources": 16,
+    "in_original951": false,
+    "title": "Leadership: Theory and Practice",
+    "bibliographic_year": 2019,
+    "type_observed": "book-chapter",
+    "identity_status": "acquired",
+    "doi": "https://doi.org/10.1007/978-3-030-34156-5_4",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2092313262",
+    "observed_citing_sources": 16,
+    "in_original951": true,
+    "title": "Studying the clinical encounter with the Adaptive Leadership framework",
+    "bibliographic_year": 2012,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.2147/jhl.s32686",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2094802850",
+    "observed_citing_sources": 16,
+    "in_original951": true,
+    "title": "Adaptive Leadership Framework for Chronic Illness",
+    "bibliographic_year": 2015,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.1097/ans.0000000000000063",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W588498069",
+    "observed_citing_sources": 15,
+    "in_original951": false,
+    "title": "Leadership on the Line: Staying Alive Through the Dangers of Leading",
+    "bibliographic_year": 2002,
+    "type_observed": "article",
+    "identity_status": "acquired",
+    "doi": null,
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W1693731968",
+    "observed_citing_sources": 15,
+    "in_original951": false,
+    "title": "Leadership : Theory and Practice",
+    "bibliographic_year": 2015,
+    "type_observed": "article",
+    "identity_status": "acquired",
+    "doi": null,
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W2792268312",
+    "observed_citing_sources": 15,
+    "in_original951": true,
+    "title": "Addressing Complex Challenges through Adaptive Leadership: A Promising Approach to Collaborative Problem Solving",
+    "bibliographic_year": 2017,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.12806/v16/i4/t2",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  },
+  {
+    "id": "W4387138506",
+    "observed_citing_sources": 14,
+    "in_original951": true,
+    "title": "Development and validation of the adaptive leadership behavior scale (ALBS)",
+    "bibliographic_year": 2023,
+    "type_observed": "article",
+    "identity_status": "frozen_corpus",
+    "doi": "https://doi.org/10.3389/fpsyg.2023.1149371",
+    "note": "ExactID count retained; no crossID pooling or edition merge."
+  }
+]

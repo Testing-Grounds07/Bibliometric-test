@@ -1,9 +1,10 @@
 # Standalone research library
 
-The **Projects** panel in `/conservative-atlas/` keeps all three retained studies in one saved project, **AI project · Leadership research**. Its **Saved findings** section contains all 13 maps; **Reports & supporting files** contains the three studies’ reports, downloads and review limits. There is no separate study-catalog navigation tool:
+The **Projects** panel in `/conservative-atlas/` keeps all four retained studies in one saved project, **AI project · Leadership research**. Its **Saved findings** section contains all 13 maps; **Reports & supporting files** contains the four studies’ reports, downloads and review limits. There is no separate study-catalog navigation tool:
 
 - Adaptive leadership: academic themes, including the original bibliographic coupling map.
 - Adaptive leadership: network and text comparisons, including reference ablations and retained text-neighbor and seed comparisons.
+- Adaptive leadership: seminal articles and foundations, with ten provisional reading priorities, citation/coupling evidence and a separate contextual reference register. This study reuses the original coupling map for context and creates no additional map. It does not establish a definitive historical ranking or merge editions and cited IDs.
 - Leadership training: how effectiveness is assessed, a source-based synthesis without a constructed network.
 
 The library includes the original accepted HTML reports, selected tables and source metadata, result ZIPs, curated review provenance, and the authored leadership evaluation PDF. `public/conservative-atlas/ai-research/library.json` records the file hashes, evidence limits, and project/map links. Raw acquired papers, provider logs, credentials, and operator files are excluded.
@@ -12,7 +13,7 @@ The public full-text appraisal JSON is an explicitly labelled derivative: acquir
 
 ## Imported maps
 
-The existing local workspace consolidates the three studies into one project with 13 saved maps. The original map, search and corpus identities are retained; only their project grouping changes. The training evaluation remains a source-only report and has no invented network. The coupling baseline retains all 951 works, 10,891 edges and 655 isolates. Text maps retain the final 459 eligible works; 461 documents were encoded during the original study. Reference-ablation corpora record only the declared reference deletions. Comparison reports retain their own common-node restrictions.
+All retained studies share one project with 13 saved maps. The original map, search and corpus identities are retained. The seminal-article guide reuses the original coupling map; the training evaluation remains a source-only report and has no invented network. The coupling baseline retains all 951 works, 10,891 edges and 655 isolates. Text maps retain the final 459 eligible works; 461 documents were encoded during the original study. Reference-ablation corpora record only the declared reference deletions. Comparison reports retain their own common-node restrictions.
 
 The combined project retains the original thematic project's identity. The other two empty project containers were removed after their records were moved and backed up. Historical links containing either removed project ID must be reopened through the combined project; the old container IDs do not redirect. Saved map IDs and current report links are retained.
 
