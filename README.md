@@ -2,7 +2,7 @@
 
 OpenAlex-powered bibliometric analysis prototype.
 
-The retained standalone studies are normal saved **Projects**. Open a project to find its maps and its **Reports & supporting files** section. See the [standalone research library](docs/STANDALONE-RESEARCH-LIBRARY.md) for study scope, review limits and database deployment requirements.
+All three retained standalone studies are in one saved **Project**, **AI project · Leadership research**. Open it to find the 13 saved maps and all three studies’ **Reports & supporting files**, including the source-only training evaluation. See the [standalone research library](docs/STANDALONE-RESEARCH-LIBRARY.md) for study scope, review limits and database deployment requirements.
 
 The guided search supports multiple work types and OpenAlex primary research
 fields. In corpus refinement, the text filter can target titles, abstracts,

@@ -1,6 +1,6 @@
 # Standalone research library
 
-The **Projects** panel in `/conservative-atlas/` contains three retained studies as ordinary saved projects. Each corresponding project has its own **Reports & supporting files** section; there is no separate study-catalog navigation tool:
+The **Projects** panel in `/conservative-atlas/` keeps all three retained studies in one saved project, **AI project · Leadership research**. Its **Saved findings** section contains all 13 maps; **Reports & supporting files** contains the three studies’ reports, downloads and review limits. There is no separate study-catalog navigation tool:
 
 - Adaptive leadership: academic themes, including the original bibliographic coupling map.
 - Adaptive leadership: network and text comparisons, including reference ablations and retained text-neighbor and seed comparisons.
@@ -12,7 +12,9 @@ The public full-text appraisal JSON is an explicitly labelled derivative: acquir
 
 ## Imported maps
 
-The existing local workspace contains three new projects and 13 saved maps. The coupling baseline retains all 951 works, 10,891 edges and 655 isolates. Text maps retain the final 459 eligible works; 461 documents were encoded during the original study. Reference-ablation corpora record only the declared reference deletions. Comparison reports retain their own common-node restrictions.
+The existing local workspace consolidates the three studies into one project with 13 saved maps. The original map, search and corpus identities are retained; only their project grouping changes. The training evaluation remains a source-only report and has no invented network. The coupling baseline retains all 951 works, 10,891 edges and 655 isolates. Text maps retain the final 459 eligible works; 461 documents were encoded during the original study. Reference-ablation corpora record only the declared reference deletions. Comparison reports retain their own common-node restrictions.
+
+The combined project retains the original thematic project's identity. The other two empty project containers were removed after their records were moved and backed up. Historical links containing either removed project ID must be reopened through the combined project; the old container IDs do not redirect. Saved map IDs and current report links are retained.
 
 The import preserves original node identities, edge weights, support counts, and engine memberships. Original engine identifiers and community labels remain available separately from display identifiers and colors. Isolates remain in the analytical graph even when hidden by the display filter. Display community labels are not academic theme judgments.
 
@@ -26,6 +28,6 @@ The original methods and statistical reviews apply only within their recorded sc
 
 ## Publication and database scope
 
-Git publication includes application code and the selected static research artifacts. It does **not** copy the local Neo4j database. The project/map URLs in this release identify saved records in the existing local workspace; a separate deployment must import those records before its map links resolve. Static reports and downloads are available independently of those database records.
+Git publication includes application code and the selected static research artifacts. It does **not** copy the local Neo4j database. The canonical project and its map URLs in this release identify saved records in the existing local workspace; a separate deployment must import those records before its map links resolve. Static reports and downloads are available independently of those database records.
 
 The secure multiuser entrypoint and independent research connector are documented in [MULTIUSER.md](../MULTIUSER.md) and the [integration results](AI-RESEARCH-IMPLEMENTATION-RESULTS.md). Publishing this branch does not activate institution authentication, connect a user's ChatGPT account, or migrate the existing legacy endpoint to that secure service.

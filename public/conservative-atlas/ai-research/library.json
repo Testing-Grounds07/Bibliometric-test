@@ -65,7 +65,7 @@
       "title": "Adaptive leadership: network and text comparisons",
       "summary": "Reference ablations, citation versus text similarity, exploratory coding, and retained parameter/seed comparisons.",
       "scope": "951 original works;459 text-eligible works.461 documents were encoded, but only459 enter final text maps. Comparisons use their declared common-node sets.",
-      "project_id": "6c9d97cc-bcfb-a009-2270-6de1ead5ee05",
+      "project_id": "3588cbf3-b26f-a524-6952-4cb34688381c",
       "reports": [
         {
           "label": "Read full research report",
@@ -118,84 +118,84 @@
       "maps": [
         {
           "label": "Citation baseline",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/33b65cc4-00bf-4039-9ab8-4ecae6c05cca",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/33b65cc4-00bf-4039-9ab8-4ecae6c05cca",
           "node_count": 951,
           "edge_count": 10891,
           "scope": "951 retained works;10891 edges;655 isolates. Original Leiden modularity, seed11."
         },
         {
           "label": "Reference ablation · W1597546876",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/6fb1a543-01e5-48c5-8bc5-5a4aa88bbb49",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/6fb1a543-01e5-48c5-8bc5-5a4aa88bbb49",
           "node_count": 951,
           "edge_count": 7144,
           "scope": "951 retained works;7144 edges;663 isolates. Original Leiden modularity, seed11."
         },
         {
           "label": "Reference ablation · W4207026187",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/28350788-ecc8-47ce-b98b-c3621c27d8ec",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/28350788-ecc8-47ce-b98b-c3621c27d8ec",
           "node_count": 951,
           "edge_count": 9148,
           "scope": "951 retained works;9148 edges;658 isolates. Original Leiden modularity, seed11."
         },
         {
           "label": "Reference ablation · W1597546876, W4207026187",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/839172db-c148-4612-9aea-419a616fb426",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/839172db-c148-4612-9aea-419a616fb426",
           "node_count": 951,
           "edge_count": 5309,
           "scope": "951 retained works;5309 edges;666 isolates. Original Leiden modularity, seed11."
         },
         {
           "label": "Text similarity · k5 · seed11",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/a52208a9-e17c-4f3c-8414-f8d44c09624a",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/a52208a9-e17c-4f3c-8414-f8d44c09624a",
           "node_count": 459,
           "edge_count": 1972,
           "scope": "459 retained works;1972 edges;0 isolates. Original Leiden modularity, seed11."
         },
         {
           "label": "Text similarity · k10 · seed11",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/35016416-f68b-4dde-99d1-57e415dc3461",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/35016416-f68b-4dde-99d1-57e415dc3461",
           "node_count": 459,
           "edge_count": 3875,
           "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed11."
         },
         {
           "label": "Text similarity · k10 · seed23",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/c228b5b2-0a00-45b7-80d1-63deac68cd44",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/c228b5b2-0a00-45b7-80d1-63deac68cd44",
           "node_count": 459,
           "edge_count": 3875,
           "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed23."
         },
         {
           "label": "Text similarity · k10 · seed37",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/ee452b1b-ff52-4b0d-b07f-ed80742d26a9",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/ee452b1b-ff52-4b0d-b07f-ed80742d26a9",
           "node_count": 459,
           "edge_count": 3875,
           "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed37."
         },
         {
           "label": "Text similarity · k10 · seed53",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/ecad291a-64df-427a-9e28-f40ddcd2ea66",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/ecad291a-64df-427a-9e28-f40ddcd2ea66",
           "node_count": 459,
           "edge_count": 3875,
           "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed53."
         },
         {
           "label": "Text similarity · k10 · seed71",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/e9786fb0-4617-4128-bb6b-a778b222d027",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/e9786fb0-4617-4128-bb6b-a778b222d027",
           "node_count": 459,
           "edge_count": 3875,
           "scope": "459 retained works;3875 edges;0 isolates. Original Leiden modularity, seed71."
         },
         {
           "label": "Text similarity · k15 · seed11",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/d9333b5f-713f-4129-8a6a-b598fddf9c78",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/d9333b5f-713f-4129-8a6a-b598fddf9c78",
           "node_count": 459,
           "edge_count": 5765,
           "scope": "459 retained works;5765 edges;0 isolates. Original Leiden modularity, seed11."
         },
         {
           "label": "Citation network restricted to the459 text-eligible works",
-          "url": "/conservative-atlas/projects/6c9d97cc-bcfb-a009-2270-6de1ead5ee05/maps/2addbd14-1ae6-4585-aa47-60d405545e89",
+          "url": "/conservative-atlas/projects/3588cbf3-b26f-a524-6952-4cb34688381c/maps/2addbd14-1ae6-4585-aa47-60d405545e89",
           "node_count": 459,
           "edge_count": 5594,
           "scope": "459 retained works;5594 edges;251 isolates. Original Leiden modularity, seed11."
@@ -211,7 +211,7 @@
       "title": "Leadership training: how effectiveness is assessed",
       "summary": "The broader evidence review of training outcomes, measurement criteria, raters, study designs and limits on causal claims.",
       "scope": "Source-based research synthesis with its original discovery/accounting and outcome ledgers. No network was constructed for this study.",
-      "project_id": "819bac8e-3bb2-9654-a4ab-f74c4c7d5272",
+      "project_id": "3588cbf3-b26f-a524-6952-4cb34688381c",
       "reports": [
         {
           "label": "Read full research report",
