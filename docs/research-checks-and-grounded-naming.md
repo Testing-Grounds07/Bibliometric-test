@@ -2,6 +2,8 @@
 
 In a saved project, open **Research checks → View current map’s checks**, or **Validation → Results & details → Research checks**. The canvas, original community memberships and original objective remain unchanged. No new diagnostic starts when a map opens.
 
+Applicable cluster tiles also show a separate **Map checks** button. It opens the current map’s matched research results with the selected cluster identified; context-only study checks are hidden in this focused view. The indicator means results are available, not that checks passed or that the individual cluster has a stability grade. Existing cluster stability ratings remain separate. Unlinked records, unmatched/stale evidence and maps without completed checks receive no indicator.
+
 The AI project’s 13 original maps have a derivative retained-check index. It verifies the full graph, original engine memberships (including isolates), exact source/reference IDs, scientific settings and supporting file SHA-256 values. A changed graph or file withholds the retained results. Layout and current interpretative labels do not change this scientific identity. Unrelated projects have no attached original study.
 
 The retained checks cover edge reconstruction, optimizer seeds, coupling thresholds, article restriction, influential-reference deletions, text-neighbour/seed alternatives, vector checks, and citation/text comparisons. Purposive coding, selected full-text appraisal and seminal-candidate discovery are identified as study context where they do not test the displayed map. Current AI labels do not inherit the original reviewers’ approval.

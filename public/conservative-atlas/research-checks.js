@@ -484,9 +484,90 @@
     return memberships;
   }
 
+  // scripts/cluster-research-indicators.mjs
+  function clusterMapChecks(graph, cluster, { entry = null, digest = null } = {}) {
+    if (!graph || !(Number(cluster) > 0)) return null;
+    const members = graph.nodes.filter((n) => String(n.cluster) === String(cluster));
+    if (!members.length) return null;
+    const matched = digest && entry?.graph_sha256 === digest && entry.corpus_id === graph.sourceCorpusId && entry.project_id === graph._projectId && entry.map_key === graph.importedStandalone?.map_key;
+    const retained = (matched ? entry.checks : []).filter((c) => c.relationship === "Includes this map or its explicitly named baseline comparison");
+    const fresh = (graph.researchCheckRuns || []).filter((r) => digest && r.graph_sha256 === digest && r.result?.version === RESEARCH_CHECK_VERSION && r.result.status === "completed" && r.result.executed === true);
+    if (!retained.length && !fresh.length) return null;
+    return { cluster: String(cluster), members: members.length, retainedCount: retained.length, freshCount: fresh.length, label: "Map checks \xB7 " + (retained.length + fresh.length), detail: `Cluster ${cluster}: ${retained.length} retained whole-map checks and ${fresh.length} fresh diagnostic results. These are map-level results, not a stability rating for this cluster.` };
+  }
+  function clearClusterMapChecks(root) {
+    for (const wrapper of root.querySelectorAll(".cluster-research-tile")) {
+      const button = wrapper.querySelector(".cluster-button");
+      if (button) wrapper.replaceWith(button);
+      else wrapper.remove();
+    }
+  }
+  function syncClusterMapChecks(root, graph, state, onOpen) {
+    for (const button of root.querySelectorAll(".cluster-buttons .cluster-button[data-cluster]")) {
+      const cluster = button.dataset.cluster, info = clusterMapChecks(graph, cluster, state);
+      let wrapper = button.parentElement?.classList.contains("cluster-research-tile") ? button.parentElement : null;
+      if (!info) {
+        if (wrapper) wrapper.replaceWith(button);
+        continue;
+      }
+      if (!wrapper) {
+        const focused = root.activeElement === button;
+        wrapper = root.createElement("div");
+        wrapper.className = "cluster-research-tile";
+        button.before(wrapper);
+        wrapper.append(button);
+        if (focused) button.focus({ preventScroll: true });
+      }
+      let link = wrapper.querySelector(".cluster-map-checks");
+      if (!link) {
+        link = root.createElement("button");
+        link.type = "button";
+        link.className = "cluster-map-checks";
+        wrapper.append(link);
+      }
+      if (link.textContent !== info.label) link.textContent = info.label;
+      link.title = info.detail;
+      link.setAttribute("aria-label", "View map-level research checks for cluster " + cluster);
+      link.setAttribute("aria-controls", "researchChecks");
+      link.onclick = (event) => {
+        event.stopPropagation();
+        onOpen(graph, cluster);
+      };
+    }
+  }
+
   // scripts/canvas-research-checks.mjs
   if (typeof window !== "undefined" && window.atlasSharedCanvas && window.atlasWorkspaceShell) {
-    let stop = function(message = "Cancelled. No partial result was saved.") {
+    let resetTileContext = function() {
+      tileContext.hidden = true;
+      tileContext.textContent = "";
+      panel.querySelector("summary").removeAttribute("aria-describedby");
+      for (const row of retained.querySelectorAll("[data-study-context]")) row.hidden = false;
+    }, showChecks = function(graph = null, cluster = null) {
+      if (graph) {
+        if (graph !== boundGraph || window.atlasSharedCanvas.graph() !== graph) return;
+        if (JSON.stringify(researchGraphIdentity(graph)) !== lastIdentity) {
+          clearClusterMapChecks(document);
+          resetTileContext();
+          window.ATLAS_RESEARCH_CHECKS.sync();
+          return;
+        }
+        const info = clusterMapChecks(graph, cluster, { entry, digest: boundDigest });
+        if (!info) return;
+        tileContext.textContent = `Cluster ${cluster} \xB7 ${info.members} works. These checks apply to the whole map, not a stability rating for this cluster. A global agreement score does not establish how this individual cluster holds together.`;
+        tileContext.hidden = false;
+        panel.querySelector("summary").setAttribute("aria-describedby", tileContext.id);
+        for (const row of retained.querySelectorAll("[data-study-context]")) row.hidden = true;
+      } else resetTileContext();
+      window.atlasWorkspaceShell.show("analysis");
+      panel.open = true;
+      panel.querySelector("summary").focus({ preventScroll: true });
+      panel.scrollIntoView({ block: "nearest" });
+    }, tileIndicators = function(identity = null) {
+      const graph = window.atlasSharedCanvas.graph();
+      if (graph !== boundGraph || (identity || JSON.stringify(researchGraphIdentity(graph))) !== lastIdentity) return clearClusterMapChecks(document);
+      syncClusterMapChecks(document, graph, { entry, digest: boundDigest }, showChecks);
+    }, stop = function(message = "Cancelled. No partial result was saved.") {
       worker?.terminate();
       worker = null;
       clearTimeout(timer);
@@ -517,6 +598,7 @@
       retained.append(make("p", "ARI (adjusted Rand index) compares two groupings on the same named works: 1 means identical, values near 0 mean little agreement beyond chance. It is not a cluster stability rating."));
       for (const check of entry.checks) {
         const row = make("details");
+        if (check.relationship.startsWith("Study context")) row.dataset.studyContext = "true";
         row.append(make("summary", (check.relationship.startsWith("Study context") ? "Study context \xB7 " : "") + check.title), make("p", check.relationship), make("p", check.scope), make("p", check.summary), link(check.artifact, "Read original numerical results"));
         const raw = make("pre", JSON.stringify(check.result, null, 2));
         row.append(raw);
@@ -526,7 +608,10 @@
       limits.append(make("summary", "Not assessed by the original research"));
       for (const item of entry.not_assessed) limits.append(make("p", item));
       retained.append(limits);
-      retained.append(make("p", entry.source_appraisal.scope), link(entry.source_appraisal.report, "Read source appraisal and interpretation"), download(entry, "retained-research-checks.json"));
+      const appraisal = make("div");
+      appraisal.dataset.studyContext = "true";
+      appraisal.append(make("p", entry.source_appraisal.scope), link(entry.source_appraisal.report, "Read source appraisal and interpretation"));
+      retained.append(appraisal, download(entry, "retained-research-checks.json"));
     }, renderRuns = function(graph) {
       outputs.replaceChildren();
       const matching = (graph.researchCheckRuns || []).filter((item) => item.graph_sha256 === boundDigest);
@@ -600,9 +685,13 @@
     panel.append(make("summary", "Research checks"));
     const status = make("p");
     status.setAttribute("role", "status");
+    const tileContext = make("p");
+    tileContext.id = "clusterResearchCheckContext";
+    tileContext.className = "cluster-check-context";
+    tileContext.hidden = true;
     const retained = make("div"), fresh = make("details");
     fresh.append(make("summary", "Run a research check"));
-    panel.append(status, retained, fresh);
+    panel.append(status, tileContext, retained, fresh);
     document.querySelector("#analysisPanel .shell-panel-body")?.append(panel);
     const notice = make("p", "These checks compare maps and constructions. They do not give per-cluster confidence, approve AI names or establish article quality. Opening a saved map does not rerun them.");
     fresh.append(notice);
@@ -633,6 +722,7 @@
     fresh.append(select, reference, comparison, rank, countField, reason, run, cancel, progress, outputs);
     let manifestPromise, entry = null, boundGraph = null, boundDigest = null, lastIdentity = "", ticket = 0, comparisonTicket = 0, choiceTicket = 0, worker = null, timer = null, records = [], cache = null, typeMap = null, comparisonGraph = null, projectMaps = [], pending = null;
     const verified = /* @__PURE__ */ new Map();
+    document.getElementById("validationResultsDetails")?.addEventListener("click", resetTileContext);
     const projectSection = make("details");
     projectSection.id = "projectResearchChecks";
     projectSection.className = "project-section project-disclosure";
@@ -654,11 +744,7 @@
         projectBody.replaceChildren(make("p", `Original research checks are indexed for ${maps.length} saved maps in this project. Opening a map verifies its exact graph and supporting files before showing results.`));
         const button = make("button", "View current map\u2019s checks");
         button.type = "button";
-        button.onclick = () => {
-          window.atlasWorkspaceShell.show("analysis");
-          panel.open = true;
-          panel.scrollIntoView({ block: "nearest" });
-        };
+        button.onclick = () => showChecks();
         projectBody.append(button, make("p", "Includes optimizer seeds, construction thresholds, article restriction, influential-reference removals, text/citation comparisons and candidate-discovery checks. Source appraisal and review limits are retained separately."));
         projectSection.hidden = false;
       } catch {
@@ -704,9 +790,15 @@
       } catch {
         return;
       }
-      if (graph === boundGraph && identity === lastIdentity) return;
+      if (graph === boundGraph && identity === lastIdentity) {
+        tileIndicators(identity);
+        return;
+      }
       const id = ++ticket;
       if (worker) stop("Map changed. The check was cancelled; no partial result was saved.");
+      clearClusterMapChecks(document);
+      resetTileContext();
+      boundDigest = null;
       boundGraph = graph;
       lastIdentity = identity;
       entry = null;
@@ -740,6 +832,7 @@
         typeMap = types;
         renderRuns(graph);
         readiness();
+        tileIndicators();
         window.atlasWorkspaceShell.refresh();
       } catch (e) {
         if (id !== ticket) return;
@@ -752,11 +845,13 @@
         } catch {
         }
         if (id === ticket && graph === boundGraph) {
-          boundDigest = await researchGraphDigest(graph);
-          if (id !== ticket) return;
+          const digest = await researchGraphDigest(graph);
+          if (id !== ticket || graph !== boundGraph) return;
+          boundDigest = digest;
           records = source;
           renderRuns(graph);
           readiness();
+          tileIndicators();
           window.atlasWorkspaceShell.refresh();
         }
       }
@@ -893,7 +988,10 @@
       choiceTicket++;
       comparisonTicket++;
       if (worker) stop("Map or project changed. The check was cancelled; no partial result was saved.");
+      clearClusterMapChecks(document);
+      resetTileContext();
       entry = null;
+      boundDigest = null;
       lastIdentity = "";
       run.disabled = true;
       window.ATLAS_RESEARCH_CHECKS.sync();
