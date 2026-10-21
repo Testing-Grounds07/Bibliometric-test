@@ -1,0 +1,47 @@
+/* The saved-project menu uses the shell's existing colors and controls. */
+.project-tools [hidden]{display:none!important}
+.project-tools>section.project-section:first-of-type{border:0;padding:0 0 12px}
+.project-tools>section.project-section:first-of-type>h3{display:none}
+.workspace-shell .project-tools button.secondary{margin:0}
+.project-tools .project-actions{display:flex;flex-wrap:wrap;gap:6px}
+.workspace-shell .project-tools .project-actions>button{width:auto;flex:0 1 auto;min-height:44px;padding:6px 12px;border:1px solid var(--line);border-radius:9px;font-size:12px;line-height:1.3}
+.project-tools .project-name-editor{padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--raised);gap:10px}
+.project-tools .project-name-editor label{gap:6px}
+.workspace-shell .project-tools .project-status{margin:0;padding:6px 0;font-size:11px;overflow-wrap:anywhere}
+.project-tools .project-active-actions:has(>button:not([hidden])){padding:0 0 10px}
+.project-tools details.project-disclosure{display:block;padding:0;border-top:1px solid var(--line)}
+.project-tools details.project-disclosure>summary{display:flex;align-items:center;gap:8px;min-height:44px;padding:10px 0;list-style:none;font-weight:600;line-height:1.4}
+.project-tools details.project-disclosure>summary::-webkit-details-marker{display:none}
+.project-tools details.project-disclosure>summary:before{content:'›';display:inline-block;width:12px;flex:none;font-size:18px;color:var(--muted);transition:transform .12s}
+.project-tools details.project-disclosure[open]>summary:before{transform:rotate(90deg)}
+.project-tools details.project-disclosure:not([open])>:not(summary){display:none!important}
+.project-tools .project-disclosure>summary>span:first-child{flex:1;min-width:0}
+.project-tools .project-count{flex:none;min-width:22px;padding:2px 6px;border-radius:6px;background:var(--raised);color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums;text-align:center}
+.project-tools .project-count:empty{display:none}
+.project-tools .project-section-body{display:grid;gap:8px;padding:0 0 12px;min-width:0}
+#projectSavedFindings .project-section-body>h3,#projectSearchHistory .project-section-body>h3{display:none}
+#projectSavedFindings .project-section-body{max-height:330px;max-height:min(38dvh,330px);overflow:auto;overscroll-behavior:contain;padding-right:3px}
+.project-tools .project-record{position:relative;gap:3px;padding:4px 0 8px;border-bottom:0;min-width:0}
+.workspace-shell .project-tools .project-record>button{min-height:44px;width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--raised);font-size:12px;line-height:1.4;text-align:left;white-space:normal;overflow-wrap:anywhere}
+.project-tools .project-record>small{padding:0 3px;font-size:10px}
+.project-tools .project-record>p{padding:0 3px;margin:2px 0;font-size:11px;color:var(--muted)}
+.project-tools .project-record:has(.project-finding-notes)>button{padding-right:65px}
+.project-tools .project-finding-notes>summary{position:absolute;right:3px;top:4px;display:flex;align-items:center;justify-content:center;width:56px;min-height:44px;padding:4px;font-size:10px;color:var(--muted)}
+.project-tools .project-finding-notes>p{padding:0 3px;color:var(--muted);white-space:pre-wrap}
+.project-tools .project-section-body>p:first-child{margin-top:0}
+.project-tools #projectResearchReportContent{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:8px;padding-bottom:12px}
+.project-tools #projectResearchReportContent>.ai-studies-cards{grid-column:1/-1}
+.project-tools .ai-studies-cards{gap:8px}
+.project-tools .ai-study-card{padding:10px;border-radius:9px}
+.project-tools .ai-study-card h3{margin:0 0 8px;font-size:12px;font-weight:600;line-height:1.5}
+.project-tools .ai-study-card a{color:var(--ink)}
+.project-tools .project-report-links{display:flex;flex-wrap:wrap;gap:6px}
+.project-tools .project-report-links>a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--raised);font-size:11px;line-height:1.4;text-decoration:none}
+.project-tools .project-report-details{margin-top:8px;border-top:1px solid var(--line)}
+.project-tools .project-report-details>summary{min-height:44px;font-size:11px;padding:10px 0;color:var(--muted)}
+.project-tools .ai-study-card .ai-studies-source-only{font-size:11px;margin:8px 0 0}
+.project-tools .ai-studies-status{font-size:11px;margin:0}
+.project-tools #projectResearchReportContent>button{justify-self:start;min-height:44px;padding:6px 10px;font-size:11px}
+.project-tools summary:focus-visible,.project-tools button:focus-visible,.project-tools a:focus-visible{outline:2px solid var(--accent,var(--ink));outline-offset:3px}
+@media(max-width:480px){.project-tools .project-field-grid{grid-template-columns:minmax(0,1fr)}.project-tools .project-actions>button{padding-inline:10px}.project-tools .ai-study-card{padding:9px}}
+@media(prefers-reduced-motion:reduce){.project-tools details.project-disclosure>summary:before{transition:none}}

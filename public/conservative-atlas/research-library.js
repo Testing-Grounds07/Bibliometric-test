@@ -6,11 +6,11 @@
  const node = (tag, text, className) => { const value = document.createElement(tag); if (text) value.textContent = text; if (className) value.className = className; return value; };
  const library = node('div', '', 'ai-studies-library'); library.id = 'projectResearchReportContent';
  const status = node('p', '', 'ai-studies-status'); status.setAttribute('role', 'status');
- const refresh = node('button', 'Refresh reports'); refresh.type = 'button';
+ const refresh = node('button', 'Refresh reports', 'secondary'); refresh.type = 'button';
  const cards = node('div', '', 'ai-studies-cards'); library.append(status, refresh, cards);
  let selectedProject = null, generation = 0, cachedStudies = null;
  function mount() { const host = document.getElementById('projectResearchReports'); if (host && library.parentElement !== host) host.append(library); return host; }
- function clearProject() { generation++; selectedProject = null; cards.replaceChildren(); status.textContent = ''; refresh.disabled = false; const host = mount(); if (host) host.hidden = true; }
+ function clearProject() { generation++; selectedProject = null; cards.replaceChildren(); status.textContent = ''; refresh.disabled = false; const host = mount(); if (host) host.hidden = true; const count = document.getElementById('projectReportCount'); if (count) count.textContent = '0'; }
  const uuid = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
  const projectPath = new RegExp('^' + base.pathname + 'projects/' + uuid + '(?:/map|/maps/' + uuid + ')?/?$', 'i');
  function text(value, name, maximum = 12000) { if (typeof value !== 'string' || !value.trim() || value.length > maximum) throw Error('The study library has an invalid ' + name + '.'); return value; }
@@ -44,19 +44,22 @@
   });
  }
  function link(value) { const anchor = node('a', value.label); anchor.href = value.url; if (value.sha256) {anchor.target = '_blank'; anchor.rel = 'noopener';} return anchor; }
- function fileLinks(card, title, values) {
+ function fileLinks(card, title, values, linked = true) {
   if (!values.length) return;
   card.append(node('h4', title)); const list = node('ul');
-  for (const value of values) { const row = node('li'); row.append(link(value)); const digest = node('details', '', 'ai-studies-digest'); digest.append(node('summary', 'File SHA256'), node('code', value.sha256)); row.append(digest); list.append(row); }
+  for (const value of values) { const row = node('li'); row.append(linked ? link(value) : node('span', value.label)); const digest = node('details', '', 'ai-studies-digest'); digest.append(node('summary', 'File SHA256'), node('code', value.sha256)); row.append(digest); list.append(row); }
   card.append(list);
  }
  function render(studies) {
   cards.replaceChildren();
   for (const study of studies) {
    const card = node('article', '', 'ai-study-card'); card.dataset.studyId = study.id;
-   card.append(node('h3', study.title), node('p', study.summary), node('h4', 'Evidence and claim limits'), node('p', study.scope), node('h4', 'Review status'), node('p', study.review.status), node('p', study.review.scope));
-   fileLinks(card, 'Reports', study.reports); fileLinks(card, 'Sources and review downloads', study.downloads);
+   card.append(node('h3', study.title));
+   const reportLinks = node('div', '', 'project-report-links'); for (const report of study.reports) reportLinks.append(link(report)); card.append(reportLinks);
    if (!study.maps.length) card.append(node('p', 'No network map is attached. The reports and source appraisal can be read without a graph.', 'ai-studies-source-only'));
+   const details = node('details', '', 'project-report-details'); details.append(node('summary', 'Scope, review & supporting files'));
+   details.append(node('p', study.summary), node('h4', 'Evidence and claim limits'), node('p', study.scope), node('h4', 'Review status'), node('p', study.review.status), node('p', study.review.scope));
+   fileLinks(details, 'Report file identities', study.reports, false); fileLinks(details, 'Sources and review downloads', study.downloads); card.append(details);
    cards.append(card);
   }
  }
@@ -71,7 +74,7 @@
  }
  function show(studies) {
   const relevant = studies.filter(study => study.project_id === selectedProject);
-  render(relevant); const host = mount(); if (host) host.hidden = !relevant.length;
+  render(relevant); const count = document.getElementById('projectReportCount'); if (count) count.textContent = String(relevant.length); const host = mount(); if (host) host.hidden = !relevant.length;
   status.textContent = relevant.length ? 'Retained reports for this project. Review labels describe recorded checks, not human expert approval.' : '';
  }
  async function load(force = false) {
